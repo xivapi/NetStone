@@ -15,21 +15,44 @@ namespace NetStone.Model.Parseables
             this.definition = socialGroupDefinition;
         }
 
+        /// <summary>
+        /// Indicating whether this social group exists or not.
+        /// </summary>
         public bool Exists => Id != null;
 
+        /// <summary>
+        /// Name of this social group.
+        /// </summary>
         public string Name => ParseInnerText(this.definition.Name);
 
+        /// <summary>
+        /// ID of this social group.
+        /// </summary>
         public string Id => ParseHrefId(this.definition.Name);
 
+        /// <summary>
+        /// Link to this social group's page.
+        /// </summary>
         public Uri Link => ParseHref(this.definition.Name);
 
+        /// <summary>
+        /// <see cref="IconLayers"/> of this social group's icon.
+        /// </summary>
         public IconLayers IconLayers => new IconLayers(this.RootNode, this.definition);
 
+        /// <summary>
+        /// Gets this object if the group exists, null if not.
+        /// </summary>
+        /// <returns>This object if the group exists, null if not.</returns>
         public SocialGroup GetOptional()
         {
             return Exists ? this : null;
         }
 
+        /// <summary>
+        /// String representation of the gear slot.
+        /// </summary>
+        /// <returns>The name of the item.</returns>
         public override string ToString() => Name;
     }
 }
