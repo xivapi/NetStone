@@ -6,6 +6,9 @@ using NetStone.Definitions.Model;
 
 namespace NetStone.Model.Parseables
 {
+    /// <summary>
+    /// Container class holding information about a social group's icon.
+    /// </summary>
     public class IconLayers : LodestoneParseable
     {
         private readonly ISocialGroupDefinition definition;
@@ -15,8 +18,19 @@ namespace NetStone.Model.Parseables
             this.definition = definition;
         }
 
+        /// <summary>
+        /// Link to the top layer image of the icon.
+        /// </summary>
         public Uri TopLayer => ParseImageSource(this.definition.IconLayers.Top);
+        
+        /// <summary>
+        /// Link to the top layer image of the icon.
+        /// </summary>
         public Uri MiddleLayer => ParseImageSource(this.definition.IconLayers.Middle);
+        
+        /// <summary>
+        /// Link to the top layer image of the icon.
+        /// </summary>
         public Uri BottomLayer => ParseImageSource(this.definition.IconLayers.Bottom);
     }
 }
