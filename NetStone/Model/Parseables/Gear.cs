@@ -7,6 +7,9 @@ using NetStone.Definitions.Model;
 
 namespace NetStone.Model.Parseables
 {
+    /// <summary>
+    /// Container class holding information about a character's equipped gear.
+    /// </summary>
     public class Gear : LodestoneParseable
     {
         private readonly GearDefinition definition;
