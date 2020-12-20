@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
+using JetBrains.Annotations;
 using NetStone.Definitions.Model;
 
 namespace NetStone.Model.Parseables
@@ -44,6 +45,7 @@ namespace NetStone.Model.Parseables
         /// Gets this object if the group exists, null if not.
         /// </summary>
         /// <returns>This object if the group exists, null if not.</returns>
+        [CanBeNull]
         public SocialGroup GetOptional()
         {
             return Exists ? this : null;
