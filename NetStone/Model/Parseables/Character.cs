@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using JetBrains.Annotations;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
 
@@ -55,6 +56,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// The character FreeCompany info.
         /// </summary>
+        [CanBeNull]
         public SocialGroup FreeCompany => new SocialGroup(this.RootNode, this.charDefinition.FreeCompany).GetOptional();
 
         /// <summary>
@@ -85,6 +87,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// The character PvPTeam info.
         /// </summary>
+        [CanBeNull]
         public SocialGroup PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
         //TODO: parse
@@ -98,6 +101,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// The title of the character.
         /// </summary>
+        [CanBeNull]
         public string Title => ParseInnerText(this.charDefinition.Title);
 
         /// <summary>
