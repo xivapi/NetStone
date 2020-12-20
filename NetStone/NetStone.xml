@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetStone</name>
+    </assembly>
+    <members>
+        <member name="T:NetStone.Definitions.DefinitionsContainer">
+            <summary>
+            Class providing definitions(Selectors, paths) for parsing lodestone content.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(System.String)">
+            <summary>
+            Parse the InnerHTML via selector.
+            </summary>
+            <param name="selector">Selector to the node.</param>
+            <returns>InnerHTML of the node.</returns>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Avatar">
+            <summary>
+            An URI to the avatar of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Bio">
+            <summary>
+            The character bio/description.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.GrandCompany">
+            <summary>
+            The grand company of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Name">
+            <summary>
+            The name of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Nameday">
+            <summary>
+            The nameday of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Portrait">
+            <summary>
+            An URI to the avatar of the character.
+            </summary>
+        </member>
+    </members>
+</doc>
