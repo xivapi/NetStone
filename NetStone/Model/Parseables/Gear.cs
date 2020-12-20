@@ -23,7 +23,7 @@ namespace NetStone.Model.Parseables
         /// Information about the characters' weapon. Null if none equipped.
         /// </summary>
         [CanBeNull]
-        public GearEntry Weapon => new GearEntry(this.RootNode, this.definition.Weapon).GetOptional();
+        public GearEntry Mainhand => new GearEntry(this.RootNode, this.definition.Weapon).GetOptional();
 
         /// <summary>
         /// Information about the characters' shield/offhand. Null if none equipped.
