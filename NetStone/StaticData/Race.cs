@@ -7,5 +7,13 @@ namespace NetStone.StaticData
     public enum Race
     {
         None,
+        Hyur,
+        Elezen,
+        Lalafell,
+        Miqote,
+        Roegadyn,
+        AuRa,
+        Hrothgar,
+        Viera
     }
 }

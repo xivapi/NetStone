@@ -7,8 +7,8 @@ namespace NetStone.Model
 {
     interface IPaginatedResult <T> where T : LodestoneParseable
     {
-        int CurrentPage { get; set; }
-        int NumPages { get; set; }
+        int CurrentPage { get; }
+        int NumPages { get; }
 
         Task<T> GetNextPage();
     }

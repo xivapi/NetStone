@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Model.Parseables;
+using NetStone.Model.Parseables.Search;
+using NetStone.Search;
 
 namespace NetStone
 {
@@ -38,7 +40,7 @@ namespace NetStone
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="Character"/> class containing information about the character.</returns>
-        public async Task<Character> GetCharacter(ulong id) => new Character(this, await GetRootNode($"lodestone/character/{id}"), this.Definitions, id);
+        public async Task<Character> GetCharacter(ulong id) => new Character(this, await GetRootNode($"/lodestone/character/{id}"), this.Definitions, id);
 
         /// <summary>
         /// Get a characters' class/job information by its Lodestone ID.
@@ -46,8 +48,11 @@ namespace NetStone
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="ClassJob"/> class containing information about the characters' classes and jobs.</returns>
-        public async Task<ClassJob> GetCharacterClassJob(ulong id) => new ClassJob(await GetRootNode($"lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
+        public async Task<ClassJob> GetCharacterClassJob(ulong id) => new ClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
 
+        public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 0) =>
+            new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page=1"), this.Definitions.CharacterSearch, query);
+        
         private async Task<HtmlNode> GetRootNode(string url)
         {
             var doc = new HtmlDocument();

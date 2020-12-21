@@ -282,7 +282,7 @@
             Container class holding information about a character's equipped gear.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Weapon">
+        <member name="P:NetStone.Model.Parseables.Gear.Mainhand">
             <summary>
             Information about the characters' weapon. Null if none equipped.
             </summary>
@@ -408,6 +408,26 @@
             String representation of the gear slot.
             </summary>
             <returns>The name of the item.</returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.IconLayers">
+            <summary>
+            Container class holding information about a social group's icon.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.IconLayers.TopLayer">
+            <summary>
+            Link to the top layer image of the icon.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.IconLayers.MiddleLayer">
+            <summary>
+            Link to the top layer image of the icon.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.IconLayers.BottomLayer">
+            <summary>
+            Link to the top layer image of the icon.
+            </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.SocialGroup.Exists">
             <summary>

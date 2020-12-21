@@ -114,6 +114,11 @@ namespace NetStone.Model.Parseables
         /// </summary>
         public Gear Gear => new Gear(this.RootNode, this.gearDefinition);
 
+        public string Strength => ParseInnerText(new DefinitionsPack
+        {
+            Selector = "table.character__param__list:nth-child(2) > tr > td"
+        });
+
         #endregion
 
         /// <summary>

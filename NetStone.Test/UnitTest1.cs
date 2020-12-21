@@ -1,6 +1,9 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using NetStone;
+using NetStone.Model.Parseables.Search;
+using NetStone.Search;
+using NetStone.StaticData;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 using NUnit.Framework.Internal;
@@ -28,14 +31,73 @@ namespace NetStone.Test
         }
 
         [Test]
-        public async Task CheckCharacter()
+        public async Task CheckCharacterSearch()
+        {
+            var query = new CharacterSearchQuery
+            {
+                CharacterName = "Bob",
+                DataCenter = "Aether",
+                Role = Role.Dps,
+                Race = Race.Hyur,
+                GrandCompany = GrandCompany.ImmortalFlames | GrandCompany.Maelstrom | GrandCompany.OrderOfTheTwinAdder,
+                Language = Language.English | Language.German | Language.French,
+                SortKind = SortKind.NameZtoA
+            };
+
+            var results = await this.lodestone.SearchCharacter(query);
+            Assert.AreEqual(3, results.NumPages);
+            Assert.AreEqual(1, results.CurrentPage);
+
+            var cResults = 0;
+            
+            do
+            {
+                foreach (var searchResult in results.Results)
+                {
+                    Console.WriteLine($"{cResults} - {searchResult.Name} - {searchResult.Id}");
+                    cResults++;
+                }
+                
+                results = await results.GetNextPage();
+            } while (results != null);
+        }
+
+        [Test]
+        public async Task CheckCharacterFull()
         {
             var chara = await this.lodestone.GetCharacter(TestCharacterId);
 
-            //Assert.AreEqual(chara.Name, "Arcane Disgea");
-            //Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
+            Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan (Primal)");
+            Assert.AreEqual(chara.Name, "Arcane Disgea");
+            Assert.AreEqual(chara.Bio, "This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            Assert.AreEqual(chara.GuardianDeity, "Menphina, the Lover");
+            Assert.AreEqual(chara.Nameday, "28th Sun of the 6th Astral Moon");
+            Assert.AreEqual(chara.Title, "Mammeteer");
+            Assert.AreEqual(chara.Town, "Limsa Lominsa");
+            Assert.True(chara.Avatar != null);
+            Assert.True(chara.Portrait != null);
 
+            Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
+            Assert.AreEqual(chara.FreeCompany.Name, "Hell Hath No Fury");
+            Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
+            //todo: iconlayer
+            
+            Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
+            Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
+            Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
+            //todo: iconlayer
+            
+            Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
+            
             var classjob = await chara.GetClassJobInfo();
+            
+            //todo: all classjob
+            Assert.AreEqual(classjob.Warrior.Level, 80);
+            Assert.AreEqual(classjob.Warrior.ExpToGo, 0);
+            Assert.AreEqual(classjob.Warrior.IsJobUnlocked, true);
+            
+            Assert.AreEqual(classjob.Weaver.IsSpecialized, true);
+            Assert.AreEqual(classjob.Carpenter.IsSpecialized, false);
         }
     }
 }

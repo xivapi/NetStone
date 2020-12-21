@@ -19,7 +19,7 @@ namespace NetStone.Model
             this.RootNode = rootNode;
         }
 
-        private HtmlNode QueryNode(string selector) => this.RootNode.QuerySelector(selector);
+        protected HtmlNode QueryNode(string selector) => this.RootNode.QuerySelector(selector);
 
         protected bool HasNode(string selector) => QueryNode(selector) != null;
 
@@ -30,7 +30,8 @@ namespace NetStone.Model
         /// <returns>InnerHTML of the node.</returns>
         protected string ParseInnerText(DefinitionsPack pack)
         {
-            var text = QueryNode(pack.Selector)?.InnerText;
+            var node = QueryNode(pack.Selector);
+            var text = node?.InnerText;
 
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }
