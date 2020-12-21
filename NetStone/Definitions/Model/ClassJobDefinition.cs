@@ -4,29 +4,29 @@ namespace NetStone.Definitions.Model
 {
     public class ClassJobBozjaDefinition
     {
-        [JsonProperty("LEVEL")] public string LEVEL { get; set; }
+        [JsonProperty("LEVEL")] public DefinitionsPack LEVEL { get; set; }
 
-        [JsonProperty("METTLE")] public string METTLE { get; set; }
+        [JsonProperty("METTLE")] public DefinitionsPack METTLE { get; set; }
 
-        [JsonProperty("NAME")] public string NAME { get; set; }
+        [JsonProperty("NAME")] public DefinitionsPack NAME { get; set; }
     }
 
     public class ClassJobEurekaDefinition
     {
-        [JsonProperty("EXP")] public string Exp { get; set; }
+        [JsonProperty("EXP")] public DefinitionsPack Exp { get; set; }
 
-        [JsonProperty("LEVEL")] public string Level { get; set; }
+        [JsonProperty("LEVEL")] public DefinitionsPack Level { get; set; }
 
-        [JsonProperty("NAME")] public string Name { get; set; }
+        [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
     }
 
     public class ClassJobEntryDefinition
     {
-        [JsonProperty("LEVEL")] public string Level { get; set; }
+        [JsonProperty("LEVEL")] public DefinitionsPack Level { get; set; }
 
-        [JsonProperty("UNLOCKSTATE")] public string UnlockState { get; set; }
+        [JsonProperty("UNLOCKSTATE")] public DefinitionsPack UnlockState { get; set; }
 
-        [JsonProperty("EXP")] public string Exp { get; set; }
+        [JsonProperty("EXP")] public DefinitionsPack Exp { get; set; }
     }
 
     public class ClassJobDefinition

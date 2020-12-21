@@ -24,17 +24,17 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Name of this social group.
         /// </summary>
-        public string Name => ParseInnerText(this.definition.Name);
+        public string Name => ParseInnerText(this.definition.Name.Selector);
 
         /// <summary>
         /// ID of this social group.
         /// </summary>
-        public string Id => ParseHrefId(this.definition.Name);
+        public string Id => ParseHrefId(this.definition.Name.Selector);
 
         /// <summary>
         /// Link to this social group's page.
         /// </summary>
-        public Uri Link => ParseHref(this.definition.Name);
+        public Uri Link => ParseHref(this.definition.Name.Selector);
 
         /// <summary>
         /// <see cref="IconLayers"/> of this social group's icon.

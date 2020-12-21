@@ -16,7 +16,7 @@ namespace NetStone.Model.Parseables
             this.definition = definition;
         }
 
-        public string Name => ParseTooltip(this.definition.UnlockState);
+        public string Name => ParseTooltip(this.definition.UnlockState.Selector);
 
         public bool IsJobUnlocked => Name.Contains("/");
 
@@ -24,12 +24,12 @@ namespace NetStone.Model.Parseables
         {
             get
             {
-                var level = ParseInnerText(this.definition.Level);
+                var level = ParseInnerText(this.definition.Level.Selector);
                 return level == "-" ? 0 : int.Parse(level);
             }
         }
 
-        public string ExpString => ParseInnerText(this.definition.Exp);
+        public string ExpString => ParseInnerText(this.definition.Exp.Selector);
 
         private long? expCurrentVal;
         public long ExpCurrent
@@ -81,7 +81,7 @@ namespace NetStone.Model.Parseables
             this.expMaxVal = long.Parse(expVals[1]);
         }
 
-        public bool IsSpecialized => ParseAttribute(this.definition.UnlockState, "class").Contains("--meister");
+        public bool IsSpecialized => ParseAttribute(this.definition.UnlockState.Selector, "class").Contains("--meister");
         
         public bool Exists => Level != 0;
         

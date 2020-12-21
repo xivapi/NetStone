@@ -23,13 +23,13 @@ namespace NetStone.Model.Parseables
         /// Information about the characters' weapon. Null if none equipped.
         /// </summary>
         [CanBeNull]
-        public GearEntry Mainhand => new GearEntry(this.RootNode, this.definition.Weapon).GetOptional();
+        public GearEntry Mainhand => new GearEntry(this.RootNode, this.definition.Mainhand).GetOptional();
 
         /// <summary>
         /// Information about the characters' shield/offhand. Null if none equipped.
         /// </summary>
         [CanBeNull]
-        public GearEntry Offhand => new GearEntry(this.RootNode, this.definition.Shield).GetOptional();
+        public GearEntry Offhand => new GearEntry(this.RootNode, this.definition.Offhand).GetOptional();
 
         /// <summary>
         /// Information about the characters' headgear. Null if none equipped.

@@ -21,16 +21,16 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Link to the top layer image of the icon.
         /// </summary>
-        public Uri TopLayer => ParseImageSource(this.definition.IconLayers.Top);
+        public Uri TopLayer => ParseImageSource(this.definition.IconLayers.Top.Selector);
         
         /// <summary>
         /// Link to the top layer image of the icon.
         /// </summary>
-        public Uri MiddleLayer => ParseImageSource(this.definition.IconLayers.Middle);
+        public Uri MiddleLayer => ParseImageSource(this.definition.IconLayers.Middle.Selector);
         
         /// <summary>
         /// Link to the top layer image of the icon.
         /// </summary>
-        public Uri BottomLayer => ParseImageSource(this.definition.IconLayers.Bottom);
+        public Uri BottomLayer => ParseImageSource(this.definition.IconLayers.Bottom.Selector);
     }
 }

@@ -4,39 +4,39 @@ namespace NetStone.Definitions.Model
 {
     public class GearEntryDefinition
     {
-        [JsonProperty("NAME")] public string Name { get; set; }
+        [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
 
-        [JsonProperty("DB_LINK")] public string DbLink { get; set; }
+        [JsonProperty("DB_LINK")] public DefinitionsPack DbLink { get; set; }
 
-        [JsonProperty("MIRAGE_NAME")] public string MirageName { get; set; }
+        [JsonProperty("MIRAGE_NAME")] public DefinitionsPack MirageName { get; set; }
 
-        [JsonProperty("MIRAGE_DB_LINK")] public string MirageDbLink { get; set; }
+        [JsonProperty("MIRAGE_DB_LINK")] public DefinitionsPack MirageDbLink { get; set; }
 
-        [JsonProperty("STAIN")] public string Stain { get; set; }
+        [JsonProperty("STAIN")] public DefinitionsPack Stain { get; set; }
 
-        [JsonProperty("MATERIA_1")] public string Materia1 { get; set; }
+        [JsonProperty("MATERIA_1")] public DefinitionsPack Materia1 { get; set; }
 
-        [JsonProperty("MATERIA_2")] public string Materia2 { get; set; }
+        [JsonProperty("MATERIA_2")] public DefinitionsPack Materia2 { get; set; }
 
-        [JsonProperty("MATERIA_3")] public string Materia3 { get; set; }
+        [JsonProperty("MATERIA_3")] public DefinitionsPack Materia3 { get; set; }
 
-        [JsonProperty("MATERIA_4")] public string Materia4 { get; set; }
+        [JsonProperty("MATERIA_4")] public DefinitionsPack Materia4 { get; set; }
 
-        [JsonProperty("MATERIA_5")] public string Materia5 { get; set; }
+        [JsonProperty("MATERIA_5")] public DefinitionsPack Materia5 { get; set; }
 
-        [JsonProperty("CREATOR_NAME")] public string CreatorName { get; set; }
+        [JsonProperty("CREATOR_NAME")] public DefinitionsPack CreatorName { get; set; }
     }
 
     public class SoulcrystalEntryDefinition
     {
-        [JsonProperty("NAME")] public string Name { get; set; }
+        [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
     }
 
     public class GearDefinition
     {
-        [JsonProperty("WEAPON")] public GearEntryDefinition Weapon { get; set; }
+        [JsonProperty("MAINHAND")] public GearEntryDefinition Mainhand { get; set; }
 
-        [JsonProperty("SHIELD")] public GearEntryDefinition Shield { get; set; }
+        [JsonProperty("OFFHAND")] public GearEntryDefinition Offhand { get; set; }
 
         [JsonProperty("HEAD")] public GearEntryDefinition Head { get; set; }
 

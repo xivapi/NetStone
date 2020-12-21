@@ -46,12 +46,12 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// An URI to the avatar of the character.
         /// </summary>
-        public Uri Avatar => ParseImageSource(this.charDefinition.Avatar);
+        public Uri Avatar => ParseImageSource(this.charDefinition.Avatar.Selector);
 
         /// <summary>
         /// The character bio/description.
         /// </summary>
-        public string Bio => ParseInnerText(this.charDefinition.Bio);
+        public string Bio => ParseInnerText(this.charDefinition.Bio.Selector);
 
         /// <summary>
         /// The character FreeCompany info.
@@ -62,27 +62,27 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// The grand company of the character.
         /// </summary>
-        public string GrandCompany => ParseInnerText(this.charDefinition.Bio);
+        public string GrandCompany => ParseInnerText(this.charDefinition.GrandCompany.Selector);
 
         /// <summary>
         /// The guardian deity of the character.
         /// </summary>
-        public string GuardianDeity => ParseInnerText(this.charDefinition.GuardianDeity);
+        public string GuardianDeity => ParseInnerText(this.charDefinition.GuardianDeity.Selector);
         
         /// <summary>
         /// The name of the character.
         /// </summary>
-        public string Name => ParseInnerText(this.charDefinition.Name);
+        public string Name => ParseInnerText(this.charDefinition.Name.Selector);
 
         /// <summary>
         /// The nameday of the character.
         /// </summary>
-        public string Nameday => ParseInnerText(this.charDefinition.Nameday);
+        public string Nameday => ParseInnerText(this.charDefinition.Nameday.Selector);
 
         /// <summary>
         /// An URI to the avatar of the character.
         /// </summary>
-        public Uri Portrait => ParseImageSource(this.charDefinition.Portrait);
+        public Uri Portrait => ParseImageSource(this.charDefinition.Portrait.Selector);
 
         /// <summary>
         /// The character PvPTeam info.
@@ -91,23 +91,23 @@ namespace NetStone.Model.Parseables
         public SocialGroup PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
         //TODO: parse
-        public string RaceClanGender => ParseInnerText(this.charDefinition.RaceClanGender);
+        public string RaceClanGender => ParseInnerText(this.charDefinition.RaceClanGender.Selector);
 
         /// <summary>
         /// The server/world of the character.
         /// </summary>
-        public string Server => ParseInnerText(this.charDefinition.Server);
+        public string Server => ParseInnerText(this.charDefinition.Server.Selector);
 
         /// <summary>
         /// The title of the character.
         /// </summary>
         [CanBeNull]
-        public string Title => ParseInnerText(this.charDefinition.Title);
+        public string Title => ParseInnerText(this.charDefinition.Title.Selector);
 
         /// <summary>
         /// The town of the character.
         /// </summary>
-        public string Town => ParseInnerText(this.charDefinition.Town);
+        public string Town => ParseInnerText(this.charDefinition.Town.Selector);
 
         /// <summary>
         /// The character gear information.
