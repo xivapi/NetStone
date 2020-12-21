@@ -13,10 +13,15 @@ namespace NetStone.Definitions
     {
         #region Definitions
 
+        // Entities
         public CharacterDefinition Character { get; protected set; }
         public ClassJobDefinition ClassJob { get; protected set; }
         public GearDefinition Gear { get; protected set; }
 
+        
+        // Search
+        public CharacterSearchDefinition CharacterSearch { get; protected set; }
+        
         #endregion
 
         public abstract Task Reload();

@@ -25,6 +25,8 @@ namespace NetStone.Definitions
             this.Character = await GetDefinition<CharacterDefinition>("profile/character.json");
             this.ClassJob = await GetDefinition<ClassJobDefinition>("profile/classjob.json");
             this.Gear = await GetDefinition<GearDefinition>("profile/gearset.json");
+            
+            this.CharacterSearch = await GetDefinition<CharacterSearchDefinition>("search/character.json"); 
         }
 
         private async Task<T> GetDefinition<T>(string path)
