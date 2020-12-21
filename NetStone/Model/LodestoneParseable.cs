@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using HtmlAgilityPack;
+using NetStone.Definitions;
 using NetStone.Definitions.Model;
 
 namespace NetStone.Model
@@ -26,23 +28,36 @@ namespace NetStone.Model
         /// </summary>
         /// <param name="selector">Selector to the node.</param>
         /// <returns>InnerHTML of the node.</returns>
-        protected string ParseInnerText(string selector)
+        protected string ParseInnerText(DefinitionsPack pack)
         {
-            var text = QueryNode(selector)?.InnerText;
+            var text = QueryNode(pack.Selector)?.InnerText;
 
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }
 
-        protected string ParseTooltip(string selector)
+        protected GroupCollection ParseInnerTextRegex(DefinitionsPack pack)
         {
-            var text = ParseAttribute(selector, "data-tooltip");
+            var text = ParseInnerText(pack);
+
+            if (string.IsNullOrEmpty(text))
+                return null;
+            
+            var regex = new Regex(pack.Regex);
+            var match = regex.Match(text);
+
+            return match.Groups;
+        }
+        
+        protected string ParseTooltip(DefinitionsPack pack)
+        {
+            var text = ParseAttribute(pack, "data-tooltip");
 
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }
 
-        protected string ParseAttribute(string selector, string attribute)
+        protected string ParseAttribute(DefinitionsPack pack, string attribute)
         {
-            var node = QueryNode(selector);
+            var node = QueryNode(pack.Selector);
 
             if (node == null)
                 return null;
@@ -53,9 +68,9 @@ namespace NetStone.Model
             return node.Attributes[attribute].Value;
         }
 
-        protected Uri ParseHref(string selector)
+        protected Uri ParseHref(DefinitionsPack pack)
         {
-            var href = ParseAttribute(selector, "href");
+            var href = ParseAttribute(pack, "href");
 
             if (string.IsNullOrEmpty(href))
                 return null;
@@ -67,9 +82,9 @@ namespace NetStone.Model
             return new Uri(href);
         }
 
-        protected string ParseHrefId(string selector)
+        protected string ParseHrefId(DefinitionsPack pack)
         {
-            var url = ParseHref(selector);
+            var url = ParseHref(pack);
 
             if (url == null)
                 return null;
@@ -85,9 +100,9 @@ namespace NetStone.Model
             return link;
         }
 
-        protected ulong? ParseHrefIdULong(string selector)
+        protected ulong? ParseHrefIdULong(DefinitionsPack pack)
         {
-            var link = ParseHrefId(selector);
+            var link = ParseHrefId(pack);
 
             if (link == null)
                 return null;
@@ -95,9 +110,9 @@ namespace NetStone.Model
             return ulong.Parse(link);
         }
 
-        protected Uri ParseImageSource(string selector)
+        protected Uri ParseImageSource(DefinitionsPack pack)
         {
-            var src = ParseAttribute(selector, "src");
+            var src = ParseAttribute(pack, "src");
 
             return string.IsNullOrEmpty(src) ? null : new Uri(src);
         }

@@ -17,7 +17,7 @@ namespace NetStone.Model.Parseables
 
         //public Uri ItemDatabaseLink => ParseHref(this.definition.Name);
 
-        public string ItemName => ParseInnerText(this.definition.Name.Selector);
+        public string ItemName => ParseInnerText(this.definition.Name);
 
         public bool Exists => HasNode(this.definition.Name.Selector);
 
