@@ -22,11 +22,16 @@ namespace NetStone.Model.Parseables.Search
             this.currentQuery = currentQuery;
         }
 
+        public bool HasResults => !HasNode(this.definition.NoResultsFound);
+
         private CharacterSearchEntry[] parsedResults;
-        public CharacterSearchEntry[] Results
+        public IEnumerable<CharacterSearchEntry> Results
         {
             get
             {
+                if (!HasResults)
+                    return new CharacterSearchEntry[0];
+                
                 if (this.parsedResults == null)
                     ParseSearchResults();
 
@@ -50,6 +55,9 @@ namespace NetStone.Model.Parseables.Search
         {
             get
             {
+                if (!HasResults)
+                    return 0;
+                
                 if (!this.currentPageVal.HasValue)
                     ParsePagesCount();
 
@@ -62,6 +70,9 @@ namespace NetStone.Model.Parseables.Search
         {
             get
             {
+                if (!HasResults)
+                    return 0;
+                
                 if (!this.numPagesVal.HasValue)
                     ParsePagesCount();
 
@@ -79,6 +90,9 @@ namespace NetStone.Model.Parseables.Search
         
         public async Task<CharacterSearchPage> GetNextPage()
         {
+            if (!HasResults)
+                return null;
+            
             if (CurrentPage == NumPages)
                 return null;
 

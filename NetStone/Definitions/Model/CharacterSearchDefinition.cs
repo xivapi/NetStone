@@ -33,5 +33,7 @@ namespace NetStone.Definitions.Model
         [JsonProperty("LIST_NEXT_BUTTON")] public DefinitionsPack ListNextButton { get; set; }
 
         [JsonProperty("PAGE_INFO")] public DefinitionsPack PageInfo { get; set; }
+        
+        [JsonProperty("NO_RESULTS_FOUND")] public DefinitionsPack NoResultsFound { get; set; }
     }
 }

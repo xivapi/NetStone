@@ -44,22 +44,27 @@ namespace NetStone.Test
                 SortKind = SortKind.NameZtoA
             };
 
-            var results = await this.lodestone.SearchCharacter(query);
-            Assert.AreEqual(3, results.NumPages);
-            Assert.AreEqual(1, results.CurrentPage);
+            var page = await this.lodestone.SearchCharacter(query);
+            Assert.AreEqual(3, page.NumPages);
+            Assert.AreEqual(1, page.CurrentPage);
 
             var cResults = 0;
+            var cPages = 1;
             
             do
             {
-                foreach (var searchResult in results.Results)
+                Assert.AreEqual(cPages, page.CurrentPage);
+                
+                foreach (var searchResult in page.Results)
                 {
-                    Console.WriteLine($"{cResults} - {searchResult.Name} - {searchResult.Id}");
+                    Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
                     cResults++;
                 }
+
+                cPages++;
                 
-                results = await results.GetNextPage();
-            } while (results != null);
+                page = await page.GetNextPage();
+            } while (page != null);
         }
 
         [Test]

@@ -19,7 +19,7 @@ namespace NetStone.Model.Parseables
 
         public string ItemName => ParseInnerText(this.definition.Name);
 
-        public bool Exists => HasNode(this.definition.Name.Selector);
+        public bool Exists => HasNode(this.definition.Name);
 
         public SoulcrystalEntry GetOptional()
         {

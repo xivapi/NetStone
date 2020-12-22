@@ -50,8 +50,8 @@ namespace NetStone
         /// <returns><see cref="ClassJob"/> class containing information about the characters' classes and jobs.</returns>
         public async Task<ClassJob> GetCharacterClassJob(ulong id) => new ClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
 
-        public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 0) =>
-            new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page=1"), this.Definitions.CharacterSearch, query);
+        public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
+            new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
         
         private async Task<HtmlNode> GetRootNode(string url)
         {

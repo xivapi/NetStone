@@ -66,7 +66,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Indicating whether the item slot has an item equipped or not.
         /// </summary>
-        public bool Exists => HasNode(this.definition.Name.Selector);
+        public bool Exists => HasNode(this.definition.Name);
 
         /// <summary>
         /// Get this object if the item slot is populated, null if not.

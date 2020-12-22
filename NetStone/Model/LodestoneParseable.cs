@@ -21,7 +21,7 @@ namespace NetStone.Model
 
         protected HtmlNode QueryNode(string selector) => this.RootNode.QuerySelector(selector);
 
-        protected bool HasNode(string selector) => QueryNode(selector) != null;
+        protected bool HasNode(DefinitionsPack pack) => QueryNode(pack.Selector) != null;
 
         /// <summary>
         /// Parse the InnerHTML via selector.
