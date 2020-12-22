@@ -18,100 +18,100 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Strength => ParseInnerText(this.definition.Strength);
+        public int Strength => int.Parse(ParseInnerText(this.definition.Strength));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Dexterity => ParseInnerText(this.definition.Dexterity);
+        public int Dexterity => int.Parse(ParseInnerText(this.definition.Dexterity));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Vitality => ParseInnerText(this.definition.Vitality);
+        public int Vitality => int.Parse(ParseInnerText(this.definition.Vitality));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Intelligence => ParseInnerText(this.definition.Intelligence);
+        public int Intelligence => int.Parse(ParseInnerText(this.definition.Intelligence));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Mind => ParseInnerText(this.definition.Mind);
+        public int Mind => int.Parse(ParseInnerText(this.definition.Mind));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string CriticalHitRate => ParseInnerText(this.definition.CriticalHitRate);
+        public int CriticalHitRate => int.Parse(ParseInnerText(this.definition.CriticalHitRate));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Determination => ParseInnerText(this.definition.Determination);
+        public int Determination => int.Parse(ParseInnerText(this.definition.Determination));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string DirectHitRate => ParseInnerText(this.definition.DirectHitRate);
+        public int DirectHitRate => int.Parse(ParseInnerText(this.definition.DirectHitRate));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Defense => ParseInnerText(this.definition.Defense);
+        public int Defense => int.Parse(ParseInnerText(this.definition.Defense));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string MagicDefense => ParseInnerText(this.definition.MagicDefense);
+        public int MagicDefense => int.Parse(ParseInnerText(this.definition.MagicDefense));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string AttackPower => ParseInnerText(this.definition.AttackPower);
+        public int AttackPower => int.Parse(ParseInnerText(this.definition.AttackPower));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string SkillSpeed => ParseInnerText(this.definition.AttackPower);
+        public int SkillSpeed => int.Parse(ParseInnerText(this.definition.AttackPower));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string AttackMagicPotency => ParseInnerText(this.definition.AttackMagicPotency);
+        public int AttackMagicPotency => int.Parse(ParseInnerText(this.definition.AttackMagicPotency));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string HealingMagicPotency => ParseInnerText(this.definition.HealingMagicPotency);
+        public int HealingMagicPotency => int.Parse(ParseInnerText(this.definition.HealingMagicPotency));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string SpellSpeed => ParseInnerText(this.definition.SpellSpeed);
+        public int SpellSpeed => int.Parse(ParseInnerText(this.definition.SpellSpeed));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Tenacity => ParseInnerText(this.definition.Tenacity);
+        public int Tenacity => int.Parse(ParseInnerText(this.definition.Tenacity));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Piety => ParseInnerText(this.definition.Piety);
+        public int Piety => int.Parse(ParseInnerText(this.definition.Piety));
         
         /// <summary>
         /// This characters' strength value.
         /// </summary>
-        public string Hp => ParseInnerText(this.definition.Hp);
+        public int Hp => int.Parse(ParseInnerText(this.definition.Hp));
         
         /// <summary>
-        /// This characters' strength value.
+        /// This characters' MP, GP or CP value. Check the <see cref="MpGpCpParameterName"/> Property to find out which.
         /// </summary>
-        public string MpGpCp => ParseInnerText(this.definition.MpGpCp);
+        public int MpGpCp => int.Parse(ParseInnerText(this.definition.MpGpCp));
         
         /// <summary>
-        /// This characters' strength value.
+        /// Value indicating which of MP, GP, or CP is indicated by <see cref="MpGpCp"/>.
         /// </summary>
         public string MpGpCpParameterName => ParseInnerText(this.definition.MpGpCpParameterName);
     }
