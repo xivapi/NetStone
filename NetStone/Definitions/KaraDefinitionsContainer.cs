@@ -26,6 +26,7 @@ namespace NetStone.Definitions
             this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
             this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
             this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json");
+            this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json");
             
             this.CharacterSearch = await GetDefinition<CharacterSearchDefinition>("search/character.json"); 
         }

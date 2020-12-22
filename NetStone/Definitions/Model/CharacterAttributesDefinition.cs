@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace NetStone.Definitions.Model
 {
-    public class CharacterAttributesDefinition
+    public class CharacterAttributesDefinition : IDefinition
     {
         [JsonProperty("STRENGTH")]
         public DefinitionsPack Strength { get; set; } 

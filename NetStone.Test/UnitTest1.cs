@@ -105,6 +105,13 @@ namespace NetStone.Test
             
             Assert.AreEqual(classjob.Weaver.IsSpecialized, true);
             Assert.AreEqual(classjob.Carpenter.IsSpecialized, false);
+
+            var achieve = await chara.GetAchievement();
+
+            foreach (var characterAchievementEntry in achieve.Achievements)
+            {
+                Console.WriteLine($"{characterAchievementEntry.Id} - {characterAchievementEntry.Name}");
+            }
         }
     }
 }

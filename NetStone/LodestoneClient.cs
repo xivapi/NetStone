@@ -50,6 +50,15 @@ namespace NetStone
         /// <returns><see cref="CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
         public async Task<CharacterClassJob> GetCharacterClassJob(ulong id) => new CharacterClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
 
+        /// <summary>
+        /// Get a characters' unlocked achievement information by its Lodestone ID.
+        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// </summary>
+        /// <param name="id">The ID of the character.</param>
+        /// <param name="page">The number of the page that should be fetched.</param>
+        /// <returns><see cref="CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
+        public async Task<CharacterAchievementPage> GetCharacterAchievement(ulong id, int page = 1) => new CharacterAchievementPage(this, await GetRootNode($"/lodestone/character/{id}/achievement/?page={page}"), this.Definitions.Achievement, id);
+        
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
             new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
         

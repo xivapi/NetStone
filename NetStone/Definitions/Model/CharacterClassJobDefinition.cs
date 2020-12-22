@@ -29,7 +29,7 @@ namespace NetStone.Definitions.Model
         [JsonProperty("EXP")] public DefinitionsPack Exp { get; set; }
     }
 
-    public class CharacterClassJobDefinition
+    public class CharacterClassJobDefinition : IDefinition
     {
         [JsonProperty("BOZJA")] public ClassJobBozjaDefinition Bozja { get; set; }
 

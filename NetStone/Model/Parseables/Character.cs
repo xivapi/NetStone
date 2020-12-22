@@ -128,6 +128,12 @@ namespace NetStone.Model.Parseables
         /// </summary>
         /// <returns><see cref="CharacterClassJob"/> object holding this information.</returns>
         public async Task<CharacterClassJob> GetClassJobInfo() => await this.client.GetCharacterClassJob(this.charId);
+        
+        /// <summary>
+        /// Fetch more information about this character's unlocked achievements.
+        /// </summary>
+        /// <returns><see cref="CharacterAchievementPage"/> object holding this information.</returns>
+        public async Task<CharacterAchievementPage> GetAchievement() => await this.client.GetCharacterAchievement(this.charId);
 
         /// <summary>
         /// String representation of this character.
