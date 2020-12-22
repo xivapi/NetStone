@@ -5,6 +5,7 @@ using System.Text;
 using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions.Model;
+using NetStone.StaticData;
 
 namespace NetStone.Model.Parseables
 {
@@ -66,10 +67,10 @@ namespace NetStone.Model.Parseables
         public ClassJobEntry Samurai => new ClassJobEntry(this.RootNode, this.definition.Samurai).GetOptional();
         
         /// <summary>
-        /// Information about the Whitemage class.
+        /// Information about the WhiteMage class.
         /// </summary>
         [CanBeNull]
-        public ClassJobEntry Whitemage => new ClassJobEntry(this.RootNode, this.definition.Whitemage).GetOptional();
+        public ClassJobEntry WhiteMage => new ClassJobEntry(this.RootNode, this.definition.Whitemage).GetOptional();
         
         /// <summary>
         /// Information about the Scholar class.
@@ -102,10 +103,10 @@ namespace NetStone.Model.Parseables
         public ClassJobEntry Dancer => new ClassJobEntry(this.RootNode, this.definition.Dancer).GetOptional();
         
         /// <summary>
-        /// Information about the Blackmage class.
+        /// Information about the BlackMage class.
         /// </summary>
         [CanBeNull]
-        public ClassJobEntry Blackmage => new ClassJobEntry(this.RootNode, this.definition.Blackmage).GetOptional();
+        public ClassJobEntry BlackMage => new ClassJobEntry(this.RootNode, this.definition.Blackmage).GetOptional();
         
         /// <summary>
         /// Information about the Summoner class.
@@ -114,16 +115,16 @@ namespace NetStone.Model.Parseables
         public ClassJobEntry Summoner => new ClassJobEntry(this.RootNode, this.definition.Summoner).GetOptional();
         
         /// <summary>
-        /// Information about the Redmage class.
+        /// Information about the RedMage class.
         /// </summary>
         [CanBeNull]
-        public ClassJobEntry Redmage => new ClassJobEntry(this.RootNode, this.definition.Redmage).GetOptional();
+        public ClassJobEntry RedMage => new ClassJobEntry(this.RootNode, this.definition.Redmage).GetOptional();
         
         /// <summary>
-        /// Information about the Bluemage class.
+        /// Information about the BlueMage class.
         /// </summary>
         [CanBeNull]
-        public ClassJobEntry Bluemage => new ClassJobEntry(this.RootNode, this.definition.Bluemage).GetOptional();
+        public ClassJobEntry BlueMage => new ClassJobEntry(this.RootNode, this.definition.Bluemage).GetOptional();
         
         /// <summary>
         /// Information about the Carpenter class.
@@ -184,5 +185,70 @@ namespace NetStone.Model.Parseables
         /// </summary>
         [CanBeNull]
         public ClassJobEntry Fisher => new ClassJobEntry(this.RootNode, this.definition.Fisher).GetOptional();
+
+        public IReadOnlyDictionary<ClassJob, ClassJobEntry> ClassJobDict => new Dictionary<ClassJob, ClassJobEntry>
+        {
+            {ClassJob.Pugilist, Paladin},
+            {ClassJob.Paladin, Paladin},
+
+            {ClassJob.Marauder, Warrior},
+            {ClassJob.Warrior, Warrior},
+
+            {ClassJob.DarkKnight, DarkKnight},
+
+            {ClassJob.Gunbreaker, Gunbreaker},
+
+            {ClassJob.Pugilist, Monk},
+            {ClassJob.Monk, Monk},
+
+            {ClassJob.Lancer, Dragoon},
+            {ClassJob.Dragoon, Dragoon},
+
+            {ClassJob.Rogue, Ninja},
+            {ClassJob.Ninja, Ninja},
+
+            {ClassJob.Samurai, Samurai},
+
+            {ClassJob.Conjurer, WhiteMage},
+            {ClassJob.WhiteMage, WhiteMage},
+
+            {ClassJob.Arcanist, Scholar},
+            {ClassJob.Scholar, Scholar},
+            {ClassJob.Summoner, Summoner},
+
+            {ClassJob.Astrologian, Astrologian},
+
+            {ClassJob.Archer, Bard},
+            {ClassJob.Bard, Bard},
+
+            {ClassJob.Machinist, Machinist},
+
+            {ClassJob.Dancer, Dancer},
+
+            {ClassJob.Thaumaturge, BlackMage},
+            {ClassJob.BlackMage, BlackMage},
+
+            {ClassJob.RedMage, RedMage},
+
+            {ClassJob.BlueMage, BlueMage},
+
+            {ClassJob.Blacksmith, Blacksmith},
+
+            {ClassJob.Armorer, Armorer},
+
+            {ClassJob.Goldsmith, Goldsmith},
+
+            {ClassJob.Leatherworker, Leatherworker},
+
+            {ClassJob.Weaver, Weaver},
+
+            {ClassJob.Alchemist, Alchemist},
+
+            {ClassJob.Miner, Miner},
+
+            {ClassJob.Botanist, Botanist},
+
+            {ClassJob.Fisher, Fisher}
+        };
     }
 }

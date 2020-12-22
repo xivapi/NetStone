@@ -177,9 +177,9 @@
             Information about the Samurai class.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Whitemage">
+        <member name="P:NetStone.Model.Parseables.ClassJob.WhiteMage">
             <summary>
-            Information about the Whitemage class.
+            Information about the WhiteMage class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.ClassJob.Scholar">
@@ -207,9 +207,9 @@
             Information about the Dancer class.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Blackmage">
+        <member name="P:NetStone.Model.Parseables.ClassJob.BlackMage">
             <summary>
-            Information about the Blackmage class.
+            Information about the BlackMage class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.ClassJob.Summoner">
@@ -217,14 +217,14 @@
             Information about the Summoner class.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Redmage">
+        <member name="P:NetStone.Model.Parseables.ClassJob.RedMage">
             <summary>
-            Information about the Redmage class.
+            Information about the RedMage class.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Bluemage">
+        <member name="P:NetStone.Model.Parseables.ClassJob.BlueMage">
             <summary>
-            Information about the Bluemage class.
+            Information about the BlueMage class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.ClassJob.Carpenter">
