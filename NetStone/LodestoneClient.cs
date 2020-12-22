@@ -47,8 +47,8 @@ namespace NetStone
         /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
-        /// <returns><see cref="ClassJob"/> class containing information about the characters' classes and jobs.</returns>
-        public async Task<ClassJob> GetCharacterClassJob(ulong id) => new ClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
+        /// <returns><see cref="CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
+        public async Task<CharacterClassJob> GetCharacterClassJob(ulong id) => new CharacterClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
 
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
             new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);

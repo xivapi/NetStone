@@ -8,11 +8,11 @@ using NetStone.Definitions.Model;
 
 namespace NetStone.Model.Parseables
 {
-    public class ClassJob : LodestoneParseable
+    public class CharacterClassJob : LodestoneParseable
     {
-        private readonly ClassJobDefinition definition;
+        private readonly CharacterClassJobDefinition definition;
 
-        public ClassJob(HtmlNode rootNode, ClassJobDefinition definition) : base(rootNode)
+        public CharacterClassJob(HtmlNode rootNode, CharacterClassJobDefinition definition) : base(rootNode)
         {
             this.definition = definition;
         }

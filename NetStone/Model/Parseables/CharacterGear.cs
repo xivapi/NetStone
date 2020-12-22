@@ -10,11 +10,11 @@ namespace NetStone.Model.Parseables
     /// <summary>
     /// Container class holding information about a character's equipped gear.
     /// </summary>
-    public class Gear : LodestoneParseable
+    public class CharacterGear : LodestoneParseable
     {
-        private readonly GearDefinition definition;
+        private readonly CharacterGearDefinition definition;
 
-        public Gear(HtmlNode rootNode, GearDefinition definition) : base(rootNode)
+        public CharacterGear(HtmlNode rootNode, CharacterGearDefinition definition) : base(rootNode)
         {
             this.definition = definition;
         }

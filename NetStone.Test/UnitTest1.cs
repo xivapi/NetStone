@@ -94,6 +94,8 @@ namespace NetStone.Test
             
             Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
             
+            Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
+            
             var classjob = await chara.GetClassJobInfo();
             
             //todo: all classjob

@@ -26,7 +26,7 @@ namespace NetStone.Model
         /// <summary>
         /// Parse the InnerHTML via selector.
         /// </summary>
-        /// <param name="selector">Selector to the node.</param>
+        /// <param name="pack">Definition of the node.</param>
         /// <returns>InnerHTML of the node.</returns>
         protected string ParseInnerText(DefinitionsPack pack)
         {

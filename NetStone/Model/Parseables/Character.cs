@@ -19,7 +19,8 @@ namespace NetStone.Model.Parseables
         private readonly ulong charId;
 
         private readonly CharacterDefinition charDefinition;
-        private readonly GearDefinition gearDefinition;
+        private readonly CharacterGearDefinition gearDefinition;
+        private readonly CharacterAttributesDefinition attributesDefinition;
 
         /// <summary>
         /// Container class for a parseable character page.
@@ -35,6 +36,7 @@ namespace NetStone.Model.Parseables
 
             this.charDefinition = container.Character;
             this.gearDefinition = container.Gear;
+            this.attributesDefinition = container.Attributes;
         }
 
         #region Properties
@@ -112,20 +114,20 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// The character gear information.
         /// </summary>
-        public Gear Gear => new Gear(this.RootNode, this.gearDefinition);
+        public CharacterGear Gear => new CharacterGear(this.RootNode, this.gearDefinition);
 
-        public string Strength => ParseInnerText(new DefinitionsPack
-        {
-            Selector = "table.character__param__list:nth-child(2) > tr > td"
-        });
+        /// <summary>
+        /// The character attribute information.
+        /// </summary>
+        public CharacterAttributes Attributes => new CharacterAttributes(this.RootNode, this.attributesDefinition);
 
         #endregion
 
         /// <summary>
         /// Fetch more information about this character's classes and jobs(level, exp, unlocked, etc.).
         /// </summary>
-        /// <returns><see cref="ClassJob"/> object holding this information.</returns>
-        public async Task<ClassJob> GetClassJobInfo() => await this.client.GetCharacterClassJob(this.charId);
+        /// <returns><see cref="CharacterClassJob"/> object holding this information.</returns>
+        public async Task<CharacterClassJob> GetClassJobInfo() => await this.client.GetCharacterClassJob(this.charId);
 
         /// <summary>
         /// String representation of this character.

@@ -32,7 +32,7 @@ namespace NetStone.Definitions.Model
         [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
     }
 
-    public class GearDefinition
+    public class CharacterGearDefinition
     {
         [JsonProperty("MAINHAND")] public GearEntryDefinition Mainhand { get; set; }
 

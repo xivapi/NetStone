@@ -15,8 +15,9 @@ namespace NetStone.Definitions
 
         // Entities
         public CharacterDefinition Character { get; protected set; }
-        public ClassJobDefinition ClassJob { get; protected set; }
-        public GearDefinition Gear { get; protected set; }
+        public CharacterClassJobDefinition ClassJob { get; protected set; }
+        public CharacterGearDefinition Gear { get; protected set; }
+        public CharacterAttributesDefinition Attributes { get; set; }
 
         
         // Search
