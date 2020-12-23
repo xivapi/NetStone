@@ -19,11 +19,11 @@ namespace NetStone.Model
             this.RootNode = rootNode;
         }
 
-        protected HtmlNode QueryNode(string selector) => this.RootNode.QuerySelector(selector);
+        protected HtmlNode QueryNode(DefinitionsPack pack) => this.RootNode.QuerySelector(pack.Selector);
         
-        protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => QueryNode(pack.Selector)?.ChildNodes.Where(x => x.Name != "#text").ToArray();
+        protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => QueryNode(pack)?.ChildNodes.Where(x => x.Name != "#text").ToArray();
 
-        protected bool HasNode(DefinitionsPack pack) => QueryNode(pack.Selector) != null;
+        protected bool HasNode(DefinitionsPack pack) => QueryNode(pack) != null;
 
         /// <summary>
         /// Parse the InnerHTML via selector.
@@ -32,7 +32,7 @@ namespace NetStone.Model
         /// <returns>InnerHTML of the node.</returns>
         protected string ParseInnerText(DefinitionsPack pack)
         {
-            var node = QueryNode(pack.Selector);
+            var node = QueryNode(pack);
             var text = node?.InnerText;
 
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
@@ -58,9 +58,14 @@ namespace NetStone.Model
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }
 
+        protected string ParseAttribute(DefinitionsPack pack)
+        {
+            return ParseAttribute(pack, pack.Attribute);
+        }
+
         protected string ParseAttribute(DefinitionsPack pack, string attribute)
         {
-            var node = QueryNode(pack.Selector);
+            var node = QueryNode(pack);
 
             if (node == null)
                 return null;

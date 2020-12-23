@@ -14,5 +14,7 @@ namespace NetStone.Definitions
         public string Regex => PerlBasedRegex.Replace("(?P<", "(?<", StringComparison.InvariantCulture);
 
         [JsonProperty("or")] public string Description { get; set; }
+        
+        [JsonProperty("attribute")] public string Attribute { get; set; }
     }
 }
