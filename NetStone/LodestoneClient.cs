@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
@@ -64,8 +65,22 @@ namespace NetStone
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
             new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
         
-        private async Task<HtmlNode> GetRootNode(string url)
+        private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop)
         {
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            
+            switch (agent)
+            {
+                case UserAgent.Desktop:
+                    request.Headers.UserAgent.ParseAdd(this.Definitions.Meta.UserAgentDesktop);
+                    break;
+                case UserAgent.Mobile:
+                    request.Headers.UserAgent.ParseAdd(this.Definitions.Meta.UserAgentMobile);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(agent), agent, null);
+            }
+            
             var doc = new HtmlDocument();
             doc.LoadHtml(await this.client.GetStringAsync(url));
 
