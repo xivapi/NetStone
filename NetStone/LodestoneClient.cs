@@ -64,20 +64,26 @@ namespace NetStone
         
         /// <summary>
         /// Get a characters' unlocked mount information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// You can also get this from the character directly by calling <see cref="Character.GetMounts()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
-        /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' classes and jobs.</returns>
+        /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' mounts.</returns>
         public async Task<CharacterCollectable> GetCharacterMount(ulong id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/mount/", UserAgent.Mobile), this.Definitions.Mount);
         
         /// <summary>
         /// Get a characters' unlocked minion information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// You can also get this from the character directly by calling <see cref="Character.GetMinions()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
-        /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' classes and jobs.</returns>
+        /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' minions.</returns>
         public async Task<CharacterCollectable> GetCharacterMinion(ulong id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/minion/", UserAgent.Mobile), this.Definitions.Minion);
         
+        /// <summary>
+        /// Search lodestone for a character with the specified query.
+        /// </summary>
+        /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
+        /// <param name="page">The page of search results to fetch.</param>
+        /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
             new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
         
