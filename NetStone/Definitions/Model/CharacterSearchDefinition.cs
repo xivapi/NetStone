@@ -24,7 +24,7 @@ namespace NetStone.Definitions.Model
         [JsonProperty("ROOT")] public DefinitionsPack Root { get; set; }
     }
 
-    public class CharacterSearchDefinition
+    public class CharacterSearchDefinition : IDefinition
     {
         [JsonProperty("ENTRIES_CONTAINER")] public DefinitionsPack EntriesContainer { get; set; }
         

@@ -22,7 +22,8 @@ namespace NetStone.Definitions
         public CharacterGearDefinition Gear { get; protected set; }
         public CharacterAttributesDefinition Attributes { get; set; }
         public CharacterAchievementDefinition Achievement { get; set; }
-
+        public CharacterCollectableDefinition Mount { get; set; }
+        public CharacterCollectableDefinition Minion { get; set; }
         
         // Search
         public CharacterSearchDefinition CharacterSearch { get; protected set; }

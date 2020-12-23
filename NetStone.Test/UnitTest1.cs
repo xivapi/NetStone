@@ -112,6 +112,11 @@ namespace NetStone.Test
             {
                 Console.WriteLine($"{characterAchievementEntry.Id} - {characterAchievementEntry.Name}");
             }
+
+            var mount = await chara.GetMounts();
+            var res = mount.Collectables;
+
+            var minion = await chara.GetMinions();
         }
     }
 }

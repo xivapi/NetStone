@@ -20,6 +20,8 @@ namespace NetStone.Model
         }
 
         protected HtmlNode QueryNode(string selector) => this.RootNode.QuerySelector(selector);
+        
+        protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => QueryNode(pack.Selector)?.ChildNodes.Where(x => x.Name != "#text").ToArray();
 
         protected bool HasNode(DefinitionsPack pack) => QueryNode(pack.Selector) != null;
 

@@ -55,12 +55,28 @@ namespace NetStone
 
         /// <summary>
         /// Get a characters' unlocked achievement information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// You can also get this from the character directly by calling <see cref="Character.GetAchievement()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <param name="page">The number of the page that should be fetched.</param>
         /// <returns><see cref="CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
         public async Task<CharacterAchievementPage> GetCharacterAchievement(ulong id, int page = 1) => new CharacterAchievementPage(this, await GetRootNode($"/lodestone/character/{id}/achievement/?page={page}"), this.Definitions.Achievement, id);
+        
+        /// <summary>
+        /// Get a characters' unlocked mount information by its Lodestone ID.
+        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// </summary>
+        /// <param name="id">The ID of the character.</param>
+        /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' classes and jobs.</returns>
+        public async Task<CharacterCollectable> GetCharacterMount(ulong id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/mount/", UserAgent.Mobile), this.Definitions.Mount);
+        
+        /// <summary>
+        /// Get a characters' unlocked minion information by its Lodestone ID.
+        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// </summary>
+        /// <param name="id">The ID of the character.</param>
+        /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' classes and jobs.</returns>
+        public async Task<CharacterCollectable> GetCharacterMinion(ulong id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/minion/", UserAgent.Mobile), this.Definitions.Minion);
         
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
             new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
@@ -75,14 +91,16 @@ namespace NetStone
                     request.Headers.UserAgent.ParseAdd(this.Definitions.Meta.UserAgentDesktop);
                     break;
                 case UserAgent.Mobile:
-                    request.Headers.UserAgent.ParseAdd(this.Definitions.Meta.UserAgentMobile);
+                    request.Headers.UserAgent.ParseAdd("Mozilla/5.0 (iPhone; CPU OS 10_15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Mobile/14E304 Safari/605.1.15");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(agent), agent, null);
             }
-            
+
+            var response = await this.client.SendAsync(request);
+
             var doc = new HtmlDocument();
-            doc.LoadHtml(await this.client.GetStringAsync(url));
+            doc.LoadHtml(await response.Content.ReadAsStringAsync());
 
             return doc.DocumentNode;
         }

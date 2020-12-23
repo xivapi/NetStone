@@ -53,7 +53,7 @@ namespace NetStone.Model.Parseables
 
         private void ParseSearchResults()
         {
-            var nodes = QueryNode(this.definition.List.Selector).ChildNodes.Where(x => x.Name != "#text").ToArray();
+            var nodes = QueryChildNodes(this.definition.List);
 
             this.parsedResults = new CharacterAchievementEntry[nodes.Length];
             for (var i = 0; i < this.parsedResults.Length; i++)
