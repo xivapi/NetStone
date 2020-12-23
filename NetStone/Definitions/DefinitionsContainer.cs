@@ -13,6 +13,9 @@ namespace NetStone.Definitions
     {
         #region Definitions
 
+        // Meta
+        public MetaDefinition Meta { get; protected set; }
+        
         // Entities
         public CharacterDefinition Character { get; protected set; }
         public CharacterClassJobDefinition ClassJob { get; protected set; }

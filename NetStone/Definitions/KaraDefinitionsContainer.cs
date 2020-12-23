@@ -22,6 +22,8 @@ namespace NetStone.Definitions
 
         public override async Task Reload()
         {
+            this.Meta = await GetDefinition<MetaDefinition>("meta.json");
+            
             this.Character = await GetDefinition<CharacterDefinition>("profile/character.json");
             this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
             this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");

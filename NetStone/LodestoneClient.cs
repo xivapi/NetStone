@@ -14,6 +14,8 @@ namespace NetStone
     /// </summary>
     public class LodestoneClient : IDisposable
     {
+        //TODO: Switch to URLs in meta.json
+        
         /// <summary>
         /// Container holding information about the current Lodestone layout, needed to parse responses.
         /// </summary>
