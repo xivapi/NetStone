@@ -19,7 +19,7 @@ namespace NetStone.Model.Parseables.Search
             this.definition = definition;
         }
 
-        public string Name => ParseInnerText(this.definition.Name);
+        public string Name => Parse(this.definition.Name);
 
         public ulong? Id => ParseHrefIdULong(this.definition.Id);
 

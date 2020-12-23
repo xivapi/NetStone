@@ -57,7 +57,7 @@ namespace NetStone.Model.Parseables.Character
         /// <summary>
         /// The character bio/description.
         /// </summary>
-        public string Bio => ParseInnerText(this.charDefinition.Bio);
+        public string Bio => Parse(this.charDefinition.Bio);
 
         /// <summary>
         /// The character FreeCompany info.
@@ -68,22 +68,22 @@ namespace NetStone.Model.Parseables.Character
         /// <summary>
         /// The grand company of the character.
         /// </summary>
-        public string GrandCompany => ParseInnerText(this.charDefinition.GrandCompany);
+        public string GrandCompany => Parse(this.charDefinition.GrandCompany);
 
         /// <summary>
         /// The guardian deity of the character.
         /// </summary>
-        public string GuardianDeity => ParseInnerText(this.charDefinition.GuardianDeity);
+        public string GuardianDeity => Parse(this.charDefinition.GuardianDeity);
         
         /// <summary>
         /// The name of the character.
         /// </summary>
-        public string Name => ParseInnerText(this.charDefinition.Name);
+        public string Name => Parse(this.charDefinition.Name);
 
         /// <summary>
         /// The nameday of the character.
         /// </summary>
-        public string Nameday => ParseInnerText(this.charDefinition.Nameday);
+        public string Nameday => Parse(this.charDefinition.Nameday);
 
         /// <summary>
         /// An URI to the avatar of the character.
@@ -97,23 +97,23 @@ namespace NetStone.Model.Parseables.Character
         public SocialGroup PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
         //TODO: parse
-        public string RaceClanGender => ParseInnerText(this.charDefinition.RaceClanGender);
+        public string RaceClanGender => Parse(this.charDefinition.RaceClanGender);
 
         /// <summary>
         /// The server/world of the character.
         /// </summary>
-        public string Server => ParseInnerText(this.charDefinition.Server);
+        public string Server => Parse(this.charDefinition.Server);
 
         /// <summary>
         /// The title of the character.
         /// </summary>
         [CanBeNull]
-        public string Title => ParseInnerText(this.charDefinition.Title);
+        public string Title => Parse(this.charDefinition.Title);
 
         /// <summary>
         /// The town of the character.
         /// </summary>
-        public string Town => ParseInnerText(this.charDefinition.Town);
+        public string Town => Parse(this.charDefinition.Town);
 
         /// <summary>
         /// The character gear information.

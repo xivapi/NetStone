@@ -1,34 +1,26 @@
-﻿using Newtonsoft.Json;
+﻿using NetStone.Model.Parseables;
+using Newtonsoft.Json;
 
 namespace NetStone.Definitions.Model
 {
-    public class IconLayers
-    {
-        [JsonProperty("BOTTOM")] public DefinitionsPack Bottom { get; set; }
-
-        [JsonProperty("MIDDLE")] public DefinitionsPack Middle { get; set; }
-
-        [JsonProperty("TOP")] public DefinitionsPack Top { get; set; }
-    }
-
-    public class FreeCompany : ISocialGroupDefinition
+    public class CharacterFreeCompany : ICharacterSocialGroupDefinition
     {
         [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
 
-        [JsonProperty("ICON_LAYERS")] public IconLayers IconLayers { get; set; }
+        [JsonProperty("ICON_LAYERS")] public IconLayersDefinition IconLayers { get; set; }
     }
 
-    public class PvPTeam : ISocialGroupDefinition
+    public class CharacterPvPTeam : ICharacterSocialGroupDefinition
     {
         [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
 
-        [JsonProperty("ICON_LAYERS")] public IconLayers IconLayers { get; set; }
+        [JsonProperty("ICON_LAYERS")] public IconLayersDefinition IconLayers { get; set; }
     }
 
-    public interface ISocialGroupDefinition : IDefinition
+    public interface ICharacterSocialGroupDefinition : IDefinition
     {
         DefinitionsPack Name { get; set; }
-        IconLayers IconLayers { get; set; }
+        IconLayersDefinition IconLayers { get; set; }
     }
 
     public class CharacterDefinition : IDefinition
@@ -41,7 +33,7 @@ namespace NetStone.Definitions.Model
 
         [JsonProperty("BIO")] public DefinitionsPack Bio { get; set; }
 
-        [JsonProperty("FREE_COMPANY")] public FreeCompany FreeCompany { get; set; }
+        [JsonProperty("FREE_COMPANY")] public CharacterFreeCompany FreeCompany { get; set; }
 
         [JsonProperty("GRAND_COMPANY")] public DefinitionsPack GrandCompany { get; set; }
 
@@ -53,7 +45,7 @@ namespace NetStone.Definitions.Model
 
         [JsonProperty("PORTRAIT")] public DefinitionsPack Portrait { get; set; }
 
-        [JsonProperty("PVP_TEAM")] public PvPTeam PvPTeam { get; set; }
+        [JsonProperty("PVP_TEAM")] public CharacterPvPTeam PvPTeam { get; set; }
 
         [JsonProperty("RACE_CLAN_GENDER")] public DefinitionsPack RaceClanGender { get; set; }
 

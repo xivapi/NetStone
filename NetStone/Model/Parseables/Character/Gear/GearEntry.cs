@@ -27,7 +27,7 @@ namespace NetStone.Model.Parseables.Character.Gear
         /// <summary>
         /// Name of this item.
         /// </summary>
-        public string ItemName => ParseInnerText(this.definition.Name);
+        public string ItemName => Parse(this.definition.Name);
 
         /// <summary>
         /// Link to the glamoured item's Eorzea DB page.
@@ -37,13 +37,13 @@ namespace NetStone.Model.Parseables.Character.Gear
         /// <summary>
         /// Name of the glamoured item.
         /// </summary>
-        public string GlamourName => ParseInnerText(this.definition.MirageName);
+        public string GlamourName => Parse(this.definition.MirageName);
 
         /// <summary>
         /// Name of the dye applied to this item.
         /// </summary>
         //TODO: parse
-        public string Stain => ParseInnerText(this.definition.Stain);
+        public string Stain => Parse(this.definition.Stain);
 
         /// <summary>
         /// Materia applied to this item.
@@ -51,17 +51,17 @@ namespace NetStone.Model.Parseables.Character.Gear
         //TODO: parse
         public string[] Materia => new[]
         {
-            ParseInnerText(this.definition.Materia1),
-            ParseInnerText(this.definition.Materia2),
-            ParseInnerText(this.definition.Materia3),
-            ParseInnerText(this.definition.Materia4),
-            ParseInnerText(this.definition.Materia5),
+            Parse(this.definition.Materia1),
+            Parse(this.definition.Materia2),
+            Parse(this.definition.Materia3),
+            Parse(this.definition.Materia4),
+            Parse(this.definition.Materia5),
         };
 
         /// <summary>
         /// Name of this item's crafter.
         /// </summary>
-        public string CreatorName => ParseInnerText(this.definition.CreatorName);
+        public string CreatorName => Parse(this.definition.CreatorName);
 
         /// <summary>
         /// Indicating whether the item slot has an item equipped or not.

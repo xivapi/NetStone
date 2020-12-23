@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Definitions
 {
@@ -24,6 +25,8 @@ namespace NetStone.Definitions
         public CharacterAchievementDefinition Achievement { get; set; }
         public CharacterCollectableDefinition Mount { get; set; }
         public CharacterCollectableDefinition Minion { get; set; }
+        
+        public FreeCompanyDefinition FreeCompany { get; set; }
         
         // Search
         public CharacterSearchDefinition CharacterSearch { get; protected set; }

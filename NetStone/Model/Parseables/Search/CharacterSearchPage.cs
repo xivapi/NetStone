@@ -41,7 +41,7 @@ namespace NetStone.Model.Parseables.Search
 
         private void ParseSearchResults()
         {
-            var container = QueryNode(this.definition.EntriesContainer.Selector).QuerySelectorAll(this.definition.SingleEntry.Root.Selector);
+            var container = QueryNode(this.definition.EntriesContainer).QuerySelectorAll(this.definition.SingleEntry.Root.Selector);
 
             this.parsedResults = new CharacterSearchEntry[container.Count];
             for (var i = 0; i < this.parsedResults.Length; i++)
@@ -82,7 +82,7 @@ namespace NetStone.Model.Parseables.Search
 
         private void ParsePagesCount()
         {
-            var results = ParseInnerTextRegex(this.definition.PageInfo);
+            var results = ParseRegex(this.definition.PageInfo);
 
             this.currentPageVal = int.Parse(results["CurrentPage"].Value);
             this.numPagesVal = int.Parse(results["NumPages"].Value);

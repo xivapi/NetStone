@@ -11,9 +11,9 @@ namespace NetStone.Model.Parseables
     /// </summary>
     public class IconLayers : LodestoneParseable
     {
-        private readonly ISocialGroupDefinition definition;
+        private readonly IconLayersDefinition definition;
 
-        public IconLayers(HtmlNode rootNode, ISocialGroupDefinition definition) : base(rootNode)
+        public IconLayers(HtmlNode rootNode, IconLayersDefinition definition) : base(rootNode)
         {
             this.definition = definition;
         }
@@ -21,16 +21,16 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Link to the top layer image of the icon.
         /// </summary>
-        public Uri TopLayer => ParseImageSource(this.definition.IconLayers.Top);
+        public Uri TopLayer => ParseImageSource(this.definition.Top);
         
         /// <summary>
         /// Link to the top layer image of the icon.
         /// </summary>
-        public Uri MiddleLayer => ParseImageSource(this.definition.IconLayers.Middle);
+        public Uri MiddleLayer => ParseImageSource(this.definition.Middle);
         
         /// <summary>
         /// Link to the top layer image of the icon.
         /// </summary>
-        public Uri BottomLayer => ParseImageSource(this.definition.IconLayers.Bottom);
+        public Uri BottomLayer => ParseImageSource(this.definition.Bottom);
     }
 }

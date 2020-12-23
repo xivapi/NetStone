@@ -18,20 +18,13 @@ namespace NetStone.Model.Parseables.Character.Achievement
             this.definition = definition;
         }
 
-        public string Name => ParseInnerText(this.definition.ActivityDescription);
+        public string Name => Parse(this.definition.ActivityDescription);
 
         public ulong? Id => ParseHrefIdULong(this.definition.Id);
 
         public Uri DatabaseLink => ParseHref(this.definition.Id);
 
-        public DateTime TimeAchieved
-        {
-            get
-            {
-                var res = ParseInnerTextRegex(this.definition.Time);
-                return DateTimeOffset.FromUnixTimeSeconds(long.Parse(res["Timestamp"].Value)).UtcDateTime;
-            }
-        }
+        public DateTime TimeAchieved => ParseTime(this.definition.Time);
 
         public override string ToString() => Name;
     }

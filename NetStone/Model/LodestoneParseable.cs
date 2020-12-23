@@ -44,6 +44,19 @@ namespace NetStone.Model
         /// </summary>
         /// <param name="pack">Definition of the node.</param>
         /// <returns>InnerText of the node.</returns>
+        protected string Parse(DefinitionsPack pack)
+        {
+            if (pack.Regex != null)
+            {
+                var res = ParseRegex(pack);
+
+                if (res.Count != 0)
+                    return res[0].Value;
+            }
+
+            return ParseInnerText(pack);
+        }
+
         protected string ParseInnerText(DefinitionsPack pack)
         {
             var node = QueryNode(pack);
@@ -57,7 +70,7 @@ namespace NetStone.Model
         /// </summary>
         /// <param name="pack">Definition of the node.</param>
         /// <returns>Matched Regex groups.</returns>
-        protected GroupCollection ParseInnerTextRegex(DefinitionsPack pack)
+        protected GroupCollection ParseRegex(DefinitionsPack pack)
         {
             var text = ParseInnerText(pack);
 
@@ -182,6 +195,12 @@ namespace NetStone.Model
             var src = ParseAttribute(pack, "src");
 
             return string.IsNullOrEmpty(src) ? null : new Uri(src);
+        }
+
+        public DateTime ParseTime(DefinitionsPack pack)
+        {
+            var res = ParseRegex(pack);
+            return DateTimeOffset.FromUnixTimeSeconds(long.Parse(res[0].Value)).UtcDateTime;
         }
     }
 }

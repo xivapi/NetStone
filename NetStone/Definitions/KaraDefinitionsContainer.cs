@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.FreeCompany;
 using Newtonsoft.Json;
 
 namespace NetStone.Definitions
@@ -31,6 +32,8 @@ namespace NetStone.Definitions
             this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json");
             this.Mount = await GetDefinition<CharacterCollectableDefinition>("profile/mount.json");
             this.Minion = await GetDefinition<CharacterCollectableDefinition>("profile/minion.json");
+            
+            this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
             
             this.CharacterSearch = await GetDefinition<CharacterSearchDefinition>("search/character.json"); 
         }

@@ -9,9 +9,9 @@ namespace NetStone.Model.Parseables
 {
     public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
     {
-        private readonly ISocialGroupDefinition definition;
+        private readonly ICharacterSocialGroupDefinition definition;
 
-        public SocialGroup(HtmlNode rootNode, ISocialGroupDefinition socialGroupDefinition) : base(rootNode)
+        public SocialGroup(HtmlNode rootNode, ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode)
         {
             this.definition = socialGroupDefinition;
         }
@@ -24,7 +24,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Name of this social group.
         /// </summary>
-        public string Name => ParseInnerText(this.definition.Name);
+        public string Name => Parse(this.definition.Name);
 
         /// <summary>
         /// ID of this social group.
@@ -39,7 +39,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// <see cref="IconLayers"/> of this social group's icon.
         /// </summary>
-        public IconLayers IconLayers => new IconLayers(this.RootNode, this.definition);
+        public IconLayers IconLayers => new IconLayers(this.RootNode, this.definition.IconLayers);
 
         /// <summary>
         /// String representation of the gear slot.

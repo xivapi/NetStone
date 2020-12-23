@@ -27,12 +27,12 @@ namespace NetStone.Model.Parseables.Character.Achievement
         {
             get
             {
-                var res = ParseInnerTextRegex(this.definition.TotalAchievements);
+                var res = ParseRegex(this.definition.TotalAchievements);
                 return int.Parse(res["TotalAchievements"].Value);
             }
         }
 
-        public int AchievementPoints => Int32.Parse(ParseInnerText(this.definition.AchievementPoints));
+        public int AchievementPoints => Int32.Parse(Parse(this.definition.AchievementPoints));
 
         public bool HasResults => !HasNode(this.definition.NoResultsFound);
 
@@ -94,7 +94,7 @@ namespace NetStone.Model.Parseables.Character.Achievement
 
         private void ParsePagesCount()
         {
-            var results = ParseInnerTextRegex(this.definition.PageInfo);
+            var results = ParseRegex(this.definition.PageInfo);
 
             this.currentPageVal = int.Parse(results["CurrentPage"].Value);
             this.numPagesVal = int.Parse(results["NumPages"].Value);

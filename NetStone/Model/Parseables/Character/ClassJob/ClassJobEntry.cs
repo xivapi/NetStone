@@ -33,12 +33,12 @@ namespace NetStone.Model.Parseables.Character.ClassJob
         {
             get
             {
-                var level = ParseInnerText(this.definition.Level);
+                var level = Parse(this.definition.Level);
                 return level == "-" ? 0 : int.Parse(level);
             }
         }
 
-        private string ExpString => ParseInnerText(this.definition.Exp);
+        private string ExpString => Parse(this.definition.Exp);
 
         private long? expCurrentVal;
         
