@@ -10,6 +10,9 @@ using NetStone.Definitions.Model;
 
 namespace NetStone.Model
 {
+    /// <summary>
+    /// Main superclass for parsed lodestone nodes.
+    /// </summary>
     public abstract class LodestoneParseable
     {
         protected readonly HtmlNode RootNode;
@@ -19,17 +22,28 @@ namespace NetStone.Model
             this.RootNode = rootNode;
         }
 
+        /// <summary>
+        /// Query a <see cref="HtmlNode"/> via pack selector.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>The needed node.</returns>
         protected HtmlNode QueryNode(DefinitionsPack pack) => this.RootNode.QuerySelector(pack.Selector);
         
+        /// <summary>
+        /// Query all ChildNodes of a <see cref="HtmlNode"/> via pack selector.
+        /// Removes unneeded "#text" nodes.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>All ChildNodes.</returns>
         protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => QueryNode(pack)?.ChildNodes.Where(x => x.Name != "#text").ToArray();
 
         protected bool HasNode(DefinitionsPack pack) => QueryNode(pack) != null;
 
         /// <summary>
-        /// Parse the InnerHTML via selector.
+        /// Parse the InnerText via selector.
         /// </summary>
         /// <param name="pack">Definition of the node.</param>
-        /// <returns>InnerHTML of the node.</returns>
+        /// <returns>InnerText of the node.</returns>
         protected string ParseInnerText(DefinitionsPack pack)
         {
             var node = QueryNode(pack);
@@ -38,6 +52,11 @@ namespace NetStone.Model
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }
 
+        /// <summary>
+        /// Parse the InnerText via selector, then parse out regex groups.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Matched Regex groups.</returns>
         protected GroupCollection ParseInnerTextRegex(DefinitionsPack pack)
         {
             var text = ParseInnerText(pack);
@@ -51,6 +70,12 @@ namespace NetStone.Model
             return match.Groups;
         }
         
+        /// <summary>
+        /// Parse tooltip attribute.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Parsed tooltip.</returns>
+        // TODO: Switch to attribute in pack
         protected string ParseTooltip(DefinitionsPack pack)
         {
             var text = ParseAttribute(pack, "data-tooltip");
@@ -58,11 +83,22 @@ namespace NetStone.Model
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }
 
+        /// <summary>
+        /// Parse attribute from pack.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Parsed attribute.</returns>
         protected string ParseAttribute(DefinitionsPack pack)
         {
             return ParseAttribute(pack, pack.Attribute);
         }
 
+        /// <summary>
+        /// Parse specified attribute via selector from pack.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <param name="attribute">Attribute to parse.</param>
+        /// <returns>Parsed attribute.</returns>
         protected string ParseAttribute(DefinitionsPack pack, string attribute)
         {
             var node = QueryNode(pack);
@@ -76,6 +112,12 @@ namespace NetStone.Model
             return node.Attributes[attribute].Value;
         }
 
+        /// <summary>
+        /// Parse href attribute on a node.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Parsed href.</returns>
+        // TODO: Switch to attribute in pack
         protected Uri ParseHref(DefinitionsPack pack)
         {
             var href = ParseAttribute(pack, "href");
@@ -83,6 +125,7 @@ namespace NetStone.Model
             if (string.IsNullOrEmpty(href))
                 return null;
 
+            // Normalize href to have the lodestone URL in front
             if (!href.StartsWith("http://", StringComparison.InvariantCulture) &&
                 !href.StartsWith("https://", StringComparison.InvariantCulture))
                 href = Constants.LodestoneBase + href;
@@ -90,6 +133,11 @@ namespace NetStone.Model
             return new Uri(href);
         }
 
+        /// <summary>
+        /// Parse out ID into string or null if node was not found.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Parsed ID.</returns>
         protected string ParseHrefId(DefinitionsPack pack)
         {
             var url = ParseHref(pack);
@@ -108,6 +156,11 @@ namespace NetStone.Model
             return link;
         }
 
+        /// <summary>
+        /// Parse out ID into ulong or null if node was not found.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Parsed ID.</returns>
         protected ulong? ParseHrefIdULong(DefinitionsPack pack)
         {
             var link = ParseHrefId(pack);
@@ -118,6 +171,12 @@ namespace NetStone.Model
             return ulong.Parse(link);
         }
 
+        /// <summary>
+        /// Parse image source attribute.
+        /// </summary>
+        /// <param name="pack">Definition of the node.</param>
+        /// <returns>Parsed image source.</returns>
+        // TODO: Switch to attribute in pack
         protected Uri ParseImageSource(DefinitionsPack pack)
         {
             var src = ParseAttribute(pack, "src");
