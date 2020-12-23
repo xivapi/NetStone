@@ -16,10 +16,19 @@ namespace NetStone.Model.Parseables.Character.ClassJob
             this.definition = definition;
         }
 
+        /// <summary>
+        /// The name of this class and job combo.
+        /// </summary>
         public string Name => ParseTooltip(this.definition.UnlockState);
 
+        /// <summary>
+        /// Value indicating whether this class has its job unlocked.
+        /// </summary>
         public bool IsJobUnlocked => Name.Contains("/");
 
+        /// <summary>
+        /// The level this class or job is at.
+        /// </summary>
         public int Level
         {
             get
@@ -29,9 +38,13 @@ namespace NetStone.Model.Parseables.Character.ClassJob
             }
         }
 
-        public string ExpString => ParseInnerText(this.definition.Exp);
+        private string ExpString => ParseInnerText(this.definition.Exp);
 
         private long? expCurrentVal;
+        
+        /// <summary>
+        /// The amount of current achieved EXP on this level.
+        /// </summary>
         public long ExpCurrent
         {
             get
@@ -44,6 +57,10 @@ namespace NetStone.Model.Parseables.Character.ClassJob
         }
         
         private long? expMaxVal;
+        
+        /// <summary>
+        /// The amount of EXP to be reached to gain the next level.
+        /// </summary>
         public long ExpMax
         {
             get
@@ -55,6 +72,9 @@ namespace NetStone.Model.Parseables.Character.ClassJob
             }
         }
 
+        /// <summary>
+        /// The outstanding amount of EXP to go to the next level.
+        /// </summary>
         public long ExpToGo => ExpMax - ExpCurrent;
 
         private void ParseExp()
@@ -81,15 +101,34 @@ namespace NetStone.Model.Parseables.Character.ClassJob
             this.expMaxVal = long.Parse(expVals[1]);
         }
 
+        /// <summary>
+        /// Value indicating whether this job, if DoH or DoL, is specialized.
+        /// </summary>
         public bool IsSpecialized => ParseAttribute(this.definition.UnlockState, "class").Contains("--meister");
         
+        /// <summary>
+        /// Value indicating if this class is unlocked.
+        /// </summary>
         public bool Exists => Level != 0;
+
+        /// <summary>
+        /// Value indicating if this class is unlocked.
+        /// </summary>
+        public bool IsUnlocked => Exists;
         
+        /// <summary>
+        /// Get this object if the class is unlocked, null if not.
+        /// </summary>
+        /// <returns></returns>
         public ClassJobEntry GetOptional()
         {
             return !Exists ? null : this;
         }
 
+        /// <summary>
+        /// The string representation of this object.
+        /// </summary>
+        /// <returns>Name (Level)</returns>
         public override string ToString() => $"{Name} ({Level})";
     }
 }
