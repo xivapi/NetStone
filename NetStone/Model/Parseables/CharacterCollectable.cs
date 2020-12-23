@@ -16,6 +16,10 @@ namespace NetStone.Model.Parseables
         }
 
         private CharacterCollectableEntry[] parsedResults;
+        
+        /// <summary>
+        /// All collectables collected by the character.
+        /// </summary>
         public CharacterCollectableEntry[] Collectables
         {
             get

@@ -14,9 +14,16 @@ namespace NetStone.Model.Parseables
         {
             this.definition = definition;
         }
-
+        
+        /// <summary>
+        /// The name of this collectable.
+        /// </summary>
         public string Name => ParseInnerText(this.definition.Name);
 
+        /// <summary>
+        /// The string representation of this collectable.
+        /// </summary>
+        /// <returns><see cref="Name"/></returns>
         public override string ToString() => Name;
     }
 }
