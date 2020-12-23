@@ -42,16 +42,6 @@ namespace NetStone.Model.Parseables
         public IconLayers IconLayers => new IconLayers(this.RootNode, this.definition);
 
         /// <summary>
-        /// Gets this object if the group exists, null if not.
-        /// </summary>
-        /// <returns>This object if the group exists, null if not.</returns>
-        [CanBeNull]
-        public SocialGroup GetOptional()
-        {
-            return Exists ? this : null;
-        }
-
-        /// <summary>
         /// String representation of the gear slot.
         /// </summary>
         /// <returns>The name of the item.</returns>

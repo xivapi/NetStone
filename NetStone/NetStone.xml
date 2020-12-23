@@ -72,6 +72,23 @@
             <param name="page">The page of search results to fetch.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Search.CharacterSearchPage"/> containing search results.</returns>
         </member>
+        <member name="T:NetStone.Model.IOptionalParseable`1">
+            <summary>
+            Interface indicating an optional parsed object that may or may not exist.
+            </summary>
+            <typeparam name="T">LodestoneParseable to be marked optional</typeparam>
+        </member>
+        <member name="P:NetStone.Model.IOptionalParseable`1.Exists">
+            <summary>
+            Value indicating if the object should be populated.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.OptionalExtensions.GetOptional``1(NetStone.Model.IOptionalParseable{``0})">
+            <summary>
+            Method returning the object itself if exists.
+            </summary>
+            <returns>this if Exists == True</returns>
+        </member>
         <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(NetStone.Definitions.DefinitionsPack)">
             <summary>
             Parse the InnerHTML via selector.
@@ -218,6 +235,57 @@
             <summary>
             Information about the Fisher class.
             </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.Name">
+            <summary>
+            The name of this class and job combo.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.IsJobUnlocked">
+            <summary>
+            Value indicating whether this class has its job unlocked.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.Level">
+            <summary>
+            The level this class or job is at.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.ExpCurrent">
+            <summary>
+            The amount of current achieved EXP on this level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.ExpMax">
+            <summary>
+            The amount of EXP to be reached to gain the next level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.ExpToGo">
+            <summary>
+            The outstanding amount of EXP to go to the next level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.IsSpecialized">
+            <summary>
+            Value indicating whether this job, if DoH or DoL, is specialized.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.Exists">
+            <summary>
+            Value indicating if this class is unlocked.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.IsUnlocked">
+            <summary>
+            Value indicating if this class is unlocked.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.ToString">
+            <summary>
+            The string representation of this object.
+            </summary>
+            <returns>Name (Level)</returns>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable.Collectables">
             <summary>

@@ -69,16 +69,6 @@ namespace NetStone.Model.Parseables.Character.Gear
         public bool Exists => HasNode(this.definition.Name);
 
         /// <summary>
-        /// Get this object if the item slot is populated, null if not.
-        /// </summary>
-        /// <returns>The <see cref="GearEntry"/> if the slot is populated, null if not.</returns>
-        [CanBeNull]
-        public GearEntry GetOptional()
-        {
-            return !Exists ? null : this;
-        }
-
-        /// <summary>
         /// String representation of the gear slot.
         /// </summary>
         /// <returns>The name of the item.</returns>

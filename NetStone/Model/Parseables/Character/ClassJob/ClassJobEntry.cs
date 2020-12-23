@@ -115,15 +115,6 @@ namespace NetStone.Model.Parseables.Character.ClassJob
         /// Value indicating if this class is unlocked.
         /// </summary>
         public bool IsUnlocked => Exists;
-        
-        /// <summary>
-        /// Get this object if the class is unlocked, null if not.
-        /// </summary>
-        /// <returns></returns>
-        public ClassJobEntry GetOptional()
-        {
-            return !Exists ? null : this;
-        }
 
         /// <summary>
         /// The string representation of this object.

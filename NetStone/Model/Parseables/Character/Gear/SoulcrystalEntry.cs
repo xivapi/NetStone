@@ -21,11 +21,6 @@ namespace NetStone.Model.Parseables.Character.Gear
 
         public bool Exists => HasNode(this.definition.Name);
 
-        public SoulcrystalEntry GetOptional()
-        {
-            return !Exists ? null : this;
-        }
-
         public override string ToString() => ItemName;
     }
 }
