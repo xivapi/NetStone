@@ -7,7 +7,7 @@ using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
 
-namespace NetStone.Model.Parseables
+namespace NetStone.Model.Parseables.Character.Achievement
 {
     public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<CharacterAchievementPage>
     {

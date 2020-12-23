@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 using NetStone.Definitions.Model;
 using NetStone.StaticData;
 
-namespace NetStone.Model.Parseables
+namespace NetStone.Model.Parseables.Character.ClassJob
 {
     public class CharacterClassJob : LodestoneParseable
     {
@@ -186,69 +186,69 @@ namespace NetStone.Model.Parseables
         [CanBeNull]
         public ClassJobEntry Fisher => new ClassJobEntry(this.RootNode, this.definition.Fisher).GetOptional();
 
-        public IReadOnlyDictionary<ClassJob, ClassJobEntry> ClassJobDict => new Dictionary<ClassJob, ClassJobEntry>
+        public IReadOnlyDictionary<StaticData.ClassJob, ClassJobEntry> ClassJobDict => new Dictionary<StaticData.ClassJob, ClassJobEntry>
         {
-            {ClassJob.Pugilist, Paladin},
-            {ClassJob.Paladin, Paladin},
+            {StaticData.ClassJob.Pugilist, Paladin},
+            {StaticData.ClassJob.Paladin, Paladin},
 
-            {ClassJob.Marauder, Warrior},
-            {ClassJob.Warrior, Warrior},
+            {StaticData.ClassJob.Marauder, Warrior},
+            {StaticData.ClassJob.Warrior, Warrior},
 
-            {ClassJob.DarkKnight, DarkKnight},
+            {StaticData.ClassJob.DarkKnight, DarkKnight},
 
-            {ClassJob.Gunbreaker, Gunbreaker},
+            {StaticData.ClassJob.Gunbreaker, Gunbreaker},
 
-            {ClassJob.Pugilist, Monk},
-            {ClassJob.Monk, Monk},
+            {StaticData.ClassJob.Pugilist, Monk},
+            {StaticData.ClassJob.Monk, Monk},
 
-            {ClassJob.Lancer, Dragoon},
-            {ClassJob.Dragoon, Dragoon},
+            {StaticData.ClassJob.Lancer, Dragoon},
+            {StaticData.ClassJob.Dragoon, Dragoon},
 
-            {ClassJob.Rogue, Ninja},
-            {ClassJob.Ninja, Ninja},
+            {StaticData.ClassJob.Rogue, Ninja},
+            {StaticData.ClassJob.Ninja, Ninja},
 
-            {ClassJob.Samurai, Samurai},
+            {StaticData.ClassJob.Samurai, Samurai},
 
-            {ClassJob.Conjurer, WhiteMage},
-            {ClassJob.WhiteMage, WhiteMage},
+            {StaticData.ClassJob.Conjurer, WhiteMage},
+            {StaticData.ClassJob.WhiteMage, WhiteMage},
 
-            {ClassJob.Arcanist, Scholar},
-            {ClassJob.Scholar, Scholar},
-            {ClassJob.Summoner, Summoner},
+            {StaticData.ClassJob.Arcanist, Scholar},
+            {StaticData.ClassJob.Scholar, Scholar},
+            {StaticData.ClassJob.Summoner, Summoner},
 
-            {ClassJob.Astrologian, Astrologian},
+            {StaticData.ClassJob.Astrologian, Astrologian},
 
-            {ClassJob.Archer, Bard},
-            {ClassJob.Bard, Bard},
+            {StaticData.ClassJob.Archer, Bard},
+            {StaticData.ClassJob.Bard, Bard},
 
-            {ClassJob.Machinist, Machinist},
+            {StaticData.ClassJob.Machinist, Machinist},
 
-            {ClassJob.Dancer, Dancer},
+            {StaticData.ClassJob.Dancer, Dancer},
 
-            {ClassJob.Thaumaturge, BlackMage},
-            {ClassJob.BlackMage, BlackMage},
+            {StaticData.ClassJob.Thaumaturge, BlackMage},
+            {StaticData.ClassJob.BlackMage, BlackMage},
 
-            {ClassJob.RedMage, RedMage},
+            {StaticData.ClassJob.RedMage, RedMage},
 
-            {ClassJob.BlueMage, BlueMage},
+            {StaticData.ClassJob.BlueMage, BlueMage},
 
-            {ClassJob.Blacksmith, Blacksmith},
+            {StaticData.ClassJob.Blacksmith, Blacksmith},
 
-            {ClassJob.Armorer, Armorer},
+            {StaticData.ClassJob.Armorer, Armorer},
 
-            {ClassJob.Goldsmith, Goldsmith},
+            {StaticData.ClassJob.Goldsmith, Goldsmith},
 
-            {ClassJob.Leatherworker, Leatherworker},
+            {StaticData.ClassJob.Leatherworker, Leatherworker},
 
-            {ClassJob.Weaver, Weaver},
+            {StaticData.ClassJob.Weaver, Weaver},
 
-            {ClassJob.Alchemist, Alchemist},
+            {StaticData.ClassJob.Alchemist, Alchemist},
 
-            {ClassJob.Miner, Miner},
+            {StaticData.ClassJob.Miner, Miner},
 
-            {ClassJob.Botanist, Botanist},
+            {StaticData.ClassJob.Botanist, Botanist},
 
-            {ClassJob.Fisher, Fisher}
+            {StaticData.ClassJob.Fisher, Fisher}
         };
     }
 }

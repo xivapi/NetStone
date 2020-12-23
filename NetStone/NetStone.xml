@@ -29,29 +29,350 @@
             Get a character by its Lodestone ID.
             </summary>
             <param name="id">The ID of the character.</param>
-            <returns><see cref="T:NetStone.Model.Parseables.Character"/> class containing information about the character.</returns>
+            <returns><see cref="!:Character"/> class containing information about the character.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCharacterClassJob(System.UInt64)">
             <summary>
             Get a characters' class/job information by its Lodestone ID.
-            You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.GetClassJobInfo"/>.
+            You can also get this from the character directly by calling <see cref="!:Character.GetClassJobInfo()"/>.
             </summary>
             <param name="id">The ID of the character.</param>
-            <returns><see cref="T:NetStone.Model.Parseables.ClassJob"/> class containing information about the characters' classes and jobs.</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
         </member>
-        <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(System.String)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterAchievement(System.UInt64,System.Int32)">
+            <summary>
+            Get a characters' unlocked achievement information by its Lodestone ID.
+            You can also get this from the character directly by calling <see cref="!:Character.GetAchievement()"/>.
+            </summary>
+            <param name="id">The ID of the character.</param>
+            <param name="page">The number of the page that should be fetched.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetCharacterMount(System.UInt64)">
+            <summary>
+            Get a characters' unlocked mount information by its Lodestone ID.
+            You can also get this from the character directly by calling <see cref="!:Character.GetMounts()"/>.
+            </summary>
+            <param name="id">The ID of the character.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' mounts.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetCharacterMinion(System.UInt64)">
+            <summary>
+            Get a characters' unlocked minion information by its Lodestone ID.
+            You can also get this from the character directly by calling <see cref="!:Character.GetMinions()"/>.
+            </summary>
+            <param name="id">The ID of the character.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' minions.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.SearchCharacter(NetStone.Search.CharacterSearchQuery,System.Int32)">
+            <summary>
+            Search lodestone for a character with the specified query.
+            </summary>
+            <param name="query"><see cref="T:NetStone.Search.CharacterSearchQuery"/> object detailing search parameters</param>
+            <param name="page">The page of search results to fetch.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.Search.CharacterSearchPage"/> containing search results.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(NetStone.Definitions.DefinitionsPack)">
             <summary>
             Parse the InnerHTML via selector.
             </summary>
-            <param name="selector">Selector to the node.</param>
+            <param name="pack">Definition of the node.</param>
             <returns>InnerHTML of the node.</returns>
         </member>
-        <member name="T:NetStone.Model.Parseables.Character">
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Paladin">
+            <summary>
+            Information about the Paladin class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Warrior">
+            <summary>
+            Information about the Warrior class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.DarkKnight">
+            <summary>
+            Information about the Dark Knight class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Gunbreaker">
+            <summary>
+            Information about the Gunbreaker class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Monk">
+            <summary>
+            Information about the Monk class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Dragoon">
+            <summary>
+            Information about the Dragoon class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Ninja">
+            <summary>
+            Information about the Ninja class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Samurai">
+            <summary>
+            Information about the Samurai class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.WhiteMage">
+            <summary>
+            Information about the WhiteMage class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Scholar">
+            <summary>
+            Information about the Scholar class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Astrologian">
+            <summary>
+            Information about the Astrologian class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Bard">
+            <summary>
+            Information about the Bard class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Machinist">
+            <summary>
+            Information about the Machinist class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Dancer">
+            <summary>
+            Information about the Dancer class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.BlackMage">
+            <summary>
+            Information about the BlackMage class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Summoner">
+            <summary>
+            Information about the Summoner class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.RedMage">
+            <summary>
+            Information about the RedMage class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.BlueMage">
+            <summary>
+            Information about the BlueMage class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Carpenter">
+            <summary>
+            Information about the Carpenter class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Blacksmith">
+            <summary>
+            Information about the Blacksmith class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Armorer">
+            <summary>
+            Information about the Armorer class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Goldsmith">
+            <summary>
+            Information about the Goldsmith class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Leatherworker">
+            <summary>
+            Information about the Leatherworker class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Weaver">
+            <summary>
+            Information about the Weaver class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Alchemist">
+            <summary>
+            Information about the Alchemist class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Miner">
+            <summary>
+            Information about the Miner class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Botanist">
+            <summary>
+            Information about the Botanist class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Fisher">
+            <summary>
+            Information about the Fisher class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable.Collectables">
+            <summary>
+            All collectables collected by the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry.Name">
+            <summary>
+            The name of this collectable.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry.ToString">
+            <summary>
+            The string representation of this collectable.
+            </summary>
+            <returns><see cref="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry.Name"/></returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.Gear.CharacterGear">
+            <summary>
+            Container class holding information about a character's equipped gear.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Mainhand">
+            <summary>
+            Information about the characters' weapon. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Offhand">
+            <summary>
+            Information about the characters' shield/offhand. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Head">
+            <summary>
+            Information about the characters' headgear. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Body">
+            <summary>
+            Information about the characters' body gear. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Hands">
+            <summary>
+            Information about the characters' gloves. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Waist">
+            <summary>
+            Information about the characters' waist gear. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Legs">
+            <summary>
+            Information about the characters' pants. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Feet">
+            <summary>
+            Information about the characters' shoes. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Earrings">
+            <summary>
+            Information about the characters' earrings. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Necklace">
+            <summary>
+            Information about the characters' necklace. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Bracelets">
+            <summary>
+            Information about the characters' bracelets. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Ring1">
+            <summary>
+            Information about the characters' first ring. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Ring2">
+            <summary>
+            Information about the characters' second ring. Null if none equipped.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Soulcrystal">
+            <summary>
+            Information about the characters' soul crystal. Null if none equipped.
+            </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.Gear.GearEntry">
+            <summary>
+            Container class holding information about a gear slot.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.ItemDatabaseLink">
+            <summary>
+            Link to this piece's Eorzea DB page.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.ItemName">
+            <summary>
+            Name of this item.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.GlamourDatabaseLink">
+            <summary>
+            Link to the glamoured item's Eorzea DB page.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.GlamourName">
+            <summary>
+            Name of the glamoured item.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.Stain">
+            <summary>
+            Name of the dye applied to this item.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.Materia">
+            <summary>
+            Materia applied to this item.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.CreatorName">
+            <summary>
+            Name of this item's crafter.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.Exists">
+            <summary>
+            Indicating whether the item slot has an item equipped or not.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.GearEntry.GetOptional">
+            <summary>
+            Get this object if the item slot is populated, null if not.
+            </summary>
+            <returns>The <see cref="T:NetStone.Model.Parseables.Character.Gear.GearEntry"/> if the slot is populated, null if not.</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.GearEntry.ToString">
+            <summary>
+            String representation of the gear slot.
+            </summary>
+            <returns>The name of the item.</returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.LodestoneCharacter">
             <summary>
             Container class holding information about a character and facilitating retrieval of further information.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.UInt64)">
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.UInt64)">
             <summary>
             Container class for a parseable character page.
             </summary>
@@ -60,354 +381,205 @@
             <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
             <param name="charId">The ID of the character.</param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Avatar">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Avatar">
             <summary>
             An URI to the avatar of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Bio">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Bio">
             <summary>
             The character bio/description.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.FreeCompany">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.FreeCompany">
             <summary>
             The character FreeCompany info.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.GrandCompany">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GrandCompany">
             <summary>
             The grand company of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.GuardianDeity">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GuardianDeity">
             <summary>
             The guardian deity of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Name">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Name">
             <summary>
             The name of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Nameday">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Nameday">
             <summary>
             The nameday of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Portrait">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Portrait">
             <summary>
             An URI to the avatar of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.PvPTeam">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.PvPTeam">
             <summary>
             The character PvPTeam info.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Server">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Server">
             <summary>
             The server/world of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Title">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Title">
             <summary>
             The title of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Town">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Town">
             <summary>
             The town of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Gear">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Gear">
             <summary>
             The character gear information.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.GetClassJobInfo">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Attributes">
+            <summary>
+            The character attribute information.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetClassJobInfo">
             <summary>
             Fetch more information about this character's classes and jobs(level, exp, unlocked, etc.).
             </summary>
-            <returns><see cref="T:NetStone.Model.Parseables.ClassJob"/> object holding this information.</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob"/> object holding this information.</returns>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.ToString">
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetAchievement">
+            <summary>
+            Fetch more information about this character's unlocked achievements.
+            </summary>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage"/> object holding this information.</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMounts">
+            <summary>
+            Fetch more information about this character's unlocked mounts.
+            </summary>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> object holding this information.</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMinions">
+            <summary>
+            Fetch more information about this character's unlocked minions.
+            </summary>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> object holding this information.</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.ToString">
             <summary>
             String representation of this character.
             </summary>
             <returns>"Name on World"</returns>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Paladin">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Strength">
             <summary>
-            Information about the Paladin class.
+            This characters' Strength value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Warrior">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Dexterity">
             <summary>
-            Information about the Warrior class.
+            This characters' Dexterity value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.DarkKnight">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Vitality">
             <summary>
-            Information about the Dark Knight class.
+            This characters' Vitality value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Gunbreaker">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Intelligence">
             <summary>
-            Information about the Gunbreaker class.
+            This characters' Intelligence value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Monk">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Mind">
             <summary>
-            Information about the Monk class.
+            This characters' Mind value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Dragoon">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.CriticalHitRate">
             <summary>
-            Information about the Dragoon class.
+            This characters' Critical Hit Rate value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Ninja">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Determination">
             <summary>
-            Information about the Ninja class.
+            This characters' Determination value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Samurai">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.DirectHitRate">
             <summary>
-            Information about the Samurai class.
+            This characters' Direct Hit Rate value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.WhiteMage">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Defense">
             <summary>
-            Information about the WhiteMage class.
+            This characters' Defense value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Scholar">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.MagicDefense">
             <summary>
-            Information about the Scholar class.
+            This characters' Magic Defense value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Astrologian">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.AttackPower">
             <summary>
-            Information about the Astrologian class.
+            This characters' Attack Power value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Bard">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.SkillSpeed">
             <summary>
-            Information about the Bard class.
+            This characters' Skill Speed value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Machinist">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.AttackMagicPotency">
             <summary>
-            Information about the Machinist class.
+            This characters' Attack Magic Potency value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Dancer">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.HealingMagicPotency">
             <summary>
-            Information about the Dancer class.
+            This characters' Healing Magic Potency value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.BlackMage">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.SpellSpeed">
             <summary>
-            Information about the BlackMage class.
+            This characters' Spell Speed value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Summoner">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Tenacity">
             <summary>
-            Information about the Summoner class.
+            This characters' Tenacity value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.RedMage">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Piety">
             <summary>
-            Information about the RedMage class.
+            This characters' Piety value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.BlueMage">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Hp">
             <summary>
-            Information about the BlueMage class.
+            This characters' HP value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Carpenter">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCp">
             <summary>
-            Information about the Carpenter class.
+            This characters' MP, GP or CP value. Check the <see cref="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCpParameterName"/> Property to find out which.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Blacksmith">
+        <member name="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCpParameterName">
             <summary>
-            Information about the Blacksmith class.
+            Value indicating which of MP, GP, or CP is indicated by <see cref="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCp"/>.
             </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Armorer">
-            <summary>
-            Information about the Armorer class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Goldsmith">
-            <summary>
-            Information about the Goldsmith class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Leatherworker">
-            <summary>
-            Information about the Leatherworker class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Weaver">
-            <summary>
-            Information about the Weaver class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Alchemist">
-            <summary>
-            Information about the Alchemist class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Miner">
-            <summary>
-            Information about the Miner class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Botanist">
-            <summary>
-            Information about the Botanist class.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.ClassJob.Fisher">
-            <summary>
-            Information about the Fisher class.
-            </summary>
-        </member>
-        <member name="T:NetStone.Model.Parseables.Gear">
-            <summary>
-            Container class holding information about a character's equipped gear.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Mainhand">
-            <summary>
-            Information about the characters' weapon. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Offhand">
-            <summary>
-            Information about the characters' shield/offhand. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Head">
-            <summary>
-            Information about the characters' headgear. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Body">
-            <summary>
-            Information about the characters' body gear. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Hands">
-            <summary>
-            Information about the characters' gloves. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Waist">
-            <summary>
-            Information about the characters' waist gear. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Legs">
-            <summary>
-            Information about the characters' pants. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Feet">
-            <summary>
-            Information about the characters' shoes. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Earrings">
-            <summary>
-            Information about the characters' earrings. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Necklace">
-            <summary>
-            Information about the characters' necklace. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Bracelets">
-            <summary>
-            Information about the characters' bracelets. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Ring1">
-            <summary>
-            Information about the characters' first ring. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Ring2">
-            <summary>
-            Information about the characters' second ring. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Gear.Soulcrystal">
-            <summary>
-            Information about the characters' soul crystal. Null if none equipped.
-            </summary>
-        </member>
-        <member name="T:NetStone.Model.Parseables.GearEntry">
-            <summary>
-            Container class holding information about a gear slot.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.ItemDatabaseLink">
-            <summary>
-            Link to this piece's Eorzea DB page.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.ItemName">
-            <summary>
-            Name of this item.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.GlamourDatabaseLink">
-            <summary>
-            Link to the glamoured item's Eorzea DB page.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.GlamourName">
-            <summary>
-            Name of the glamoured item.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.Stain">
-            <summary>
-            Name of the dye applied to this item.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.Materia">
-            <summary>
-            Materia applied to this item.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.CreatorName">
-            <summary>
-            Name of this item's crafter.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.GearEntry.Exists">
-            <summary>
-            Indicating whether the item slot has an item equipped or not.
-            </summary>
-        </member>
-        <member name="M:NetStone.Model.Parseables.GearEntry.GetOptional">
-            <summary>
-            Get this object if the item slot is populated, null if not.
-            </summary>
-            <returns>The <see cref="T:NetStone.Model.Parseables.GearEntry"/> if the slot is populated, null if not.</returns>
-        </member>
-        <member name="M:NetStone.Model.Parseables.GearEntry.ToString">
-            <summary>
-            String representation of the gear slot.
-            </summary>
-            <returns>The name of the item.</returns>
         </member>
         <member name="T:NetStone.Model.Parseables.IconLayers">
             <summary>

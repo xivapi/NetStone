@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
 
-namespace NetStone.Model.Parseables
+namespace NetStone.Model.Parseables.Character.Achievement
 {
     public class CharacterAchievementEntry : LodestoneParseable
     {

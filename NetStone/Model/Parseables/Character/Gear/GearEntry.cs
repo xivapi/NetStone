@@ -5,7 +5,7 @@ using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions.Model;
 
-namespace NetStone.Model.Parseables
+namespace NetStone.Model.Parseables.Character.Gear
 {
     /// <summary>
     /// Container class holding information about a gear slot.

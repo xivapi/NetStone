@@ -6,13 +6,17 @@ using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
+using NetStone.Model.Parseables.Character.Achievement;
+using NetStone.Model.Parseables.Character.ClassJob;
+using NetStone.Model.Parseables.Character.Collectable;
+using NetStone.Model.Parseables.Character.Gear;
 
-namespace NetStone.Model.Parseables
+namespace NetStone.Model.Parseables.Character
 {
     /// <summary>
     /// Container class holding information about a character and facilitating retrieval of further information.
     /// </summary>
-    public class Character : LodestoneParseable
+    public class LodestoneCharacter : LodestoneParseable
     {
         private readonly LodestoneClient client;
 
@@ -29,7 +33,7 @@ namespace NetStone.Model.Parseables
         /// <param name="rootNode">The root document node of the page.</param>
         /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
         /// <param name="charId">The ID of the character.</param>
-        public Character(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, ulong charId) : base(rootNode)
+        public LodestoneCharacter(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, ulong charId) : base(rootNode)
         {
             this.client = client;
             this.charId = charId;

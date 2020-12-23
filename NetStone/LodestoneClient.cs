@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Model.Parseables;
+using NetStone.Model.Parseables.Character;
+using NetStone.Model.Parseables.Character.Achievement;
+using NetStone.Model.Parseables.Character.ClassJob;
+using NetStone.Model.Parseables.Character.Collectable;
 using NetStone.Model.Parseables.Search;
 using NetStone.Search;
 
@@ -43,7 +47,7 @@ namespace NetStone
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="Character"/> class containing information about the character.</returns>
-        public async Task<Character> GetCharacter(ulong id) => new Character(this, await GetRootNode($"/lodestone/character/{id}"), this.Definitions, id);
+        public async Task<LodestoneCharacter> GetCharacter(ulong id) => new LodestoneCharacter(this, await GetRootNode($"/lodestone/character/{id}"), this.Definitions, id);
 
         /// <summary>
         /// Get a characters' class/job information by its Lodestone ID.

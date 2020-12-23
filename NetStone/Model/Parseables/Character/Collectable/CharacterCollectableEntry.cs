@@ -4,7 +4,7 @@ using System.Text;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
 
-namespace NetStone.Model.Parseables
+namespace NetStone.Model.Parseables.Character.Collectable
 {
     public class CharacterCollectableEntry : LodestoneParseable
     {
