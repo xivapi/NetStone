@@ -107,7 +107,7 @@ namespace NetStone
 
         #endregion
         
-        private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop)
+        private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop, bool treatNotFoundAsNull = false)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             
@@ -124,6 +124,9 @@ namespace NetStone
             }
 
             var response = await this.client.SendAsync(request);
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+                return null;
 
             var doc = new HtmlDocument();
             doc.LoadHtml(await response.Content.ReadAsStringAsync());
