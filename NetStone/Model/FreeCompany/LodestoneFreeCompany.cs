@@ -49,5 +49,7 @@ namespace NetStone.Model.FreeCompany
         public int ActiveMemberCount => int.Parse(Parse(this.fcDefinition.ActiveMemberCount));
 
         public string ActiveState => Parse(this.fcDefinition.Activestate);
+
+        public FreeCompanyEstate Estate => new FreeCompanyEstate(this.RootNode, this.fcDefinition.EstateDefinition).GetOptional();
     }
 }
