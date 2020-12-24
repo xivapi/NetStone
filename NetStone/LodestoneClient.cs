@@ -107,7 +107,7 @@ namespace NetStone
 
         #endregion
         
-        private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop, bool treatNotFoundAsNull = false)
+        private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             

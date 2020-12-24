@@ -14,8 +14,11 @@ namespace NetStone.Test
     {
         private LodestoneClient lodestone;
 
-        private const int TestCharacterId = 9575452; //arc
+        private const string TestCharacterIdFull = "9575452"; //arc
+        private const string TestCharacterIdBare = "9426169";
 
+        private const string TestFreeCompany = "9232379236109629819";
+        
         [SetUp]
         public void Setup()
         {
@@ -28,6 +31,7 @@ namespace NetStone.Test
             Assert.IsNotNull(this.lodestone.Definitions.Character);
             Assert.IsNotNull(this.lodestone.Definitions.ClassJob);
             Assert.IsNotNull(this.lodestone.Definitions.Gear);
+            Assert.IsNotNull(this.lodestone.Definitions.Achievement);
         }
 
         [Test]
@@ -68,19 +72,37 @@ namespace NetStone.Test
         }
 
         [Test]
+        public async Task CheckFreeCompany()
+        {
+            var fc = await this.lodestone.GetFreeCompany(TestFreeCompany);
+            
+            Console.WriteLine(fc.Formed);
+        }
+        
+        [Test]
+        public async Task CheckCharacterBare()
+        {
+            var chara = await this.lodestone.GetCharacter(TestCharacterIdBare);
+            var classjob = await chara.GetClassJobInfo();
+        }
+        
+        [Test]
         public async Task CheckCharacterFull()
         {
-            var chara = await this.lodestone.GetCharacter(TestCharacterId);
+            var chara = await this.lodestone.GetCharacter(TestCharacterIdFull);
 
-            Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan (Primal)");
+            Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
+            Assert.AreEqual(chara.Server, "Leviathan");
             Assert.AreEqual(chara.Name, "Arcane Disgea");
             Assert.AreEqual(chara.Bio, "This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            Assert.AreEqual(chara.GuardianDeity, "Menphina, the Lover");
+            Assert.AreEqual(chara.GuardianDeityName, "Menphina, the Lover");
             Assert.AreEqual(chara.Nameday, "28th Sun of the 6th Astral Moon");
             Assert.AreEqual(chara.Title, "Mammeteer");
-            Assert.AreEqual(chara.Town, "Limsa Lominsa");
+            Assert.AreEqual(chara.TownName, "Limsa Lominsa");
             Assert.True(chara.Avatar != null);
             Assert.True(chara.Portrait != null);
+            
+            Console.WriteLine(chara.GuardianDeityIcon);
 
             Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
             Assert.AreEqual(chara.FreeCompany.Name, "Hell Hath No Fury");
@@ -117,6 +139,24 @@ namespace NetStone.Test
             var res = mount.Collectables;
 
             var minion = await chara.GetMinions();
+        }
+
+        [Test]
+        public async Task CheckCharacterPrivateAchievements()
+        {
+            var chara = await this.lodestone.GetCharacterAchievement("11166211");
+            
+            Assert.False(chara.HasResults);
+        }
+
+        [Test]
+        public async Task CheckCharacterCollectableNotFound()
+        {
+            var mounts = await this.lodestone.GetCharacterMount("0");
+            Assert.IsNull(mounts);
+            
+            var minions = await this.lodestone.GetCharacterMinion("0");
+            Assert.IsNull(minions);
         }
     }
 }
