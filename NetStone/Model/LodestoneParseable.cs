@@ -46,12 +46,12 @@ namespace NetStone.Model
         /// <returns>InnerText of the node.</returns>
         protected string Parse(DefinitionsPack pack)
         {
-            if (pack.Regex != null)
+            if (!string.IsNullOrEmpty(pack.Regex))
             {
                 var res = ParseRegex(pack);
 
                 if (res.Count != 0)
-                    return res[0].Value;
+                    return res[1].Value;
             }
 
             return ParseInnerText(pack);
@@ -197,10 +197,10 @@ namespace NetStone.Model
             return string.IsNullOrEmpty(src) ? null : new Uri(src);
         }
 
-        public DateTime ParseTime(DefinitionsPack pack)
+        protected DateTime ParseTime(DefinitionsPack pack)
         {
-            var res = ParseRegex(pack);
-            return DateTimeOffset.FromUnixTimeSeconds(long.Parse(res[0].Value)).UtcDateTime;
+            var res = Parse(pack);
+            return DateTimeOffset.FromUnixTimeSeconds(long.Parse(res)).UtcDateTime;
         }
     }
 }
