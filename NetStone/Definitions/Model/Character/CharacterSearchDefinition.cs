@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model
+namespace NetStone.Definitions.Model.Character
 {
-    public class CharacterSearchEntryDefinition
+    public class CharacterSearchEntryDefinition : PagedEntryDefinition
     {
         [JsonProperty("AVATAR")] public DefinitionsPack Avatar { get; set; }
 
@@ -22,18 +22,5 @@ namespace NetStone.Definitions.Model
         [JsonProperty("SERVER")] public DefinitionsPack Server { get; set; }
 
         [JsonProperty("ROOT")] public DefinitionsPack Root { get; set; }
-    }
-
-    public class CharacterSearchDefinition : IDefinition
-    {
-        [JsonProperty("ENTRIES_CONTAINER")] public DefinitionsPack EntriesContainer { get; set; }
-        
-        [JsonProperty("ENTRY")] public CharacterSearchEntryDefinition SingleEntry { get; set; }
-
-        [JsonProperty("LIST_NEXT_BUTTON")] public DefinitionsPack ListNextButton { get; set; }
-
-        [JsonProperty("PAGE_INFO")] public DefinitionsPack PageInfo { get; set; }
-        
-        [JsonProperty("NO_RESULTS_FOUND")] public DefinitionsPack NoResultsFound { get; set; }
     }
 }

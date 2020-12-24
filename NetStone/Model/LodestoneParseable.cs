@@ -37,6 +37,17 @@ namespace NetStone.Model
         /// <returns>All ChildNodes.</returns>
         protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => QueryNode(pack)?.ChildNodes.Where(x => x.Name != "#text").ToArray();
 
+        protected HtmlNode[] QueryContainer(PagedDefinition pagedDefinition)
+        {
+            var entryDef = pagedDefinition.Entry.ToObject<PagedEntryDefinition>();
+
+            if (entryDef == null)
+                throw new ArgumentException("Could not get entry definition");
+            
+            return QueryNode(pagedDefinition.Root)
+                ?.QuerySelectorAll(entryDef.Root.Selector).ToArray();
+        }
+        
         protected bool HasNode(DefinitionsPack pack) => QueryNode(pack) != null;
 
         /// <summary>

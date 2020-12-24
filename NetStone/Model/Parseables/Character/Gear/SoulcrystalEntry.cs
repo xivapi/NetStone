@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Gear
 {

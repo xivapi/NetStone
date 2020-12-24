@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model
+namespace NetStone.Definitions.Model.Character
 {
     public class ClassJobBozjaDefinition
     {

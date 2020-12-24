@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.Character;
 
 namespace NetStone.Model.Parseables.Search
@@ -21,9 +22,9 @@ namespace NetStone.Model.Parseables.Search
 
         public string Name => Parse(this.definition.Name);
 
-        public ulong? Id => ParseHrefIdULong(this.definition.Id);
+        public string Id => ParseHrefId(this.definition.Id);
 
-        public async Task<LodestoneCharacter> GetCharacter() => await this.client.GetCharacter(this.Id.Value);
+        public async Task<LodestoneCharacter> GetCharacter() => await this.client.GetCharacter(this.Id);
         
         public override string ToString() => Name;
     }

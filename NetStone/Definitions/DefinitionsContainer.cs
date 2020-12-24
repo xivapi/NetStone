@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Definitions
@@ -22,14 +23,14 @@ namespace NetStone.Definitions
         public CharacterClassJobDefinition ClassJob { get; protected set; }
         public CharacterGearDefinition Gear { get; protected set; }
         public CharacterAttributesDefinition Attributes { get; set; }
-        public CharacterAchievementDefinition Achievement { get; set; }
+        public PagedDefinition Achievement { get; set; }
         public CharacterCollectableDefinition Mount { get; set; }
         public CharacterCollectableDefinition Minion { get; set; }
         
         public FreeCompanyDefinition FreeCompany { get; set; }
         
         // Search
-        public CharacterSearchDefinition CharacterSearch { get; protected set; }
+        public PagedDefinition CharacterSearch { get; protected set; }
         
         #endregion
 

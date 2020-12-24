@@ -8,15 +8,19 @@ using NetStone.Model.Parseables;
 
 namespace NetStone.Model.FreeCompany
 {
-    class LodestoneFreeCompany : LodestoneParseable
+    public class LodestoneFreeCompany : LodestoneParseable
     {
         private readonly LodestoneClient client;
+
         private readonly FreeCompanyDefinition fcDefinition;
         
-        public LodestoneFreeCompany(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer definitions) : base(rootNode)
+        private readonly string id;
+        
+        public LodestoneFreeCompany(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer definitions, string id) : base(rootNode)
         {
             this.client = client;
-            
+            this.id = id;
+
             this.fcDefinition = definitions.FreeCompany;
         }
 
@@ -34,10 +38,16 @@ namespace NetStone.Model.FreeCompany
 
         public string GrandCompany => Parse(this.fcDefinition.GrandCompany);
 
-        public string Rank => Parse(this.fcDefinition.Rank);
+        public int Rank => int.Parse(Parse(this.fcDefinition.Rank));
 
-        public string RankMonthly => Parse(this.fcDefinition.Ranking.Monthly);
+        public int RankingMonthly => int.Parse(Parse(this.fcDefinition.Ranking.Monthly));
         
-        public string RankWeekly => Parse(this.fcDefinition.Ranking.Weekly);
+        public int RankingWeekly => int.Parse(Parse(this.fcDefinition.Ranking.Weekly));
+
+        public string Recruitment => Parse(this.fcDefinition.Recruitment);
+
+        public int ActiveMemberCount => int.Parse(Parse(this.fcDefinition.ActiveMemberCount));
+
+        public string ActiveState => Parse(this.fcDefinition.Activestate);
     }
 }

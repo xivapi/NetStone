@@ -6,35 +6,40 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement
 {
     public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<CharacterAchievementPage>
     {
         private readonly LodestoneClient client;
-        private readonly CharacterAchievementDefinition definition;
         
-        private readonly ulong charId;
+        private readonly PagedDefinition pageDefinition;
+        private readonly CharacterAchievementEntryDefinition entryDefinition;
+        
+        private readonly string charId;
 
-        public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, CharacterAchievementDefinition definition, ulong charId) : base(rootNode)
+        public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition definition, string charId) : base(rootNode)
         {
             this.client = client;
-            this.definition = definition;
             this.charId = charId;
+            
+            this.pageDefinition = definition;
+            this.entryDefinition = definition.Entry.ToObject<CharacterAchievementEntryDefinition>();
         }
 
         public int TotalAchievements
         {
             get
             {
-                var res = ParseRegex(this.definition.TotalAchievements);
+                var res = ParseRegex(this.entryDefinition.TotalAchievements);
                 return int.Parse(res["TotalAchievements"].Value);
             }
         }
 
-        public int AchievementPoints => Int32.Parse(Parse(this.definition.AchievementPoints));
+        public int AchievementPoints => Int32.Parse(Parse(this.entryDefinition.AchievementPoints));
 
-        public bool HasResults => !HasNode(this.definition.NoResultsFound);
+        public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
         private CharacterAchievementEntry[] parsedResults;
         public IEnumerable<CharacterAchievementEntry> Achievements
@@ -53,12 +58,12 @@ namespace NetStone.Model.Parseables.Character.Achievement
 
         private void ParseSearchResults()
         {
-            var nodes = QueryChildNodes(this.definition.List);
+            var nodes = QueryContainer(this.pageDefinition);
 
             this.parsedResults = new CharacterAchievementEntry[nodes.Length];
             for (var i = 0; i < this.parsedResults.Length; i++)
             {
-                this.parsedResults[i] = new CharacterAchievementEntry(this.client, nodes[i], this.definition);
+                this.parsedResults[i] = new CharacterAchievementEntry(this.client, nodes[i], this.entryDefinition);
             }
         }
 
@@ -94,7 +99,7 @@ namespace NetStone.Model.Parseables.Character.Achievement
 
         private void ParsePagesCount()
         {
-            var results = ParseRegex(this.definition.PageInfo);
+            var results = ParseRegex(this.pageDefinition.PageInfo);
 
             this.currentPageVal = int.Parse(results["CurrentPage"].Value);
             this.numPagesVal = int.Parse(results["NumPages"].Value);

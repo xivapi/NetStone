@@ -5,6 +5,7 @@ using System.Text;
 using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 using NetStone.StaticData;
 
 namespace NetStone.Model.Parseables.Character.ClassJob

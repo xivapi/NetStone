@@ -6,6 +6,7 @@ using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.Character.Achievement;
 using NetStone.Model.Parseables.Character.ClassJob;
 using NetStone.Model.Parseables.Character.Collectable;
@@ -20,7 +21,7 @@ namespace NetStone.Model.Parseables.Character
     {
         private readonly LodestoneClient client;
 
-        private readonly ulong charId;
+        private readonly string charId;
 
         private readonly CharacterDefinition charDefinition;
         private readonly CharacterGearDefinition gearDefinition;
@@ -33,7 +34,7 @@ namespace NetStone.Model.Parseables.Character
         /// <param name="rootNode">The root document node of the page.</param>
         /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
         /// <param name="charId">The ID of the character.</param>
-        public LodestoneCharacter(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, ulong charId) : base(rootNode)
+        public LodestoneCharacter(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string charId) : base(rootNode)
         {
             this.client = client;
             this.charId = charId;
@@ -68,12 +69,22 @@ namespace NetStone.Model.Parseables.Character
         /// <summary>
         /// The grand company of the character.
         /// </summary>
-        public string GrandCompany => Parse(this.charDefinition.GrandCompany);
+        public string GrandCompanyName => ParseRegex(this.charDefinition.GrandCompany)["Name"].Value;
+        
+        /// <summary>
+        /// The grand company rank of the character.
+        /// </summary>
+        public string GrandCompanyRank => ParseRegex(this.charDefinition.GrandCompany)["Rank"].Value;
 
         /// <summary>
-        /// The guardian deity of the character.
+        /// The name of the guardian deity of the character.
         /// </summary>
-        public string GuardianDeity => Parse(this.charDefinition.GuardianDeity);
+        public string GuardianDeityName => Parse(this.charDefinition.GuardianDeity.Name);
+        
+        /// <summary>
+        /// The icon of the guardian deity of the character.
+        /// </summary>
+        public Uri GuardianDeityIcon => ParseImageSource(this.charDefinition.GuardianDeity.Icon);
         
         /// <summary>
         /// The name of the character.
@@ -113,7 +124,12 @@ namespace NetStone.Model.Parseables.Character
         /// <summary>
         /// The town of the character.
         /// </summary>
-        public string Town => Parse(this.charDefinition.Town);
+        public string TownName => Parse(this.charDefinition.Town.Name);
+        
+        /// <summary>
+        /// The town of the character.
+        /// </summary>
+        public Uri TownIcon => ParseHref(this.charDefinition.Town.Icon);
 
         /// <summary>
         /// The character gear information.

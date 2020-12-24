@@ -4,6 +4,7 @@ using System.Text;
 using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables
 {
@@ -24,7 +25,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Name of this social group.
         /// </summary>
-        public string Name => Parse(this.definition.Name);
+        public string Name => ParseInnerText(this.definition.Name);
 
         /// <summary>
         /// ID of this social group.

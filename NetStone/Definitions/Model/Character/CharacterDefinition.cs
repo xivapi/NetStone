@@ -1,7 +1,7 @@
 ﻿using NetStone.Model.Parseables;
 using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model
+namespace NetStone.Definitions.Model.Character
 {
     public class CharacterFreeCompany : ICharacterSocialGroupDefinition
     {
@@ -23,6 +23,13 @@ namespace NetStone.Definitions.Model
         IconLayersDefinition IconLayers { get; set; }
     }
 
+    public class NameIconDefinition : IDefinition
+    {
+        [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
+        
+        [JsonProperty("ICON")] public DefinitionsPack Icon { get; set; }
+    }
+
     public class CharacterDefinition : IDefinition
     {
         [JsonProperty("ACTIVE_CLASSJOB")] public DefinitionsPack ActiveClassJob { get; set; }
@@ -37,7 +44,7 @@ namespace NetStone.Definitions.Model
 
         [JsonProperty("GRAND_COMPANY")] public DefinitionsPack GrandCompany { get; set; }
 
-        [JsonProperty("GUARDIAN_DEITY")] public DefinitionsPack GuardianDeity { get; set; }
+        [JsonProperty("GUARDIAN_DEITY")] public NameIconDefinition GuardianDeity { get; set; }
         
         [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
 
@@ -53,6 +60,6 @@ namespace NetStone.Definitions.Model
 
         [JsonProperty("TITLE")] public DefinitionsPack Title { get; set; }
 
-        [JsonProperty("TOWN")] public DefinitionsPack Town { get; set; }
+        [JsonProperty("TOWN")] public NameIconDefinition Town { get; set; }
     }
 }

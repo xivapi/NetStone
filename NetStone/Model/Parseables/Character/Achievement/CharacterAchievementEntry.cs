@@ -4,15 +4,16 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement
 {
     public class CharacterAchievementEntry : LodestoneParseable
     {
         private readonly LodestoneClient client;
-        private readonly CharacterAchievementDefinition definition;
+        private readonly CharacterAchievementEntryDefinition definition;
 
-        public CharacterAchievementEntry(LodestoneClient client, HtmlNode rootNode, CharacterAchievementDefinition definition) : base(rootNode)
+        public CharacterAchievementEntry(LodestoneClient client, HtmlNode rootNode, CharacterAchievementEntryDefinition definition) : base(rootNode)
         {
             this.client = client;
             this.definition = definition;

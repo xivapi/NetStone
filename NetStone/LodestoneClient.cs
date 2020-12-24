@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
+using NetStone.Model.FreeCompany;
 using NetStone.Model.Parseables;
 using NetStone.Model.Parseables.Character;
 using NetStone.Model.Parseables.Character.Achievement;
@@ -42,45 +43,47 @@ namespace NetStone
             Definitions.Reload().GetAwaiter().GetResult();
         }
 
+        #region Character
+
         /// <summary>
         /// Get a character by its Lodestone ID.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
-        /// <returns><see cref="Character"/> class containing information about the character.</returns>
-        public async Task<LodestoneCharacter> GetCharacter(ulong id) => new LodestoneCharacter(this, await GetRootNode($"/lodestone/character/{id}"), this.Definitions, id);
+        /// <returns><see cref="LodestoneCharacter"/> class containing information about the character.</returns>
+        public async Task<LodestoneCharacter> GetCharacter(string id) => new LodestoneCharacter(this, await GetRootNode($"/lodestone/character/{id}/"), this.Definitions, id);
 
         /// <summary>
         /// Get a characters' class/job information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetClassJobInfo()"/>.
+        /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetClassJobInfo()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
-        public async Task<CharacterClassJob> GetCharacterClassJob(ulong id) => new CharacterClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
+        public async Task<CharacterClassJob> GetCharacterClassJob(string id) => new CharacterClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
 
         /// <summary>
         /// Get a characters' unlocked achievement information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetAchievement()"/>.
+        /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetAchievement()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <param name="page">The number of the page that should be fetched.</param>
         /// <returns><see cref="CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
-        public async Task<CharacterAchievementPage> GetCharacterAchievement(ulong id, int page = 1) => new CharacterAchievementPage(this, await GetRootNode($"/lodestone/character/{id}/achievement/?page={page}"), this.Definitions.Achievement, id);
+        public async Task<CharacterAchievementPage> GetCharacterAchievement(string id, int page = 1) => new CharacterAchievementPage(this, await GetRootNode($"/lodestone/character/{id}/achievement/?page={page}"), this.Definitions.Achievement, id);
         
         /// <summary>
         /// Get a characters' unlocked mount information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetMounts()"/>.
+        /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMounts()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' mounts.</returns>
-        public async Task<CharacterCollectable> GetCharacterMount(ulong id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/mount/", UserAgent.Mobile), this.Definitions.Mount);
+        public async Task<CharacterCollectable> GetCharacterMount(string id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/mount/", UserAgent.Mobile), this.Definitions.Mount);
         
         /// <summary>
         /// Get a characters' unlocked minion information by its Lodestone ID.
-        /// You can also get this from the character directly by calling <see cref="Character.GetMinions()"/>.
+        /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMinions()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' minions.</returns>
-        public async Task<CharacterCollectable> GetCharacterMinion(ulong id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/minion/", UserAgent.Mobile), this.Definitions.Minion);
+        public async Task<CharacterCollectable> GetCharacterMinion(string id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/minion/", UserAgent.Mobile), this.Definitions.Minion);
         
         /// <summary>
         /// Search lodestone for a character with the specified query.
@@ -90,6 +93,19 @@ namespace NetStone
         /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
             new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
+        
+        #endregion
+
+        #region FreeCompany
+
+        /// <summary>
+        /// Get a character by its Lodestone ID.
+        /// </summary>
+        /// <param name="id">The ID of the character.</param>
+        /// <returns><see cref="LodestoneFreeCompany"/> class containing information about the character.</returns>
+        public async Task<LodestoneFreeCompany> GetFreeCompany(string id) => new LodestoneFreeCompany(this, await GetRootNode($"/lodestone/freecompany/{id}/"), this.Definitions, id);
+
+        #endregion
         
         private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop)
         {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 using NetStone.Search;
 
 namespace NetStone.Model.Parseables.Search
@@ -12,17 +13,21 @@ namespace NetStone.Model.Parseables.Search
     public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<CharacterSearchPage>
     {
         private readonly LodestoneClient client;
-        private readonly CharacterSearchDefinition definition;
         private readonly CharacterSearchQuery currentQuery;
+        
+        private readonly PagedDefinition pageDefinition;
+        private readonly CharacterSearchEntryDefinition entryDefinition;
 
-        public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, CharacterSearchDefinition definition, CharacterSearchQuery currentQuery) : base(rootNode)
+        public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition, CharacterSearchQuery currentQuery) : base(rootNode)
         {
             this.client = client;
-            this.definition = definition;
             this.currentQuery = currentQuery;
+            
+            this.pageDefinition = pageDefinition;
+            this.entryDefinition = pageDefinition.Entry.ToObject<CharacterSearchEntryDefinition>();
         }
 
-        public bool HasResults => !HasNode(this.definition.NoResultsFound);
+        public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
         private CharacterSearchEntry[] parsedResults;
         public IEnumerable<CharacterSearchEntry> Results
@@ -41,12 +46,12 @@ namespace NetStone.Model.Parseables.Search
 
         private void ParseSearchResults()
         {
-            var container = QueryNode(this.definition.EntriesContainer).QuerySelectorAll(this.definition.SingleEntry.Root.Selector);
+            var container = QueryContainer(this.pageDefinition);
 
-            this.parsedResults = new CharacterSearchEntry[container.Count];
+            this.parsedResults = new CharacterSearchEntry[container.Length];
             for (var i = 0; i < this.parsedResults.Length; i++)
             {
-                this.parsedResults[i] = new CharacterSearchEntry(this.client, container[i], this.definition.SingleEntry);
+                this.parsedResults[i] = new CharacterSearchEntry(this.client, container[i], this.entryDefinition);
             }
         }
 
@@ -82,7 +87,7 @@ namespace NetStone.Model.Parseables.Search
 
         private void ParsePagesCount()
         {
-            var results = ParseRegex(this.definition.PageInfo);
+            var results = ParseRegex(this.pageDefinition.PageInfo);
 
             this.currentPageVal = int.Parse(results["CurrentPage"].Value);
             this.numPagesVal = int.Parse(results["NumPages"].Value);

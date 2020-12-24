@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
+using NetStone.Definitions.Model.Character;
 using NetStone.Definitions.Model.FreeCompany;
 using Newtonsoft.Json;
 
@@ -29,13 +30,13 @@ namespace NetStone.Definitions
             this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
             this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
             this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json");
-            this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json");
+            this.Achievement = await GetDefinition<PagedDefinition>("profile/achievements.json");
             this.Mount = await GetDefinition<CharacterCollectableDefinition>("profile/mount.json");
             this.Minion = await GetDefinition<CharacterCollectableDefinition>("profile/minion.json");
             
             this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
             
-            this.CharacterSearch = await GetDefinition<CharacterSearchDefinition>("search/character.json"); 
+            this.CharacterSearch = await GetDefinition<PagedDefinition>("search/character.json"); 
         }
 
         private async Task<T> GetDefinition<T>(string path) where T : IDefinition
