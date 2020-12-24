@@ -64,7 +64,7 @@ namespace NetStone.Model.Parseables.Character
         /// The character FreeCompany info.
         /// </summary>
         [CanBeNull]
-        public SocialGroup FreeCompany => new SocialGroup(this.RootNode, this.charDefinition.FreeCompany).GetOptional();
+        public SocialGroup FreeCompany => new FreeCompanySocialGroup(this.client, this.RootNode, this.charDefinition.FreeCompany).GetOptional();
 
         /// <summary>
         /// The grand company of the character.
