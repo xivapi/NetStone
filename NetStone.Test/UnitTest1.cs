@@ -79,6 +79,18 @@ namespace NetStone.Test
             Console.WriteLine(fc.Focus.Leveling.IsEnabled);
             
             Console.WriteLine(fc.Formed);
+
+            var members = await fc.GetMembers();
+            
+            do
+            {
+                foreach (var searchResult in members.Members)
+                {
+                    Console.WriteLine($"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
+                }
+
+                members = await members.GetNextPage();
+            } while (members != null);
         }
         
         [Test]

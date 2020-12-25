@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Model.Parseables;
+using NetStone.Model.Parseables.FreeCompany.Members;
 
 namespace NetStone.Model.Parseables.FreeCompany
 {
@@ -15,13 +17,11 @@ namespace NetStone.Model.Parseables.FreeCompany
         private readonly FreeCompanyDefinition fcDefinition;
         private readonly FreeCompanyFocusDefinition focusDefinition;
         private readonly FreeCompanyReputationDefinition reputationDefinition;
-        
-        private readonly string id;
-        
+
         public LodestoneFreeCompany(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer definitions, string id) : base(rootNode)
         {
             this.client = client;
-            this.id = id;
+            this.Id = id;
 
             this.fcDefinition = definitions.FreeCompany;
             this.focusDefinition = definitions.FreeCompanyFocus;
@@ -29,8 +29,8 @@ namespace NetStone.Model.Parseables.FreeCompany
         }
 
         public string Name => Parse(this.fcDefinition.Name);
-        
-        public ulong Id => ParseHrefIdULong(this.fcDefinition.Id).GetValueOrDefault(0);
+
+        public string Id { get; }
 
         public string Slogan => Parse(this.fcDefinition.Slogan);
 
@@ -59,5 +59,7 @@ namespace NetStone.Model.Parseables.FreeCompany
         public FreeCompanyFocus Focus => new FreeCompanyFocus(this.RootNode, this.focusDefinition).GetOptional();
 
         public FreeCompanyReputation Reputation => new FreeCompanyReputation(this.RootNode, this.reputationDefinition);
+
+        public async Task<FreeCompanyMembers> GetMembers() => await this.client.GetFreeCompanyMembers(this.Id);
     }
 }

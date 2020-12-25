@@ -31,6 +31,8 @@ namespace NetStone.Definitions
         public FreeCompanyFocusDefinition FreeCompanyFocus { get; set; }
         public FreeCompanyReputationDefinition FreeCompanyReputation { get; set; }
         
+        public PagedDefinition FreeCompanyMembers { get; set; }
+        
         // Search
         public PagedDefinition CharacterSearch { get; protected set; }
         

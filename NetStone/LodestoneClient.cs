@@ -10,6 +10,7 @@ using NetStone.Model.Parseables.Character.Achievement;
 using NetStone.Model.Parseables.Character.ClassJob;
 using NetStone.Model.Parseables.Character.Collectable;
 using NetStone.Model.Parseables.FreeCompany;
+using NetStone.Model.Parseables.FreeCompany.Members;
 using NetStone.Model.Parseables.Search;
 using NetStone.Search;
 
@@ -117,6 +118,16 @@ namespace NetStone
         public async Task<LodestoneFreeCompany> GetFreeCompany(string id) => await GetParsed(
             $"/lodestone/freecompany/{id}/", node => new LodestoneFreeCompany(this, node, this.Definitions, id));
 
+        /// <summary>
+        /// Get the members of a Free Company
+        /// </summary>
+        /// <param name="id">The ID of the free company.</param>
+        /// <param name="page">The page of members to fetch.</param>
+        /// <returns><see cref="FreeCompanyMembers"/> class containing information about FC members.</returns>
+        public async Task<FreeCompanyMembers> GetFreeCompanyMembers(string id, int page = 1) => await GetParsed(
+            $"/lodestone/freecompany/{id}/member/",
+            node => new FreeCompanyMembers(this, node, this.Definitions.FreeCompanyMembers, id));
+        
         #endregion
         
         /// <summary>
