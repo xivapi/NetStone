@@ -28,6 +28,7 @@ namespace NetStone.Definitions
         public CharacterCollectableDefinition Minion { get; set; }
         
         public FreeCompanyDefinition FreeCompany { get; set; }
+        public FreeCompanyFocusDefinition FreeCompanyFocus { get; set; }
         
         // Search
         public PagedDefinition CharacterSearch { get; protected set; }

@@ -35,6 +35,7 @@ namespace NetStone.Definitions
             this.Minion = await GetDefinition<CharacterCollectableDefinition>("profile/minion.json");
             
             this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
+            this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json");
             
             this.CharacterSearch = await GetDefinition<PagedDefinition>("search/character.json"); 
         }
