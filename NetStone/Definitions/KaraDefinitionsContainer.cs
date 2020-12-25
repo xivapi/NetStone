@@ -36,6 +36,7 @@ namespace NetStone.Definitions
             
             this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
             this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json");
+            this.FreeCompanyReputation = await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json");
             
             this.CharacterSearch = await GetDefinition<PagedDefinition>("search/character.json"); 
         }

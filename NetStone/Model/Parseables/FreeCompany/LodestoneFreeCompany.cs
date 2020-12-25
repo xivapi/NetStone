@@ -14,6 +14,7 @@ namespace NetStone.Model.Parseables.FreeCompany
 
         private readonly FreeCompanyDefinition fcDefinition;
         private readonly FreeCompanyFocusDefinition focusDefinition;
+        private readonly FreeCompanyReputationDefinition reputationDefinition;
         
         private readonly string id;
         
@@ -24,6 +25,7 @@ namespace NetStone.Model.Parseables.FreeCompany
 
             this.fcDefinition = definitions.FreeCompany;
             this.focusDefinition = definitions.FreeCompanyFocus;
+            this.reputationDefinition = definitions.FreeCompanyReputation;
         }
 
         public string Name => Parse(this.fcDefinition.Name);
@@ -55,5 +57,7 @@ namespace NetStone.Model.Parseables.FreeCompany
         public FreeCompanyEstate Estate => new FreeCompanyEstate(this.RootNode, this.fcDefinition.EstateDefinition).GetOptional();
 
         public FreeCompanyFocus Focus => new FreeCompanyFocus(this.RootNode, this.focusDefinition).GetOptional();
+
+        public FreeCompanyReputation Reputation => new FreeCompanyReputation(this.RootNode, this.reputationDefinition);
     }
 }
