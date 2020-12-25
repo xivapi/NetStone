@@ -25,7 +25,7 @@ namespace NetStone.Model.Parseables
         /// <summary>
         /// Name of this social group.
         /// </summary>
-        public string Name => ParseInnerText(this.definition.Name);
+        public string Name => ParseInnerText(this.definition.Name, true);
 
         /// <summary>
         /// ID of this social group.

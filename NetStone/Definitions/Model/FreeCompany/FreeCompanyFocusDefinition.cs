@@ -23,30 +23,30 @@ namespace NetStone.Definitions.Model.FreeCompany
         public DefinitionsPack NOTSPECIFIED { get; set; } 
 
         [JsonProperty("RP")]
-        public FreeCompanyFocusEntryDefinition RP { get; set; } 
+        public FreeCompanyFocusEntryDefinition RolePlay { get; set; } 
 
         [JsonProperty("LEVELING")]
-        public FreeCompanyFocusEntryDefinition LEVELING { get; set; } 
+        public FreeCompanyFocusEntryDefinition Leveling { get; set; } 
 
         [JsonProperty("CASUAL")]
-        public FreeCompanyFocusEntryDefinition CASUAL { get; set; } 
+        public FreeCompanyFocusEntryDefinition Casual { get; set; } 
 
         [JsonProperty("HARDCORE")]
-        public FreeCompanyFocusEntryDefinition HARDCORE { get; set; } 
+        public FreeCompanyFocusEntryDefinition Hardcore { get; set; } 
 
         [JsonProperty("DUNGEONS")]
-        public FreeCompanyFocusEntryDefinition DUNGEONS { get; set; } 
+        public FreeCompanyFocusEntryDefinition Dungeons { get; set; } 
 
         [JsonProperty("GUILDHESTS")]
-        public FreeCompanyFocusEntryDefinition GUILDHESTS { get; set; } 
+        public FreeCompanyFocusEntryDefinition Guildhests { get; set; } 
 
         [JsonProperty("TRIALS")]
-        public FreeCompanyFocusEntryDefinition TRIALS { get; set; } 
+        public FreeCompanyFocusEntryDefinition Trials { get; set; } 
 
         [JsonProperty("RAIDS")]
-        public FreeCompanyFocusEntryDefinition RAIDS { get; set; } 
+        public FreeCompanyFocusEntryDefinition Raids { get; set; } 
 
         [JsonProperty("PVP")]
-        public FreeCompanyFocusEntryDefinition PVP { get; set; } 
+        public FreeCompanyFocusEntryDefinition PvP { get; set; } 
     }
 }

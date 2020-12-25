@@ -13,6 +13,7 @@ namespace NetStone.Model.Parseables.FreeCompany
         private readonly LodestoneClient client;
 
         private readonly FreeCompanyDefinition fcDefinition;
+        private readonly FreeCompanyFocusDefinition focusDefinition;
         
         private readonly string id;
         
@@ -22,6 +23,7 @@ namespace NetStone.Model.Parseables.FreeCompany
             this.id = id;
 
             this.fcDefinition = definitions.FreeCompany;
+            this.focusDefinition = definitions.FreeCompanyFocus;
         }
 
         public string Name => Parse(this.fcDefinition.Name);
@@ -51,5 +53,7 @@ namespace NetStone.Model.Parseables.FreeCompany
         public string ActiveState => Parse(this.fcDefinition.Activestate);
 
         public FreeCompanyEstate Estate => new FreeCompanyEstate(this.RootNode, this.fcDefinition.EstateDefinition).GetOptional();
+
+        public FreeCompanyFocus Focus => new FreeCompanyFocus(this.RootNode, this.focusDefinition).GetOptional();
     }
 }

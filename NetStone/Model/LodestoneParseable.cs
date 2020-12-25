@@ -61,6 +61,9 @@ namespace NetStone.Model
             {
                 var res = ParseRegex(pack);
 
+                if (res == null)
+                    return null;
+                
                 if (res.Count != 0)
                     return res[1].Value;
             }
@@ -68,10 +71,12 @@ namespace NetStone.Model
             return ParseInnerText(pack);
         }
 
-        protected string ParseInnerText(DefinitionsPack pack)
+        protected string ParseInnerText(DefinitionsPack pack, bool noAttribute = false)
         {
             var node = QueryNode(pack);
-            var text = node?.InnerText;
+            
+            // Handle default attribute parsing
+            var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute ? ParseAttribute(pack) : node?.InnerText;
 
             return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
         }

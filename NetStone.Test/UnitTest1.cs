@@ -76,6 +76,8 @@ namespace NetStone.Test
         {
             var fc = await this.lodestone.GetFreeCompany(TestFreeCompany);
             
+            Console.WriteLine(fc.Focus.Leveling.IsEnabled);
+            
             Console.WriteLine(fc.Formed);
         }
         
