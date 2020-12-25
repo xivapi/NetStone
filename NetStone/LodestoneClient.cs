@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
+using NetStone.Model;
 using NetStone.Model.FreeCompany;
 using NetStone.Model.Parseables;
 using NetStone.Model.Parseables.Character;
@@ -50,7 +51,8 @@ namespace NetStone
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="LodestoneCharacter"/> class containing information about the character.</returns>
-        public async Task<LodestoneCharacter> GetCharacter(string id) => new LodestoneCharacter(this, await GetRootNode($"/lodestone/character/{id}/"), this.Definitions, id);
+        public async Task<LodestoneCharacter> GetCharacter(string id) => await GetParsed($"/lodestone/character/{id}/",
+            node => new LodestoneCharacter(this, node, this.Definitions, id));
 
         /// <summary>
         /// Get a characters' class/job information by its Lodestone ID.
@@ -58,7 +60,8 @@ namespace NetStone
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
-        public async Task<CharacterClassJob> GetCharacterClassJob(string id) => new CharacterClassJob(await GetRootNode($"/lodestone/character/{id}/class_job/"), this.Definitions.ClassJob);
+        public async Task<CharacterClassJob> GetCharacterClassJob(string id) => await GetParsed(
+            $"/lodestone/character/{id}/class_job/", node => new CharacterClassJob(node, this.Definitions.ClassJob));
 
         /// <summary>
         /// Get a characters' unlocked achievement information by its Lodestone ID.
@@ -67,24 +70,32 @@ namespace NetStone
         /// <param name="id">The ID of the character.</param>
         /// <param name="page">The number of the page that should be fetched.</param>
         /// <returns><see cref="CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
-        public async Task<CharacterAchievementPage> GetCharacterAchievement(string id, int page = 1) => new CharacterAchievementPage(this, await GetRootNode($"/lodestone/character/{id}/achievement/?page={page}"), this.Definitions.Achievement, id);
-        
+        public async Task<CharacterAchievementPage> GetCharacterAchievement(string id, int page = 1) => await GetParsed(
+            $"/lodestone/character/{id}/achievement/?page={page}",
+            node => new CharacterAchievementPage(this, node, this.Definitions.Achievement, id));
+
         /// <summary>
         /// Get a characters' unlocked mount information by its Lodestone ID.
         /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMounts()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' mounts.</returns>
-        public async Task<CharacterCollectable> GetCharacterMount(string id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/mount/", UserAgent.Mobile), this.Definitions.Mount);
-        
+        public async Task<CharacterCollectable> GetCharacterMount(string id) => await GetParsed(
+            $"/lodestone/character/{id}/mount/",
+            node => new CharacterCollectable(node, this.Definitions.Mount),
+            UserAgent.Mobile);
+
         /// <summary>
         /// Get a characters' unlocked minion information by its Lodestone ID.
         /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMinions()"/>.
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' minions.</returns>
-        public async Task<CharacterCollectable> GetCharacterMinion(string id) => new CharacterCollectable(await GetRootNode($"/lodestone/character/{id}/minion/", UserAgent.Mobile), this.Definitions.Minion);
-        
+        public async Task<CharacterCollectable> GetCharacterMinion(string id) => await GetParsed(
+            $"/lodestone/character/{id}/minion/",
+            node => new CharacterCollectable(node, this.Definitions.Minion),
+            UserAgent.Mobile);
+
         /// <summary>
         /// Search lodestone for a character with the specified query.
         /// </summary>
@@ -92,8 +103,9 @@ namespace NetStone
         /// <param name="page">The page of search results to fetch.</param>
         /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
         public async Task<CharacterSearchPage> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
-            new CharacterSearchPage(this, await GetRootNode($"/lodestone/character/{query.BuildQueryString()}&page={page}"), this.Definitions.CharacterSearch, query);
-        
+            await GetParsed($"/lodestone/character/{query.BuildQueryString()}&page={page}",
+                node => new CharacterSearchPage(this, node, this.Definitions.CharacterSearch, query));
+
         #endregion
 
         #region FreeCompany
@@ -103,11 +115,20 @@ namespace NetStone
         /// </summary>
         /// <param name="id">The ID of the character.</param>
         /// <returns><see cref="LodestoneFreeCompany"/> class containing information about the character.</returns>
-        public async Task<LodestoneFreeCompany> GetFreeCompany(string id) => new LodestoneFreeCompany(this, await GetRootNode($"/lodestone/freecompany/{id}/"), this.Definitions, id);
+        public async Task<LodestoneFreeCompany> GetFreeCompany(string id) => await GetParsed(
+            $"/lodestone/freecompany/{id}/", node => new LodestoneFreeCompany(this, node, this.Definitions, id));
 
         #endregion
         
-        private async Task<HtmlNode> GetRootNode(string url, UserAgent agent = UserAgent.Desktop)
+        /// <summary>
+        /// Get the instantiated LodestoneParseable if the request succeeded, or null in case of StatusCode.NotFound.
+        /// </summary>
+        /// <typeparam name="T">The LodestoneParseable descendant to instantiate.</typeparam>
+        /// <param name="url">The URL to fetch.</param>
+        /// <param name="createParseable">Func creating the LodestoneParseable.</param>
+        /// <param name="agent">The user agent to use for the request.</param>
+        /// <returns>The instantiated LodestoneParseable in case of success.</returns>
+        private async Task<T> GetParsed<T>(string url, Func<HtmlNode, T> createParseable, UserAgent agent = UserAgent.Desktop) where T: LodestoneParseable
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             
@@ -131,7 +152,7 @@ namespace NetStone
             var doc = new HtmlDocument();
             doc.LoadHtml(await response.Content.ReadAsStringAsync());
 
-            return doc.DocumentNode;
+            return createParseable.Invoke(doc.DocumentNode);
         }
 
         public void Dispose()
