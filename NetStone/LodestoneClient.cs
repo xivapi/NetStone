@@ -138,7 +138,7 @@ namespace NetStone
                     request.Headers.UserAgent.ParseAdd(this.Definitions.Meta.UserAgentDesktop);
                     break;
                 case UserAgent.Mobile:
-                    request.Headers.UserAgent.ParseAdd("Mozilla/5.0 (iPhone; CPU OS 10_15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Mobile/14E304 Safari/605.1.15");
+                    request.Headers.UserAgent.ParseAdd(this.Definitions.Meta.UserAgentMobile);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(agent), agent, null);
