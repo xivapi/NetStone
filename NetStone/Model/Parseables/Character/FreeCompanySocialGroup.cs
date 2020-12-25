@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model.Character;
-using NetStone.Model.FreeCompany;
+using NetStone.Model.Parseables.FreeCompany;
 
 namespace NetStone.Model.Parseables.Character
 {

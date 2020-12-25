@@ -4,7 +4,7 @@ using System.Text;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model.FreeCompany;
 
-namespace NetStone.Model.FreeCompany
+namespace NetStone.Model.Parseables.FreeCompany
 {
     public class FreeCompanyEstate : LodestoneParseable, IOptionalParseable<FreeCompanyEstate>
     {

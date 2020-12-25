@@ -6,7 +6,7 @@ using NetStone.Definitions;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Model.Parseables;
 
-namespace NetStone.Model.FreeCompany
+namespace NetStone.Model.Parseables.FreeCompany
 {
     public class LodestoneFreeCompany : LodestoneParseable
     {

@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Model;
-using NetStone.Model.FreeCompany;
-using NetStone.Model.Parseables;
 using NetStone.Model.Parseables.Character;
 using NetStone.Model.Parseables.Character.Achievement;
 using NetStone.Model.Parseables.Character.ClassJob;
 using NetStone.Model.Parseables.Character.Collectable;
+using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Model.Parseables.Search;
 using NetStone.Search;
 
