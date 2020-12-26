@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using NetStone.StaticData;
 
-namespace NetStone.Search
+namespace NetStone.Search.Character
 {
     public class CharacterSearchQuery
     {

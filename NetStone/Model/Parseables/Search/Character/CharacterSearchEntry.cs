@@ -7,7 +7,7 @@ using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.Character;
 
-namespace NetStone.Model.Parseables.Search
+namespace NetStone.Model.Parseables.Search.Character
 {
     public class CharacterSearchEntry : LodestoneParseable
     {

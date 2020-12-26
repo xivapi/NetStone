@@ -7,8 +7,9 @@ using NetStone.Definitions;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
 using NetStone.Search;
+using NetStone.Search.Character;
 
-namespace NetStone.Model.Parseables.Search
+namespace NetStone.Model.Parseables.Search.Character
 {
     public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<CharacterSearchPage>
     {
