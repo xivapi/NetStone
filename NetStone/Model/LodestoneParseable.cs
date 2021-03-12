@@ -17,6 +17,7 @@ namespace NetStone.Model
     {
         protected readonly HtmlNode RootNode;
 
+        protected LodestoneParseable(){ }
         protected LodestoneParseable(HtmlNode rootNode)
         {
             this.RootNode = rootNode;

@@ -5,7 +5,7 @@ using NetStone.StaticData;
 
 namespace NetStone.Search.Character
 {
-    public class CharacterSearchQuery
+    public class CharacterSearchQuery : ISearchQuery
     {
         public string CharacterName { get; set; }
         

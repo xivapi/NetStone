@@ -5,7 +5,7 @@ using NetStone.StaticData;
 
 namespace NetStone.Search.FreeCompany
 {
-    public class FreeCompanySearchQuery
+    public class FreeCompanySearchQuery : ISearchQuery
     {
         public string Name { get; set; }
         
@@ -37,6 +37,10 @@ namespace NetStone.Search.FreeCompany
 
             if (!string.IsNullOrEmpty(Name))
                 query.Append($"?q={Name}");
+
+            
+            if (IsCommunityFinderRecruiting)
+                query.Append("&cf_public=1");
 
             
             if (!string.IsNullOrEmpty(World))

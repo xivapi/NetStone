@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using NetStone;
 using NetStone.Model.Parseables.Search;
 using NetStone.Search;
+    using NetStone.Search.Character;
 using NetStone.StaticData;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
