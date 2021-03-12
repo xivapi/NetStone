@@ -10,7 +10,7 @@ namespace NetStone.Definitions
 {
     public class KaraDefinitionsContainer : DefinitionsContainer
     {
-        private const string DefinitionRepoBase = "https://raw.githubusercontent.com/karashiiro/lodestone-css-selectors/main/";
+        private const string DefinitionRepoBase = "https://raw.githubusercontent.com/xivapi/lodestone-css-selectors/main/";
 
         private readonly HttpClient client;
 
