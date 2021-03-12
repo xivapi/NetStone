@@ -13,8 +13,10 @@ using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
 using NetStone.Model.Parseables.Search;
 using NetStone.Model.Parseables.Search.Character;
+using NetStone.Model.Parseables.Search.FreeCompany;
 using NetStone.Search;
 using NetStone.Search.Character;
+using NetStone.Search.FreeCompany;
 
 namespace NetStone
 {
@@ -42,7 +44,7 @@ namespace NetStone
                 BaseAddress = new Uri(Constants.LodestoneBase)
             };
 
-            Definitions = new KaraDefinitionsContainer();
+            Definitions = new XivApiDefinitionsContainer();
             Definitions.Reload().GetAwaiter().GetResult();
         }
 
@@ -129,6 +131,16 @@ namespace NetStone
         public async Task<FreeCompanyMembers> GetFreeCompanyMembers(string id, int page = 1) => await GetParsed(
             $"/lodestone/freecompany/{id}/member/",
             node => new FreeCompanyMembers(this, node, this.Definitions.FreeCompanyMembers, id));
+        
+        /// <summary>
+        /// Search lodestone for a free company with the specified query.
+        /// </summary>
+        /// <param name="query"><see cref="FreeCompanySearchPage"/> object detailing search parameters.</param>
+        /// <param name="page">The page of search results to fetch.</param>
+        /// <returns><see cref="FreeCompanySearchPage"/> containing search results.</returns>
+        public async Task<FreeCompanySearchPage> SearchFreeCompany(FreeCompanySearchQuery query, int page = 1) =>
+            await GetParsed($"/lodestone/freecompany/{query.BuildQueryString()}&page={page}",
+                node => new FreeCompanySearchPage(this, node, this.Definitions.CharacterSearch, query));
         
         #endregion
         

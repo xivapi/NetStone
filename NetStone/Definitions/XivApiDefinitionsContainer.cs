@@ -8,13 +8,13 @@ using Newtonsoft.Json;
 
 namespace NetStone.Definitions
 {
-    public class KaraDefinitionsContainer : DefinitionsContainer
+    public class XivApiDefinitionsContainer : DefinitionsContainer
     {
         private const string DefinitionRepoBase = "https://raw.githubusercontent.com/xivapi/lodestone-css-selectors/main/";
 
         private readonly HttpClient client;
 
-        public KaraDefinitionsContainer()
+        public XivApiDefinitionsContainer()
         {
             this.client = new HttpClient
             {
