@@ -26,7 +26,7 @@ namespace NetStone
     public class LodestoneClient : IDisposable
     {
         //TODO: Switch to URLs in meta.json
-        
+
         /// <summary>
         /// Container holding information about the current Lodestone layout, needed to parse responses.
         /// </summary>
@@ -131,7 +131,7 @@ namespace NetStone
         public async Task<FreeCompanyMembers> GetFreeCompanyMembers(string id, int page = 1) => await GetParsed(
             $"/lodestone/freecompany/{id}/member/",
             node => new FreeCompanyMembers(this, node, this.Definitions.FreeCompanyMembers, id));
-        
+
         /// <summary>
         /// Search lodestone for a free company with the specified query.
         /// </summary>
@@ -140,10 +140,10 @@ namespace NetStone
         /// <returns><see cref="FreeCompanySearchPage"/> containing search results.</returns>
         public async Task<FreeCompanySearchPage> SearchFreeCompany(FreeCompanySearchQuery query, int page = 1) =>
             await GetParsed($"/lodestone/freecompany/{query.BuildQueryString()}&page={page}",
-                node => new FreeCompanySearchPage(this, node, this.Definitions.CharacterSearch, query));
-        
+                node => new FreeCompanySearchPage(this, node, this.Definitions.FreeCompanySearch, query));
+
         #endregion
-        
+
         /// <summary>
         /// Get the instantiated LodestoneParseable if the request succeeded, or null in case of StatusCode.NotFound.
         /// </summary>
@@ -155,7 +155,7 @@ namespace NetStone
         private async Task<T> GetParsed<T>(string url, Func<HtmlNode, T> createParseable, UserAgent agent = UserAgent.Desktop) where T: LodestoneParseable
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-            
+
             switch (agent)
             {
                 case UserAgent.Desktop:

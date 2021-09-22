@@ -17,7 +17,7 @@ namespace NetStone.Definitions
 
         // Meta
         public MetaDefinition Meta { get; protected set; }
-        
+
         // Entities
         public CharacterDefinition Character { get; protected set; }
         public CharacterClassJobDefinition ClassJob { get; protected set; }
@@ -26,16 +26,18 @@ namespace NetStone.Definitions
         public PagedDefinition Achievement { get; set; }
         public CharacterCollectableDefinition Mount { get; set; }
         public CharacterCollectableDefinition Minion { get; set; }
-        
+
         public FreeCompanyDefinition FreeCompany { get; set; }
         public FreeCompanyFocusDefinition FreeCompanyFocus { get; set; }
         public FreeCompanyReputationDefinition FreeCompanyReputation { get; set; }
-        
+
         public PagedDefinition FreeCompanyMembers { get; set; }
-        
+
         // Search
         public PagedDefinition CharacterSearch { get; protected set; }
-        
+
+        public PagedDefinition FreeCompanySearch { get; protected set; }
+
         #endregion
 
         public abstract Task Reload();

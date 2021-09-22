@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
+using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Model.Parseables.Character;
 
 namespace NetStone.Model.Parseables.Search.FreeCompany
@@ -25,7 +26,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
         public string Id => ParseHrefId(this.definition.Id);
 
         public async Task<LodestoneCharacter> GetCharacter() => await this.client.GetCharacter(this.Id);
-        
+
         public override string ToString() => Name;
     }
 }

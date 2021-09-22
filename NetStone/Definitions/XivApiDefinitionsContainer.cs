@@ -25,7 +25,7 @@ namespace NetStone.Definitions
         public override async Task Reload()
         {
             this.Meta = await GetDefinition<MetaDefinition>("meta.json");
-            
+
             this.Character = await GetDefinition<CharacterDefinition>("profile/character.json");
             this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
             this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
@@ -33,14 +33,15 @@ namespace NetStone.Definitions
             this.Achievement = await GetDefinition<PagedDefinition>("profile/achievements.json");
             this.Mount = await GetDefinition<CharacterCollectableDefinition>("profile/mount.json");
             this.Minion = await GetDefinition<CharacterCollectableDefinition>("profile/minion.json");
-            
+
             this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
             this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json");
             this.FreeCompanyReputation = await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json");
 
             this.FreeCompanyMembers = await GetDefinition<PagedDefinition>("freecompany/members.json");
-            
-            this.CharacterSearch = await GetDefinition<PagedDefinition>("search/character.json"); 
+
+            this.CharacterSearch = await GetDefinition<PagedDefinition>("search/character.json");
+            this.FreeCompanySearch = await GetDefinition<PagedDefinition>("search/freecompany.json");
         }
 
         private async Task<T> GetDefinition<T>(string path) where T : IDefinition

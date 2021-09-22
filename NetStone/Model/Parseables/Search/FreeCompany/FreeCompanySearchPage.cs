@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
+using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Search.FreeCompany;
 
 namespace NetStone.Model.Parseables.Search.FreeCompany
@@ -13,7 +14,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
     {
         private readonly LodestoneClient client;
         private readonly FreeCompanySearchQuery currentQuery;
-        
+
         private readonly PagedDefinition pageDefinition;
         private readonly FreeCompanySearchEntryDefinition entryDefinition;
 
@@ -21,7 +22,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
         {
             this.client = client;
             this.currentQuery = currentQuery;
-            
+
             this.pageDefinition = pageDefinition;
             this.entryDefinition = pageDefinition.Entry.ToObject<FreeCompanySearchEntryDefinition>();
         }
@@ -34,8 +35,8 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
             get
             {
                 if (!HasResults)
-                    return new FreeCompanySearchEntry[0];
-                
+                    return Array.Empty<FreeCompanySearchEntry>();
+
                 if (this.parsedResults == null)
                     ParseSearchResults();
 
@@ -61,7 +62,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
             {
                 if (!HasResults)
                     return 0;
-                
+
                 if (!this.currentPageVal.HasValue)
                     ParsePagesCount();
 
@@ -76,7 +77,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
             {
                 if (!HasResults)
                     return 0;
-                
+
                 if (!this.numPagesVal.HasValue)
                     ParsePagesCount();
 
@@ -91,12 +92,12 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
             this.currentPageVal = int.Parse(results["CurrentPage"].Value);
             this.numPagesVal = int.Parse(results["NumPages"].Value);
         }
-        
+
         public async Task<FreeCompanySearchPage> GetNextPage()
         {
             if (!HasResults)
                 return null;
-            
+
             if (CurrentPage == NumPages)
                 return null;
 
