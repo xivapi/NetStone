@@ -1,0 +1,6 @@
+[submodule "lib/lodestone-data-exports"]
+	path = lib/lodestone-data-exports
+	url = https://github.com/karashiiro/lodestone-data-exports
+[submodule "lib/flatbuffers"]
+	path = lib/flatbuffers
+	url = https://github.com/google/flatbuffers.git
