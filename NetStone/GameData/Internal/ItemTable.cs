@@ -19,7 +19,7 @@ public struct ItemTable : IFlatbufferObject
   public void __init(int _i, ByteBuffer _bb) { __p = new Table(_i, _bb); }
   public ItemTable __assign(int _i, ByteBuffer _bb) { __init(_i, _bb); return this; }
 
-  public FFXIV.Item? Items(int j) { int o = __p.__offset(4); return o != 0 ? (FFXIV.Item?)(new FFXIV.Item()).__assign(__p.__indirect(__p.__vector(o) + j * 4), __p.bb) : null; }
+  public readonly FFXIV.Item? Items(int j) { int o = __p.__offset(4); return o != 0 ? (FFXIV.Item?)(new FFXIV.Item()).__assign(__p.__indirect(__p.__vector(o) + j * 4), __p.bb) : null; }
   public int ItemsLength { get { int o = __p.__offset(4); return o != 0 ? __p.__vector_len(o) : 0; } }
   public FFXIV.Item? ItemsByKey(uint key) { int o = __p.__offset(4); return o != 0 ? FFXIV.Item.__lookup_by_key(__p.__vector(o), key, __p.bb) : null; }
 

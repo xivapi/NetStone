@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using NetStone;
 using NetStone.Model.Parseables.Search;
@@ -26,6 +27,7 @@ namespace NetStone.Test
         public void Setup()
         {
             this.lodestone = new LodestoneClient();
+            this.lodestone.LoadGameData(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
         }
 
         [Test]

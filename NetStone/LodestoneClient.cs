@@ -1,9 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using FFXIV;
 using HtmlAgilityPack;
 using NetStone.Definitions;
+using NetStone.GameData;
 using NetStone.Model;
 using NetStone.Model.Parseables.Character;
 using NetStone.Model.Parseables.Character.Achievement;
@@ -11,10 +14,8 @@ using NetStone.Model.Parseables.Character.ClassJob;
 using NetStone.Model.Parseables.Character.Collectable;
 using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
-using NetStone.Model.Parseables.Search;
 using NetStone.Model.Parseables.Search.Character;
 using NetStone.Model.Parseables.Search.FreeCompany;
-using NetStone.Search;
 using NetStone.Search.Character;
 using NetStone.Search.FreeCompany;
 
@@ -34,6 +35,8 @@ namespace NetStone
 
         private readonly HttpClient client;
 
+        private GameDataProvider? gameData;
+
         /// <summary>
         /// Initialize a new Lodestone client with default options.
         /// </summary>
@@ -46,6 +49,15 @@ namespace NetStone
 
             Definitions = new XivApiDefinitionsContainer();
             Definitions.Reload().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Load serialized game data.
+        /// </summary>
+        /// <param name="directory">The directory to load game data from.</param>
+        public void LoadGameData(DirectoryInfo directory)
+        {
+            gameData = GameDataProvider.Load(directory);
         }
 
         #region Character
