@@ -5,6 +5,7 @@ using HtmlAgilityPack;
 using JetBrains.Annotations;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
+using NetStone.GameData;
 
 namespace NetStone.Model.Parseables.Character.Gear
 {
@@ -13,10 +14,12 @@ namespace NetStone.Model.Parseables.Character.Gear
     /// </summary>
     public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     {
+        private readonly LodestoneClient client;
         private readonly GearEntryDefinition definition;
 
-        public GearEntry(HtmlNode rootNode, GearEntryDefinition definition) : base(rootNode)
+        public GearEntry(LodestoneClient client, HtmlNode rootNode, GearEntryDefinition definition) : base(rootNode)
         {
+            this.client = client;
             this.definition = definition;
         }
 
@@ -68,6 +71,11 @@ namespace NetStone.Model.Parseables.Character.Gear
         /// Indicating whether the item slot has an item equipped or not.
         /// </summary>
         public bool Exists => HasNode(this.definition.Name);
+
+        public NamedGameData? GetGameData()
+        {
+            return !Exists ? null : client.Data?.GetItem(ItemName);
+        }
 
         /// <summary>
         /// String representation of the gear slot.

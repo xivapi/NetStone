@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FFXIV;
 using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.GameData;
@@ -33,9 +32,9 @@ namespace NetStone
         /// </summary>
         public DefinitionsContainer Definitions { get; }
 
-        private readonly HttpClient client;
+        internal GameDataProvider? Data { get; set; }
 
-        private GameDataProvider? gameData;
+        private readonly HttpClient client;
 
         /// <summary>
         /// Initialize a new Lodestone client with default options.
@@ -57,7 +56,7 @@ namespace NetStone
         /// <param name="directory">The directory to load game data from.</param>
         public void LoadGameData(DirectoryInfo directory)
         {
-            gameData = GameDataProvider.Load(directory);
+            Data = GameDataProvider.Load(directory);
         }
 
         #region Character

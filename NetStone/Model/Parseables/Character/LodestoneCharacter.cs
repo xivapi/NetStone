@@ -70,7 +70,7 @@ namespace NetStone.Model.Parseables.Character
         /// The grand company of the character.
         /// </summary>
         public string GrandCompanyName => ParseRegex(this.charDefinition.GrandCompany)["Name"].Value;
-        
+
         /// <summary>
         /// The grand company rank of the character.
         /// </summary>
@@ -80,12 +80,12 @@ namespace NetStone.Model.Parseables.Character
         /// The name of the guardian deity of the character.
         /// </summary>
         public string GuardianDeityName => Parse(this.charDefinition.GuardianDeity.Name);
-        
+
         /// <summary>
         /// The icon of the guardian deity of the character.
         /// </summary>
         public Uri GuardianDeityIcon => ParseImageSource(this.charDefinition.GuardianDeity.Icon);
-        
+
         /// <summary>
         /// The name of the character.
         /// </summary>
@@ -125,7 +125,7 @@ namespace NetStone.Model.Parseables.Character
         /// The town of the character.
         /// </summary>
         public string TownName => Parse(this.charDefinition.Town.Name);
-        
+
         /// <summary>
         /// The town of the character.
         /// </summary>
@@ -134,12 +134,12 @@ namespace NetStone.Model.Parseables.Character
         /// <summary>
         /// The character gear information.
         /// </summary>
-        public CharacterGear Gear => new CharacterGear(this.RootNode, this.gearDefinition);
+        public CharacterGear Gear => new(this.client, this.RootNode, this.gearDefinition);
 
         /// <summary>
         /// The character attribute information.
         /// </summary>
-        public CharacterAttributes Attributes => new CharacterAttributes(this.RootNode, this.attributesDefinition);
+        public CharacterAttributes Attributes => new(this.RootNode, this.attributesDefinition);
 
         #endregion
 
@@ -148,19 +148,19 @@ namespace NetStone.Model.Parseables.Character
         /// </summary>
         /// <returns><see cref="CharacterClassJob"/> object holding this information.</returns>
         public async Task<CharacterClassJob> GetClassJobInfo() => await this.client.GetCharacterClassJob(this.charId);
-        
+
         /// <summary>
         /// Fetch more information about this character's unlocked achievements.
         /// </summary>
         /// <returns><see cref="CharacterAchievementPage"/> object holding this information.</returns>
         public async Task<CharacterAchievementPage> GetAchievement() => await this.client.GetCharacterAchievement(this.charId);
-        
+
         /// <summary>
         /// Fetch more information about this character's unlocked mounts.
         /// </summary>
         /// <returns><see cref="CharacterCollectable"/> object holding this information.</returns>
         public async Task<CharacterCollectable> GetMounts() => await this.client.GetCharacterMount(this.charId);
-        
+
         /// <summary>
         /// Fetch more information about this character's unlocked minions.
         /// </summary>

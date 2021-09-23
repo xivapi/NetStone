@@ -16,7 +16,7 @@ namespace NetStone.GameData
 
         public NamedGameData? GetItem(string name)
         {
-            var lower = name.ToLower();
+            var lower = name.ToLower().Replace("", string.Empty);
 
             for (var i = 0; i < items.ItemsLength; i++)
             {
