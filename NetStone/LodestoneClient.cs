@@ -32,31 +32,24 @@ namespace NetStone
         /// </summary>
         public DefinitionsContainer Definitions { get; }
 
-        internal GameDataProvider? Data { get; set; }
+        public IGameDataProvider? Data { get; set; }
 
         private readonly HttpClient client;
 
         /// <summary>
         /// Initialize a new Lodestone client with default options.
         /// </summary>
-        public LodestoneClient()
+        public LodestoneClient(IGameDataProvider? gameData = null, string lodestoneBaseAddress = Constants.LodestoneBase)
         {
             this.client = new HttpClient
             {
-                BaseAddress = new Uri(Constants.LodestoneBase)
+                BaseAddress = new Uri(lodestoneBaseAddress)
             };
 
             Definitions = new XivApiDefinitionsContainer();
             Definitions.Reload().GetAwaiter().GetResult();
-        }
 
-        /// <summary>
-        /// Load serialized game data.
-        /// </summary>
-        /// <param name="directory">The directory to load game data from.</param>
-        public void LoadGameData(DirectoryInfo directory)
-        {
-            Data = GameDataProvider.Load(directory);
+            Data = gameData;
         }
 
         #region Character

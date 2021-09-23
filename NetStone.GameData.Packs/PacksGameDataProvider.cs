@@ -3,13 +3,13 @@ using System.IO;
 using FFXIV;
 using FlatBuffers;
 
-namespace NetStone.GameData
+namespace NetStone.GameData.Packs
 {
-    internal class GameDataProvider
+    public class PacksGameDataProvider : IGameDataProvider
     {
         private readonly ItemTable items;
 
-        private GameDataProvider(string path)
+        private PacksGameDataProvider(string path)
         {
             items = ItemTable.GetRootAsItemTable(LoadByteBuffer(Path.Combine(path, "item_table.bin")));
         }
@@ -49,6 +49,6 @@ namespace NetStone.GameData
             return new ByteBuffer(bytes);
         }
 
-        public static GameDataProvider Load(DirectoryInfo path) => new GameDataProvider(path.FullName);
+        public static PacksGameDataProvider Load(DirectoryInfo path) => new PacksGameDataProvider(path.FullName);
     }
 }

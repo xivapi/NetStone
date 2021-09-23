@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetStone.Test", "NetStone.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlatBuffers", "lib\flatbuffers\net\FlatBuffers\FlatBuffers.csproj", "{32F1B5DC-9E73-483C-B7FD-48EF97F2AA34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetStone.GameData.Packs", "NetStone.GameData.Packs\NetStone.GameData.Packs.csproj", "{D415EE52-ADB2-4B93-9B88-79D3A34A494E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{32F1B5DC-9E73-483C-B7FD-48EF97F2AA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F1B5DC-9E73-483C-B7FD-48EF97F2AA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32F1B5DC-9E73-483C-B7FD-48EF97F2AA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D415EE52-ADB2-4B93-9B88-79D3A34A494E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D415EE52-ADB2-4B93-9B88-79D3A34A494E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D415EE52-ADB2-4B93-9B88-79D3A34A494E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D415EE52-ADB2-4B93-9B88-79D3A34A494E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

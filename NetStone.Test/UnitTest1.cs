@@ -2,9 +2,10 @@
 using System.IO;
 using System.Threading.Tasks;
 using NetStone;
+using NetStone.GameData.Packs;
 using NetStone.Model.Parseables.Search;
 using NetStone.Search;
-    using NetStone.Search.Character;
+using NetStone.Search.Character;
 using NetStone.Search.FreeCompany;
 using NetStone.StaticData;
 using NUnit.Framework;
@@ -26,8 +27,8 @@ namespace NetStone.Test
         [SetUp]
         public void Setup()
         {
-            this.lodestone = new LodestoneClient();
-            this.lodestone.LoadGameData(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
+            var gameData = PacksGameDataProvider.Load(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
+            this.lodestone = new LodestoneClient(gameData);
         }
 
         [Test]

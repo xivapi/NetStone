@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NetStone.GameData.Packs\NetStone.GameData.Packs.csproj" />
     <ProjectReference Include="..\NetStone\NetStone.csproj" />
   </ItemGroup>
 
