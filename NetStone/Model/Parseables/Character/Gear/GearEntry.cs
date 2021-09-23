@@ -17,6 +17,8 @@ namespace NetStone.Model.Parseables.Character.Gear
         private readonly LodestoneClient client;
         private readonly GearEntryDefinition definition;
 
+        private NamedGameData? cachedGameData;
+
         public GearEntry(LodestoneClient client, HtmlNode rootNode, GearEntryDefinition definition) : base(rootNode)
         {
             this.client = client;
@@ -74,7 +76,8 @@ namespace NetStone.Model.Parseables.Character.Gear
 
         public NamedGameData? GetGameData()
         {
-            return !Exists ? null : client.Data?.GetItem(ItemName);
+            cachedGameData ??= !Exists ? null : client.Data?.GetItem(ItemName);
+            return cachedGameData;
         }
 
         /// <summary>

@@ -8,6 +8,10 @@ using Cyalume = Lumina.GameData;
 
 namespace NetStone.GameData.Lumina
 {
+    /// <summary>
+    /// Game data provider that reads data directly from Lumina.
+    /// This is slow and just exists as an alternative to the flatbuffer-based solution.
+    /// </summary>
     public class LuminaGameDataProvider : IGameDataProvider
     {
         private readonly Cyalume lumina;
