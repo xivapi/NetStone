@@ -30,7 +30,7 @@ namespace NetStone
         /// <summary>
         /// Container holding information about the current Lodestone layout, needed to parse responses.
         /// </summary>
-        public DefinitionsContainer Definitions { get; }
+        public DefinitionsContainer Definitions { get; private set; }
 
         public IGameDataProvider? Data { get; set; }
 
@@ -39,17 +39,24 @@ namespace NetStone
         /// <summary>
         /// Initialize a new Lodestone client with default options.
         /// </summary>
-        public LodestoneClient(IGameDataProvider? gameData = null, string lodestoneBaseAddress = Constants.LodestoneBase)
+        private LodestoneClient(DefinitionsContainer definitions, IGameDataProvider? gameData = null, string lodestoneBaseAddress = Constants.LodestoneBase)
         {
             this.client = new HttpClient
             {
                 BaseAddress = new Uri(lodestoneBaseAddress)
             };
 
-            Definitions = new XivApiDefinitionsContainer();
-            Definitions.Reload().GetAwaiter().GetResult();
-
+            Definitions = definitions;
             Data = gameData;
+        }
+
+        public static async Task<LodestoneClient> GetClientAsync(IGameDataProvider? gameData = null,
+            string lodestoneBaseAddress = Constants.LodestoneBase)
+        {
+            var defs = new XivApiDefinitionsContainer();
+            await defs.Reload();
+
+            return new LodestoneClient(defs, gameData, lodestoneBaseAddress);
         }
 
         #region Character

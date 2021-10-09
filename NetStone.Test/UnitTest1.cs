@@ -25,10 +25,10 @@ namespace NetStone.Test
         private const string TestFreeCompany = "9232379236109629819";
 
         [SetUp]
-        public void Setup()
+        public async Task Setup()
         {
             var gameData = PacksGameDataProvider.Load(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
-            this.lodestone = new LodestoneClient(gameData);
+            this.lodestone = await LodestoneClient.GetClientAsync(gameData);
         }
 
         [Test]

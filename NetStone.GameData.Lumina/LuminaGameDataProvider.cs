@@ -32,13 +32,19 @@ namespace NetStone.GameData.Lumina
 
             return new NamedGameData
             {
-                Key = item.RowId,
-                Name = name,
+                Info = new GameDataInfo
+                {
+                    Key = item.RowId,
+                    Name = name
+                },
 
-                NameEn = langs.En.Name,
-                NameDe = langs.De.Name,
-                NameFr = langs.Fr.Name,
-                NameJa = langs.Ja.Name,
+                Name = new LanguageStrings
+                {
+                    En = langs.En.Name,
+                    De = langs.De.Name,
+                    Fr = langs.Fr.Name,
+                    Ja = langs.Ja.Name,
+                },
             };
         }
 
