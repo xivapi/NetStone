@@ -29,13 +29,19 @@ namespace NetStone.GameData.Packs
                 {
                     return new NamedGameData
                     {
-                        Key = item.Id,
-                        Name = name,
+                        Info = new GameDataInfo
+                        {
+                            Key = item.Id,
+                            Name = name,
+                        },
 
-                        NameEn = item.NameEn,
-                        NameDe = item.NameDe,
-                        NameFr = item.NameFr,
-                        NameJa = item.NameJa,
+                        Name = new LanguageStrings
+                        {
+                            En = item.NameEn,
+                            De = item.NameDe,
+                            Fr = item.NameFr,
+                            Ja = item.NameJa,
+                        },
                     };
                 }
             }

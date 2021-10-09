@@ -1,7 +1,9 @@
 namespace NetStone.GameData
 {
-    public class TitleGameData : NamedGameData
+    public struct TitleGameData
     {
+        public NamedGameData Names { get; set; }
+
         public bool Prefix { get; set; }
     }
 }
