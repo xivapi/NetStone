@@ -140,7 +140,7 @@ namespace NetStone
         /// <param name="page">The page of members to fetch.</param>
         /// <returns><see cref="FreeCompanyMembers"/> class containing information about FC members.</returns>
         public async Task<FreeCompanyMembers> GetFreeCompanyMembers(string id, int page = 1) => await GetParsed(
-            $"/lodestone/freecompany/{id}/member/",
+            $"/lodestone/freecompany/{id}/member/?page={page}",
             node => new FreeCompanyMembers(this, node, this.Definitions.FreeCompanyMembers, id));
 
         /// <summary>
