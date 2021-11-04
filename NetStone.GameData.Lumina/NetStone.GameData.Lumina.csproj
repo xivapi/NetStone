@@ -1,7 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
+
+        <PackageId>NetStone.GameData.Lumina</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <FileVersion>1.0.0</FileVersion>
+        <Description>Lumina game data bindings for NetStone.</Description>
+        <Authors>goaaats</Authors>
+        <PackageProjectUrl>https://github.com/xivapi/NetStone</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/xivapi/NetStone</RepositoryUrl>
+
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
@@ -10,7 +25,20 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Lumina" Version="3.3.0" />
+        <None Include="../LICENSE" Pack="true" PackagePath="\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+
+        <!-- BUG: Cannot include symbols and a readme, fixed with .NET 6(https://github.com/NuGet/Home/issues/11292) -->
+        <!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Lumina" Version="3.4.1" />
       <PackageReference Include="Lumina.Excel" Version="5.50.0" />
     </ItemGroup>
 
