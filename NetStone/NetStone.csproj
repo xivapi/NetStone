@@ -2,16 +2,36 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+
+    <PackageId>NetStone</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Description>Portable and modern Lodestone library.</Description>
+    <Authors>goaaats</Authors>
+    <PackageProjectUrl>https://github.com/xivapi/NetStone</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/xivapi/NetStone</RepositoryUrl>
+
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
     <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../LICENSE" Pack="true" PackagePath="\" />
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+
+    <!-- BUG: Cannot include symbols and a readme, fixed with .NET 6(https://github.com/NuGet/Home/issues/11292) -->
+    <!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
   </PropertyGroup>
 
   <ItemGroup>
