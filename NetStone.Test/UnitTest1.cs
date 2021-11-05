@@ -1,16 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using NetStone;
 using NetStone.GameData.Packs;
-using NetStone.Model.Parseables.Search;
-using NetStone.Search;
 using NetStone.Search.Character;
 using NetStone.Search.FreeCompany;
 using NetStone.StaticData;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
-using NUnit.Framework.Internal;
 using SortKind = NetStone.Search.Character.SortKind;
 
 namespace NetStone.Test
@@ -55,7 +50,7 @@ namespace NetStone.Test
             };
 
             var page = await this.lodestone.SearchCharacter(query);
-            Assert.AreEqual(3, page.NumPages);
+            Assert.AreEqual(4, page.NumPages);
             Assert.AreEqual(1, page.CurrentPage);
 
             var cResults = 0;
@@ -110,7 +105,7 @@ namespace NetStone.Test
             };
 
             var page = await this.lodestone.SearchFreeCompany(query);
-            Assert.AreEqual(4, page.NumPages);
+            Assert.AreEqual(5, page.NumPages);
             Assert.AreEqual(1, page.CurrentPage);
 
             var cResults = 0;
