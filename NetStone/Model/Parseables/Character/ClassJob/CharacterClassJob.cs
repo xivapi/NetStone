@@ -170,6 +170,12 @@ namespace NetStone.Model.Parseables.Character.ClassJob
         public ClassJobEntry Alchemist => new ClassJobEntry(this.RootNode, this.definition.Alchemist).GetOptional();
 
         /// <summary>
+        /// Information about the Culinarian
+        /// </summary>
+        [CanBeNull]
+        public ClassJobEntry Culinarian => new ClassJobEntry(this.RootNode, this.definition.Culinarian).GetOptional();
+
+        /// <summary>
         /// Information about the Miner class.
         /// </summary>
         [CanBeNull]
