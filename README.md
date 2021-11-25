@@ -1,4 +1,4 @@
-# NetStone ![Nuget](https://img.shields.io/nuget/v/NetStone)
+# NetStone [![Nuget](https://img.shields.io/nuget/v/NetStone)](https://www.nuget.org/packages/NetStone)
 
 NetStone is a portable and modern .NET FFXIV Lodestone API.
 
