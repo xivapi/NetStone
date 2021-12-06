@@ -136,6 +136,11 @@
             Information about the Samurai class.
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Reaper">
+            <summary>
+            Information about the Reaper class.
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.WhiteMage">
             <summary>
             Information about the WhiteMage class.
@@ -149,6 +154,11 @@
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Astrologian">
             <summary>
             Information about the Astrologian class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Reaper">
+            <summary>
+            Information about the Reaper class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Bard">

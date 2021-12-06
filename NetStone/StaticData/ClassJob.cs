@@ -44,6 +44,8 @@ namespace NetStone.StaticData
         RedMage = 35,
         BlueMage = 36,
         Gunbreaker = 37,
-        Dancer = 38
+        Dancer = 38,
+        Reaper = 39,
+        Sage = 40,
     }
 }

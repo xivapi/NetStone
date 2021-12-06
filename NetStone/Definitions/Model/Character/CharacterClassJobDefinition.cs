@@ -51,11 +51,15 @@ namespace NetStone.Definitions.Model.Character
 
         [JsonProperty("SAMURAI")] public ClassJobEntryDefinition Samurai { get; set; }
 
+        [JsonProperty("REAPER")] public ClassJobEntryDefinition Reaper { get; set; }
+
         [JsonProperty("WHITEMAGE")] public ClassJobEntryDefinition Whitemage { get; set; }
 
         [JsonProperty("SCHOLAR")] public ClassJobEntryDefinition Scholar { get; set; }
 
         [JsonProperty("ASTROLOGIAN")] public ClassJobEntryDefinition Astrologian { get; set; }
+
+        [JsonProperty("SAGE")] public ClassJobEntryDefinition Sage { get; set; }
 
         [JsonProperty("BARD")] public ClassJobEntryDefinition Bard { get; set; }
 

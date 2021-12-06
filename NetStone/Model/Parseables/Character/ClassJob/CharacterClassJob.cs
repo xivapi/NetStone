@@ -66,7 +66,13 @@ namespace NetStone.Model.Parseables.Character.ClassJob
         /// </summary>
         [CanBeNull]
         public ClassJobEntry Samurai => new ClassJobEntry(this.RootNode, this.definition.Samurai).GetOptional();
-        
+
+        /// <summary>
+        /// Information about the Reaper class.
+        /// </summary>
+        [CanBeNull]
+        public ClassJobEntry Reaper => new ClassJobEntry(this.RootNode, this.definition.Reaper).GetOptional();
+
         /// <summary>
         /// Information about the WhiteMage class.
         /// </summary>
@@ -84,7 +90,13 @@ namespace NetStone.Model.Parseables.Character.ClassJob
         /// </summary>
         [CanBeNull]
         public ClassJobEntry Astrologian => new ClassJobEntry(this.RootNode, this.definition.Astrologian).GetOptional();
-        
+
+        /// <summary>
+        /// Information about the Sage class.
+        /// </summary>
+        [CanBeNull]
+        public ClassJobEntry Sage => new ClassJobEntry(this.RootNode, this.definition.Sage).GetOptional();
+
         /// <summary>
         /// Information about the Bard class.
         /// </summary>
@@ -216,6 +228,8 @@ namespace NetStone.Model.Parseables.Character.ClassJob
 
             {StaticData.ClassJob.Samurai, Samurai},
 
+            {StaticData.ClassJob.Reaper, Reaper},
+
             {StaticData.ClassJob.Conjurer, WhiteMage},
             {StaticData.ClassJob.WhiteMage, WhiteMage},
 
@@ -224,6 +238,8 @@ namespace NetStone.Model.Parseables.Character.ClassJob
             {StaticData.ClassJob.Summoner, Summoner},
 
             {StaticData.ClassJob.Astrologian, Astrologian},
+
+            {StaticData.ClassJob.Sage, Sage},
 
             {StaticData.ClassJob.Archer, Bard},
             {StaticData.ClassJob.Bard, Bard},
