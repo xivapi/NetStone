@@ -93,7 +93,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
             this.numPagesVal = int.Parse(results["NumPages"].Value);
         }
 
-        public async Task<FreeCompanySearchPage> GetNextPage()
+        public async Task<FreeCompanySearchPage?> GetNextPage()
         {
             if (!HasResults)
                 return null;

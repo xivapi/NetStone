@@ -105,7 +105,7 @@ namespace NetStone.Model.Parseables.Character.Achievement
             this.numPagesVal = int.Parse(results["NumPages"].Value);
         }
         
-        public async Task<CharacterAchievementPage> GetNextPage()
+        public async Task<CharacterAchievementPage?> GetNextPage()
         {
             if (!HasResults)
                 return null;

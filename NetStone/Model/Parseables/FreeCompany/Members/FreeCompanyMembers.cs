@@ -91,7 +91,7 @@ namespace NetStone.Model.Parseables.FreeCompany.Members
             this.numPagesVal = int.Parse(results["NumPages"].Value);
         }
 
-        public async Task<FreeCompanyMembers> GetNextPage()
+        public async Task<FreeCompanyMembers?> GetNextPage()
         {
             if (CurrentPage == NumPages)
                 return null;
