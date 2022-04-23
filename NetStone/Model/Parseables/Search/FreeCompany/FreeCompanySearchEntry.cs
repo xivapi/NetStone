@@ -58,7 +58,7 @@ namespace NetStone.Model.Parseables.Search.FreeCompany
             _ => throw new ArgumentOutOfRangeException()
         };
 
-        public async Task<LodestoneFreeCompany> GetFreeCompany() => await this.client.GetFreeCompany(this.Id);
+        public async Task<LodestoneFreeCompany?> GetFreeCompany() => await this.client.GetFreeCompany(this.Id);
 
         public override string ToString() => Name;
     }

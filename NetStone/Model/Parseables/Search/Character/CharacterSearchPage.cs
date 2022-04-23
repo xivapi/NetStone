@@ -94,7 +94,7 @@ namespace NetStone.Model.Parseables.Search.Character
             this.numPagesVal = int.Parse(results["NumPages"].Value);
         }
         
-        public async Task<CharacterSearchPage> GetNextPage()
+        public async Task<CharacterSearchPage?> GetNextPage()
         {
             if (!HasResults)
                 return null;

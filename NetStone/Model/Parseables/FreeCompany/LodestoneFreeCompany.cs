@@ -60,6 +60,6 @@ namespace NetStone.Model.Parseables.FreeCompany
 
         public FreeCompanyReputation Reputation => new FreeCompanyReputation(this.RootNode, this.reputationDefinition);
 
-        public async Task<FreeCompanyMembers> GetMembers() => await this.client.GetFreeCompanyMembers(this.Id);
+        public async Task<FreeCompanyMembers?> GetMembers() => await this.client.GetFreeCompanyMembers(this.Id);
     }
 }

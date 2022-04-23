@@ -20,7 +20,7 @@ namespace NetStone.Model.Parseables.Search.Character
 
         public string Id => ParseHrefId(this.definition.Id);
 
-        public async Task<LodestoneCharacter> GetCharacter() => await this.client.GetCharacter(this.Id);
+        public async Task<LodestoneCharacter?> GetCharacter() => await this.client.GetCharacter(this.Id);
 
         public override string ToString() => Name;
     }

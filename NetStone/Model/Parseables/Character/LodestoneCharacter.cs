@@ -147,25 +147,25 @@ namespace NetStone.Model.Parseables.Character
         /// Fetch more information about this character's classes and jobs(level, exp, unlocked, etc.).
         /// </summary>
         /// <returns><see cref="CharacterClassJob"/> object holding this information.</returns>
-        public async Task<CharacterClassJob> GetClassJobInfo() => await this.client.GetCharacterClassJob(this.charId);
+        public async Task<CharacterClassJob?> GetClassJobInfo() => await this.client.GetCharacterClassJob(this.charId);
 
         /// <summary>
         /// Fetch more information about this character's unlocked achievements.
         /// </summary>
         /// <returns><see cref="CharacterAchievementPage"/> object holding this information.</returns>
-        public async Task<CharacterAchievementPage> GetAchievement() => await this.client.GetCharacterAchievement(this.charId);
+        public async Task<CharacterAchievementPage?> GetAchievement() => await this.client.GetCharacterAchievement(this.charId);
 
         /// <summary>
         /// Fetch more information about this character's unlocked mounts.
         /// </summary>
         /// <returns><see cref="CharacterCollectable"/> object holding this information.</returns>
-        public async Task<CharacterCollectable> GetMounts() => await this.client.GetCharacterMount(this.charId);
+        public async Task<CharacterCollectable?> GetMounts() => await this.client.GetCharacterMount(this.charId);
 
         /// <summary>
         /// Fetch more information about this character's unlocked minions.
         /// </summary>
         /// <returns><see cref="CharacterCollectable"/> object holding this information.</returns>
-        public async Task<CharacterCollectable> GetMinions() => await this.client.GetCharacterMinion(this.charId);
+        public async Task<CharacterCollectable?> GetMinions() => await this.client.GetCharacterMinion(this.charId);
 
         /// <summary>
         /// String representation of this character.
