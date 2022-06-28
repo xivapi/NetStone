@@ -36,7 +36,10 @@ namespace NetStone.Model
         /// </summary>
         /// <param name="pack">Definition of the node.</param>
         /// <returns>All ChildNodes.</returns>
-        protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => QueryNode(pack)?.ChildNodes.Where(x => x.Name != "#text").ToArray();
+        protected HtmlNode[] QueryChildNodes(DefinitionsPack pack) => this.RootNode
+            .QuerySelectorAll(pack.Selector)
+            .Where(x => x.Name != "#text")
+            .ToArray();
 
         protected HtmlNode[] QueryContainer(PagedDefinition pagedDefinition)
         {

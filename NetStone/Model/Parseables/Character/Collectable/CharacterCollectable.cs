@@ -34,7 +34,7 @@ namespace NetStone.Model.Parseables.Character.Collectable
 
         private void ParseCollectables()
         {
-            var nodes = QueryChildNodes(this.definition.List);
+            var nodes = QueryChildNodes(this.definition.GetDefinitions().Root);
 
             this.parsedResults = new CharacterCollectableEntry[nodes.Length];
             for (var i = 0; i < this.parsedResults.Length; i++)

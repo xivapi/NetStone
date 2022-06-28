@@ -19,7 +19,7 @@ namespace NetStone.Model.Parseables.Character.Collectable
         /// <summary>
         /// The name of this collectable.
         /// </summary>
-        public string Name => Parse(this.definition.Name);
+        public string Name => Parse(this.definition.GetDefinitions().Name);
 
         /// <summary>
         /// The string representation of this collectable.

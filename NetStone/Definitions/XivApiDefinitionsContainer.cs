@@ -31,8 +31,8 @@ namespace NetStone.Definitions
             this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
             this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json");
             this.Achievement = await GetDefinition<PagedDefinition>("profile/achievements.json");
-            this.Mount = await GetDefinition<CharacterCollectableDefinition>("profile/mount.json");
-            this.Minion = await GetDefinition<CharacterCollectableDefinition>("profile/minion.json");
+            this.Mount = await GetDefinition<CharacterMountDefinition>("profile/mount.json");
+            this.Minion = await GetDefinition<CharacterMinionDefinition>("profile/minion.json");
 
             this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
             this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json");
