@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using HtmlAgilityPack;
+using HtmlAgilityPack.CssSelectors.NetCore;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
 
