@@ -207,7 +207,7 @@ namespace NetStone.Model.Parseables.Character.ClassJob
 
         public IReadOnlyDictionary<StaticData.ClassJob, ClassJobEntry> ClassJobDict => new Dictionary<StaticData.ClassJob, ClassJobEntry>
         {
-            {StaticData.ClassJob.Pugilist, Paladin},
+            {StaticData.ClassJob.Gladiator, Paladin},
             {StaticData.ClassJob.Paladin, Paladin},
 
             {StaticData.ClassJob.Marauder, Warrior},
