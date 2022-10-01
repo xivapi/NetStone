@@ -8,7 +8,7 @@ echo Packing data exports...
 #go-bindata -o internal/pack/exports/gamedata.go -prefix "lodestone-data-exports/pack" -ignore="(LICENSE|README.md|.git|.gitignore|meta.json|LodestoneDataExporter.*|schema|.vscode)" lodestone-data-exports/...
 #sed -i "s/package main/package exports/g" internal/pack/exports/gamedata.go
 
-#find ./NetStone/GameData/Internal/ -type f -exec sed -i 's/using global::FlatBuffers;/using global::Google.FlatBuffers;/g' {} \;
-#find ./NetStone/GameData/Internal/ -type f -exec sed -i 's/FFXIV/NetStone.GameData.Internal/g' {} \;
+find -D exec ./NetStone.GameData.Packs/Internal/ -type f -exec sed -i 's/using global::Google.FlatBuffers;/using global::FlatBuffers;/g' {} \;
+#find -D exec ./NetStone.GameData.Packs/Internal/ -type f -exec sed -i 's/FFXIV/NetStone.GameData.Internal/g' {} \;
 
 echo Done!
