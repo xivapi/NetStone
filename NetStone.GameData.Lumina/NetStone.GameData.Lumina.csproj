@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
 
         <PackageId>NetStone.GameData.Lumina</PackageId>
         <PackageVersion>1.0.0</PackageVersion>
@@ -33,14 +33,12 @@
     <PropertyGroup>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
-
-        <!-- BUG: Cannot include symbols and a readme, fixed with .NET 6(https://github.com/NuGet/Home/issues/11292) -->
-        <!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Lumina" Version="3.4.1" />
-      <PackageReference Include="Lumina.Excel" Version="5.50.0" />
+      <PackageReference Include="Lumina" Version="3.10.0" />
+      <PackageReference Include="Lumina.Excel" Version="6.2.1" />
     </ItemGroup>
 
 </Project>
