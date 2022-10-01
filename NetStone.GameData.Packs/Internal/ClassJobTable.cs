@@ -54,56 +54,64 @@ public struct ClassJob : IFlatbufferObject
   public ClassJob __assign(int _i, ByteBuffer _bb) { __init(_i, _bb); return this; }
 
   public uint Id { get { int o = __p.__offset(4); return o != 0 ? __p.bb.GetUint(o + __p.bb_pos) : (uint)0; } }
-  public string NameEn { get { int o = __p.__offset(6); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+  public uint Parent { get { int o = __p.__offset(6); return o != 0 ? __p.bb.GetUint(o + __p.bb_pos) : (uint)0; } }
+  public uint JobIndex { get { int o = __p.__offset(8); return o != 0 ? __p.bb.GetUint(o + __p.bb_pos) : (uint)0; } }
+  public string NameEn { get { int o = __p.__offset(10); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
 #if ENABLE_SPAN_T
-  public Span<byte> GetNameEnBytes() { return __p.__vector_as_span<byte>(6, 1); }
+  public Span<byte> GetNameEnBytes() { return __p.__vector_as_span<byte>(10, 1); }
 #else
-  public ArraySegment<byte>? GetNameEnBytes() { return __p.__vector_as_arraysegment(6); }
+  public ArraySegment<byte>? GetNameEnBytes() { return __p.__vector_as_arraysegment(10); }
 #endif
-  public byte[] GetNameEnArray() { return __p.__vector_as_array<byte>(6); }
-  public string NameFr { get { int o = __p.__offset(8); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+  public byte[] GetNameEnArray() { return __p.__vector_as_array<byte>(10); }
+  public string NameFr { get { int o = __p.__offset(12); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
 #if ENABLE_SPAN_T
-  public Span<byte> GetNameFrBytes() { return __p.__vector_as_span<byte>(8, 1); }
+  public Span<byte> GetNameFrBytes() { return __p.__vector_as_span<byte>(12, 1); }
 #else
-  public ArraySegment<byte>? GetNameFrBytes() { return __p.__vector_as_arraysegment(8); }
+  public ArraySegment<byte>? GetNameFrBytes() { return __p.__vector_as_arraysegment(12); }
 #endif
-  public byte[] GetNameFrArray() { return __p.__vector_as_array<byte>(8); }
-  public string NameDe { get { int o = __p.__offset(10); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+  public byte[] GetNameFrArray() { return __p.__vector_as_array<byte>(12); }
+  public string NameDe { get { int o = __p.__offset(14); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
 #if ENABLE_SPAN_T
-  public Span<byte> GetNameDeBytes() { return __p.__vector_as_span<byte>(10, 1); }
+  public Span<byte> GetNameDeBytes() { return __p.__vector_as_span<byte>(14, 1); }
 #else
-  public ArraySegment<byte>? GetNameDeBytes() { return __p.__vector_as_arraysegment(10); }
+  public ArraySegment<byte>? GetNameDeBytes() { return __p.__vector_as_arraysegment(14); }
 #endif
-  public byte[] GetNameDeArray() { return __p.__vector_as_array<byte>(10); }
-  public string NameJa { get { int o = __p.__offset(12); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+  public byte[] GetNameDeArray() { return __p.__vector_as_array<byte>(14); }
+  public string NameJa { get { int o = __p.__offset(16); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
 #if ENABLE_SPAN_T
-  public Span<byte> GetNameJaBytes() { return __p.__vector_as_span<byte>(12, 1); }
+  public Span<byte> GetNameJaBytes() { return __p.__vector_as_span<byte>(16, 1); }
 #else
-  public ArraySegment<byte>? GetNameJaBytes() { return __p.__vector_as_arraysegment(12); }
+  public ArraySegment<byte>? GetNameJaBytes() { return __p.__vector_as_arraysegment(16); }
 #endif
-  public byte[] GetNameJaArray() { return __p.__vector_as_array<byte>(12); }
+  public byte[] GetNameJaArray() { return __p.__vector_as_array<byte>(16); }
 
   public static Offset<FFXIV.ClassJob> CreateClassJob(FlatBufferBuilder builder,
       uint Id = 0,
+      uint Parent = 0,
+      uint JobIndex = 0,
       StringOffset NameEnOffset = default(StringOffset),
       StringOffset NameFrOffset = default(StringOffset),
       StringOffset NameDeOffset = default(StringOffset),
       StringOffset NameJaOffset = default(StringOffset)) {
-    builder.StartTable(5);
+    builder.StartTable(7);
     ClassJob.AddNameJa(builder, NameJaOffset);
     ClassJob.AddNameDe(builder, NameDeOffset);
     ClassJob.AddNameFr(builder, NameFrOffset);
     ClassJob.AddNameEn(builder, NameEnOffset);
+    ClassJob.AddJobIndex(builder, JobIndex);
+    ClassJob.AddParent(builder, Parent);
     ClassJob.AddId(builder, Id);
     return ClassJob.EndClassJob(builder);
   }
 
-  public static void StartClassJob(FlatBufferBuilder builder) { builder.StartTable(5); }
+  public static void StartClassJob(FlatBufferBuilder builder) { builder.StartTable(7); }
   public static void AddId(FlatBufferBuilder builder, uint Id) { builder.AddUint(0, Id, 0); }
-  public static void AddNameEn(FlatBufferBuilder builder, StringOffset NameEnOffset) { builder.AddOffset(1, NameEnOffset.Value, 0); }
-  public static void AddNameFr(FlatBufferBuilder builder, StringOffset NameFrOffset) { builder.AddOffset(2, NameFrOffset.Value, 0); }
-  public static void AddNameDe(FlatBufferBuilder builder, StringOffset NameDeOffset) { builder.AddOffset(3, NameDeOffset.Value, 0); }
-  public static void AddNameJa(FlatBufferBuilder builder, StringOffset NameJaOffset) { builder.AddOffset(4, NameJaOffset.Value, 0); }
+  public static void AddParent(FlatBufferBuilder builder, uint Parent) { builder.AddUint(1, Parent, 0); }
+  public static void AddJobIndex(FlatBufferBuilder builder, uint JobIndex) { builder.AddUint(2, JobIndex, 0); }
+  public static void AddNameEn(FlatBufferBuilder builder, StringOffset NameEnOffset) { builder.AddOffset(3, NameEnOffset.Value, 0); }
+  public static void AddNameFr(FlatBufferBuilder builder, StringOffset NameFrOffset) { builder.AddOffset(4, NameFrOffset.Value, 0); }
+  public static void AddNameDe(FlatBufferBuilder builder, StringOffset NameDeOffset) { builder.AddOffset(5, NameDeOffset.Value, 0); }
+  public static void AddNameJa(FlatBufferBuilder builder, StringOffset NameJaOffset) { builder.AddOffset(6, NameJaOffset.Value, 0); }
   public static Offset<FFXIV.ClassJob> EndClassJob(FlatBufferBuilder builder) {
     int o = builder.EndTable();
     return new Offset<FFXIV.ClassJob>(o);
