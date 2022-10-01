@@ -50,6 +50,7 @@ public class Tests
         };
 
         var page = await this.lodestone.SearchCharacter(query);
+        Assert.NotNull(page);
         Assert.AreEqual(4, page.NumPages);
         Assert.AreEqual(1, page.CurrentPage);
 
@@ -77,12 +78,14 @@ public class Tests
     public async Task CheckFreeCompany()
     {
         var fc = await this.lodestone.GetFreeCompany(TestFreeCompany);
+        Assert.NotNull(fc);
 
         Console.WriteLine(fc.Focus.Leveling.IsEnabled);
 
         Console.WriteLine(fc.Formed);
 
         var members = await fc.GetMembers();
+        Assert.NotNull(members);
 
         do
         {
@@ -194,24 +197,33 @@ public class Tests
         Assert.NotNull(classJob.Carpenter);
         Assert.AreEqual(classJob.Carpenter.IsSpecialized, false);
 
-        /*var achieve = await chara.GetAchievement();
-
-        foreach (var characterAchievementEntry in achieve.Achievements)
+        var achieve = await chara.GetAchievement();
+        Assert.NotNull(achieve);
+        foreach (var achievement in achieve.Achievements)
         {
-            Console.WriteLine($"{characterAchievementEntry.Id} - {characterAchievementEntry.Name}");
-        }*/
+            Assert.NotNull(achievement.Id);
+        }
 
-        //var mount = await chara.GetMounts();
-        //var res = mount.Collectables;
+        var mount = await chara.GetMounts();
+        Assert.NotNull(mount);
+        foreach (var m in mount.Collectables)
+        {
+            Assert.NotNull(m.Name);
+        }
 
-        //var minion = await chara.GetMinions();
+        var minion = await chara.GetMinions();
+        Assert.NotNull(minion);
+        foreach (var m in minion.Collectables)
+        {
+            Assert.NotNull(m.Name);
+        }
     }
 
     [Test]
     public async Task CheckCharacterPrivateAchievements()
     {
         var chara = await this.lodestone.GetCharacterAchievement("11166211");
-
+        Assert.NotNull(chara);
         Assert.False(chara.HasResults);
     }
 
