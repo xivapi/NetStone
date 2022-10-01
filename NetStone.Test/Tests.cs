@@ -46,7 +46,7 @@ namespace NetStone.Test
                 Race = Race.Hyur,
                 GrandCompany = GrandCompany.ImmortalFlames | GrandCompany.Maelstrom | GrandCompany.OrderOfTheTwinAdder,
                 Language = Language.English | Language.German | Language.French,
-                SortKind = SortKind.NameZtoA
+                SortKind = SortKind.NameZtoA,
             };
 
             var page = await this.lodestone.SearchCharacter(query);
