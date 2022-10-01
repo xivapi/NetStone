@@ -163,7 +163,7 @@ public class Tests
 
         Assert.NotNull(chara.FreeCompany);
         Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
-        Assert.AreEqual(chara.FreeCompany.Name, "Hell Hath No Fury");
+        Assert.AreEqual(chara.FreeCompany.Name, "Hell On Aura");
         Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri,
             "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
         //todo: iconlayer
@@ -179,20 +179,20 @@ public class Tests
 
         //Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
 
-        var classjob = await chara.GetClassJobInfo();
-        Assert.NotNull(classjob);
+        var classJob = await chara.GetClassJobInfo();
+        Assert.NotNull(classJob);
 
-        //todo: all classjob
-        Assert.NotNull(classjob.Warrior);
-        Assert.AreEqual(classjob.Warrior.Level, 80);
-        Assert.AreEqual(classjob.Warrior.ExpToGo, 0);
-        Assert.AreEqual(classjob.Warrior.IsJobUnlocked, true);
+        //todo: all classJob
+        Assert.NotNull(classJob.Reaper);
+        Assert.AreEqual(classJob.Reaper.Level, 90);
+        Assert.AreEqual(classJob.Reaper.ExpToGo, 0);
+        Assert.AreEqual(classJob.Reaper.IsJobUnlocked, false);
 
-        Assert.NotNull(classjob.Weaver);
-        Assert.AreEqual(classjob.Weaver.IsSpecialized, true);
+        Assert.NotNull(classJob.Weaver);
+        Assert.AreEqual(classJob.Weaver.IsSpecialized, true);
 
-        Assert.NotNull(classjob.Carpenter);
-        Assert.AreEqual(classjob.Carpenter.IsSpecialized, false);
+        Assert.NotNull(classJob.Carpenter);
+        Assert.AreEqual(classJob.Carpenter.IsSpecialized, false);
 
         /*var achieve = await chara.GetAchievement();
 
