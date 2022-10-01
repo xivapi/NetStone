@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone.StaticData;
 
-namespace NetStone.StaticData
+/// <summary>
+/// The possible game character races.
+/// </summary>
+public enum Race
 {
-    public enum Race
-    {
-        None,
-        Hyur,
-        Elezen,
-        Lalafell,
-        Miqote,
-        Roegadyn,
-        AuRa,
-        Hrothgar,
-        Viera
-    }
+    None,
+    Hyur,
+    Elezen,
+    Lalafell,
+    Miqote,
+    Roegadyn,
+    AuRa,
+    Hrothgar,
+    Viera,
 }

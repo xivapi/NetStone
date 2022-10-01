@@ -1,8 +1,7 @@
-namespace NetStone.GameData
+namespace NetStone.GameData;
+
+public struct GameDataInfo
 {
-    public struct GameDataInfo
-    {
-        public uint Key { get; set; }
-        public string Name { get; set; }
-    }
+    public uint Key { get; set; }
+    public string Name { get; set; }
 }

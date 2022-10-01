@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone.Search.FreeCompany;
 
-namespace NetStone.Search.FreeCompany
+/// <summary>
+/// Active member filters for FC searches.
+/// </summary>
+public enum ActiveMembers
 {
-    public enum ActiveMembers
-    {
-        All,
-        OneToTen,
-        ElevenToThirty,
-        ThirtyOneToFifty,
-        OverFiftyOne
-    }
+    All,
+    OneToTen,
+    ElevenToThirty,
+    ThirtyOneToFifty,
+    OverFiftyOne,
 }

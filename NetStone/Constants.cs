@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone;
 
-namespace NetStone
+/// <summary>
+/// Contains constants used for initializing the Lodestone parser.
+/// </summary>
+public class Constants
 {
-    public class Constants
-    {
-        public const string LodestoneBase = "https://eu.finalfantasyxiv.com";
-    }
+    /// <summary>
+    /// Base URL for the Lodestone website.
+    /// </summary>
+    public const string LodestoneBase = "https://eu.finalfantasyxiv.com";
 }

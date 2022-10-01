@@ -1,41 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model.Character
+namespace NetStone.Definitions.Model.Character;
+
+public interface CharacterCollectableDefinition : IDefinition
 {
-    public interface CharacterCollectableDefinition : IDefinition
+    public CollectableNodeDefinition GetDefinitions();
+}
+
+public class CharacterMountDefinition : CharacterCollectableDefinition
+{
+    [JsonProperty("MOUNTS")]
+    public CollectableNodeDefinition Mounts { get; set; }
+
+    public CollectableNodeDefinition GetDefinitions()
     {
-        public CollectableNodeDefinition GetDefinitions();
+        return Mounts;
     }
+}
 
-    public class CharacterMountDefinition : CharacterCollectableDefinition
+public class CharacterMinionDefinition : CharacterCollectableDefinition
+{
+    [JsonProperty("MINIONS")]
+    public CollectableNodeDefinition Minions { get; set; }
+
+    public CollectableNodeDefinition GetDefinitions()
     {
-        [JsonProperty("MOUNTS")]
-        public CollectableNodeDefinition Mounts { get; set; }
-
-        public CollectableNodeDefinition GetDefinitions()
-        {
-            return Mounts;
-        }
+        return Minions;
     }
-
-    public class CharacterMinionDefinition : CharacterCollectableDefinition
-    {
-        [JsonProperty("MINIONS")]
-        public CollectableNodeDefinition Minions { get; set; }
-
-        public CollectableNodeDefinition GetDefinitions()
-        {
-            return Minions;
-        }
-    }
+}
     
-    public class CollectableNodeDefinition
-    {
-        [JsonProperty("ROOT")] public DefinitionsPack Root { get; set; }
+public class CollectableNodeDefinition
+{
+    [JsonProperty("ROOT")] public DefinitionsPack Root { get; set; }
 
-        [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
-    }
+    [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone.Search;
 
-namespace NetStone.Search
+public interface ISearchQuery
 {
-    public interface ISearchQuery
-    {
-        public string BuildQueryString();
-    }
+    public string BuildQueryString();
 }

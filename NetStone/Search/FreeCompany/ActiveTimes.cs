@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone.Search.FreeCompany;
 
-namespace NetStone.Search.FreeCompany
+/// <summary>
+/// Active time filters for FC searches.
+/// </summary>
+public enum ActiveTimes
 {
-    public enum ActiveTimes
-    {
-        All,
-        WeekdaysOnly,
-        WeekendsOnly,
-        Always
-    }
+    All,
+    WeekdaysOnly,
+    WeekendsOnly,
+    Always,
 }

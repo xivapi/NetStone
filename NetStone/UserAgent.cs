@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone;
 
-namespace NetStone
+internal enum UserAgent
 {
-    enum UserAgent
-    {
-        Desktop,
-        Mobile
-    }
+    Desktop,
+    Mobile,
 }
