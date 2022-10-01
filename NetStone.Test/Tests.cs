@@ -62,7 +62,8 @@ public class Tests
 
             foreach (var searchResult in page.Results)
             {
-                Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
+                Console.WriteLine(
+                    $"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
                 cResults++;
             }
 
@@ -87,7 +88,8 @@ public class Tests
         {
             foreach (var searchResult in members.Members)
             {
-                Console.WriteLine($"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
+                Console.WriteLine(
+                    $"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
             }
 
             members = await members.GetNextPage();
@@ -105,7 +107,8 @@ public class Tests
         };
 
         var page = await this.lodestone.SearchFreeCompany(query);
-        Assert.AreEqual(5, page.NumPages);
+        Assert.NotNull(page);
+        Assert.AreEqual(6, page.NumPages);
         Assert.AreEqual(1, page.CurrentPage);
 
         var cResults = 0;
@@ -117,7 +120,8 @@ public class Tests
 
             foreach (var searchResult in page.Results)
             {
-                Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
+                Console.WriteLine(
+                    $"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
                 cResults++;
             }
 
@@ -131,7 +135,10 @@ public class Tests
     public async Task CheckCharacterBare()
     {
         var chara = await this.lodestone.GetCharacter(TestCharacterIdBare);
-        var classjob = await chara.GetClassJobInfo();
+        Assert.NotNull(chara);
+
+        var classJob = await chara.GetClassJobInfo();
+        Assert.NotNull(classJob);
     }
 
     [Test]
@@ -143,7 +150,8 @@ public class Tests
         Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
         Assert.AreEqual(chara.Server, "Leviathan");
         Assert.AreEqual(chara.Name, "Arcane Disgea");
-        Assert.True(chara.Bio.StartsWith("This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"));
+        Assert.True(chara.Bio.StartsWith(
+            "This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"));
         Assert.AreEqual(chara.GuardianDeityName, "Menphina, the Lover");
         Assert.AreEqual(chara.Nameday, "28th Sun of the 6th Astral Moon");
         Assert.AreEqual(chara.Title, "Mammeteer");
@@ -156,13 +164,15 @@ public class Tests
         Assert.NotNull(chara.FreeCompany);
         Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
         Assert.AreEqual(chara.FreeCompany.Name, "Hell Hath No Fury");
-        Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
+        Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri,
+            "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
         //todo: iconlayer
 
         Assert.NotNull(chara.PvPTeam);
         Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
         Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
-        Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
+        Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri,
+            "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
         //todo: iconlayer
 
         //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
@@ -180,7 +190,7 @@ public class Tests
 
         Assert.NotNull(classjob.Weaver);
         Assert.AreEqual(classjob.Weaver.IsSpecialized, true);
-            
+
         Assert.NotNull(classjob.Carpenter);
         Assert.AreEqual(classjob.Carpenter.IsSpecialized, false);
 
