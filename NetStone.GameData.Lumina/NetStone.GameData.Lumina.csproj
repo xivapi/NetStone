@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
 
         <PackageId>NetStone.GameData.Lumina</PackageId>
-        <PackageVersion>1.0.0</PackageVersion>
-        <FileVersion>1.0.0</FileVersion>
+        <PackageVersion>1.1.0</PackageVersion>
+        <FileVersion>1.1.0</FileVersion>
         <Description>Lumina game data bindings for NetStone.</Description>
         <Authors>goaaats</Authors>
         <PackageProjectUrl>https://github.com/xivapi/NetStone</PackageProjectUrl>
