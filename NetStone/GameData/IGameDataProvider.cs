@@ -1,7 +1,6 @@
-namespace NetStone.GameData
+namespace NetStone.GameData;
+
+public interface IGameDataProvider
 {
-    public interface IGameDataProvider
-    {
-        public NamedGameData? GetItem(string name);
-    }
+    public NamedGameData? GetItem(string name);
 }

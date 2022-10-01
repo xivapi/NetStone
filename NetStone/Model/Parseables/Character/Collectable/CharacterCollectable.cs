@@ -1,46 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HtmlAgilityPack;
-using NetStone.Definitions.Model;
+﻿using HtmlAgilityPack;
 using NetStone.Definitions.Model.Character;
 
-namespace NetStone.Model.Parseables.Character.Collectable
+namespace NetStone.Model.Parseables.Character.Collectable;
+
+public class CharacterCollectable : LodestoneParseable
 {
-    public class CharacterCollectable : LodestoneParseable
+    private readonly CharacterCollectableDefinition definition;
+
+    public CharacterCollectable(HtmlNode rootNode, CharacterCollectableDefinition definition) : base(rootNode)
     {
-        private readonly CharacterCollectableDefinition definition;
+        this.definition = definition;
+    }
 
-        public CharacterCollectable(HtmlNode rootNode, CharacterCollectableDefinition definition) : base(rootNode)
-        {
-            this.definition = definition;
-        }
-
-        private CharacterCollectableEntry[] parsedResults;
+    private CharacterCollectableEntry[] parsedResults;
         
-        /// <summary>
-        /// All collectables collected by the character.
-        /// </summary>
-        public CharacterCollectableEntry[] Collectables
+    /// <summary>
+    /// All collectables collected by the character.
+    /// </summary>
+    public CharacterCollectableEntry[] Collectables
+    {
+        get
         {
-            get
-            {
-                if (this.parsedResults == null)
-                    ParseCollectables();
+            if (this.parsedResults == null)
+                ParseCollectables();
 
-                return this.parsedResults;
-            }
+            return this.parsedResults;
         }
+    }
 
-        private void ParseCollectables()
+    private void ParseCollectables()
+    {
+        var nodes = QueryChildNodes(this.definition.GetDefinitions().Root);
+
+        this.parsedResults = new CharacterCollectableEntry[nodes.Length];
+        for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            var nodes = QueryChildNodes(this.definition.GetDefinitions().Root);
-
-            this.parsedResults = new CharacterCollectableEntry[nodes.Length];
-            for (var i = 0; i < this.parsedResults.Length; i++)
-            {
-                this.parsedResults[i] = new CharacterCollectableEntry(nodes[i], this.definition);
-            }
+            this.parsedResults[i] = new CharacterCollectableEntry(nodes[i], this.definition);
         }
     }
 }

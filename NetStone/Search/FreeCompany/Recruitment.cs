@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone.Search.FreeCompany;
 
-namespace NetStone.Search.FreeCompany
+/// <summary>
+/// Recruitment filters for FC searches.
+/// </summary>
+public enum Recruitment
 {
-    public enum Recruitment
-    {
-        All,
-        Open,
-        Closed
-    }
+    All,
+    Open,
+    Closed,
 }

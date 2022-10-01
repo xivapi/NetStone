@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model.FreeCompany
+namespace NetStone.Definitions.Model.FreeCompany;
+
+public class FreeCompanyReputationEntryDefinition : IDefinition
 {
-    public class FreeCompanyReputationEntryDefinition : IDefinition
-    {
-        [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
+    [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
         
-        [JsonProperty("PROGRESS")] public DefinitionsPack Progress { get; set; }
+    [JsonProperty("PROGRESS")] public DefinitionsPack Progress { get; set; }
         
-        [JsonProperty("RANK")] public DefinitionsPack Rank { get; set; }
-    }
+    [JsonProperty("RANK")] public DefinitionsPack Rank { get; set; }
+}
 
-    public class FreeCompanyReputationDefinition : IDefinition
-    {
-        [JsonProperty("MAELSTROM")] public FreeCompanyReputationEntryDefinition Maelstrom { get; set; }
+public class FreeCompanyReputationDefinition : IDefinition
+{
+    [JsonProperty("MAELSTROM")] public FreeCompanyReputationEntryDefinition Maelstrom { get; set; }
         
-        [JsonProperty("ADDERS")] public FreeCompanyReputationEntryDefinition Adders { get; set; }
+    [JsonProperty("ADDERS")] public FreeCompanyReputationEntryDefinition Adders { get; set; }
         
-        [JsonProperty("FLAMES")] public FreeCompanyReputationEntryDefinition Flames { get; set; }
-    }
+    [JsonProperty("FLAMES")] public FreeCompanyReputationEntryDefinition Flames { get; set; }
 }

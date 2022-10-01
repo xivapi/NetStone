@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace NetStone.StaticData;
 
-namespace NetStone.StaticData
+/// <summary>
+/// The game combat roles.
+/// </summary>
+public enum Role
 {
-    public enum Role
-    {
-        None,
-        Tank,
-        Healer,
-        Dps
-    }
+    None,
+    Tank,
+    Healer,
+    Dps,
 }
