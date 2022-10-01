@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
 
     <PackageId>NetStone</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <PackageVersion>1.0.1</PackageVersion>
+    <FileVersion>1.0.1</FileVersion>
     <Description>Portable and modern Lodestone library.</Description>
     <Authors>goaaats</Authors>
     <PackageProjectUrl>https://github.com/xivapi/NetStone</PackageProjectUrl>
