@@ -8,203 +8,210 @@ using NetStone.StaticData;
 using NUnit.Framework;
 using SortKind = NetStone.Search.Character.SortKind;
 
-namespace NetStone.Test
+namespace NetStone.Test;
+
+public class Tests
 {
-    public class Tests
+    private LodestoneClient lodestone;
+
+    private const string TestCharacterIdFull = "9575452"; //arc
+    private const string TestCharacterIdBare = "9426169";
+
+    private const string TestFreeCompany = "9232379236109629819";
+
+    [SetUp]
+    public async Task Setup()
     {
-        private LodestoneClient lodestone;
+        var gameData = PacksGameDataProvider.Load(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
+        this.lodestone = await LodestoneClient.GetClientAsync(gameData);
+    }
 
-        private const string TestCharacterIdFull = "9575452"; //arc
-        private const string TestCharacterIdBare = "9426169";
+    [Test]
+    public void CheckDefinitions()
+    {
+        Assert.IsNotNull(this.lodestone.Definitions.Character);
+        Assert.IsNotNull(this.lodestone.Definitions.ClassJob);
+        Assert.IsNotNull(this.lodestone.Definitions.Gear);
+        Assert.IsNotNull(this.lodestone.Definitions.Achievement);
+    }
 
-        private const string TestFreeCompany = "9232379236109629819";
-
-        [SetUp]
-        public async Task Setup()
+    [Test]
+    public async Task CheckCharacterSearch()
+    {
+        var query = new CharacterSearchQuery
         {
-            var gameData = PacksGameDataProvider.Load(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
-            this.lodestone = await LodestoneClient.GetClientAsync(gameData);
-        }
+            CharacterName = "Bob",
+            DataCenter = "Aether",
+            Role = Role.Dps,
+            Race = Race.Hyur,
+            GrandCompany = GrandCompany.ImmortalFlames | GrandCompany.Maelstrom | GrandCompany.OrderOfTheTwinAdder,
+            Language = Language.English | Language.German | Language.French,
+            SortKind = SortKind.NameZtoA,
+        };
 
-        [Test]
-        public void CheckDefinitions()
-        {
-            Assert.IsNotNull(this.lodestone.Definitions.Character);
-            Assert.IsNotNull(this.lodestone.Definitions.ClassJob);
-            Assert.IsNotNull(this.lodestone.Definitions.Gear);
-            Assert.IsNotNull(this.lodestone.Definitions.Achievement);
-        }
+        var page = await this.lodestone.SearchCharacter(query);
+        Assert.AreEqual(4, page.NumPages);
+        Assert.AreEqual(1, page.CurrentPage);
 
-        [Test]
-        public async Task CheckCharacterSearch()
+        var cResults = 0;
+        var cPages = 1;
+
+        do
         {
-            var query = new CharacterSearchQuery
+            Assert.AreEqual(cPages, page.CurrentPage);
+
+            foreach (var searchResult in page.Results)
             {
-                CharacterName = "Bob",
-                DataCenter = "Aether",
-                Role = Role.Dps,
-                Race = Race.Hyur,
-                GrandCompany = GrandCompany.ImmortalFlames | GrandCompany.Maelstrom | GrandCompany.OrderOfTheTwinAdder,
-                Language = Language.English | Language.German | Language.French,
-                SortKind = SortKind.NameZtoA,
-            };
+                Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
+                cResults++;
+            }
 
-            var page = await this.lodestone.SearchCharacter(query);
-            Assert.AreEqual(4, page.NumPages);
-            Assert.AreEqual(1, page.CurrentPage);
+            cPages++;
 
-            var cResults = 0;
-            var cPages = 1;
+            page = await page.GetNextPage();
+        } while (page != null);
+    }
 
-            do
+    [Test]
+    public async Task CheckFreeCompany()
+    {
+        var fc = await this.lodestone.GetFreeCompany(TestFreeCompany);
+
+        Console.WriteLine(fc.Focus.Leveling.IsEnabled);
+
+        Console.WriteLine(fc.Formed);
+
+        var members = await fc.GetMembers();
+
+        do
+        {
+            foreach (var searchResult in members.Members)
             {
-                Assert.AreEqual(cPages, page.CurrentPage);
+                Console.WriteLine($"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
+            }
 
-                foreach (var searchResult in page.Results)
-                {
-                    Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
-                    cResults++;
-                }
+            members = await members.GetNextPage();
+        } while (members != null);
+    }
 
-                cPages++;
-
-                page = await page.GetNextPage();
-            } while (page != null);
-        }
-
-        [Test]
-        public async Task CheckFreeCompany()
+    [Test]
+    public async Task TestFreeCompanySearch()
+    {
+        var query = new FreeCompanySearchQuery
         {
-            var fc = await this.lodestone.GetFreeCompany(TestFreeCompany);
+            Name = "Crystal",
+            Housing = Housing.EstateBuilt,
+            GrandCompany = GrandCompany.ImmortalFlames,
+        };
 
-            Console.WriteLine(fc.Focus.Leveling.IsEnabled);
+        var page = await this.lodestone.SearchFreeCompany(query);
+        Assert.AreEqual(5, page.NumPages);
+        Assert.AreEqual(1, page.CurrentPage);
 
-            Console.WriteLine(fc.Formed);
+        var cResults = 0;
+        var cPages = 1;
 
-            var members = await fc.GetMembers();
+        do
+        {
+            Assert.AreEqual(cPages, page.CurrentPage);
 
-            do
+            foreach (var searchResult in page.Results)
             {
-                foreach (var searchResult in members.Members)
-                {
-                    Console.WriteLine($"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
-                }
+                Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
+                cResults++;
+            }
 
-                members = await members.GetNextPage();
-            } while (members != null);
-        }
+            cPages++;
 
-        [Test]
-        public async Task TestFreeCompanySearch()
+            page = await page.GetNextPage();
+        } while (page != null);
+    }
+
+    [Test]
+    public async Task CheckCharacterBare()
+    {
+        var chara = await this.lodestone.GetCharacter(TestCharacterIdBare);
+        var classjob = await chara.GetClassJobInfo();
+    }
+
+    [Test]
+    public async Task CheckCharacterFull()
+    {
+        var chara = await this.lodestone.GetCharacter(TestCharacterIdFull);
+        Assert.NotNull(chara);
+
+        Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
+        Assert.AreEqual(chara.Server, "Leviathan");
+        Assert.AreEqual(chara.Name, "Arcane Disgea");
+        Assert.True(chara.Bio.StartsWith("This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"));
+        Assert.AreEqual(chara.GuardianDeityName, "Menphina, the Lover");
+        Assert.AreEqual(chara.Nameday, "28th Sun of the 6th Astral Moon");
+        Assert.AreEqual(chara.Title, "Mammeteer");
+        Assert.AreEqual(chara.TownName, "Limsa Lominsa");
+        Assert.True(chara.Avatar != null);
+        Assert.True(chara.Portrait != null);
+
+        Console.WriteLine(chara.GuardianDeityIcon);
+
+        Assert.NotNull(chara.FreeCompany);
+        Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
+        Assert.AreEqual(chara.FreeCompany.Name, "Hell Hath No Fury");
+        Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
+        //todo: iconlayer
+
+        Assert.NotNull(chara.PvPTeam);
+        Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
+        Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
+        Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
+        //todo: iconlayer
+
+        //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
+
+        //Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
+
+        var classjob = await chara.GetClassJobInfo();
+        Assert.NotNull(classjob);
+
+        //todo: all classjob
+        Assert.NotNull(classjob.Warrior);
+        Assert.AreEqual(classjob.Warrior.Level, 80);
+        Assert.AreEqual(classjob.Warrior.ExpToGo, 0);
+        Assert.AreEqual(classjob.Warrior.IsJobUnlocked, true);
+
+        Assert.NotNull(classjob.Weaver);
+        Assert.AreEqual(classjob.Weaver.IsSpecialized, true);
+            
+        Assert.NotNull(classjob.Carpenter);
+        Assert.AreEqual(classjob.Carpenter.IsSpecialized, false);
+
+        /*var achieve = await chara.GetAchievement();
+
+        foreach (var characterAchievementEntry in achieve.Achievements)
         {
-            var query = new FreeCompanySearchQuery
-            {
-                Name = "Crystal",
-                Housing = Housing.EstateBuilt,
-                GrandCompany = GrandCompany.ImmortalFlames,
-            };
+            Console.WriteLine($"{characterAchievementEntry.Id} - {characterAchievementEntry.Name}");
+        }*/
 
-            var page = await this.lodestone.SearchFreeCompany(query);
-            Assert.AreEqual(5, page.NumPages);
-            Assert.AreEqual(1, page.CurrentPage);
+        //var mount = await chara.GetMounts();
+        //var res = mount.Collectables;
 
-            var cResults = 0;
-            var cPages = 1;
+        //var minion = await chara.GetMinions();
+    }
 
-            do
-            {
-                Assert.AreEqual(cPages, page.CurrentPage);
+    [Test]
+    public async Task CheckCharacterPrivateAchievements()
+    {
+        var chara = await this.lodestone.GetCharacterAchievement("11166211");
 
-                foreach (var searchResult in page.Results)
-                {
-                    Console.WriteLine($"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
-                    cResults++;
-                }
+        Assert.False(chara.HasResults);
+    }
 
-                cPages++;
+    [Test]
+    public async Task CheckCharacterCollectableNotFound()
+    {
+        var mounts = await this.lodestone.GetCharacterMount("0");
+        Assert.IsNull(mounts);
 
-                page = await page.GetNextPage();
-            } while (page != null);
-        }
-
-        [Test]
-        public async Task CheckCharacterBare()
-        {
-            var chara = await this.lodestone.GetCharacter(TestCharacterIdBare);
-            var classjob = await chara.GetClassJobInfo();
-        }
-
-        [Test]
-        public async Task CheckCharacterFull()
-        {
-            var chara = await this.lodestone.GetCharacter(TestCharacterIdFull);
-
-            //Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
-            //Assert.AreEqual(chara.Server, "Leviathan");
-            Assert.AreEqual(chara.Name, "Arcane Disgea");
-            Assert.AreEqual(chara.Bio, "This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            Assert.AreEqual(chara.GuardianDeityName, "Menphina, the Lover");
-            Assert.AreEqual(chara.Nameday, "28th Sun of the 6th Astral Moon");
-            Assert.AreEqual(chara.Title, "Mammeteer");
-            Assert.AreEqual(chara.TownName, "Limsa Lominsa");
-            Assert.True(chara.Avatar != null);
-            Assert.True(chara.Portrait != null);
-
-            Console.WriteLine(chara.GuardianDeityIcon);
-
-            Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
-            Assert.AreEqual(chara.FreeCompany.Name, "Hell Hath No Fury");
-            Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
-            //todo: iconlayer
-
-            Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
-            Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
-            Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri, "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
-            //todo: iconlayer
-
-            //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
-
-            //Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
-
-            var classjob = await chara.GetClassJobInfo();
-
-            //todo: all classjob
-            Assert.AreEqual(classjob.Warrior.Level, 80);
-            Assert.AreEqual(classjob.Warrior.ExpToGo, 0);
-            Assert.AreEqual(classjob.Warrior.IsJobUnlocked, true);
-
-            Assert.AreEqual(classjob.Weaver.IsSpecialized, true);
-            Assert.AreEqual(classjob.Carpenter.IsSpecialized, false);
-
-            /*var achieve = await chara.GetAchievement();
-
-            foreach (var characterAchievementEntry in achieve.Achievements)
-            {
-                Console.WriteLine($"{characterAchievementEntry.Id} - {characterAchievementEntry.Name}");
-            }*/
-
-            //var mount = await chara.GetMounts();
-            //var res = mount.Collectables;
-
-            //var minion = await chara.GetMinions();
-        }
-
-        [Test]
-        public async Task CheckCharacterPrivateAchievements()
-        {
-            var chara = await this.lodestone.GetCharacterAchievement("11166211");
-
-            Assert.False(chara.HasResults);
-        }
-
-        [Test]
-        public async Task CheckCharacterCollectableNotFound()
-        {
-            var mounts = await this.lodestone.GetCharacterMount("0");
-            Assert.IsNull(mounts);
-
-            var minions = await this.lodestone.GetCharacterMinion("0");
-            Assert.IsNull(minions);
-        }
+        var minions = await this.lodestone.GetCharacterMinion("0");
+        Assert.IsNull(minions);
     }
 }
