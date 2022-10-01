@@ -35,7 +35,7 @@ public class LuminaGameDataProvider : IGameDataProvider
             Info = new GameDataInfo
             {
                 Key = item.RowId,
-                Name = name
+                Name = name,
             },
 
             Name = new LanguageStrings
@@ -55,7 +55,7 @@ public class LuminaGameDataProvider : IGameDataProvider
         var fr = this.lumina.Excel.GetSheet<T>(Language.English);
         var ja = this.lumina.Excel.GetSheet<T>(Language.English);
 
-        return (en.GetRow(key), de.GetRow(key), fr.GetRow(key), ja.GetRow(key));
+        return (en!.GetRow(key)!, de!.GetRow(key)!, fr!.GetRow(key)!, ja!.GetRow(key)!);
     }
 
     private T? FindRow<T>(string name) where T: ExcelRow
