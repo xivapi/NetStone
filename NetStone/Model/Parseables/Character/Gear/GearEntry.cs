@@ -50,14 +50,13 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// <summary>
     /// Materia applied to this item.
     /// </summary>
-    //TODO: parse
     public string[] Materia => new[]
     {
-        Parse(this.definition.Materia1),
-        Parse(this.definition.Materia2),
-        Parse(this.definition.Materia3),
-        Parse(this.definition.Materia4),
-        Parse(this.definition.Materia5),
+        ParseDirectInnerText(this.definition.Materia1),
+        ParseDirectInnerText(this.definition.Materia2),
+        ParseDirectInnerText(this.definition.Materia3),
+        ParseDirectInnerText(this.definition.Materia4),
+        ParseDirectInnerText(this.definition.Materia5)
     };
 
     /// <summary>
