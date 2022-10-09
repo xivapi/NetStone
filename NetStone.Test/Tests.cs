@@ -181,6 +181,11 @@ public class Tests
         //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
 
         //Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
+        
+        //Undyed item
+        Assert.NotNull(chara.Gear.Legs.Materia[0]);
+        //Dyed item
+        Assert.NotNull(chara.Gear.Body.Materia[0]);
 
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
