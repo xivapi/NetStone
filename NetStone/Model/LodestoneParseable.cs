@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 using HtmlAgilityPack.CssSelectors.NetCore;
 using NetStone.Definitions;
 using NetStone.Definitions.Model;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
 
 namespace NetStone.Model;
 
@@ -31,7 +31,7 @@ public abstract class LodestoneParseable
     /// <param name="pack">Definition of the node.</param>
     /// <returns>The needed node.</returns>
     protected HtmlNode QueryNode(DefinitionsPack pack) => this.RootNode.QuerySelector(pack.Selector);
-        
+
     /// <summary>
     /// Query all ChildNodes of a <see cref="HtmlNode"/> via pack selector.
     /// Removes unneeded "#text" nodes.
@@ -49,11 +49,11 @@ public abstract class LodestoneParseable
 
         if (entryDef == null)
             throw new ArgumentException("Could not get entry definition");
-            
+
         return QueryNode(pagedDefinition.Root)
             ?.QuerySelectorAll(entryDef.Root.Selector).ToArray();
     }
-        
+
     protected bool HasNode(DefinitionsPack pack) => QueryNode(pack) != null;
 
     /// <summary>
@@ -69,7 +69,7 @@ public abstract class LodestoneParseable
 
             if (res == null)
                 return null;
-                
+
             if (res.Count != 0)
                 return res[1].Value;
         }
@@ -80,7 +80,7 @@ public abstract class LodestoneParseable
     protected string ParseInnerText(DefinitionsPack pack, bool noAttribute = false)
     {
         var node = QueryNode(pack);
-            
+
         // Handle default attribute parsing
         var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute ? ParseAttribute(pack) : node?.InnerText;
 
@@ -98,13 +98,28 @@ public abstract class LodestoneParseable
 
         if (string.IsNullOrEmpty(text))
             return null;
-            
+
         var regex = new Regex(pack.Regex);
         var match = regex.Match(text);
 
         return match.Groups;
     }
-        
+
+    /// <summary>
+    /// Parses the DirectInnerText via selector.
+    /// </summary>
+    /// <param name="pack">Definition of the node.</param>
+    /// <param name="noAttribute">Determines if Attributes are parsed or not.</param>
+    /// <returns></returns>
+    protected string ParseDirectInnerText(DefinitionsPack pack, bool noAttribute = false)
+    {
+        var node = QueryNode(pack);
+
+        var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute ? ParseAttribute(pack) : node?.GetDirectInnerText();
+
+        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
+    }
+
     /// <summary>
     /// Parse tooltip attribute.
     /// </summary>

@@ -45,7 +45,10 @@ public class LodestoneCharacter : LodestoneParseable
 
     //public string ActiveClassJob => ParseInnerText(this.charDefinition.ActiveClassJob);
 
-    //public int ActiveClassJobLevel => int.Parse(ParseInnerText(this.charDefinition.ActiveClassJobLevel));
+    /// <summary>
+    /// Level of the current active ClassJob.
+    /// </summary>
+    public int ActiveClassJobLevel => int.Parse(ParseInnerText(this.charDefinition.ActiveClassJobLevel).Remove(0, 6));
 
     /// <summary>
     /// An URI to the avatar of the character.
