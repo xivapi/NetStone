@@ -8,12 +8,18 @@ using Newtonsoft.Json;
 
 namespace NetStone.Definitions;
 
+/// <summary>
+/// Holds the definitions on how to find and parse values from Lodestone HTML
+/// </summary>
 public class XivApiDefinitionsContainer : DefinitionsContainer
 {
     private const string DefinitionRepoBase = "https://raw.githubusercontent.com/xivapi/lodestone-css-selectors/main/";
 
     private readonly HttpClient client;
 
+    /// <summary>
+    /// Constructs this class without populating definitions
+    /// </summary>
     public XivApiDefinitionsContainer()
     {
         this.client = new HttpClient
@@ -22,6 +28,11 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         };
     }
 
+    /// <summary>
+    /// Downloads current CSS collectors from xivapi/lodestone-css-selectors github repository
+    /// </summary>
+    /// <exception cref="HttpRequestException"></exception>
+    /// <returns>Task for this operation</returns>
     public override async Task Reload()
     {
         this.Meta = await GetDefinition<MetaDefinition>("meta.json");
@@ -36,7 +47,8 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
 
         this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
         this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json");
-        this.FreeCompanyReputation = await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json");
+        this.FreeCompanyReputation =
+            await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json");
 
         this.FreeCompanyMembers = await GetDefinition<PagedDefinition>("freecompany/members.json");
 
@@ -50,6 +62,7 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         return JsonConvert.DeserializeObject<T>(json);
     }
 
+    /// <inheritdoc />
     public override void Dispose()
     {
         this.client.Dispose();

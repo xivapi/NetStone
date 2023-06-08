@@ -49,17 +49,24 @@ public class LodestoneClient : IDisposable
             BaseAddress = new Uri(lodestoneBaseAddress),
         };
 
-        Definitions = definitions;
-        Data = gameData;
+        this.Definitions = definitions;
+        this.Data = gameData;
     }
 
+    /// <summary>
+    /// Initializes and returns a new Lodestone client with current definitions loaded from xivapi/lodestone-css-selectors
+    /// </summary>
+    /// <param name="gameData">Service providing game data for parsing</param>
+    /// <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
+    /// <exception cref="HttpRequestException"></exception>
+    /// <returns></returns>
     public static async Task<LodestoneClient> GetClientAsync(IGameDataProvider? gameData = null,
         string lodestoneBaseAddress = Constants.LodestoneBase)
     {
-        var defs = new XivApiDefinitionsContainer();
-        await defs.Reload();
+        var definitions = new XivApiDefinitionsContainer();
+        await definitions.Reload();
 
-        return new LodestoneClient(defs, gameData, lodestoneBaseAddress);
+        return new LodestoneClient(definitions, gameData, lodestoneBaseAddress);
     }
 
     #region Character
@@ -184,7 +191,16 @@ public class LodestoneClient : IDisposable
                 throw new ArgumentOutOfRangeException(nameof(agent), agent, null);
         }
 
-        var response = await this.client.SendAsync(request);
+        HttpResponseMessage? response;
+        try
+        {
+            response = await this.client.SendAsync(request);
+        }
+        catch (Exception ex) when (ex is HttpRequestException or InvalidOperationException)
+        {
+            return null;
+        }
+
 
         if (response.StatusCode == HttpStatusCode.NotFound)
             return null;
@@ -199,6 +215,6 @@ public class LodestoneClient : IDisposable
     public void Dispose()
     {
         this.client.Dispose();
-        Definitions.Dispose();
+        this.Definitions.Dispose();
     }
 }
