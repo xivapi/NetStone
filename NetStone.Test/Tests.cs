@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using NetStone.GameData.Packs;
+using NetStone.Model.Parseables.Character.Gear;
 using NetStone.Search.Character;
 using NetStone.Search.FreeCompany;
 using NetStone.StaticData;
@@ -180,11 +181,19 @@ public class Tests
         //todo: iconlayer
 
         //Gear
+        var gear = chara.Gear;
+        Assert.AreEqual($"Classical War Scythe{GearEntry.HqChar}", gear.Mainhand.ItemName);
+        Assert.IsTrue(gear.Mainhand.IsHq);
+        Assert.AreEqual("Classical War Scythe", gear.Mainhand.StrippedItemName);
+        Assert.AreEqual($"Reaper's Chapeau", gear.Head.ItemName);
+        Assert.IsFalse(gear.Head.IsHq);
+        Assert.AreEqual("Reaper's Chapeau", gear.Head.StrippedItemName);
+        Assert.AreEqual($"The Last Earring of Slaying", gear.Earrings.ItemName);
+        Assert.IsFalse(gear.Earrings.IsHq);
+        Assert.AreEqual("The Last Earring of Slaying", gear.Earrings.StrippedItemName);
 
-        //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
 
-        //Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
-
+        //Materia
         //Not dyed item
         Assert.NotNull(chara.Gear.Legs?.Materia[0]);
         //Dyed item

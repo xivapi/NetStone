@@ -10,6 +10,11 @@ namespace NetStone.Model.Parseables.Character.Gear;
 /// </summary>
 public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
 {
+    /// <summary>
+    /// Character representing the high quality symbol
+    /// </summary>
+    public const char HqChar = '\uE03C';
+
     private readonly LodestoneClient client;
     private readonly GearEntryDefinition definition;
 
@@ -30,6 +35,16 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// Name of this item.
     /// </summary>
     public string ItemName => Parse(this.definition.Name);
+
+    /// <summary>
+    /// Indicates if this item is high quality
+    /// </summary>
+    public bool IsHq => this.ItemName.EndsWith(HqChar);
+
+    /// <summary>
+    /// Returns the name of this item without high quality icon
+    /// </summary>
+    public string StrippedItemName => this.IsHq ? this.ItemName.Remove(this.ItemName.Length - 1) : this.ItemName;
 
     /// <summary>
     /// Link to the glamoured item's Eorzea DB page.
@@ -56,7 +71,7 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
         ParseDirectInnerText(this.definition.Materia2),
         ParseDirectInnerText(this.definition.Materia3),
         ParseDirectInnerText(this.definition.Materia4),
-        ParseDirectInnerText(this.definition.Materia5)
+        ParseDirectInnerText(this.definition.Materia5),
     };
 
     /// <summary>
@@ -71,13 +86,13 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
 
     public NamedGameData? GetGameData()
     {
-        cachedGameData ??= !Exists ? null : client.Data?.GetItem(ItemName);
-        return cachedGameData;
+        this.cachedGameData ??= !this.Exists ? null : this.client.Data?.GetItem(this.ItemName);
+        return this.cachedGameData;
     }
 
     /// <summary>
     /// String representation of the gear slot.
     /// </summary>
     /// <returns>The name of the item.</returns>
-    public override string ToString() => ItemName;
+    public override string ToString() => this.ItemName;
 }
