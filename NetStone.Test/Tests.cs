@@ -149,6 +149,7 @@ public class Tests
     {
         var chara = await this.lodestone.GetCharacter(TestCharacterIdFull);
         Assert.NotNull(chara);
+        //General data
         Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
         Assert.AreEqual(chara.Server, "Leviathan");
         Assert.AreEqual(chara.Name, "Arcane Disgea");
@@ -163,19 +164,22 @@ public class Tests
 
         Console.WriteLine(chara.GuardianDeityIcon);
 
+        //Free Company
         Assert.NotNull(chara.FreeCompany);
         Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
         Assert.AreEqual(chara.FreeCompany.Name, "Hell On Aura");
         Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri,
             "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
         //todo: iconlayer
-
+        //PvP
         Assert.NotNull(chara.PvPTeam);
         Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
         Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
         Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri,
             "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
         //todo: iconlayer
+
+        //Gear
 
         //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
 
@@ -185,6 +189,8 @@ public class Tests
         Assert.NotNull(chara.Gear.Legs?.Materia[0]);
         //Dyed item
         Assert.NotNull(chara.Gear.Body?.Materia[0]);
+
+        //Classes/Jobs
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
 
@@ -205,9 +211,20 @@ public class Tests
         }
 
         Assert.NotNull(classJob.Reaper);
-        Assert.AreEqual(classJob.Reaper.Level, 90);
-        Assert.AreEqual(classJob.Reaper.ExpToGo, 0);
-        Assert.AreEqual(classJob.Reaper.IsJobUnlocked, false);
+        Assert.AreEqual(90, classJob.Reaper.Level);
+        Assert.AreEqual(0, classJob.Reaper.ExpToGo);
+        Assert.AreEqual(0, classJob.Reaper.ExpCurrent);
+        Assert.AreEqual(0, classJob.Reaper.ExpMax);
+        Assert.IsFalse(classJob.Reaper.IsJobUnlocked);
+
+        Assert.NotNull(classJob.Scholar);
+        Assert.AreEqual(74, classJob.Scholar.Level);
+        Assert.AreEqual(6612, classJob.Scholar.ExpCurrent);
+        Assert.AreEqual(3532000, classJob.Scholar.ExpMax);
+        Assert.AreEqual(3532000 - 6612, classJob.Scholar.ExpToGo);
+
+        Assert.NotNull(classJob.WhiteMage);
+        Assert.IsTrue(classJob.WhiteMage.IsJobUnlocked);
 
         Assert.NotNull(classJob.Weaver);
         Assert.AreEqual(classJob.Weaver.IsSpecialized, true);

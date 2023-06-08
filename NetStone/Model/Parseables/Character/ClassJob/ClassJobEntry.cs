@@ -21,7 +21,7 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
     /// <summary>
     /// Value indicating whether this class has its job unlocked.
     /// </summary>
-    public bool IsJobUnlocked => Name.Contains("/");
+    public bool IsJobUnlocked => this.Name.Contains("/");
 
     /// <summary>
     /// The level this class or job is at.
@@ -35,10 +35,10 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
         }
     }
 
-    private string ExpString => Parse(this.definition.Exp);
+    private string ExpString => ParseInnerText(this.definition.Exp);
 
     private long? expCurrentVal;
-        
+
     /// <summary>
     /// The amount of current achieved EXP on this level.
     /// </summary>
@@ -52,9 +52,9 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
             return this.expCurrentVal.Value;
         }
     }
-        
+
     private long? expMaxVal;
-        
+
     /// <summary>
     /// The amount of EXP to be reached to gain the next level.
     /// </summary>
@@ -72,25 +72,25 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
     /// <summary>
     /// The outstanding amount of EXP to go to the next level.
     /// </summary>
-    public long ExpToGo => ExpMax - ExpCurrent;
+    public long ExpToGo => this.ExpMax - this.ExpCurrent;
 
     private void ParseExp()
     {
-        if (!Exists)
+        if (!this.Exists)
         {
             this.expCurrentVal = 0;
             this.expMaxVal = 0;
-                
+
             return;
         }
 
-        var expVals = ExpString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
+        var expVals = this.ExpString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
 
         if (expVals[0] == "--")
         {
             this.expCurrentVal = 0;
             this.expMaxVal = 0;
-                
+
             return;
         }
 
@@ -102,20 +102,23 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
     /// Value indicating whether this job, if DoH or DoL, is specialized.
     /// </summary>
     public bool IsSpecialized => ParseAttribute(this.definition.UnlockState, "class").Contains("--meister");
-        
-    /// <summary>
-    /// Value indicating if this class is unlocked.
-    /// </summary>
-    public bool Exists => Level != 0;
 
     /// <summary>
     /// Value indicating if this class is unlocked.
     /// </summary>
-    public bool IsUnlocked => Exists;
+    public bool Exists => this.Level != 0;
+
+    /// <summary>
+    /// Value indicating if this class is unlocked.
+    /// </summary>
+    public bool IsUnlocked => this.Exists;
 
     /// <summary>
     /// The string representation of this object.
     /// </summary>
     /// <returns>Name (Level)</returns>
-    public override string ToString() => $"{Name} ({Level})";
+    public override string ToString()
+    {
+        return $"{this.Name} ({this.Level})";
+    }
 }
