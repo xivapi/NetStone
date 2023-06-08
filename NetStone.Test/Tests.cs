@@ -149,7 +149,6 @@ public class Tests
     {
         var chara = await this.lodestone.GetCharacter(TestCharacterIdFull);
         Assert.NotNull(chara);
-
         Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
         Assert.AreEqual(chara.Server, "Leviathan");
         Assert.AreEqual(chara.Name, "Arcane Disgea");
@@ -181,16 +180,30 @@ public class Tests
         //Assert.AreEqual(chara.Gear.Mainhand.ItemName, "Skullrender");
 
         //Assert.AreEqual(chara.Attributes.SkillSpeed, 3990);
-        
-        //Undyed item
-        Assert.NotNull(chara.Gear.Legs.Materia[0]);
-        //Dyed item
-        Assert.NotNull(chara.Gear.Body.Materia[0]);
 
+        //Not dyed item
+        Assert.NotNull(chara.Gear.Legs?.Materia[0]);
+        //Dyed item
+        Assert.NotNull(chara.Gear.Body?.Materia[0]);
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
 
         //todo: all classJob
+        foreach (var job in Enum.GetValues<ClassJob>())
+        {
+            switch (job)
+            {
+                case ClassJob.None:
+                    continue;
+                case ClassJob.Sage:
+                    Assert.Null(classJob.ClassJobDict[job], $"{job}");
+                    break;
+                default:
+                    Assert.NotNull(classJob.ClassJobDict[job], $"{job}");
+                    break;
+            }
+        }
+
         Assert.NotNull(classJob.Reaper);
         Assert.AreEqual(classJob.Reaper.Level, 90);
         Assert.AreEqual(classJob.Reaper.ExpToGo, 0);
