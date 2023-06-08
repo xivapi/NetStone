@@ -1,27 +1,47 @@
 ﻿using System;
+using System.Linq;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement;
 
+/// <summary>
+/// Models data for one Achievement this character earned
+/// </summary>
 public class CharacterAchievementEntry : LodestoneParseable
 {
-    private readonly LodestoneClient client;
     private readonly CharacterAchievementEntryDefinition definition;
 
-    public CharacterAchievementEntry(LodestoneClient client, HtmlNode rootNode, CharacterAchievementEntryDefinition definition) : base(rootNode)
+    /// <summary>
+    /// Create instance of achievement entry fpr given node
+    /// </summary>
+    /// <param name="rootNode">Root html node of this entry</param>
+    /// <param name="definition">Css and regex definition</param>
+    public CharacterAchievementEntry(HtmlNode rootNode, CharacterAchievementEntryDefinition definition) : base(rootNode)
     {
-        this.client = client;
         this.definition = definition;
     }
 
-    public string Name => Parse(this.definition.ActivityDescription);
+    /// <summary>
+    /// The Name of this achievement
+    /// </summary>
+    public string Name => ParseRegex(this.definition.Name).First(r => r.Name.Equals("Name")).Value;
 
+    /// <summary>
+    /// ID of this achievement
+    /// </summary>
     public ulong? Id => ParseHrefIdULong(this.definition.Id);
 
+    /// <summary>
+    /// Link to the Eorzean Database
+    /// </summary>
     public Uri DatabaseLink => ParseHref(this.definition.Id);
 
+    /// <summary>
+    /// Time when this character earned this achievement
+    /// </summary>
     public DateTime TimeAchieved => ParseTime(this.definition.Time);
 
-    public override string ToString() => Name;
+    /// <inheritdoc />
+    public override string ToString() => this.Name;
 }

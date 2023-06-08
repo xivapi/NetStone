@@ -270,6 +270,17 @@ public class Tests
         foreach (var achievement in achieve.Achievements)
         {
             Assert.NotNull(achievement.Id);
+            switch (achievement.Id)
+            {
+                case 3090:
+                    Assert.AreEqual("Sustainable Sourcing I", achievement.Name);
+                    Assert.AreEqual(new DateTime(2022, 08, 28, 15, 04, 02), achievement.TimeAchieved);
+                    break;
+                case 1642:
+                    Assert.AreEqual("Sins of the Savage Creator I", achievement.Name);
+                    Assert.AreEqual(new DateTime(2019, 07, 29, 02, 34, 08), achievement.TimeAchieved);
+                    break;
+            }
         }
 
         var mount = await chara.GetMounts();

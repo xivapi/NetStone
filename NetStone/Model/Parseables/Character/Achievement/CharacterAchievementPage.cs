@@ -10,17 +10,18 @@ namespace NetStone.Model.Parseables.Character.Achievement;
 public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<CharacterAchievementPage>
 {
     private readonly LodestoneClient client;
-        
+
     private readonly PagedDefinition pageDefinition;
     private readonly CharacterAchievementEntryDefinition entryDefinition;
-        
+
     private readonly string charId;
 
-    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition definition, string charId) : base(rootNode)
+    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition definition,
+        string charId) : base(rootNode)
     {
         this.client = client;
         this.charId = charId;
-            
+
         this.pageDefinition = definition;
         this.entryDefinition = definition.Entry.ToObject<CharacterAchievementEntryDefinition>();
     }
@@ -34,18 +35,19 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         }
     }
 
-    public int AchievementPoints => Int32.Parse(Parse(this.entryDefinition.AchievementPoints));
+    public int AchievementPoints => int.Parse(Parse(this.entryDefinition.AchievementPoints));
 
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
     private CharacterAchievementEntry[] parsedResults;
+
     public IEnumerable<CharacterAchievementEntry> Achievements
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return new CharacterAchievementEntry[0];
-                
+
             if (this.parsedResults == null)
                 ParseSearchResults();
 
@@ -60,18 +62,19 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         this.parsedResults = new CharacterAchievementEntry[nodes.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new CharacterAchievementEntry(this.client, nodes[i], this.entryDefinition);
+            this.parsedResults[i] = new CharacterAchievementEntry(nodes[i], this.entryDefinition);
         }
     }
 
     private int? currentPageVal;
+
     public int CurrentPage
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return 0;
-                
+
             if (!this.currentPageVal.HasValue)
                 ParsePagesCount();
 
@@ -80,13 +83,14 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     }
 
     private int? numPagesVal;
+
     public int NumPages
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return 0;
-                
+
             if (!this.numPagesVal.HasValue)
                 ParsePagesCount();
 
@@ -101,15 +105,15 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         this.currentPageVal = int.Parse(results["CurrentPage"].Value);
         this.numPagesVal = int.Parse(results["NumPages"].Value);
     }
-        
+
     public async Task<CharacterAchievementPage?> GetNextPage()
     {
-        if (!HasResults)
-            return null;
-            
-        if (CurrentPage == NumPages)
+        if (!this.HasResults)
             return null;
 
-        return await this.client.GetCharacterAchievement(this.charId, CurrentPage + 1);
+        if (this.CurrentPage == this.NumPages)
+            return null;
+
+        return await this.client.GetCharacterAchievement(this.charId, this.CurrentPage + 1);
     }
 }

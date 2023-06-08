@@ -6,6 +6,8 @@ public class CharacterAchievementEntryDefinition : PagedEntryDefinition
 {
     [JsonProperty("ROOT")] public DefinitionsPack Root { get; set; }
 
+    [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
+
     [JsonProperty("ID")] public DefinitionsPack Id { get; set; }
 
     [JsonProperty("TIME")] public DefinitionsPack Time { get; set; }
