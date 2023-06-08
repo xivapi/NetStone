@@ -194,7 +194,6 @@ public class Tests
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
 
-        //todo: all classJob
         foreach (var job in Enum.GetValues<ClassJob>())
         {
             switch (job)
@@ -231,6 +230,31 @@ public class Tests
 
         Assert.NotNull(classJob.Carpenter);
         Assert.AreEqual(classJob.Carpenter.IsSpecialized, false);
+
+        //Attributes
+        var attributes = chara.Attributes;
+        Assert.AreEqual(2208, attributes.Strength);
+        Assert.AreEqual(393, attributes.Dexterity);
+        Assert.AreEqual(2178, attributes.Vitality);
+        Assert.AreEqual(311, attributes.Intelligence);
+        Assert.AreEqual(155, attributes.Mind);
+        Assert.AreEqual(1603, attributes.CriticalHitRate);
+        Assert.AreEqual(1378, attributes.Determination);
+        Assert.AreEqual(1321, attributes.DirectHitRate);
+        Assert.AreEqual(2827, attributes.Defense);
+        Assert.AreEqual(2223, attributes.MagicDefense);
+        Assert.AreEqual(2208, attributes.AttackPower);
+        Assert.AreEqual(577, attributes.SkillSpeed);
+        Assert.AreEqual(311, attributes.AttackMagicPotency);
+        Assert.AreEqual(155, attributes.HealingMagicPotency);
+        Assert.AreEqual(400, attributes.SpellSpeed);
+        Assert.AreEqual(400, attributes.Tenacity);
+        Assert.AreEqual(390, attributes.Piety);
+        Assert.AreEqual(46898, attributes.Hp);
+        Assert.AreEqual(10000, attributes.MpGpCp);
+        Assert.AreEqual("MP", attributes.MpGpCpParameterName);
+
+        //Achievements
 
         var achieve = await chara.GetAchievement();
         Assert.NotNull(achieve);
