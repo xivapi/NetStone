@@ -35,7 +35,7 @@ public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
     /// <summary>
     /// Link to this social group's page.
     /// </summary>
-    public Uri Link => ParseHref(this.definition.Name);
+    public Uri? Link => ParseHref(this.definition.Name);
 
     /// <summary>
     /// <see cref="IconLayers"/> of this social group's icon.

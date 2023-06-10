@@ -82,9 +82,6 @@ public abstract class LodestoneParseable
         {
             var res = ParseRegex(pack);
 
-            if (res == null)
-                return null;
-
             if (res.Count != 0)
                 return res[1].Value;
         }
@@ -97,7 +94,7 @@ public abstract class LodestoneParseable
     /// </summary>
     /// <param name="pack">Definition of node</param>
     /// <param name="noAttribute">Indicates to not parse attributes</param>
-    /// <returns>TExt inside node</returns>
+    /// <returns>Text inside node</returns>
     protected string ParseInnerText(DefinitionsPack pack, bool noAttribute = false)
     {
         var node = QueryNode(pack);
@@ -105,7 +102,7 @@ public abstract class LodestoneParseable
         // Handle default attribute parsing
         var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute ? ParseAttribute(pack) : node?.InnerText;
 
-        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
+        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : "";
     }
 
     /// <summary>
@@ -117,10 +114,7 @@ public abstract class LodestoneParseable
     {
         var text = ParseInnerText(pack);
 
-        if (string.IsNullOrEmpty(text))
-            return null;
-
-        var regex = new Regex(pack.Regex);
+        var regex = new Regex(pack.Regex ?? "");
         var match = regex.Match(text);
 
         return match.Groups;
@@ -140,7 +134,7 @@ public abstract class LodestoneParseable
             ? ParseAttribute(pack)
             : node?.GetDirectInnerText();
 
-        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
+        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : "";
     }
 
     /// <summary>
@@ -153,7 +147,7 @@ public abstract class LodestoneParseable
     {
         var text = ParseAttribute(pack, "data-tooltip");
 
-        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
+        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : "";
     }
 
     /// <summary>
@@ -161,7 +155,8 @@ public abstract class LodestoneParseable
     /// </summary>
     /// <param name="pack">Definition of the node.</param>
     /// <returns>Parsed attribute.</returns>
-    protected string ParseAttribute(DefinitionsPack pack) => ParseAttribute(pack, pack.Attribute);
+    protected string? ParseAttribute(DefinitionsPack pack) =>
+        pack.Attribute == null ? null : ParseAttribute(pack, pack.Attribute);
 
     /// <summary>
     /// Parse specified attribute via selector from pack.
@@ -169,7 +164,7 @@ public abstract class LodestoneParseable
     /// <param name="pack">Definition of the node.</param>
     /// <param name="attribute">Attribute to parse.</param>
     /// <returns>Parsed attribute.</returns>
-    protected string ParseAttribute(DefinitionsPack pack, string attribute)
+    protected string? ParseAttribute(DefinitionsPack pack, string attribute)
     {
         var node = QueryNode(pack);
 
@@ -188,7 +183,7 @@ public abstract class LodestoneParseable
     /// <param name="pack">Definition of the node.</param>
     /// <returns>Parsed href.</returns>
     // TODO: Switch to attribute in pack
-    protected Uri ParseHref(DefinitionsPack pack)
+    protected Uri? ParseHref(DefinitionsPack pack)
     {
         var href = ParseAttribute(pack, "href");
 
@@ -213,7 +208,7 @@ public abstract class LodestoneParseable
         var url = ParseHref(pack);
 
         if (url == null)
-            return null;
+            return "";
 
         var link = url.AbsoluteUri;
 
@@ -247,7 +242,7 @@ public abstract class LodestoneParseable
     /// <param name="pack">Definition of the node.</param>
     /// <returns>Parsed image source.</returns>
     // TODO: Switch to attribute in pack
-    protected Uri ParseImageSource(DefinitionsPack pack)
+    protected Uri? ParseImageSource(DefinitionsPack pack)
     {
         var src = ParseAttribute(pack, "src");
 

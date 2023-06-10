@@ -12,8 +12,7 @@ public class FreeCompanyMembersEntry : LodestoneParseable
     private readonly FreeCompanyMembersEntryDefinition definition;
 
     ///
-    public FreeCompanyMembersEntry(LodestoneClient client, HtmlNode rootNode,
-        FreeCompanyMembersEntryDefinition definition) : base(rootNode)
+    public FreeCompanyMembersEntry(HtmlNode rootNode, FreeCompanyMembersEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }
@@ -36,7 +35,7 @@ public class FreeCompanyMembersEntry : LodestoneParseable
     /// <summary>
     /// Icon representing <see cref="Rank"/>
     /// </summary>
-    public Uri RankIcon => ParseImageSource(this.definition.RankIcon);
+    public Uri? RankIcon => ParseImageSource(this.definition.RankIcon);
 
     /// <summary>
     /// Home world
@@ -51,5 +50,5 @@ public class FreeCompanyMembersEntry : LodestoneParseable
     /// <summary>
     /// Character's avatar
     /// </summary>
-    public Uri Avatar => ParseImageSource(this.definition.Avatar);
+    public Uri? Avatar => ParseImageSource(this.definition.Avatar);
 }

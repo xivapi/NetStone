@@ -35,7 +35,7 @@ public class CharacterAchievementEntry : LodestoneParseable
     /// <summary>
     /// Link to the Eorzean Database
     /// </summary>
-    public Uri DatabaseLink => ParseHref(this.definition.Id);
+    public Uri? DatabaseLink => ParseHref(this.definition.Id);
 
     /// <summary>
     /// Time when this character earned this achievement

@@ -29,9 +29,10 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
     }
 
     /// <summary>
-    /// Downloads current CSS collectors from xivapi/lodestone-css-selectors github repository
+    /// Fetches current CSS selector definitions from xivapi/lodestone-css-selectors github repository.
     /// </summary>
     /// <exception cref="HttpRequestException"></exception>
+    /// <exception cref="FormatException"></exception>
     /// <returns>Task for this operation</returns>
     public override async Task Reload()
     {
@@ -59,7 +60,8 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition
     {
         var json = await this.client.GetStringAsync(path);
-        return JsonConvert.DeserializeObject<T>(json);
+        var result = JsonConvert.DeserializeObject<T>(json);
+        return result == null ? throw new FormatException($"Could not parse definitions in {path}.") : result;
     }
 
     /// <inheritdoc />

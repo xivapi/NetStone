@@ -11,7 +11,7 @@ public class FreeCompanyMembersEntryDefinition : PagedEntryDefinition
     /// Root node of entry
     /// </summary>
     [JsonProperty("ROOT")]
-    public DefinitionsPack Root { get; set; }
+    public new DefinitionsPack Root { get; set; }
 
     /// <summary>
     /// Avatar of member character

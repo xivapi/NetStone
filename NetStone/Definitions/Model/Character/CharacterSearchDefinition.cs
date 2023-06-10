@@ -53,5 +53,5 @@ public class CharacterSearchEntryDefinition : PagedEntryDefinition
     /// Root node
     /// </summary>
     [JsonProperty("ROOT")]
-    public DefinitionsPack Root { get; set; }
+    public new DefinitionsPack Root { get; set; }
 }

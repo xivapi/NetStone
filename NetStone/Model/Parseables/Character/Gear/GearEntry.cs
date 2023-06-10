@@ -35,7 +35,7 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// <summary>
     /// Link to this piece's Eorzea DB page.
     /// </summary>
-    public Uri ItemDatabaseLink => ParseHref(this.definition.DbLink);
+    public Uri? ItemDatabaseLink => ParseHref(this.definition.DbLink);
 
     /// <summary>
     /// Name of this item.
@@ -55,7 +55,7 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// <summary>
     /// Link to the glamoured item's Eorzea DB page.
     /// </summary>
-    public Uri GlamourDatabaseLink => ParseHref(this.definition.MirageDbLink);
+    public Uri? GlamourDatabaseLink => ParseHref(this.definition.MirageDbLink);
 
     /// <summary>
     /// Name of the glamoured item.

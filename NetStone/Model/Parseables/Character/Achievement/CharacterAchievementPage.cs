@@ -58,7 +58,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
-    private CharacterAchievementEntry[] parsedResults;
+    private CharacterAchievementEntry[]? parsedResults;
 
     /// <summary>
     /// Unlocked achievements for character
@@ -68,12 +68,12 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         get
         {
             if (!this.HasResults)
-                return new CharacterAchievementEntry[0];
+                return Array.Empty<CharacterAchievementEntry>();
 
             if (this.parsedResults == null)
                 ParseSearchResults();
 
-            return this.parsedResults;
+            return this.parsedResults!;
         }
     }
 
@@ -101,7 +101,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
             if (!this.currentPageVal.HasValue)
                 ParsePagesCount();
 
-            return this.currentPageVal.Value;
+            return this.currentPageVal!.Value;
         }
     }
 
@@ -118,7 +118,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
             if (!this.numPagesVal.HasValue)
                 ParsePagesCount();
 
-            return this.numPagesVal.Value;
+            return this.numPagesVal!.Value;
         }
     }
 

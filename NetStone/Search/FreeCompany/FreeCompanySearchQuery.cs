@@ -12,17 +12,17 @@ public class FreeCompanySearchQuery : ISearchQuery
     /// <summary>
     /// Name to search for
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
 
     /// <summary>
     /// World name the FC should belong to
     /// </summary>
-    public string World { get; set; }
+    public string World { get; set; } = "";
 
     /// <summary>
     /// Data center the FC should belong to
     /// </summary>
-    public string DataCenter { get; set; }
+    public string DataCenter { get; set; } = "";
 
     /// <summary>
     /// IF the FC is recruiting via Community Finder

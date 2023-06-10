@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
@@ -39,7 +40,7 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
     /// </summary>
     public bool HasResults => true;
 
-    private FreeCompanyMembersEntry[] parsedResults;
+    private FreeCompanyMembersEntry[]? parsedResults;
 
     /// <summary>
     /// Lists all members
@@ -49,12 +50,12 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
         get
         {
             if (!this.HasResults)
-                return new FreeCompanyMembersEntry[0];
+                return Array.Empty<FreeCompanyMembersEntry>();
 
             if (this.parsedResults == null)
                 ParseSearchResults();
 
-            return this.parsedResults;
+            return this.parsedResults!;
         }
     }
 
@@ -65,7 +66,7 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
         this.parsedResults = new FreeCompanyMembersEntry[nodes.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new FreeCompanyMembersEntry(this.client, nodes[i], this.entryDefinition);
+            this.parsedResults[i] = new FreeCompanyMembersEntry(nodes[i], this.entryDefinition);
         }
     }
 
@@ -82,7 +83,7 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
             if (!this.currentPageVal.HasValue)
                 ParsePagesCount();
 
-            return this.currentPageVal.Value;
+            return this.currentPageVal!.Value;
         }
     }
 
@@ -99,7 +100,7 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
             if (!this.numPagesVal.HasValue)
                 ParsePagesCount();
 
-            return this.numPagesVal.Value;
+            return this.numPagesVal!.Value;
         }
     }
 

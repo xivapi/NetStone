@@ -1431,7 +1431,8 @@
         </member>
         <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Reload">
             <summary>
-            Downloads current CSS collectors from xivapi/lodestone-css-selectors github repository
+            Fetches current CSS collectors from xivapi/lodestone-css-selectors github repository.<br/>
+            Throws <see cref="T:System.Net.Http.HttpRequestException"/> if definitions cannot be fetched
             </summary>
             <exception cref="T:System.Net.Http.HttpRequestException"></exception>
             <returns>Task for this operation</returns>
@@ -1758,7 +1759,7 @@
             </summary>
             <param name="pack">Definition of node</param>
             <param name="noAttribute">Indicates to not parse attributes</param>
-            <returns>TExt inside node</returns>
+            <returns>Text inside node</returns>
         </member>
         <member name="M:NetStone.Model.LodestoneParseable.ParseRegex(NetStone.Definitions.DefinitionsPack)">
             <summary>
@@ -2961,7 +2962,7 @@
             Models one entry for the Free Company member list
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition)">
+        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition)">
             
         </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Name">

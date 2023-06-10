@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
@@ -40,7 +41,7 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
     /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
-    private CharacterSearchEntry[] parsedResults;
+    private CharacterSearchEntry[]? parsedResults;
 
     /// <summary>
     /// List all results
@@ -50,12 +51,12 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
         get
         {
             if (!this.HasResults)
-                return new CharacterSearchEntry[0];
+                return Array.Empty<CharacterSearchEntry>();
 
             if (this.parsedResults == null)
                 ParseSearchResults();
 
-            return this.parsedResults;
+            return this.parsedResults!;
         }
     }
 
@@ -83,7 +84,7 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
             if (!this.currentPageVal.HasValue)
                 ParsePagesCount();
 
-            return this.currentPageVal.Value;
+            return this.currentPageVal!.Value;
         }
     }
 
@@ -100,7 +101,7 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
             if (!this.numPagesVal.HasValue)
                 ParsePagesCount();
 
-            return this.numPagesVal.Value;
+            return this.numPagesVal!.Value;
         }
     }
 

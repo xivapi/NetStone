@@ -59,6 +59,7 @@ public class LodestoneClient : IDisposable
     /// <param name="gameData">Service providing game data for parsing</param>
     /// <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
     /// <exception cref="HttpRequestException"></exception>
+    /// <exception cref="FormatException"></exception>
     /// <returns></returns>
     public static async Task<LodestoneClient> GetClientAsync(IGameDataProvider? gameData = null,
         string lodestoneBaseAddress = Constants.LodestoneBase)

@@ -22,5 +22,5 @@ public interface IPaginatedResult<T> where T : LodestoneParseable
     /// Gets the next page of results
     /// </summary>
     /// <returns>Task of retrieving next page</returns>
-    Task<T> GetNextPage();
+    Task<T?> GetNextPage();
 }

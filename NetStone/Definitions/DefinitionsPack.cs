@@ -18,12 +18,12 @@ public class DefinitionsPack
     /// A perl regex to extract the relevant information from the inner text of the relevant node
     /// </summary>
     [JsonProperty("regex")]
-    public string PerlBasedRegex { get; set; }
+    public string? PerlBasedRegex { get; set; }
 
     /// <summary>
     /// C# usable regex based on <see cref="PerlBasedRegex"/>
     /// </summary>
-    public string Regex => this.PerlBasedRegex?.Replace("(?P<", "(?<", StringComparison.InvariantCulture);
+    public string? Regex => this.PerlBasedRegex?.Replace("(?P<", "(?<", StringComparison.InvariantCulture);
 
     //Never used
     //[JsonProperty("or")] public string Description { get; set; }
@@ -32,5 +32,5 @@ public class DefinitionsPack
     /// HTML attribute that holds information. Only set if data is not in the inner text
     /// </summary>
     [JsonProperty("attribute")]
-    public string Attribute { get; set; }
+    public string? Attribute { get; set; }
 }

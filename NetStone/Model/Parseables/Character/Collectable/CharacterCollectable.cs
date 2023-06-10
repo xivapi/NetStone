@@ -20,7 +20,7 @@ public class CharacterCollectable : LodestoneParseable
         this.definition = definition;
     }
 
-    private CharacterCollectableEntry[] parsedResults;
+    private CharacterCollectableEntry[]? parsedResults;
 
     /// <summary>
     /// All collectables collected by the character.
@@ -32,7 +32,7 @@ public class CharacterCollectable : LodestoneParseable
             if (this.parsedResults == null)
                 ParseCollectables();
 
-            return this.parsedResults;
+            return this.parsedResults!;
         }
     }
 

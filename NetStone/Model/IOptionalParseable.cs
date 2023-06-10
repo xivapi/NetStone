@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-
-namespace NetStone.Model;
+﻿namespace NetStone.Model;
 
 /// <summary>
 /// Interface indicating an optional parsed object that may or may not exist.
@@ -23,8 +21,7 @@ public static class OptionalExtensions
     /// Method returning the object itself if exists.
     /// </summary>
     /// <returns>this if Exists == True</returns>
-    [CanBeNull]
-    public static T GetOptional<T>(this IOptionalParseable<T> opt) where T : LodestoneParseable
+    public static T? GetOptional<T>(this IOptionalParseable<T> opt) where T : LodestoneParseable
     {
         if (opt.Exists)
             return opt as T;

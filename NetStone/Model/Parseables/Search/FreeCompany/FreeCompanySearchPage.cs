@@ -41,7 +41,7 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
     /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
-    private FreeCompanySearchEntry[] parsedResults;
+    private FreeCompanySearchEntry[]? parsedResults;
 
     /// <summary>
     /// Lists all search results
@@ -56,7 +56,7 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
             if (this.parsedResults == null)
                 ParseSearchResults();
 
-            return this.parsedResults;
+            return this.parsedResults!;
         }
     }
 
@@ -84,7 +84,7 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
             if (!this.currentPageVal.HasValue)
                 ParsePagesCount();
 
-            return this.currentPageVal.Value;
+            return this.currentPageVal!.Value;
         }
     }
 
@@ -101,7 +101,7 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
             if (!this.numPagesVal.HasValue)
                 ParsePagesCount();
 
-            return this.numPagesVal.Value;
+            return this.numPagesVal!.Value;
         }
     }
 

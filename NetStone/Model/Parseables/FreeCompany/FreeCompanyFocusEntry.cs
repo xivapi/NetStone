@@ -29,7 +29,7 @@ public class FreeCompanyFocusEntry : LodestoneParseable
     /// <summary>
     /// Uri to icon
     /// </summary>
-    public Uri Icon => ParseImageSource(this.definition.ICON);
+    public Uri? Icon => ParseImageSource(this.definition.ICON);
 
     /// <summary>
     /// Indicates this focus is selected

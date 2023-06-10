@@ -57,7 +57,7 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
             if (!this.expCurrentVal.HasValue)
                 ParseExp();
 
-            return this.expCurrentVal.Value;
+            return this.expCurrentVal!.Value;
         }
     }
 
@@ -73,7 +73,7 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
             if (!this.expCurrentVal.HasValue)
                 ParseExp();
 
-            return this.expMaxVal.Value;
+            return this.expMaxVal!.Value;
         }
     }
 
@@ -109,7 +109,7 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
     /// <summary>
     /// Value indicating whether this job, if DoH or DoL, is specialized.
     /// </summary>
-    public bool IsSpecialized => ParseAttribute(this.definition.UnlockState, "class").Contains("--meister");
+    public bool IsSpecialized => ParseAttribute(this.definition.UnlockState, "class")?.Contains("--meister") ?? false;
 
     /// <summary>
     /// Value indicating if this class is unlocked.

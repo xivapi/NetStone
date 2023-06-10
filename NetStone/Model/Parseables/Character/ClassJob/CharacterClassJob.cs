@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using HtmlAgilityPack;
-using JetBrains.Annotations;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.ClassJob;
@@ -25,194 +24,164 @@ public class CharacterClassJob : LodestoneParseable
     /// <summary>
     /// Information about the Paladin class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Paladin => new ClassJobEntry(this.RootNode, this.definition.Paladin).GetOptional();
+    public ClassJobEntry? Paladin => new ClassJobEntry(this.RootNode, this.definition.Paladin).GetOptional();
 
     /// <summary>
     /// Information about the Warrior class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Warrior => new ClassJobEntry(this.RootNode, this.definition.Warrior).GetOptional();
+    public ClassJobEntry? Warrior => new ClassJobEntry(this.RootNode, this.definition.Warrior).GetOptional();
 
     /// <summary>
     /// Information about the Dark Knight class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry DarkKnight => new ClassJobEntry(this.RootNode, this.definition.DarkKnight).GetOptional();
+    public ClassJobEntry? DarkKnight => new ClassJobEntry(this.RootNode, this.definition.DarkKnight).GetOptional();
 
     /// <summary>
     /// Information about the Gunbreaker class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Gunbreaker => new ClassJobEntry(this.RootNode, this.definition.Gunbreaker).GetOptional();
+    public ClassJobEntry? Gunbreaker => new ClassJobEntry(this.RootNode, this.definition.Gunbreaker).GetOptional();
 
     /// <summary>
     /// Information about the Monk class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Monk => new ClassJobEntry(this.RootNode, this.definition.Monk).GetOptional();
+    public ClassJobEntry? Monk => new ClassJobEntry(this.RootNode, this.definition.Monk).GetOptional();
 
     /// <summary>
     /// Information about the Dragoon class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Dragoon => new ClassJobEntry(this.RootNode, this.definition.Dragoon).GetOptional();
+    public ClassJobEntry? Dragoon => new ClassJobEntry(this.RootNode, this.definition.Dragoon).GetOptional();
 
     /// <summary>
     /// Information about the Ninja class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Ninja => new ClassJobEntry(this.RootNode, this.definition.Ninja).GetOptional();
+    public ClassJobEntry? Ninja => new ClassJobEntry(this.RootNode, this.definition.Ninja).GetOptional();
 
     /// <summary>
     /// Information about the Samurai class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Samurai => new ClassJobEntry(this.RootNode, this.definition.Samurai).GetOptional();
+    public ClassJobEntry? Samurai => new ClassJobEntry(this.RootNode, this.definition.Samurai).GetOptional();
 
     /// <summary>
     /// Information about the Reaper class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Reaper => new ClassJobEntry(this.RootNode, this.definition.Reaper).GetOptional();
+    public ClassJobEntry? Reaper => new ClassJobEntry(this.RootNode, this.definition.Reaper).GetOptional();
 
     /// <summary>
     /// Information about the WhiteMage class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry WhiteMage => new ClassJobEntry(this.RootNode, this.definition.Whitemage).GetOptional();
+    public ClassJobEntry? WhiteMage => new ClassJobEntry(this.RootNode, this.definition.Whitemage).GetOptional();
 
     /// <summary>
     /// Information about the Scholar class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Scholar => new ClassJobEntry(this.RootNode, this.definition.Scholar).GetOptional();
+    public ClassJobEntry? Scholar => new ClassJobEntry(this.RootNode, this.definition.Scholar).GetOptional();
 
     /// <summary>
     /// Information about the Astrologian class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Astrologian => new ClassJobEntry(this.RootNode, this.definition.Astrologian).GetOptional();
+    public ClassJobEntry? Astrologian => new ClassJobEntry(this.RootNode, this.definition.Astrologian).GetOptional();
 
     /// <summary>
     /// Information about the Sage class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Sage => new ClassJobEntry(this.RootNode, this.definition.Sage).GetOptional();
+    public ClassJobEntry? Sage => new ClassJobEntry(this.RootNode, this.definition.Sage).GetOptional();
 
     /// <summary>
     /// Information about the Bard class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Bard => new ClassJobEntry(this.RootNode, this.definition.Bard).GetOptional();
+    public ClassJobEntry? Bard => new ClassJobEntry(this.RootNode, this.definition.Bard).GetOptional();
 
     /// <summary>
     /// Information about the Machinist class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Machinist => new ClassJobEntry(this.RootNode, this.definition.Machinist).GetOptional();
+    public ClassJobEntry? Machinist => new ClassJobEntry(this.RootNode, this.definition.Machinist).GetOptional();
 
     /// <summary>
     /// Information about the Dancer class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Dancer => new ClassJobEntry(this.RootNode, this.definition.Dancer).GetOptional();
+    public ClassJobEntry? Dancer => new ClassJobEntry(this.RootNode, this.definition.Dancer).GetOptional();
 
     /// <summary>
     /// Information about the BlackMage class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry BlackMage => new ClassJobEntry(this.RootNode, this.definition.Blackmage).GetOptional();
+    public ClassJobEntry? BlackMage => new ClassJobEntry(this.RootNode, this.definition.Blackmage).GetOptional();
 
     /// <summary>
     /// Information about the Summoner class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Summoner => new ClassJobEntry(this.RootNode, this.definition.Summoner).GetOptional();
+    public ClassJobEntry? Summoner => new ClassJobEntry(this.RootNode, this.definition.Summoner).GetOptional();
 
     /// <summary>
     /// Information about the RedMage class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry RedMage => new ClassJobEntry(this.RootNode, this.definition.Redmage).GetOptional();
+    public ClassJobEntry? RedMage => new ClassJobEntry(this.RootNode, this.definition.Redmage).GetOptional();
 
     /// <summary>
     /// Information about the BlueMage class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry BlueMage => new ClassJobEntry(this.RootNode, this.definition.Bluemage).GetOptional();
+    public ClassJobEntry? BlueMage => new ClassJobEntry(this.RootNode, this.definition.Bluemage).GetOptional();
 
     /// <summary>
     /// Information about the Carpenter class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Carpenter => new ClassJobEntry(this.RootNode, this.definition.Carpenter).GetOptional();
+    public ClassJobEntry? Carpenter => new ClassJobEntry(this.RootNode, this.definition.Carpenter).GetOptional();
 
     /// <summary>
     /// Information about the Blacksmith class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Blacksmith => new ClassJobEntry(this.RootNode, this.definition.Blacksmith).GetOptional();
+    public ClassJobEntry? Blacksmith => new ClassJobEntry(this.RootNode, this.definition.Blacksmith).GetOptional();
 
     /// <summary>
     /// Information about the Armorer class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Armorer => new ClassJobEntry(this.RootNode, this.definition.Armorer).GetOptional();
+    public ClassJobEntry? Armorer => new ClassJobEntry(this.RootNode, this.definition.Armorer).GetOptional();
 
     /// <summary>
     /// Information about the Goldsmith class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Goldsmith => new ClassJobEntry(this.RootNode, this.definition.Goldsmith).GetOptional();
+    public ClassJobEntry? Goldsmith => new ClassJobEntry(this.RootNode, this.definition.Goldsmith).GetOptional();
 
     /// <summary>
     /// Information about the Leatherworker class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Leatherworker => new ClassJobEntry(this.RootNode, this.definition.Leatherworker).GetOptional();
+    public ClassJobEntry? Leatherworker =>
+        new ClassJobEntry(this.RootNode, this.definition.Leatherworker).GetOptional();
 
     /// <summary>
     /// Information about the Weaver class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Weaver => new ClassJobEntry(this.RootNode, this.definition.Weaver).GetOptional();
+    public ClassJobEntry? Weaver => new ClassJobEntry(this.RootNode, this.definition.Weaver).GetOptional();
 
     /// <summary>
     /// Information about the Alchemist class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Alchemist => new ClassJobEntry(this.RootNode, this.definition.Alchemist).GetOptional();
+    public ClassJobEntry? Alchemist => new ClassJobEntry(this.RootNode, this.definition.Alchemist).GetOptional();
 
     /// <summary>
     /// Information about the Culinarian
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Culinarian => new ClassJobEntry(this.RootNode, this.definition.Culinarian).GetOptional();
+    public ClassJobEntry? Culinarian => new ClassJobEntry(this.RootNode, this.definition.Culinarian).GetOptional();
 
     /// <summary>
     /// Information about the Miner class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Miner => new ClassJobEntry(this.RootNode, this.definition.Miner).GetOptional();
+    public ClassJobEntry? Miner => new ClassJobEntry(this.RootNode, this.definition.Miner).GetOptional();
 
     /// <summary>
     /// Information about the Botanist class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Botanist => new ClassJobEntry(this.RootNode, this.definition.Botanist).GetOptional();
+    public ClassJobEntry? Botanist => new ClassJobEntry(this.RootNode, this.definition.Botanist).GetOptional();
 
     /// <summary>
     /// Information about the Fisher class.
     /// </summary>
-    [CanBeNull]
-    public ClassJobEntry Fisher => new ClassJobEntry(this.RootNode, this.definition.Fisher).GetOptional();
+    public ClassJobEntry? Fisher => new ClassJobEntry(this.RootNode, this.definition.Fisher).GetOptional();
 
     /// <summary>
     /// This dictionary maps <see cref="StaticData.ClassJob"/> to the respective <see cref="ClassJobEntry"/>
     /// </summary>
-    public IReadOnlyDictionary<StaticData.ClassJob, ClassJobEntry> ClassJobDict =>
-        new Dictionary<StaticData.ClassJob, ClassJobEntry>
+    public IReadOnlyDictionary<StaticData.ClassJob, ClassJobEntry?> ClassJobDict =>
+        new Dictionary<StaticData.ClassJob, ClassJobEntry?>
         {
             { StaticData.ClassJob.Gladiator, this.Paladin },
             { StaticData.ClassJob.Paladin, this.Paladin },

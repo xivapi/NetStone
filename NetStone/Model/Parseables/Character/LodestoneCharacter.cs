@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using JetBrains.Annotations;
 using NetStone.Definitions;
 using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.Character.Achievement;
@@ -54,7 +53,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// An URI to the avatar of the character.
     /// </summary>
-    public Uri Avatar => ParseImageSource(this.charDefinition.Avatar);
+    public Uri? Avatar => ParseImageSource(this.charDefinition.Avatar);
 
     /// <summary>
     /// The character bio/description.
@@ -64,8 +63,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// The character FreeCompany info.
     /// </summary>
-    [CanBeNull]
-    public SocialGroup FreeCompany =>
+    public SocialGroup? FreeCompany =>
         new FreeCompanySocialGroup(this.client, this.RootNode, this.charDefinition.FreeCompany).GetOptional();
 
     /// <summary>
@@ -86,7 +84,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// The icon of the guardian deity of the character.
     /// </summary>
-    public Uri GuardianDeityIcon => ParseImageSource(this.charDefinition.GuardianDeity.Icon);
+    public Uri? GuardianDeityIcon => ParseImageSource(this.charDefinition.GuardianDeity.Icon);
 
     /// <summary>
     /// The name of the character.
@@ -101,13 +99,12 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// An URI to the avatar of the character.
     /// </summary>
-    public Uri Portrait => ParseImageSource(this.charDefinition.Portrait);
+    public Uri? Portrait => ParseImageSource(this.charDefinition.Portrait);
 
     /// <summary>
     /// The character PvPTeam info.
     /// </summary>
-    [CanBeNull]
-    public SocialGroup PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
+    public SocialGroup? PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
     //TODO: parse
     /// <summary>
@@ -123,7 +120,6 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// The title of the character.
     /// </summary>
-    [CanBeNull]
     public string Title => Parse(this.charDefinition.Title);
 
     /// <summary>
@@ -134,7 +130,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// The town of the character.
     /// </summary>
-    public Uri TownIcon => ParseHref(this.charDefinition.Town.Icon);
+    public Uri? TownIcon => ParseHref(this.charDefinition.Town.Icon);
 
     /// <summary>
     /// The character gear information.

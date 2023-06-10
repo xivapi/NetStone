@@ -104,13 +104,13 @@ public class LodestoneFreeCompany : LodestoneParseable
     /// <summary>
     /// Information about the estate
     /// </summary>
-    public FreeCompanyEstate Estate =>
+    public FreeCompanyEstate? Estate =>
         new FreeCompanyEstate(this.RootNode, this.fcDefinition.EstateDefinition).GetOptional();
 
     /// <summary>
     /// INformation about focused gameplay
     /// </summary>
-    public FreeCompanyFocus Focus => new FreeCompanyFocus(this.RootNode, this.focusDefinition).GetOptional();
+    public FreeCompanyFocus? Focus => new FreeCompanyFocus(this.RootNode, this.focusDefinition).GetOptional();
 
     /// <summary>
     /// REputation with the Grand Companies

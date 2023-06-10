@@ -12,17 +12,17 @@ public class CharacterSearchQuery : ISearchQuery
     /// <summary>
     /// Name to search
     /// </summary>
-    public string CharacterName { get; set; }
+    public string CharacterName { get; set; } = "";
 
     /// <summary>
     /// Homeworld for search
     /// </summary>
-    public string World { get; set; }
+    public string World { get; set; } = "";
 
     /// <summary>
     /// Datacenter to search
     /// </summary>
-    public string DataCenter { get; set; }
+    public string DataCenter { get; set; } = "";
 
     /// <summary>
     /// Role to search for

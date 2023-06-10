@@ -185,13 +185,32 @@ public class Tests
         Assert.AreEqual($"Classical War Scythe{GearEntry.HqChar}", gear.Mainhand.ItemName);
         Assert.IsTrue(gear.Mainhand.IsHq);
         Assert.AreEqual("Classical War Scythe", gear.Mainhand.StrippedItemName);
+
+        Assert.IsNull(gear.Offhand);
+
         Assert.AreEqual($"Reaper's Chapeau", gear.Head.ItemName);
         Assert.IsFalse(gear.Head.IsHq);
         Assert.AreEqual("Reaper's Chapeau", gear.Head.StrippedItemName);
+
+        Assert.AreEqual("Reaper's Corselet", gear.Body.ItemName);
+
+        Assert.AreEqual("Reaper's Armguards", gear.Hands.ItemName);
+
+        Assert.AreEqual("Moonward Hose of Maiming", gear.Legs.ItemName);
+
+        Assert.AreEqual("Reaper's Boots", gear.Feet.ItemName);
+
         Assert.AreEqual($"The Last Earring of Slaying", gear.Earrings.ItemName);
         Assert.IsFalse(gear.Earrings.IsHq);
         Assert.AreEqual("The Last Earring of Slaying", gear.Earrings.StrippedItemName);
 
+        Assert.AreEqual("The Last Necklace of Slaying", gear.Necklace.ItemName);
+
+        Assert.AreEqual("The Last Bracelet of Slaying", gear.Bracelets.ItemName);
+
+        Assert.AreEqual("Moonward Ring of Slaying", gear.Ring1.ItemName);
+
+        Assert.AreEqual("The Last Ring of Slaying", gear.Ring2.ItemName);
 
         //Materia
         //Not dyed item
