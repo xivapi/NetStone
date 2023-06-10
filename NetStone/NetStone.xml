@@ -4,9 +4,1541 @@
         <name>NetStone</name>
     </assembly>
     <members>
+        <member name="T:NetStone.Constants">
+            <summary>
+            Contains constants used for initializing the Lodestone parser.
+            </summary>
+        </member>
+        <member name="F:NetStone.Constants.LodestoneBase">
+            <summary>
+            Base URL for the Lodestone website.
+            </summary>
+        </member>
         <member name="T:NetStone.Definitions.DefinitionsContainer">
             <summary>
             Class providing definitions(Selectors, paths) for parsing lodestone content.
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Meta">
+            <summary>
+            Meta definitions
+            Contains version, user-agents and Uris
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Character">
+            <summary>
+            General definitions for characters
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.ClassJob">
+            <summary>
+            Class information for characters
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Gear">
+            <summary>
+            Gear definitions for character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Attributes">
+            <summary>
+            Definitions for a character's attribute
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Achievement">
+            <summary>
+            Definitions for a character's achievements
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Mount">
+            <summary>
+            Definitions for a character's mounts
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Minion">
+            <summary>
+            Definitions for a character's minions
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.FreeCompany">
+            <summary>
+            Definitions for Free Company
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.FreeCompanyFocus">
+            <summary>
+            Definitions for Free Company focus
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.FreeCompanyReputation">
+            <summary>
+            Definitions for Free Company reputation
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.FreeCompanyMembers">
+            <summary>
+            Definitions for Free Company member list
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CharacterSearch">
+            <summary>
+            Definitions for character search
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.FreeCompanySearch">
+            <summary>
+            Definitions for Free company search
+            </summary>
+        </member>
+        <member name="M:NetStone.Definitions.DefinitionsContainer.Reload">
+            <summary>
+            Loads the definitions from repo
+            </summary>
+            <returns>Reload task</returns>
+        </member>
+        <member name="M:NetStone.Definitions.DefinitionsContainer.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Definitions.DefinitionsPack">
+            <summary>
+            Models the definition on how to extract information from the Lodestone HTML document
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsPack.Selector">
+            <summary>
+            Hold a CSS selector to get the relevant html node from the DOM
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsPack.PerlBasedRegex">
+            <summary>
+            A perl regex to extract the relevant information from the inner text of the relevant node
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsPack.Regex">
+            <summary>
+            C# usable regex based on <see cref="P:NetStone.Definitions.DefinitionsPack.PerlBasedRegex"/>
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsPack.Attribute">
+            <summary>
+            HTML attribute that holds information. Only set if data is not in the inner text
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition">
+            <summary>
+            Models the definition of one achievement entry for a character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Root">
+            <summary>
+            Root node of entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Name">
+            <summary>
+            Achievement name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Id">
+            <summary>
+            Id of this achievement
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Time">
+            <summary>
+            Time when this achievement was earned
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.PageInfo">
+            <summary>
+            Info about pages
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.TotalAchievements">
+            <summary>
+            Total number of achievements earned by this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.AchievementPoints">
+            <summary>
+            Total achievement points earned by this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.ActivityDescription">
+            <summary>
+            Full text displayed for this achievement
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterAttributesDefinition">
+            <summary>
+            Node definitions for a character's attributes
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Strength">
+            <summary>
+            Strength
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Dexterity">
+            <summary>
+            Dexterity
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Vitality">
+            <summary>
+            Vitality
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Intelligence">
+            <summary>
+            Intelligence
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Mind">
+            <summary>
+            Mind
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.CriticalHitRate">
+            <summary>
+            Critical Hit
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Determination">
+            <summary>
+            Determination
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.DirectHitRate">
+            <summary>
+            Direct Hit
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Defense">
+            <summary>
+            Defense
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.MagicDefense">
+            <summary>
+            Magic Defense
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.AttackPower">
+            <summary>
+            Attack Power
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.SkillSpeed">
+            <summary>
+            Skill Speed
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.AttackMagicPotency">
+            <summary>
+            Attack Magic Potency
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.HealingMagicPotency">
+            <summary>
+            Healing Magic Potency
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.SpellSpeed">
+            <summary>
+            Spell Speed
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Tenacity">
+            <summary>
+            Tenacity
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Piety">
+            <summary>
+            Piety
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.Hp">
+            <summary>
+            Hit Points
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.MpGpCp">
+            <summary>
+            MP, GP or CP depending on Job
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.MpGpCpParameterName">
+            <summary>
+            Name of <see cref="P:NetStone.Definitions.Model.Character.CharacterAttributesDefinition.MpGpCp"/>
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition">
+            <summary>
+            Definitions for Bozja jobs
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.LEVEL">
+            <summary>
+            Level
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.METTLE">
+            <summary>
+            Mettle
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.NAME">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.ClassJobEurekaDefinition">
+            <summary>
+            Definitions for Eureka jobs
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobEurekaDefinition.Exp">
+            <summary>
+            Experience
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobEurekaDefinition.Level">
+            <summary>
+            Level
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobEurekaDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.ClassJobEntryDefinition">
+            <summary>
+            Definitions for Battle jobs, Crafter and Gatherer
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobEntryDefinition.Level">
+            <summary>
+            Level
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobEntryDefinition.UnlockState">
+            <summary>
+            Indicates of the job is Unlocked
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobEntryDefinition.Exp">
+            <summary>
+            Experience
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterClassJobDefinition">
+            <summary>
+            Definition container for all classes and jobs of a character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Bozja">
+            <summary>
+            Bozja job
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Eureka">
+            <summary>
+            Eureka
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Paladin">
+            <summary>
+            Paladin (includes Gladiator)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Warrior">
+            <summary>
+            Warrior (includes Marauder)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.DarkKnight">
+            <summary>
+            Dark Knight
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Gunbreaker">
+            <summary>
+            Gunbreaker
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Monk">
+            <summary>
+            Monk (includes Pugilist)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Dragoon">
+            <summary>
+            Dragoon (include Lancer)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Ninja">
+            <summary>
+            Ninja (includes Rogue)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Samurai">
+            <summary>
+            Samurai
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Reaper">
+            <summary>
+            Reaper
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Whitemage">
+            <summary>
+            White Mage (includes Conjurer)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Scholar">
+            <summary>
+            Scholar
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Astrologian">
+            <summary>
+            Astrologian
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Sage">
+            <summary>
+            Sage
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Bard">
+            <summary>
+            Bard
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Machinist">
+            <summary>
+            Machinist
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Dancer">
+            <summary>
+            Dancer
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Blackmage">
+            <summary>
+            Black Mage
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Summoner">
+            <summary>
+            Summoner
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Redmage">
+            <summary>
+            Red Mage
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Bluemage">
+            <summary>
+            Blue Mage
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Carpenter">
+            <summary>
+            Carpenter
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Blacksmith">
+            <summary>
+            Blacksmith
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Armorer">
+            <summary>
+            Armorer
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Goldsmith">
+            <summary>
+            Goldsmith
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Leatherworker">
+            <summary>
+            Leatherworker
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Weaver">
+            <summary>
+            Weaver
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Alchemist">
+            <summary>
+            Alchemist
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Culinarian">
+            <summary>
+            Culinarian
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Miner">
+            <summary>
+            Miner
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Botanist">
+             <summary>
+            Botanist
+             </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Fisher">
+            <summary>
+            Fisher
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterCollectableDefinition">
+            <summary>
+            General class for a category of collectables
+            </summary>
+        </member>
+        <member name="M:NetStone.Definitions.Model.Character.CharacterCollectableDefinition.GetDefinitions">
+            <summary>
+            Get node definition for and entry
+            </summary>
+            <returns>Node definition</returns>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterMountDefinition">
+            <summary>
+            Definition pack for a character's mounts
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterMountDefinition.Mounts">
+            <summary>
+            Node definition for mounts
+            </summary>
+        </member>
+        <member name="M:NetStone.Definitions.Model.Character.CharacterMountDefinition.GetDefinitions">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterMinionDefinition">
+            <summary>
+            Definition pack for a character's minions
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterMinionDefinition.Minions">
+            <summary>
+            Noe definition for minions
+            </summary>
+        </member>
+        <member name="M:NetStone.Definitions.Model.Character.CharacterMinionDefinition.GetDefinitions">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CollectableNodeDefinition">
+            <summary>
+            General definition for a collectable
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CollectableNodeDefinition.Root">
+            <summary>
+            Root node of collectable entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CollectableNodeDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterFreeCompany">
+            <summary>
+            Definitions for free company of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterFreeCompany.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterFreeCompany.IconLayers">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterPvPTeam">
+            <summary>
+            Definitions for PvP team of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterPvPTeam.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterPvPTeam.IconLayers">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.ICharacterSocialGroupDefinition">
+            <summary>
+            General definition of a social group
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ICharacterSocialGroupDefinition.Name">
+            <summary>
+            Definition for the name of the group
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.ICharacterSocialGroupDefinition.IconLayers">
+            <summary>
+            Definition of Icon Layers
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.NameIconDefinition">
+            <summary>
+            Generic definition for icon and name combination
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.NameIconDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.NameIconDefinition.Icon">
+            <summary>
+            Icon
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterDefinition">
+            <summary>
+            Set of definition packs for character profile
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.ActiveClassJob">
+            <summary>
+            Currently active class/job
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.ActiveClassJobLevel">
+            <summary>
+            Level of current class/job
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Avatar">
+            <summary>
+            Characters avatar picture
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Bio">
+            <summary>
+            Players description for this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.FreeCompany">
+            <summary>
+            Free Company of this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.GrandCompany">
+            <summary>
+            Grand company
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.GuardianDeity">
+            <summary>
+            Deity
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Nameday">
+            <summary>
+            Nameday (Birthday)
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Portrait">
+            <summary>
+            Image of full character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.PvPTeam">
+            <summary>
+            PvP Team
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.RaceClanGender">
+            <summary>
+            Race, Clan and Gender of the character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Server">
+            <summary>
+            Homeworld of the character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterDefinition.Town">
+            <summary>
+            City-State affiliation
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.GearEntryDefinition">
+            <summary>
+            Definitions for a slot of gear in character profile
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Name">
+            <summary>
+            Name of the item
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.DbLink">
+            <summary>
+            Link to Eorzea Database for item
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.MirageName">
+            <summary>
+            Name of glamour
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.MirageDbLink">
+            <summary>
+            Link to Eorzea Database for glamour item
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Stain">
+            <summary>
+            Die of the item
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Materia1">
+            <summary>
+            Materia Slot 1
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Materia2">
+            <summary>
+            Materia Slot 2
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Materia3">
+            <summary>
+            Materia Slot 3
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Materia4">
+            <summary>
+            Materia Slot 4
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.Materia5">
+            <summary>
+            Materia Slot 5
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.CreatorName">
+            <summary>
+            Name of creator/crafter of this item (if applicable)
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.SoulcrystalEntryDefinition">
+            <summary>
+            Definition for Soul Crystal slot
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.SoulcrystalEntryDefinition.Name">
+            <summary>
+            Name of the item
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterGearDefinition">
+            <summary>
+            Definition for all gear of the character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Mainhand">
+            <summary>
+            Main hand weapon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Offhand">
+            <summary>
+            Off hand weapon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Head">
+            <summary>
+            Head piece
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Body">
+            <summary>
+            Chest piece
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Hands">
+            <summary>
+            Hand piece
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Waist">
+            <summary>
+            Waist
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Legs">
+            <summary>
+            Legs
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Feet">
+            <summary>
+            Feet
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Earrings">
+            <summary>
+            Earrings
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Necklace">
+            <summary>
+            Necklace
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Bracelets">
+            <summary>
+            Braccelets
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Ring1">
+            <summary>
+            Right ring
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Ring2">
+            <summary>
+            Left ring
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Soulcrystal">
+            <summary>
+            Soul Crystal
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition">
+            <summary>
+            Definition pack for character search results
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Avatar">
+            <summary>
+            Avatar of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Id">
+            <summary>
+            Lodestone Id
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Lang">
+            <summary>
+            Language
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Rank">
+            <summary>
+            Grand Company rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.RankIcon">
+            <summary>
+            Grand Company rank icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Server">
+            <summary>
+            Homeworld
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Root">
+            <summary>
+            Root node
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.EstateDefinition">
+            <summary>
+            Definitions for FC estate
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.EstateDefinition.NoEstate">
+            <summary>
+            Definition for empty estate
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.EstateDefinition.Greeting">
+            <summary>
+            Greeting
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.EstateDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.EstateDefinition.Plot">
+            <summary>
+            Plot
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.Ranking">
+            <summary>
+            Ranking definitions
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.Ranking.Weekly">
+            <summary>
+            Weekly ranking
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.Ranking.Monthly">
+            <summary>
+            Monthly ranking
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition">
+            <summary>
+            Definitions for free company profile
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Activestate">
+            <summary>
+            Is Active
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.ActiveMemberCount">
+            <summary>
+            Active member count
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.CrestLayers">
+            <summary>
+            Layers of the crest
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.EstateDefinition">
+            <summary>
+            Information about estate
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Formed">
+            <summary>
+            Foundation date
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.GrandCompany">
+            <summary>
+            Grand company
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Rank">
+            <summary>
+            Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Ranking">
+            <summary>
+            Rankings
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Recruitment">
+            <summary>
+            Recruitment info
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Server">
+            <summary>
+            World
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Slogan">
+            <summary>
+            Slogan
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyDefinition.Tag">
+            <summary>
+            Tags
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition">
+            <summary>
+            Definition for one type of FC foc
+            us
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.NAME">
+            <summary>
+            Name of type
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.ICON">
+            <summary>
+            Icon for type
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.STATUS">
+            <summary>
+            Status (if company focuses on this)
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition">
+            <summary>
+            Definition container for all FC focus types
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.NOTSPECIFIED">
+            <summary>
+            No focus specified
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.RolePlay">
+            <summary>
+            Role play
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Leveling">
+            <summary>
+            Leveling
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Casual">
+            <summary>
+            Casual
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Hardcore">
+            <summary>
+            Hardcore
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Dungeons">
+            <summary>
+            Dungeons
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Guildhests">
+            <summary>
+            Guild hests
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Trials">
+            <summary>
+            Trials
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.Raids">
+            <summary>
+            Raids
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.PvP">
+            <summary>
+            PvP
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition">
+            <summary>
+            Definition for one FC member
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Root">
+            <summary>
+            Root node of entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Avatar">
+            <summary>
+            Avatar of member character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Id">
+            <summary>
+            ID of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Name">
+            <summary>
+            Name of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Rank">
+            <summary>
+            Grand company rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.RankIcon">
+            <summary>
+            GC rank icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Server">
+            <summary>
+            Homeworld
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationEntryDefinition">
+            <summary>
+            Definition for reputation of FC with GC
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationEntryDefinition.Name">
+            <summary>
+            Name of the Grand Company
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationEntryDefinition.Progress">
+            <summary>
+            Progress to next rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationEntryDefinition.Rank">
+            <summary>
+            Current Rank
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationDefinition">
+            <summary>
+            Definition container for all reputations of a FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationDefinition.Maelstrom">
+            <summary>
+            Maelstrom
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationDefinition.Adders">
+            <summary>
+            Order of the Twin Adder
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationDefinition.Flames">
+            <summary>
+            Immortal Flames
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition">
+            <summary>
+            Definition container for one Free Company search result entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.CrestLayers">
+            <summary>
+            Crest layers
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Id">
+            <summary>
+            FC Id
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.GrandCompany">
+            <summary>
+            Grand Company
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Server">
+            <summary>
+            World
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Active">
+            <summary>
+            FC active status
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.ActiveMembers">
+            <summary>
+            Active member count
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.RecruitmentOpen">
+            <summary>
+            Recruitment status
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.EstateBuilt">
+            <summary>
+            Estate state
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Formed">
+            <summary>
+            Formation date
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Root">
+            <summary>
+            Root node
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.IconLayersDefinition">
+            <summary>
+            Definition for an icon with multiple layers
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.IconLayersDefinition.Bottom">
+            <summary>
+            Bottom layer
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.IconLayersDefinition.Middle">
+            <summary>
+            Middle layer
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.IconLayersDefinition.Top">
+            <summary>
+            Top layer
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.IDefinition">
+            <summary>
+            Interface for all node definitions
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.ApplicableUris">
+            <summary>
+            Hold information about the uri for which the definition packs are valid
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.FreecompanyFocusJson">
+            <summary>
+            Uri that holds information about FC focus
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.FreecompanyFreecompanyJson">
+            <summary>
+            Uri that holds information about FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.FreecompanyMembersJson">
+            <summary>
+            Uri that holds information about FC members
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.FreecompanyReputationJson">
+            <summary>
+            Uri that holds information about FC reputation
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.FreecompanySeekingJson">
+            <summary>
+            Uri that holds information about FC recruitment
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.LinkshellCrossworldCwlsJson">
+            <summary>
+            Uri that holds information about Cross World Link Shells
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.LinkshellCrossworldMembersJson">
+            <summary>
+            Uri that holds information about Cross World Link Shell members
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.LinkshellLsJson">
+            <summary>
+            Uri that holds information about Link Shells
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.LinkshellMembersJson">
+            <summary>
+            Uri that holds information about Link Shell members
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileAchievementsJson">
+            <summary>
+            Uri that holds information about a character's achievements
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileAttributesJson">
+            <summary>
+            Uri that holds information about a character's attributes
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileCharacterJson">
+            <summary>
+            Uri that holds information about a character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileClassjobJson">
+            <summary>
+            Uri that holds information about a character jobs/classes
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileGearsetJson">
+            <summary>
+            Uri that holds information about a character's gear
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileMinionJson">
+            <summary>
+            Uri that holds information about a character's minions
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.ProfileMountJson">
+            <summary>
+            Uri that holds information about a character's mounts
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.PvpteamMembersJson">
+            <summary>
+            Uri that holds information about a PVP team's members
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.PvpteamPvpteamJson">
+            <summary>
+            Uri that holds information about a PVP team
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.SearchCharacterJson">
+            <summary>
+            Uri that let's you search characters
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.SearchCwlsJson">
+            <summary>
+            Uri that let's you search Cross World Link Shells
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.SearchFreecompanyJson">
+            <summary>
+            Uri that let's you search Free Companies
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.SearchLinkshellJson">
+            <summary>
+            Uri that let's you search Linkshells
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.ApplicableUris.SearchPvpteamJson">
+            <summary>
+            Uri that let's you search PvP teams
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.MetaDefinition">
+            <summary>
+            Holds meta information regarding the definitions
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.MetaDefinition.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.MetaDefinition.UserAgentDesktop">
+            <summary>
+            User Agent used to get desktop version of Lodestone
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.MetaDefinition.UserAgentMobile">
+            <summary>
+            User Agent used to get mobile version of Lodestone
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.MetaDefinition.ApplicableUris">
+            <summary>
+            Collection of Uris for which the definition packs are valid
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.PagedDefinition">
+            <summary>
+            Base definition for paged results
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.PagedDefinition.Root">
+            <summary>
+            Root node
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.PagedDefinition.Entry">
+            <summary>
+            Definition for one entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.PagedDefinition.PageInfo">
+            <summary>
+            Info about pages
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.PagedDefinition.ListNextButton">
+            <summary>
+            Button for next page
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.PagedDefinition.NoResultsFound">
+            <summary>
+            DEfinition for node for empty results
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.PagedEntryDefinition">
+            <summary>
+            Base definition of a paged entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.PagedEntryDefinition.Root">
+            <summary>
+            Root node of entry
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.XivApiDefinitionsContainer">
+            <summary>
+            Holds the definitions on how to find and parse values from Lodestone HTML
+            </summary>
+        </member>
+        <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.#ctor">
+            <summary>
+            Constructs this class without populating definitions
+            </summary>
+        </member>
+        <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Reload">
+            <summary>
+            Downloads current CSS collectors from xivapi/lodestone-css-selectors github repository
+            </summary>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <returns>Task for this operation</returns>
+        </member>
+        <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.GameData.GameDataInfo">
+            <summary>
+            Generic container for game data
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.GameDataInfo.Key">
+            <summary>
+            Key /ID of data
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.GameDataInfo.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:NetStone.GameData.GenderedGameData">
+            <summary>
+            Game data with different names depending on gender
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.GenderedGameData.Info">
+            <summary>
+            Basic game data
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.GenderedGameData.NameMasc">
+            <summary>
+            Masculine name
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.GenderedGameData.NameFem">
+            <summary>
+            Feminine name
+            </summary>
+        </member>
+        <member name="T:NetStone.GameData.IGameDataProvider">
+            <summary>
+            Needed interface for a provider of game data
+            </summary>
+        </member>
+        <member name="M:NetStone.GameData.IGameDataProvider.GetItem(System.String)">
+            <summary>
+            Get item data by name.
+            </summary>
+            <param name="name">Name of the item</param>
+            <returns>Game data</returns>
+        </member>
+        <member name="T:NetStone.GameData.LanguageStrings">
+            <summary>
+            Container for localized strings
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.LanguageStrings.En">
+            <summary>
+            English
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.LanguageStrings.De">
+            <summary>
+            German
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.LanguageStrings.Ja">
+            <summary>
+            Japanese
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.LanguageStrings.Fr">
+            <summary>
+            French
+            </summary>
+        </member>
+        <member name="T:NetStone.GameData.NamedGameData">
+            <summary>
+            Game data with localized name
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.NamedGameData.Info">
+            <summary>
+            Base data
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.NamedGameData.Name">
+            <summary>
+            Localized name
+            </summary>
+        </member>
+        <member name="T:NetStone.GameData.TitleGameData">
+            <summary>
+            Game data for titles
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.TitleGameData.Names">
+            <summary>
+            Localized title
+            </summary>
+        </member>
+        <member name="P:NetStone.GameData.TitleGameData.Prefix">
+            <summary>
+            Indicates if before name
             </summary>
         </member>
         <member name="T:NetStone.LodestoneClient">
@@ -19,58 +1551,108 @@
             Container holding information about the current Lodestone layout, needed to parse responses.
             </summary>
         </member>
-        <member name="M:NetStone.LodestoneClient.#ctor">
+        <member name="P:NetStone.LodestoneClient.Data">
+            <summary>
+            The service providing game data to the Lodestone parser.
+            </summary>
+        </member>
+        <member name="M:NetStone.LodestoneClient.#ctor(NetStone.Definitions.DefinitionsContainer,NetStone.GameData.IGameDataProvider,System.String)">
             <summary>
             Initialize a new Lodestone client with default options.
             </summary>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacter(System.UInt64)">
+        <member name="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String)">
+            <summary>
+            Initializes and returns a new Lodestone client with current definitions loaded from xivapi/lodestone-css-selectors
+            </summary>
+            <param name="gameData">Service providing game data for parsing</param>
+            <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <returns></returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetCharacter(System.String)">
             <summary>
             Get a character by its Lodestone ID.
             </summary>
             <param name="id">The ID of the character.</param>
-            <returns><see cref="!:Character"/> class containing information about the character.</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.Character.LodestoneCharacter"/> class containing information about the character.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterClassJob(System.UInt64)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterClassJob(System.String)">
             <summary>
             Get a characters' class/job information by its Lodestone ID.
-            You can also get this from the character directly by calling <see cref="!:Character.GetClassJobInfo()"/>.
+            You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetClassJobInfo"/>.
             </summary>
             <param name="id">The ID of the character.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterAchievement(System.UInt64,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterAchievement(System.String,System.Int32)">
             <summary>
             Get a characters' unlocked achievement information by its Lodestone ID.
-            You can also get this from the character directly by calling <see cref="!:Character.GetAchievement()"/>.
+            You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetAchievement"/>.
             </summary>
             <param name="id">The ID of the character.</param>
             <param name="page">The number of the page that should be fetched.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterMount(System.UInt64)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterMount(System.String)">
             <summary>
             Get a characters' unlocked mount information by its Lodestone ID.
-            You can also get this from the character directly by calling <see cref="!:Character.GetMounts()"/>.
+            You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMounts"/>.
             </summary>
             <param name="id">The ID of the character.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' mounts.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterMinion(System.UInt64)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterMinion(System.String)">
             <summary>
             Get a characters' unlocked minion information by its Lodestone ID.
-            You can also get this from the character directly by calling <see cref="!:Character.GetMinions()"/>.
+            You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMinions"/>.
             </summary>
             <param name="id">The ID of the character.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' minions.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchCharacter(NetStone.Search.CharacterSearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchCharacter(NetStone.Search.Character.CharacterSearchQuery,System.Int32)">
             <summary>
             Search lodestone for a character with the specified query.
             </summary>
-            <param name="query"><see cref="T:NetStone.Search.CharacterSearchQuery"/> object detailing search parameters</param>
+            <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
-            <returns><see cref="T:NetStone.Model.Parseables.Search.CharacterSearchPage"/> containing search results.</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String)">
+            <summary>
+            Get a character by its Lodestone ID.
+            </summary>
+            <param name="id">The ID of the character.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany"/> class containing information about the character.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetFreeCompanyMembers(System.String,System.Int32)">
+            <summary>
+            Get the members of a Free Company
+            </summary>
+            <param name="id">The ID of the free company.</param>
+            <param name="page">The page of members to fetch.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers"/> class containing information about FC members.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.SearchFreeCompany(NetStone.Search.FreeCompany.FreeCompanySearchQuery,System.Int32)">
+            <summary>
+            Search lodestone for a free company with the specified query.
+            </summary>
+            <param name="query"><see cref="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage"/> object detailing search parameters.</param>
+            <param name="page">The page of search results to fetch.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage"/> containing search results.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetParsed``1(System.String,System.Func{HtmlAgilityPack.HtmlNode,``0},NetStone.UserAgent)">
+            <summary>
+            Get the instantiated LodestoneParseable if the request succeeded, or null in case of StatusCode.NotFound.
+            </summary>
+            <typeparam name="T">The LodestoneParseable descendant to instantiate.</typeparam>
+            <param name="url">The URL to fetch.</param>
+            <param name="createParseable">Func creating the LodestoneParseable.</param>
+            <param name="agent">The user agent to use for the request.</param>
+            <returns>The instantiated LodestoneParseable in case of success.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.Dispose">
+            <inheritdoc />
         </member>
         <member name="T:NetStone.Model.IOptionalParseable`1">
             <summary>
@@ -83,18 +1665,374 @@
             Value indicating if the object should be populated.
             </summary>
         </member>
+        <member name="T:NetStone.Model.OptionalExtensions">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:NetStone.Model.OptionalExtensions.GetOptional``1(NetStone.Model.IOptionalParseable{``0})">
             <summary>
             Method returning the object itself if exists.
             </summary>
             <returns>this if Exists == True</returns>
         </member>
-        <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(NetStone.Definitions.DefinitionsPack)">
+        <member name="T:NetStone.Model.IPaginatedResult`1">
             <summary>
-            Parse the InnerHTML via selector.
+            Models data that is presented over multiple pages
+            </summary>
+            <typeparam name="T">Type of data presented</typeparam>
+        </member>
+        <member name="P:NetStone.Model.IPaginatedResult`1.CurrentPage">
+            <summary>
+            Currently handled page
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.IPaginatedResult`1.NumPages">
+            <summary>
+            Total number of pages
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.IPaginatedResult`1.GetNextPage">
+            <summary>
+            Gets the next page of results
+            </summary>
+            <returns>Task of retrieving next page</returns>
+        </member>
+        <member name="T:NetStone.Model.LodestoneParseable">
+            <summary>
+            Main superclass for parsed lodestone nodes.
+            </summary>
+        </member>
+        <member name="F:NetStone.Model.LodestoneParseable.RootNode">
+            <summary>
+            The HTML document's root node.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.#ctor(HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Constructs a instance of parseable data for given node
+            </summary>
+            <param name="rootNode"></param>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.QueryNode(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Query a <see cref="T:HtmlAgilityPack.HtmlNode"/> via pack selector.
             </summary>
             <param name="pack">Definition of the node.</param>
-            <returns>InnerHTML of the node.</returns>
+            <returns>The needed node.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.QueryChildNodes(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Query all ChildNodes of a <see cref="T:HtmlAgilityPack.HtmlNode"/> via pack selector.
+            Removes unneeded "#text" nodes.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>All ChildNodes.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.QueryContainer(NetStone.Definitions.Model.PagedDefinition)">
+            <summary>
+            Get a list of root nodes for entries of this paged list.
+            Throws <see cref="T:System.ArgumentException"/> if definition does not contain a entry definition
+            </summary>
+            <param name="pagedDefinition">Parser definition</param>
+            <returns>List of nodes</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.HasNode(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Indicates if a node for that definition exists.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>True the node existence, false otherwise</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.Parse(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse the InnerText via selector.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>InnerText of the node.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(NetStone.Definitions.DefinitionsPack,System.Boolean)">
+            <summary>
+            Get the inner text of a node
+            </summary>
+            <param name="pack">Definition of node</param>
+            <param name="noAttribute">Indicates to not parse attributes</param>
+            <returns>TExt inside node</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseRegex(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse the InnerText via selector, then parse out regex groups.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Matched Regex groups.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseDirectInnerText(NetStone.Definitions.DefinitionsPack,System.Boolean)">
+            <summary>
+            Parses the DirectInnerText via selector.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <param name="noAttribute">Determines if Attributes are parsed or not.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseTooltip(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse tooltip attribute.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Parsed tooltip.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseAttribute(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse attribute from pack.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Parsed attribute.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseAttribute(NetStone.Definitions.DefinitionsPack,System.String)">
+            <summary>
+            Parse specified attribute via selector from pack.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <param name="attribute">Attribute to parse.</param>
+            <returns>Parsed attribute.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseHref(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse href attribute on a node.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Parsed href.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseHrefId(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse out ID into string or null if node was not found.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Parsed ID.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseHrefIdULong(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse out ID into ulong or null if node was not found.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Parsed ID.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseImageSource(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse image source attribute.
+            </summary>
+            <param name="pack">Definition of the node.</param>
+            <returns>Parsed image source.</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseTime(NetStone.Definitions.DefinitionsPack)">
+            <summary>
+            Parse a timestamp
+            </summary>
+            <param name="pack">Selector definition for timestamp</param>
+            <returns>Parsed Unix timestamp</returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry">
+            <summary>
+            Models data for one Achievement this character earned
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition)">
+            <summary>
+            Create instance of achievement entry fpr given node
+            </summary>
+            <param name="rootNode">Root html node of this entry</param>
+            <param name="definition">Css and regex definition</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry.Name">
+            <summary>
+            The Name of this achievement
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry.Id">
+            <summary>
+            ID of this achievement
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry.DatabaseLink">
+            <summary>
+            Link to the Eorzean Database
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry.TimeAchieved">
+            <summary>
+            Time when this character earned this achievement
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementEntry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage">
+            <summary>
+            Holds information about a characters unlocked achievements
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,System.String)">
+            <summary>
+            Creates a new instance retrieving information about a characters unlocked achievements
+            </summary>
+            <param name="client">Lodestone client instance</param>
+            <param name="rootNode">Root node of the achievement page</param>
+            <param name="definition">Parse definition pack</param>
+            <param name="charId">Id of the character</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.TotalAchievements">
+            <summary>
+            Total number of achievements
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.AchievementPoints">
+            <summary>
+            Number of achievement points for this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.HasResults">
+            <summary>
+            Indicates if this hold any results
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.Achievements">
+            <summary>
+            Unlocked achievements for character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.NumPages">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.GetNextPage">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.CharacterAttributes">
+            <summary>
+            Provides information about a characters attributes
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.CharacterAttributes.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterAttributesDefinition)">
+            <summary>
+            Creates an instance that provides Attributes for given node
+            </summary>
+            <param name="rootNode">Root HTML node of the character profile page on Lodestone</param>
+            <param name="definition">Definitions on how to parse attributes from the HTML</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Strength">
+            <summary>
+            This characters' Strength value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Dexterity">
+            <summary>
+            This characters' Dexterity value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Vitality">
+            <summary>
+            This characters' Vitality value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Intelligence">
+            <summary>
+            This characters' Intelligence value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Mind">
+            <summary>
+            This characters' Mind value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.CriticalHitRate">
+            <summary>
+            This characters' Critical Hit Rate value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Determination">
+            <summary>
+            This characters' Determination value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.DirectHitRate">
+            <summary>
+            This characters' Direct Hit Rate value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Defense">
+            <summary>
+            This characters' Defense value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.MagicDefense">
+            <summary>
+            This characters' Magic Defense value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.AttackPower">
+            <summary>
+            This characters' Attack Power value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.SkillSpeed">
+            <summary>
+            This characters' Skill Speed value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.AttackMagicPotency">
+            <summary>
+            This characters' Attack Magic Potency value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.HealingMagicPotency">
+            <summary>
+            This characters' Healing Magic Potency value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.SpellSpeed">
+            <summary>
+            This characters' Spell Speed value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Tenacity">
+            <summary>
+            This characters' Tenacity value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Piety">
+            <summary>
+            This characters' Piety value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Hp">
+            <summary>
+            This characters' HP value.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.MpGpCp">
+            <summary>
+            This characters' MP, GP or CP value. Check the <see cref="P:NetStone.Model.Parseables.Character.CharacterAttributes.MpGpCpParameterName"/> Property to find out which.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.MpGpCpParameterName">
+            <summary>
+            Value indicating which of MP, GP, or CP is indicated by <see cref="P:NetStone.Model.Parseables.Character.CharacterAttributes.MpGpCp"/>.
+            </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob">
+            <summary>
+            Information about all classes for a character
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterClassJobDefinition)">
+            <summary>
+            Creates ClassJobs data for the character represented by the Lodestone page
+            </summary>
+            <param name="rootNode">Root html node of Lodestone page</param>
+            <param name="definition">Definition to parse ClassJobs</param>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Paladin">
             <summary>
@@ -156,9 +2094,9 @@
             Information about the Astrologian class.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Reaper">
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Sage">
             <summary>
-            Information about the Reaper class.
+            Information about the Sage class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Bard">
@@ -231,6 +2169,11 @@
             Information about the Alchemist class.
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Culinarian">
+            <summary>
+            Information about the Culinarian
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Miner">
             <summary>
             Information about the Miner class.
@@ -245,6 +2188,23 @@
             <summary>
             Information about the Fisher class.
             </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.ClassJobDict">
+            <summary>
+            This dictionary maps <see cref="T:NetStone.StaticData.ClassJob"/> to the respective <see cref="T:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry"/>
+            </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry">
+            <summary>
+            Entry for one class/job of a character
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.ClassJobEntryDefinition)">
+            <summary>
+            Constructs a new class entry
+            </summary>
+            <param name="rootNode">Root node of this entry</param>
+            <param name="definition">Parser definition</param>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.Name">
             <summary>
@@ -297,10 +2257,34 @@
             </summary>
             <returns>Name (Level)</returns>
         </member>
+        <member name="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable">
+            <summary>
+            Models a collection of collectables for characters
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterCollectableDefinition)">
+            <summary>
+            Constructs a collectable collection
+            </summary>
+            <param name="rootNode">Root node of list</param>
+            <param name="definition">Parser definitions</param>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable.Collectables">
             <summary>
             All collectables collected by the character.
             </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry">
+            <summary>
+            Entry for collectable collection
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterCollectableDefinition)">
+            <summary>
+            Constructs one collectable entry
+            </summary>
+            <param name="rootNode">Root node for entry</param>
+            <param name="definition">Parse definition</param>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry.Name">
             <summary>
@@ -313,10 +2297,37 @@
             </summary>
             <returns><see cref="P:NetStone.Model.Parseables.Character.Collectable.CharacterCollectableEntry.Name"/></returns>
         </member>
+        <member name="T:NetStone.Model.Parseables.Character.FreeCompanySocialGroup">
+            <summary>
+            Models a Free Company entry on the character profile
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.FreeCompanySocialGroup.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.ICharacterSocialGroupDefinition)">
+            <summary>
+            Constructs FC entry for profile page
+            </summary>
+            <param name="client"></param>
+            <param name="rootNode"></param>
+            <param name="socialGroupDefinition"></param>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.FreeCompanySocialGroup.GetDetails">
+            <summary>
+            Fetch the full details of this FC.
+            </summary>
+            <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany"/> object containing all details of the free company.</returns>
+        </member>
         <member name="T:NetStone.Model.Parseables.Character.Gear.CharacterGear">
             <summary>
             Container class holding information about a character's equipped gear.
             </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.CharacterGear.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterGearDefinition)">
+            <summary>
+            Constructs parser for character gear
+            </summary>
+            <param name="client"></param>
+            <param name="rootNode"></param>
+            <param name="definition"></param>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Mainhand">
             <summary>
@@ -393,6 +2404,19 @@
             Container class holding information about a gear slot.
             </summary>
         </member>
+        <member name="F:NetStone.Model.Parseables.Character.Gear.GearEntry.HqChar">
+            <summary>
+            Character representing the high quality symbol
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.GearEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.GearEntryDefinition)">
+            <summary>
+            Construct a new gear entry
+            </summary>
+            <param name="client">Lodestone client</param>
+            <param name="rootNode">Entry node</param>
+            <param name="definition">Parser definition</param>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.ItemDatabaseLink">
             <summary>
             Link to this piece's Eorzea DB page.
@@ -401,6 +2425,16 @@
         <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.ItemName">
             <summary>
             Name of this item.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.IsHq">
+            <summary>
+            Indicates if this item is high quality
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.StrippedItemName">
+            <summary>
+            Returns the name of this item without high quality icon
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.GlamourDatabaseLink">
@@ -433,11 +2467,11 @@
             Indicating whether the item slot has an item equipped or not.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.Gear.GearEntry.GetOptional">
+        <member name="M:NetStone.Model.Parseables.Character.Gear.GearEntry.GetGameData">
             <summary>
-            Get this object if the item slot is populated, null if not.
+            Get game data representing this item
             </summary>
-            <returns>The <see cref="T:NetStone.Model.Parseables.Character.Gear.GearEntry"/> if the slot is populated, null if not.</returns>
+            <returns>Item data</returns>
         </member>
         <member name="M:NetStone.Model.Parseables.Character.Gear.GearEntry.ToString">
             <summary>
@@ -445,12 +2479,31 @@
             </summary>
             <returns>The name of the item.</returns>
         </member>
+        <member name="T:NetStone.Model.Parseables.Character.Gear.SoulcrystalEntry">
+            <summary>
+            Represents data about a character's soul crystal
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.SoulcrystalEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.SoulcrystalEntryDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.SoulcrystalEntry.ItemName">
+            <summary>
+            Name of the item
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.SoulcrystalEntry.Exists">
+            <inheritdoc />
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.SoulcrystalEntry.ToString">
+            <inheritdoc />
+        </member>
         <member name="T:NetStone.Model.Parseables.Character.LodestoneCharacter">
             <summary>
             Container class holding information about a character and facilitating retrieval of further information.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.UInt64)">
+        <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
             <summary>
             Container class for a parseable character page.
             </summary>
@@ -458,6 +2511,11 @@
             <param name="rootNode">The root document node of the page.</param>
             <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
             <param name="charId">The ID of the character.</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.ActiveClassJobLevel">
+            <summary>
+            Level of the current active ClassJob.
+            </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Avatar">
             <summary>
@@ -474,14 +2532,24 @@
             The character FreeCompany info.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GrandCompany">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GrandCompanyName">
             <summary>
             The grand company of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GuardianDeity">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GrandCompanyRank">
             <summary>
-            The guardian deity of the character.
+            The grand company rank of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GuardianDeityName">
+            <summary>
+            The name of the guardian deity of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.GuardianDeityIcon">
+            <summary>
+            The icon of the guardian deity of the character.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Name">
@@ -504,6 +2572,11 @@
             The character PvPTeam info.
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.RaceClanGender">
+            <summary>
+            String containing information on clan, race and gender
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Server">
             <summary>
             The server/world of the character.
@@ -514,7 +2587,12 @@
             The title of the character.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Town">
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.TownName">
+            <summary>
+            The town of the character.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.TownIcon">
             <summary>
             The town of the character.
             </summary>
@@ -559,110 +2637,375 @@
             </summary>
             <returns>"Name on World"</returns>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Strength">
+        <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate">
             <summary>
-            This characters' Strength value.
+            Information about the Free CCompany's estate
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Dexterity">
+        <member name="M:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.EstateDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate.Name">
             <summary>
-            This characters' Dexterity value.
+            Name of the estate
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Vitality">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate.Greeting">
             <summary>
-            This characters' Vitality value.
+            The greeting phrase for this estate
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Intelligence">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate.Plot">
             <summary>
-            This characters' Intelligence value.
+            The plot where the estate is built
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Mind">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate.Exists">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus">
             <summary>
-            This characters' Mind value.
+            Infomation about the content this FC focuses on
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.CriticalHitRate">
+        <member name="M:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.HasFocus">
             <summary>
-            This characters' Critical Hit Rate value.
+            Indicates that this FC has specified a focus
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Determination">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Exists">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.RolePlay">
             <summary>
-            This characters' Determination value.
+            Entry for this FC's focus on role play
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.DirectHitRate">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Leveling">
             <summary>
-            This characters' Direct Hit Rate value.
+            Entry for this FC's focus on leveling
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Defense">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Casual">
             <summary>
-            This characters' Defense value.
+            Entry for this FC's focus on casual content
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.MagicDefense">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Hardcore">
             <summary>
-            This characters' Magic Defense value.
+            Entry for this FC's focus on hardcore content
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.AttackPower">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Dungeons">
             <summary>
-            This characters' Attack Power value.
+            Entry for this FC's focus on dungeons
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.SkillSpeed">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Guildhests">
             <summary>
-            This characters' Skill Speed value.
+            Entry for this FC's focus on guild heists
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.AttackMagicPotency">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Trials">
             <summary>
-            This characters' Attack Magic Potency value.
+            Entry for this FC's focus on trials
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.HealingMagicPotency">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.Raids">
             <summary>
-            This characters' Healing Magic Potency value.
+            Entry for this FC's focus on raiding
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.SpellSpeed">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocus.PvP">
             <summary>
-            This characters' Spell Speed value.
+            Entry for this FC's focus on PvP
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Tenacity">
+        <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocusEntry">
             <summary>
-            This characters' Tenacity value.
+            Data about one type of Free Company focus
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Piety">
+        <member name="M:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocusEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition)">
             <summary>
-            This characters' Piety value.
+            Construct instance to parse focus
+            </summary>
+            <param name="rootNode">Node that contains relevant data</param>
+            <param name="definition">Parse definition</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocusEntry.Name">
+            <summary>
+            Name of the focus type
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.Hp">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocusEntry.Icon">
             <summary>
-            This characters' HP value.
+            Uri to icon
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCp">
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyFocusEntry.IsEnabled">
             <summary>
-            This characters' MP, GP or CP value. Check the <see cref="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCpParameterName"/> Property to find out which.
+            Indicates this focus is selected
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCpParameterName">
+        <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation">
             <summary>
-            Value indicating which of MP, GP, or CP is indicated by <see cref="P:NetStone.Model.Parseables.CharacterAttributes.MpGpCp"/>.
+            Information on free companies
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationDefinition)">
+            <summary>
+            Creates Free Company reputation information
+            </summary>
+            <param name="rootNode"></param>
+            <param name="definition"></param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation.Maelstrom">
+            <summary>
+            Maelstrom
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation.Adders">
+            <summary>
+            Order of the Twin Adder
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation.Flames">
+            <summary>
+            Immortal Flames
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation.GrandCompanyRep(NetStone.StaticData.GrandCompany)">
+            <summary>
+            Returns the relevant <see cref="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry"/>.
+            </summary>
+            <param name="gc">Grand Company</param>
+            <returns>Grand company reputation</returns>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputation.GrandCompanyDict">
+            <summary>
+            Maps <see cref="T:NetStone.StaticData.GrandCompany"/> to <see cref="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry"/>.
+            You should only access this once and store a reference.
+            </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry">
+            <summary>
+            Models reputation of a Free Company with on Grand Company
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyReputationEntryDefinition)">
+            <summary>
+            Constructs FC reputation with on GC
+            </summary>
+            <param name="rootNode"></param>
+            <param name="definition"></param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry.Name">
+            <summary>
+            Name of the Grand Company
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry.Progress">
+            <summary>
+            Progress to next rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.FreeCompanyReputationEntry.Rank">
+            <summary>
+            Current rank
+            </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany">
+            <summary>
+            Provides information of a Free Company
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
+            <summary>
+            Constructs Free Company information parser
+            </summary>
+            <param name="client">Current client</param>
+            <param name="rootNode">Root node of FC page</param>
+            <param name="definitions">Parser definitions</param>
+            <param name="id">Id of FC</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Name">
+            <summary>
+            Name of this FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Id">
+            <summary>
+            Id of this FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Slogan">
+            <summary>
+            Slogan
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.CrestLayers">
+            <summary>
+            FC Icon/Crest
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Formed">
+            <summary>
+            Formation date
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.GrandCompany">
+            <summary>
+            Current GC
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Rank">
+            <summary>
+            Current Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.RankingMonthly">
+            <summary>
+            Monthly ranking
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.RankingWeekly">
+            <summary>
+            Weekly ranking
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Recruitment">
+            <summary>
+            Recruitment status
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.ActiveMemberCount">
+            <summary>
+            Number of active members
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.ActiveState">
+            <summary>
+            Activity status
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Estate">
+            <summary>
+            Information about the estate
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Focus">
+            <summary>
+            INformation about focused gameplay
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Reputation">
+            <summary>
+            REputation with the Grand Companies
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.World">
+            <summary>
+            Home World 
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.GetMembers">
+            <summary>
+            Fetches all members of this FC
+            </summary>
+            <returns>Members</returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers">
+            <summary>
+            Information about a Free Company's members
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,System.String)">
+            <summary>
+            Constructs member list
+            </summary>
+            <param name="client"></param>
+            <param name="rootNode"></param>
+            <param name="definition"></param>
+            <param name="id"></param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.HasResults">
+            <summary>
+            IF there is data
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.Members">
+            <summary>
+            Lists all members
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.NumPages">
+            <inheritdoc />
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.GetNextPage">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry">
+            <summary>
+            Models one entry for the Free Company member list
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition)">
+            
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Name">
+            <summary>
+            Name of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Id">
+            <summary>
+            Id of character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Rank">
+            <summary>
+            Rank with character's Grand Company
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.RankIcon">
+            <summary>
+            Icon representing <see cref="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Rank"/>
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Server">
+            <summary>
+            Home world
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Datacenter">
+            <summary>
+            Data center
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Avatar">
+            <summary>
+            Character's avatar
             </summary>
         </member>
         <member name="T:NetStone.Model.Parseables.IconLayers">
             <summary>
             Container class holding information about a social group's icon.
             </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.IconLayers.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.IconLayersDefinition)">
+            <inheritdoc />
         </member>
         <member name="P:NetStone.Model.Parseables.IconLayers.TopLayer">
             <summary>
@@ -678,6 +3021,179 @@
             <summary>
             Link to the top layer image of the icon.
             </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Search.Character.CharacterSearchEntry">
+            <summary>
+            Models one entry in the character search results list
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition)">
+            
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchEntry.Name">
+            <summary>
+            Character name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchEntry.Id">
+            <summary>
+            Lodestone Id
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchEntry.GetCharacter">
+            <summary>
+            Fetch character profile
+            </summary>
+            <returns>Task of retrieving character</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchEntry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage">
+            <summary>
+            Models character search results
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,NetStone.Search.Character.CharacterSearchQuery)">
+            <summary>
+            Constructs character search results
+            </summary>
+            <param name="client"></param>
+            <param name="rootNode"></param>
+            <param name="pageDefinition"></param>
+            <param name="currentQuery"></param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.HasResults">
+            <summary>
+            Indicates if any results are present
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.Results">
+            <summary>
+            List all results
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.NumPages">
+            <inheritdoc />
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.GetNextPage">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry">
+            <summary>
+            Models on entry of the free company search results
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition)">
+            
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.Name">
+            <summary>
+            Free Company name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.Id">
+            <summary>
+            Free company Id
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.Server">
+            <summary>
+            Home world of the FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.Datacenter">
+            <summary>
+            Data center of the FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.CrestLayers">
+            <summary>
+            FC crest/icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.Formed">
+            <summary>
+            Formation date
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.ActiveMembers">
+            <summary>
+            Active member count
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.RecruitmentOpen">
+            <summary>
+            Recruitment status
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.GrandCompany">
+            <summary>
+            Affiliated grand company
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.EstateBuild">
+            <summary>
+            Estate status
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.GetFreeCompany">
+            <summary>
+            Retrieve Free Company profile 
+            </summary>
+            <returns>Full FC profile</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage">
+            <summary>
+            Models Free Company search results
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,NetStone.Search.FreeCompany.FreeCompanySearchQuery)">
+            <summary>
+            Constructs Free Company Search results
+            </summary>
+            <param name="client"></param>
+            <param name="rootNode"></param>
+            <param name="pageDefinition"></param>
+            <param name="currentQuery"></param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.HasResults">
+            <summary>
+            Indicates if any results are present
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.Results">
+            <summary>
+            Lists all search results
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.NumPages">
+            <inheritdoc />
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.GetNextPage">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.SocialGroup">
+            <summary>
+            Models a group of players/characters
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.SocialGroup.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.ICharacterSocialGroupDefinition)">
+            <inheritdoc />
         </member>
         <member name="P:NetStone.Model.Parseables.SocialGroup.Exists">
             <summary>
@@ -704,17 +3220,849 @@
             <see cref="P:NetStone.Model.Parseables.SocialGroup.IconLayers"/> of this social group's icon.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.SocialGroup.GetOptional">
-            <summary>
-            Gets this object if the group exists, null if not.
-            </summary>
-            <returns>This object if the group exists, null if not.</returns>
-        </member>
         <member name="M:NetStone.Model.Parseables.SocialGroup.ToString">
             <summary>
             String representation of the gear slot.
             </summary>
             <returns>The name of the item.</returns>
+        </member>
+        <member name="T:NetStone.Search.Character.CharacterSearchQuery">
+            <summary>
+            Models a search for characters
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.CharacterName">
+            <summary>
+            Name to search
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.World">
+            <summary>
+            Homeworld for search
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.DataCenter">
+            <summary>
+            Datacenter to search
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.Role">
+            <summary>
+            Role to search for
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.ClassJob">
+            <summary>
+            Job to search for
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.Race">
+            <summary>
+            Race to search for
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.Tribe">
+            <summary>
+            Tribe/Clan to search for
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.GrandCompany">
+            <summary>
+            Grand Company affiliation to search for
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.Language">
+            <summary>
+            Languages to include
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.Character.CharacterSearchQuery.SortKind">
+            <summary>
+            Sort order
+            </summary>
+        </member>
+        <member name="M:NetStone.Search.Character.CharacterSearchQuery.BuildQueryString">
+            <summary>
+            Construct search string to append to uri.
+            Throws <see cref="T:System.ArgumentException"/> if incompatible query parameters are used
+            </summary>
+            <returns>Query string</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:NetStone.Search.Character.SortKind">
+            <summary>
+            Result sorting schemes for character searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.Character.SortKind.NameAtoZ">
+            <summary>
+            Sort by name A to Z
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.Character.SortKind.NameZtoA">
+            <summary>
+            Sort by name Z to A
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.Character.SortKind.WorldAtoZ">
+            <summary>
+            Sort by Homeworld A to Z
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.Character.SortKind.WorldZtoA">
+            <summary>
+            Sort by Homeworld Z to A
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.Character.SortKind.LevelDesc">
+            <summary>
+            Sort by level descending
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.Character.SortKind.LevelAsc">
+            <summary>
+            Sort by level ascending
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.ActiveMembers">
+            <summary>
+            Active member filters for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveMembers.All">
+            <summary>
+            Include all FCs
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveMembers.OneToTen">
+            <summary>
+            Filter for FCs with less than 10 members
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveMembers.ElevenToThirty">
+            <summary>
+            Filter for FCs with 11-30 members
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveMembers.ThirtyOneToFifty">
+            <summary>
+            Filter for FCs with 31-50 members
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveMembers.OverFiftyOne">
+            <summary>
+            Filter for FCs with more then 50 members
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.ActiveTimes">
+            <summary>
+            Active time filters for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveTimes.All">
+            <summary>
+            All options specified
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveTimes.WeekdaysOnly">
+            <summary>
+            FC is active on week days
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveTimes.WeekendsOnly">
+            <summary>
+            FC is active on weekends
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.ActiveTimes.Always">
+            <summary>
+            FC is always active
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.Focus">
+            <summary>
+            Focus filters for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.NotSpecified">
+            <summary>
+            No focus specified
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.RolePlaying">
+            <summary>
+            Focus on Role Play
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Leveling">
+            <summary>
+            Focus on leveling
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Casual">
+            <summary>
+            Focus on casual content
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Hardcore">
+            <summary>
+            Focus on hardcore content
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Dungeons">
+            <summary>
+            Focus on Dungeon content
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Guildhests">
+            <summary>
+            Focus on guild heists
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Trials">
+            <summary>
+            Focus on trials
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.Raids">
+            <summary>
+            Focus on raiding
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Focus.PvP">
+            <summary>
+            Focus on PvP
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.FreeCompanySearchQuery">
+            <summary>
+            Models a search query for Free companies
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.Name">
+            <summary>
+            Name to search for
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.World">
+            <summary>
+            World name the FC should belong to
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.DataCenter">
+            <summary>
+            Data center the FC should belong to
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.IsCommunityFinderRecruiting">
+            <summary>
+            IF the FC is recruiting via Community Finder
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.ActiveTimes">
+            <summary>
+            Filter by active times
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.ActiveMembers">
+            <summary>
+            Filter by number of active players
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.Recruitment">
+            <summary>
+            Filter by recruitment status
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.Housing">
+            <summary>
+            Filter by housing status
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.Focus">
+            <summary>
+            Filter by content focus of the FC
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.Seeking">
+            <summary>
+            Filter by type of players the FC is seeking
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.GrandCompany">
+            <summary>
+            Filter for Grand Company membership
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.FreeCompany.FreeCompanySearchQuery.SortKind">
+            <summary>
+            How to sort results
+            </summary>
+        </member>
+        <member name="M:NetStone.Search.FreeCompany.FreeCompanySearchQuery.BuildQueryString">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentException" />
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.Housing">
+            <summary>
+            Housing filters for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Housing.All">
+            <summary>
+            Do not filter by housing
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Housing.EstateBuilt">
+            <summary>
+            Filter for FCs with an estate built
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Housing.PlotOnly">
+            <summary>
+            Filter for FCs with a plot but no estate built
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Housing.NoEstateOrPlot">
+            <summary>
+            Filter for Fcs with neither an estate nor a plot
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.Recruitment">
+            <summary>
+            Recruitment filters for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Recruitment.All">
+            <summary>
+            Dot not filter by recruitment status
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Recruitment.Open">
+            <summary>
+            Filter for groups actively recruiting
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Recruitment.Closed">
+            <summary>
+            Filter for groups not actively recruiting
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.Seeking">
+            <summary>
+            Seeking player filters for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Seeking.NotSpecified">
+            <summary>
+            No status specified
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Seeking.Tank">
+            <summary>
+            Seeking tanks
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Seeking.Healer">
+            <summary>
+            Seeking healers
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Seeking.Dps">
+            <summary>
+            Seeking DPS
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Seeking.Crafter">
+            <summary>
+            Seeking crafters
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.Seeking.Gatherer">
+            <summary>
+            Seeking gatherers
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.FreeCompany.SortKind">
+            <summary>
+            Result sorting schemes for FC searches.
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.SortKind.NameAtoZ">
+            <summary>
+            Sort by name from A to Z
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.SortKind.NameZtoA">
+            <summary>
+            Sort by name from Z to A
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.SortKind.MembershipHighToLow">
+            <summary>
+            Sort by member count (high to low)
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.SortKind.MembershipLowToHigh">
+            <summary>
+            Sort by member count (low to high)
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.SortKind.DateFoundedMostRecent">
+            <summary>
+            Sort by foundation date (newest first)
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.FreeCompany.SortKind.DateFoundedOldest">
+            <summary>
+            Sort by foundation date (oldest first)
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.ISearchQuery">
+            <summary>
+            Models a search query for search requests
+            </summary>
+        </member>
+        <member name="M:NetStone.Search.ISearchQuery.BuildQueryString">
+            <summary>
+            Constructs the query to send modeling this search query
+            </summary>
+            <returns>Search parameters to append to the request uri</returns>
+        </member>
+        <member name="T:NetStone.StaticData.ClassJob">
+            <summary>
+            The ClassJob IDs.
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.None">
+            <summary>
+            No job specified
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Gladiator">
+            <summary>
+            Gladiator class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Pugilist">
+            <summary>
+            Pugilist class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Marauder">
+            <summary>
+            Marauder class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Lancer">
+            <summary>
+            Lancer class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Archer">
+            <summary>
+            Archer class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Conjurer">
+            <summary>
+            Conjurer class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Thaumaturge">
+            <summary>
+            Thaumaturge class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Carpenter">
+            <summary>
+            Carpenter
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Blacksmith">
+            <summary>
+            Blacksmith
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Armorer">
+            <summary>
+            Armorer
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Goldsmith">
+            <summary>
+            Goldsmith
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Leatherworker">
+            <summary>
+            Leatherworker
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Weaver">
+            <summary>
+            Weaver
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Alchemist">
+            <summary>
+            Alchemist
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Culinarian">
+            <summary>
+            Culinarian
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Miner">
+            <summary>
+            Miner
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Botanist">
+            <summary>
+            Botanist
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Fisher">
+            <summary>
+            Fisher
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Paladin">
+            <summary>
+            Paladin
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Monk">
+            <summary>
+            Monk
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Warrior">
+            <summary>
+            Warrior
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Dragoon">
+            <summary>
+            Dragoon
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Bard">
+            <summary>
+            Bard
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.WhiteMage">
+            <summary>
+            White Mage
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.BlackMage">
+            <summary>
+            Black Mage
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Arcanist">
+            <summary>
+            Arcanist class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Summoner">
+            <summary>
+            Summoner
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Scholar">
+            <summary>
+            Scholar
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Rogue">
+            <summary>
+            Rogue class
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Ninja">
+            <summary>
+            Ninja
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Machinist">
+            <summary>
+            Machinist
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.DarkKnight">
+            <summary>
+            Dark Knight
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Astrologian">
+            <summary>
+            Astrologian
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Samurai">
+            <summary>
+            Samurai
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.RedMage">
+            <summary>
+            Red Mage
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.BlueMage">
+            <summary>
+            Blue Mage
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Gunbreaker">
+            <summary>
+            Gunbreaker
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Dancer">
+            <summary>
+            Dancer
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Reaper">
+            <summary>
+            Reaper
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Sage">
+            <summary>
+            Sage
+            </summary>
+        </member>
+        <member name="T:NetStone.StaticData.GrandCompany">
+            <summary>
+            The Grand Company IDs.
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.GrandCompany.None">
+            <summary>
+            Unspecified
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.GrandCompany.NoAffiliation">
+            <summary>
+            No affiliation with any grand company
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.GrandCompany.Maelstrom">
+            <summary>
+            Affiliated with Maelstrom
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.GrandCompany.OrderOfTheTwinAdder">
+            <summary>
+            Affiliated with The Twin Adder
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.GrandCompany.ImmortalFlames">
+            <summary>
+            Affiliated with the Immortal Flames
+            </summary>
+        </member>
+        <member name="T:NetStone.StaticData.Language">
+            <summary>
+            The supported Lodestone languages.
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Language.None">
+            <summary>
+            No language specified
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Language.Japanese">
+            <summary>
+            Japanese
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Language.English">
+            <summary>
+            English
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Language.German">
+            <summary>
+            German
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Language.French">
+            <summary>
+            French
+            </summary>
+        </member>
+        <member name="T:NetStone.StaticData.Race">
+            <summary>
+            The possible game character races.
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.None">
+            <summary>
+            No Race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Hyur">
+            <summary>
+            Hyur Race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Elezen">
+            <summary>
+            Elezen Race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Lalafell">
+            <summary>
+            Lalafell race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Miqote">
+            <summary>
+            Miqo'te race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Roegadyn">
+            <summary>
+            Roegadyn race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.AuRa">
+            <summary>
+            Au Ra race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Hrothgar">
+            <summary>
+            Rothgar race
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Race.Viera">
+            <summary>
+            Viera race
+            </summary>
+        </member>
+        <member name="T:NetStone.StaticData.Role">
+            <summary>
+            The game combat roles.
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Role.None">
+            <summary>
+            No role
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Role.Tank">
+            <summary>
+            Tank role
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Role.Healer">
+            <summary>
+            Healer role
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Role.Dps">
+            <summary>
+            DPS role
+            </summary>
+        </member>
+        <member name="T:NetStone.StaticData.Tribe">
+            <summary>
+            The possible game character tribes.
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.None">
+            <summary>
+            No tribe
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Midlander">
+            <summary>
+            Midlander Hyur
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Highlander">
+            <summary>
+            Highlander Hyur
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Wildwood">
+            <summary>
+            Wildwood Elezen
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Duskwight">
+            <summary>
+            Duskwight Elezen
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Plainsfolk">
+            <summary>
+            Plainsfolk Lalafell
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Dunesfolk">
+            <summary>
+            Dunesfolk Lalafell
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.SeekeroftheSun">
+            <summary>
+            Seeker of the Sun Miqo'te
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.KeeperoftheMoon">
+            <summary>
+            Keeper of the Moon Miqo'te
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.SeaWolf">
+            <summary>
+            Seawolf Roegadyn
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Hellsguard">
+            <summary>
+            Hellsguard Roegadyn
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Raen">
+            <summary>
+            Raen Au Ra
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Xaela">
+            <summary>
+            Xaela Au Ra
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Helions">
+            <summary>
+            Helion Hrothgar
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.TheLost">
+            <summary>
+            Hrothgar of The Lost
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Rava">
+            <summary>
+            Rava Viera
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.Tribe.Veena">
+            <summary>
+            Veena Viera
+            </summary>
         </member>
     </members>
 </doc>

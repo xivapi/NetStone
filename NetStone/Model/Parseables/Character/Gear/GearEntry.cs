@@ -20,6 +20,12 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
 
     private NamedGameData? cachedGameData;
 
+    /// <summary>
+    /// Construct a new gear entry
+    /// </summary>
+    /// <param name="client">Lodestone client</param>
+    /// <param name="rootNode">Entry node</param>
+    /// <param name="definition">Parser definition</param>
     public GearEntry(LodestoneClient client, HtmlNode rootNode, GearEntryDefinition definition) : base(rootNode)
     {
         this.client = client;
@@ -84,6 +90,10 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// </summary>
     public bool Exists => HasNode(this.definition.Name);
 
+    /// <summary>
+    /// Get game data representing this item
+    /// </summary>
+    /// <returns>Item data</returns>
     public NamedGameData? GetGameData()
     {
         this.cachedGameData ??= !this.Exists ? null : this.client.Data?.GetItem(this.ItemName);

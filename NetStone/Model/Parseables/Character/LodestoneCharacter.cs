@@ -31,7 +31,8 @@ public class LodestoneCharacter : LodestoneParseable
     /// <param name="rootNode">The root document node of the page.</param>
     /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
     /// <param name="charId">The ID of the character.</param>
-    public LodestoneCharacter(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string charId) : base(rootNode)
+    public LodestoneCharacter(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string charId)
+        : base(rootNode)
     {
         this.client = client;
         this.charId = charId;
@@ -64,7 +65,8 @@ public class LodestoneCharacter : LodestoneParseable
     /// The character FreeCompany info.
     /// </summary>
     [CanBeNull]
-    public SocialGroup FreeCompany => new FreeCompanySocialGroup(this.client, this.RootNode, this.charDefinition.FreeCompany).GetOptional();
+    public SocialGroup FreeCompany =>
+        new FreeCompanySocialGroup(this.client, this.RootNode, this.charDefinition.FreeCompany).GetOptional();
 
     /// <summary>
     /// The grand company of the character.
@@ -108,6 +110,9 @@ public class LodestoneCharacter : LodestoneParseable
     public SocialGroup PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
     //TODO: parse
+    /// <summary>
+    /// String containing information on clan, race and gender
+    /// </summary>
     public string RaceClanGender => Parse(this.charDefinition.RaceClanGender);
 
     /// <summary>
@@ -153,7 +158,8 @@ public class LodestoneCharacter : LodestoneParseable
     /// Fetch more information about this character's unlocked achievements.
     /// </summary>
     /// <returns><see cref="CharacterAchievementPage"/> object holding this information.</returns>
-    public async Task<CharacterAchievementPage?> GetAchievement() => await this.client.GetCharacterAchievement(this.charId);
+    public async Task<CharacterAchievementPage?> GetAchievement() =>
+        await this.client.GetCharacterAchievement(this.charId);
 
     /// <summary>
     /// Fetch more information about this character's unlocked mounts.
@@ -171,5 +177,5 @@ public class LodestoneCharacter : LodestoneParseable
     /// String representation of this character.
     /// </summary>
     /// <returns>"Name on World"</returns>
-    public override string ToString() => $"{Name} on {Server}";
+    public override string ToString() => $"{this.Name} on {this.Server}";
 }

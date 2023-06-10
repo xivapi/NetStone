@@ -7,33 +7,51 @@ using NetStone.Search.Character;
 
 namespace NetStone.Model.Parseables.Search.Character;
 
+/// <summary>
+/// Models character search results
+/// </summary>
 public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<CharacterSearchPage>
 {
     private readonly LodestoneClient client;
     private readonly CharacterSearchQuery currentQuery;
-        
+
     private readonly PagedDefinition pageDefinition;
     private readonly CharacterSearchEntryDefinition entryDefinition;
 
-    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition, CharacterSearchQuery currentQuery) : base(rootNode)
+    /// <summary>
+    /// Constructs character search results
+    /// </summary>
+    /// <param name="client"></param>
+    /// <param name="rootNode"></param>
+    /// <param name="pageDefinition"></param>
+    /// <param name="currentQuery"></param>
+    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition,
+        CharacterSearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
-            
+
         this.pageDefinition = pageDefinition;
         this.entryDefinition = pageDefinition.Entry.ToObject<CharacterSearchEntryDefinition>();
     }
 
+    /// <summary>
+    /// Indicates if any results are present
+    /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
     private CharacterSearchEntry[] parsedResults;
+
+    /// <summary>
+    /// List all results
+    /// </summary>
     public IEnumerable<CharacterSearchEntry> Results
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return new CharacterSearchEntry[0];
-                
+
             if (this.parsedResults == null)
                 ParseSearchResults();
 
@@ -53,13 +71,15 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
     }
 
     private int? currentPageVal;
+
+    ///<inheritdoc />
     public int CurrentPage
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return 0;
-                
+
             if (!this.currentPageVal.HasValue)
                 ParsePagesCount();
 
@@ -68,13 +88,15 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
     }
 
     private int? numPagesVal;
+
+    ///<inheritdoc />
     public int NumPages
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return 0;
-                
+
             if (!this.numPagesVal.HasValue)
                 ParsePagesCount();
 
@@ -89,15 +111,16 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
         this.currentPageVal = int.Parse(results["CurrentPage"].Value);
         this.numPagesVal = int.Parse(results["NumPages"].Value);
     }
-        
+
+    ///<inheritdoc />
     public async Task<CharacterSearchPage?> GetNextPage()
     {
-        if (!HasResults)
-            return null;
-            
-        if (CurrentPage == NumPages)
+        if (!this.HasResults)
             return null;
 
-        return await this.client.SearchCharacter(this.currentQuery, CurrentPage + 1);
+        if (this.CurrentPage == this.NumPages)
+            return null;
+
+        return await this.client.SearchCharacter(this.currentQuery, this.CurrentPage + 1);
     }
 }

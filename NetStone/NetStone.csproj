@@ -29,6 +29,7 @@
   <PropertyGroup>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
+    <DocumentationFile>NetStone.xml</DocumentationFile>
 
     <!-- BUG: Cannot include symbols and a readme, fixed with .NET 6(https://github.com/NuGet/Home/issues/11292) -->
     <!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->

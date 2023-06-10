@@ -7,6 +7,9 @@ using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement;
 
+/// <summary>
+/// Holds information about a characters unlocked achievements
+/// </summary>
 public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<CharacterAchievementPage>
 {
     private readonly LodestoneClient client;
@@ -16,6 +19,13 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
 
     private readonly string charId;
 
+    /// <summary>
+    /// Creates a new instance retrieving information about a characters unlocked achievements
+    /// </summary>
+    /// <param name="client">Lodestone client instance</param>
+    /// <param name="rootNode">Root node of the achievement page</param>
+    /// <param name="definition">Parse definition pack</param>
+    /// <param name="charId">Id of the character</param>
     public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition definition,
         string charId) : base(rootNode)
     {
@@ -26,6 +36,9 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         this.entryDefinition = definition.Entry.ToObject<CharacterAchievementEntryDefinition>();
     }
 
+    /// <summary>
+    /// Total number of achievements
+    /// </summary>
     public int TotalAchievements
     {
         get
@@ -35,12 +48,21 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         }
     }
 
+    /// <summary>
+    /// Number of achievement points for this character
+    /// </summary>
     public int AchievementPoints => int.Parse(Parse(this.entryDefinition.AchievementPoints));
 
+    /// <summary>
+    /// Indicates if this hold any results
+    /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
     private CharacterAchievementEntry[] parsedResults;
 
+    /// <summary>
+    /// Unlocked achievements for character
+    /// </summary>
     public IEnumerable<CharacterAchievementEntry> Achievements
     {
         get
@@ -68,6 +90,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
 
     private int? currentPageVal;
 
+    ///<inheritdoc />
     public int CurrentPage
     {
         get
@@ -84,6 +107,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
 
     private int? numPagesVal;
 
+    /// <inheritdoc/>
     public int NumPages
     {
         get
@@ -106,6 +130,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         this.numPagesVal = int.Parse(results["NumPages"].Value);
     }
 
+    /// <inheritdoc />
     public async Task<CharacterAchievementPage?> GetNextPage()
     {
         if (!this.HasResults)

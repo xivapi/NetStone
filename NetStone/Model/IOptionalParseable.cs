@@ -14,6 +14,9 @@ public interface IOptionalParseable<T> where T : LodestoneParseable
     bool Exists { get; }
 }
 
+/// <summary>
+/// 
+/// </summary>
 public static class OptionalExtensions
 {
     /// <summary>
@@ -21,7 +24,7 @@ public static class OptionalExtensions
     /// </summary>
     /// <returns>this if Exists == True</returns>
     [CanBeNull]
-    public static T GetOptional<T>(this IOptionalParseable<T> opt) where T: LodestoneParseable
+    public static T GetOptional<T>(this IOptionalParseable<T> opt) where T : LodestoneParseable
     {
         if (opt.Exists)
             return opt as T;

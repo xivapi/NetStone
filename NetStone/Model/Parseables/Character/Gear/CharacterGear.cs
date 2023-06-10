@@ -12,6 +12,12 @@ public class CharacterGear : LodestoneParseable
     private readonly LodestoneClient client;
     private readonly CharacterGearDefinition definition;
 
+    /// <summary>
+    /// Constructs parser for character gear
+    /// </summary>
+    /// <param name="client"></param>
+    /// <param name="rootNode"></param>
+    /// <param name="definition"></param>
     public CharacterGear(LodestoneClient client, HtmlNode rootNode, CharacterGearDefinition definition) : base(rootNode)
     {
         this.client = client;
@@ -100,6 +106,6 @@ public class CharacterGear : LodestoneParseable
     /// Information about the characters' soul crystal. Null if none equipped.
     /// </summary>
     [CanBeNull]
-    public SoulcrystalEntry Soulcrystal => new SoulcrystalEntry(this.RootNode, this.definition.Soulcrystal).GetOptional();
-
+    public SoulcrystalEntry Soulcrystal =>
+        new SoulcrystalEntry(this.RootNode, this.definition.Soulcrystal).GetOptional();
 }

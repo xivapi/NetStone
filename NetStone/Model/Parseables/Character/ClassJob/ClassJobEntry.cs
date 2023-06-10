@@ -4,10 +4,18 @@ using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.ClassJob;
 
+/// <summary>
+/// Entry for one class/job of a character
+/// </summary>
 public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntry>
 {
     private readonly ClassJobEntryDefinition definition;
 
+    /// <summary>
+    /// Constructs a new class entry
+    /// </summary>
+    /// <param name="rootNode">Root node of this entry</param>
+    /// <param name="definition">Parser definition</param>
     public ClassJobEntry(HtmlNode rootNode, ClassJobEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
@@ -117,8 +125,5 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
     /// The string representation of this object.
     /// </summary>
     /// <returns>Name (Level)</returns>
-    public override string ToString()
-    {
-        return $"{this.Name} ({this.Level})";
-    }
+    public override string ToString() => $"{this.Name} ({this.Level})";
 }

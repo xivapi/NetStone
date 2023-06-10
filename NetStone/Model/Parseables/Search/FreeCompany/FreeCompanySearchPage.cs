@@ -8,6 +8,9 @@ using NetStone.Search.FreeCompany;
 
 namespace NetStone.Model.Parseables.Search.FreeCompany;
 
+/// <summary>
+/// Models Free Company search results
+/// </summary>
 public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCompanySearchPage>
 {
     private readonly LodestoneClient client;
@@ -16,7 +19,15 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
     private readonly PagedDefinition pageDefinition;
     private readonly FreeCompanySearchEntryDefinition entryDefinition;
 
-    public FreeCompanySearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition, FreeCompanySearchQuery currentQuery) : base(rootNode)
+    /// <summary>
+    /// Constructs Free Company Search results
+    /// </summary>
+    /// <param name="client"></param>
+    /// <param name="rootNode"></param>
+    /// <param name="pageDefinition"></param>
+    /// <param name="currentQuery"></param>
+    public FreeCompanySearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition,
+        FreeCompanySearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
@@ -25,14 +36,21 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
         this.entryDefinition = pageDefinition.Entry.ToObject<FreeCompanySearchEntryDefinition>();
     }
 
+    /// <summary>
+    /// Indicates if any results are present
+    /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
     private FreeCompanySearchEntry[] parsedResults;
+
+    /// <summary>
+    /// Lists all search results
+    /// </summary>
     public IEnumerable<FreeCompanySearchEntry> Results
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return Array.Empty<FreeCompanySearchEntry>();
 
             if (this.parsedResults == null)
@@ -54,11 +72,13 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
     }
 
     private int? currentPageVal;
+
+    ///<inheritdoc />
     public int CurrentPage
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return 0;
 
             if (!this.currentPageVal.HasValue)
@@ -69,11 +89,13 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
     }
 
     private int? numPagesVal;
+
+    ///<inheritdoc />
     public int NumPages
     {
         get
         {
-            if (!HasResults)
+            if (!this.HasResults)
                 return 0;
 
             if (!this.numPagesVal.HasValue)
@@ -91,14 +113,15 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
         this.numPagesVal = int.Parse(results["NumPages"].Value);
     }
 
+    ///<inheritdoc />
     public async Task<FreeCompanySearchPage?> GetNextPage()
     {
-        if (!HasResults)
+        if (!this.HasResults)
             return null;
 
-        if (CurrentPage == NumPages)
+        if (this.CurrentPage == this.NumPages)
             return null;
 
-        return await this.client.SearchFreeCompany(this.currentQuery, CurrentPage + 1);
+        return await this.client.SearchFreeCompany(this.currentQuery, this.CurrentPage + 1);
     }
 }

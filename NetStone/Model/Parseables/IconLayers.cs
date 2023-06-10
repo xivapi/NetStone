@@ -11,6 +11,7 @@ public class IconLayers : LodestoneParseable
 {
     private readonly IconLayersDefinition definition;
 
+    ///<inheritdoc />
     public IconLayers(HtmlNode rootNode, IconLayersDefinition definition) : base(rootNode)
     {
         this.definition = definition;
@@ -20,12 +21,12 @@ public class IconLayers : LodestoneParseable
     /// Link to the top layer image of the icon.
     /// </summary>
     public Uri TopLayer => ParseImageSource(this.definition.Top);
-        
+
     /// <summary>
     /// Link to the top layer image of the icon.
     /// </summary>
     public Uri MiddleLayer => ParseImageSource(this.definition.Middle);
-        
+
     /// <summary>
     /// Link to the top layer image of the icon.
     /// </summary>

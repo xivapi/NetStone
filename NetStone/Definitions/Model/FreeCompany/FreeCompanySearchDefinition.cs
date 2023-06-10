@@ -2,28 +2,74 @@
 
 namespace NetStone.Definitions.Model.FreeCompany;
 
+/// <summary>
+/// Definition container for one Free Company search result entry
+/// </summary>
 public class FreeCompanySearchEntryDefinition : PagedEntryDefinition
 {
+    /// <summary>
+    /// Crest layers
+    /// </summary>
     [JsonProperty("CREST_LAYERS")]
     public IconLayersDefinition CrestLayers { get; set; }
 
-    [JsonProperty("ID")] public DefinitionsPack Id { get; set; }
+    /// <summary>
+    /// FC Id
+    /// </summary>
+    [JsonProperty("ID")]
+    public DefinitionsPack Id { get; set; }
 
-    [JsonProperty("GRAND_COMPANY")] public DefinitionsPack GrandCompany { get; set; }
+    /// <summary>
+    /// Grand Company
+    /// </summary>
+    [JsonProperty("GRAND_COMPANY")]
+    public DefinitionsPack GrandCompany { get; set; }
 
-    [JsonProperty("NAME")] public DefinitionsPack Name { get; set; }
+    /// <summary>
+    /// Name
+    /// </summary>
+    [JsonProperty("NAME")]
+    public DefinitionsPack Name { get; set; }
 
-    [JsonProperty("SERVER")] public DefinitionsPack Server { get; set; }
+    /// <summary>
+    /// World
+    /// </summary>
+    [JsonProperty("SERVER")]
+    public DefinitionsPack Server { get; set; }
 
-    [JsonProperty("ACTIVE")] public DefinitionsPack Active { get; set; }
+    /// <summary>
+    /// FC active status
+    /// </summary>
+    [JsonProperty("ACTIVE")]
+    public DefinitionsPack Active { get; set; }
 
-    [JsonProperty("ACTIVE_MEMBERS")] public DefinitionsPack ActiveMembers { get; set; }
+    /// <summary>
+    /// Active member count
+    /// </summary>
+    [JsonProperty("ACTIVE_MEMBERS")]
+    public DefinitionsPack ActiveMembers { get; set; }
 
-    [JsonProperty("RECRUITMENT_OPEN")] public DefinitionsPack RecruitmentOpen { get; set; }
+    /// <summary>
+    /// Recruitment status
+    /// </summary>
+    [JsonProperty("RECRUITMENT_OPEN")]
+    public DefinitionsPack RecruitmentOpen { get; set; }
 
-    [JsonProperty("ESTATE_BUILT")] public DefinitionsPack EstateBuilt { get; set; }
+    /// <summary>
+    /// Estate state
+    /// </summary>
+    [JsonProperty("ESTATE_BUILT")]
+    public DefinitionsPack EstateBuilt { get; set; }
 
-    [JsonProperty("FORMED")] public DefinitionsPack Formed { get; set; }
+    /// <summary>
+    /// Formation date
+    /// </summary>
+    [JsonProperty("FORMED")]
+    public DefinitionsPack Formed { get; set; }
 
-    [JsonProperty("ROOT")] public new DefinitionsPack Root { get; set; }
+    /// <summary>
+    /// Root node
+    /// </summary>
+    [JsonProperty("ROOT")]
+    public new DefinitionsPack Root { get; set; }
 }

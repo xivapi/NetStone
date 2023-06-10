@@ -5,11 +5,21 @@ using NetStone.Model.Parseables.FreeCompany;
 
 namespace NetStone.Model.Parseables.Character;
 
+/// <summary>
+/// Models a Free Company entry on the character profile
+/// </summary>
 public class FreeCompanySocialGroup : SocialGroup
 {
     private readonly LodestoneClient client;
 
-    public FreeCompanySocialGroup(LodestoneClient client, HtmlNode rootNode, ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode, socialGroupDefinition)
+    /// <summary>
+    /// Constructs FC entry for profile page
+    /// </summary>
+    /// <param name="client"></param>
+    /// <param name="rootNode"></param>
+    /// <param name="socialGroupDefinition"></param>
+    public FreeCompanySocialGroup(LodestoneClient client, HtmlNode rootNode,
+        ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode, socialGroupDefinition)
     {
         this.client = client;
     }

@@ -19,7 +19,10 @@ public abstract class LodestoneParseable
     /// </summary>
     protected readonly HtmlNode RootNode;
 
-    protected LodestoneParseable(){ }
+    /// <summary>
+    /// Constructs a instance of parseable data for given node
+    /// </summary>
+    /// <param name="rootNode"></param>
     protected LodestoneParseable(HtmlNode rootNode)
     {
         this.RootNode = rootNode;
@@ -43,6 +46,13 @@ public abstract class LodestoneParseable
         .Where(x => x.Name != "#text")
         .ToArray();
 
+    /// <summary>
+    /// Get a list of root nodes for entries of this paged list.
+    /// Throws <see cref="ArgumentException"/> if definition does not contain a entry definition
+    /// </summary>
+    /// <param name="pagedDefinition">Parser definition</param>
+    /// <returns>List of nodes</returns>
+    /// <exception cref="ArgumentException"></exception>
     protected HtmlNode[] QueryContainer(PagedDefinition pagedDefinition)
     {
         var entryDef = pagedDefinition.Entry.ToObject<PagedEntryDefinition>();
@@ -51,9 +61,14 @@ public abstract class LodestoneParseable
             throw new ArgumentException("Could not get entry definition");
 
         return QueryNode(pagedDefinition.Root)
-            ?.QuerySelectorAll(entryDef.Root.Selector).ToArray();
+            ?.QuerySelectorAll(entryDef.Root.Selector).ToArray() ?? Array.Empty<HtmlNode>();
     }
 
+    /// <summary>
+    /// Indicates if a node for that definition exists.
+    /// </summary>
+    /// <param name="pack">Definition of the node.</param>
+    /// <returns>True the node existence, false otherwise</returns>
     protected bool HasNode(DefinitionsPack pack) => QueryNode(pack) != null;
 
     /// <summary>
@@ -77,6 +92,12 @@ public abstract class LodestoneParseable
         return ParseInnerText(pack);
     }
 
+    /// <summary>
+    /// Get the inner text of a node
+    /// </summary>
+    /// <param name="pack">Definition of node</param>
+    /// <param name="noAttribute">Indicates to not parse attributes</param>
+    /// <returns>TExt inside node</returns>
     protected string ParseInnerText(DefinitionsPack pack, bool noAttribute = false)
     {
         var node = QueryNode(pack);
@@ -115,7 +136,9 @@ public abstract class LodestoneParseable
     {
         var node = QueryNode(pack);
 
-        var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute ? ParseAttribute(pack) : node?.GetDirectInnerText();
+        var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute
+            ? ParseAttribute(pack)
+            : node?.GetDirectInnerText();
 
         return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : null;
     }
@@ -138,10 +161,7 @@ public abstract class LodestoneParseable
     /// </summary>
     /// <param name="pack">Definition of the node.</param>
     /// <returns>Parsed attribute.</returns>
-    protected string ParseAttribute(DefinitionsPack pack)
-    {
-        return ParseAttribute(pack, pack.Attribute);
-    }
+    protected string ParseAttribute(DefinitionsPack pack) => ParseAttribute(pack, pack.Attribute);
 
     /// <summary>
     /// Parse specified attribute via selector from pack.
@@ -234,6 +254,11 @@ public abstract class LodestoneParseable
         return string.IsNullOrEmpty(src) ? null : new Uri(src);
     }
 
+    /// <summary>
+    /// Parse a timestamp
+    /// </summary>
+    /// <param name="pack">Selector definition for timestamp</param>
+    /// <returns>Parsed Unix timestamp</returns>
     protected DateTime ParseTime(DefinitionsPack pack)
     {
         var res = Parse(pack);

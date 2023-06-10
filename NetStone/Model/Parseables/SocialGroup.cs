@@ -4,10 +4,14 @@ using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables;
 
+/// <summary>
+/// Models a group of players/characters
+/// </summary>
 public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
 {
     private readonly ICharacterSocialGroupDefinition definition;
 
+    ///<inheritdoc />
     public SocialGroup(HtmlNode rootNode, ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode)
     {
         this.definition = socialGroupDefinition;
@@ -16,7 +20,7 @@ public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
     /// <summary>
     /// Indicating whether this social group exists or not.
     /// </summary>
-    public bool Exists => Id != null;
+    public bool Exists => this.Id != null;
 
     /// <summary>
     /// Name of this social group.
@@ -36,11 +40,11 @@ public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
     /// <summary>
     /// <see cref="IconLayers"/> of this social group's icon.
     /// </summary>
-    public IconLayers IconLayers => new IconLayers(this.RootNode, this.definition.IconLayers);
+    public IconLayers IconLayers => new(this.RootNode, this.definition.IconLayers);
 
     /// <summary>
     /// String representation of the gear slot.
     /// </summary>
     /// <returns>The name of the item.</returns>
-    public override string ToString() => Name;
+    public override string ToString() => this.Name;
 }
