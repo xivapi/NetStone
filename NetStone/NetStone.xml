@@ -1431,10 +1431,10 @@
         </member>
         <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Reload">
             <summary>
-            Fetches current CSS collectors from xivapi/lodestone-css-selectors github repository.<br/>
-            Throws <see cref="T:System.Net.Http.HttpRequestException"/> if definitions cannot be fetched
+            Fetches current CSS selector definitions from xivapi/lodestone-css-selectors github repository.
             </summary>
             <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.FormatException"></exception>
             <returns>Task for this operation</returns>
         </member>
         <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Dispose">
@@ -1569,6 +1569,7 @@
             <param name="gameData">Service providing game data for parsing</param>
             <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
             <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.FormatException"></exception>
             <returns></returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCharacter(System.String)">
@@ -1751,7 +1752,7 @@
             Parse the InnerText via selector.
             </summary>
             <param name="pack">Definition of the node.</param>
-            <returns>InnerText of the node.</returns>
+            <returns>InnerText of the node or empty string on parse error.</returns>
         </member>
         <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(NetStone.Definitions.DefinitionsPack,System.Boolean)">
             <summary>
@@ -2893,11 +2894,6 @@
             Number of active members
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.ActiveState">
-            <summary>
-            Activity status
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Estate">
             <summary>
             Information about the estate
@@ -2905,12 +2901,12 @@
         </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Focus">
             <summary>
-            INformation about focused gameplay
+            Information about focused gameplay
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Reputation">
             <summary>
-            REputation with the Grand Companies
+            Reputation with the Grand Companies
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.World">

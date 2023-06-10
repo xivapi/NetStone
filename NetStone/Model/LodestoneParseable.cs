@@ -75,7 +75,7 @@ public abstract class LodestoneParseable
     /// Parse the InnerText via selector.
     /// </summary>
     /// <param name="pack">Definition of the node.</param>
-    /// <returns>InnerText of the node.</returns>
+    /// <returns>InnerText of the node or empty string on parse error.</returns>
     protected string Parse(DefinitionsPack pack)
     {
         if (!string.IsNullOrEmpty(pack.Regex))

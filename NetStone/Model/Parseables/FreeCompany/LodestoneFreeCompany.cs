@@ -69,7 +69,7 @@ public class LodestoneFreeCompany : LodestoneParseable
     /// <summary>
     /// Current GC
     /// </summary>
-    public string GrandCompany => Parse(this.fcDefinition.GrandCompany);
+    public string GrandCompany => Parse(this.fcDefinition.GrandCompany).TrimEnd();
 
     /// <summary>
     /// Current Rank
@@ -96,10 +96,13 @@ public class LodestoneFreeCompany : LodestoneParseable
     /// </summary>
     public int ActiveMemberCount => int.Parse(Parse(this.fcDefinition.ActiveMemberCount));
 
+    /*
     /// <summary>
     /// Activity status
     /// </summary>
+    todo: selector does not work
     public string ActiveState => Parse(this.fcDefinition.Activestate);
+    */
 
     /// <summary>
     /// Information about the estate
@@ -108,12 +111,12 @@ public class LodestoneFreeCompany : LodestoneParseable
         new FreeCompanyEstate(this.RootNode, this.fcDefinition.EstateDefinition).GetOptional();
 
     /// <summary>
-    /// INformation about focused gameplay
+    /// Information about focused gameplay
     /// </summary>
     public FreeCompanyFocus? Focus => new FreeCompanyFocus(this.RootNode, this.focusDefinition).GetOptional();
 
     /// <summary>
-    /// REputation with the Grand Companies
+    /// Reputation with the Grand Companies
     /// </summary>
     public FreeCompanyReputation Reputation => new(this.RootNode, this.reputationDefinition);
 

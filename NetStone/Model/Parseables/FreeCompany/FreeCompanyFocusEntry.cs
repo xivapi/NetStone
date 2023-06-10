@@ -34,5 +34,5 @@ public class FreeCompanyFocusEntry : LodestoneParseable
     /// <summary>
     /// Indicates this focus is selected
     /// </summary>
-    public bool IsEnabled => Parse(this.definition.STATUS) == null;
+    public bool IsEnabled => string.IsNullOrEmpty(Parse(this.definition.STATUS));
 }

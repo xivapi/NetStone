@@ -80,11 +80,76 @@ public class Tests
     {
         var fc = await this.lodestone.GetFreeCompany(TestFreeCompany);
         Assert.NotNull(fc);
+        Assert.AreEqual("Maelstrom", fc.GrandCompany);
+        Assert.AreEqual("Hell On Aura", fc.Name);
+        Assert.AreEqual("«Fury»", fc.Tag);
+        Assert.AreEqual("I EAT BABIES FOR BREAKFAST - KAIVE", fc.Slogan);
+        Assert.AreEqual(new DateTime(2019, 01, 14, 04, 22, 05), fc.Formed);
+        Assert.AreEqual(33, fc.ActiveMemberCount);
+        Assert.AreEqual(30, fc.Rank);
 
-        Console.WriteLine(fc.Focus.Leveling.IsEnabled);
+        //Reputation
+        Assert.NotNull(fc.Reputation);
 
-        Console.WriteLine(fc.Formed);
+        Assert.AreEqual("Maelstrom", fc.Reputation.Maelstrom.Name);
+        Assert.AreEqual("Allied", fc.Reputation.Maelstrom.Rank);
+        Assert.AreEqual(100, fc.Reputation.Maelstrom.Progress);
 
+        Assert.AreEqual("Order of the Twin Adder", fc.Reputation.Adders.Name);
+        Assert.AreEqual("Neutral", fc.Reputation.Adders.Rank);
+        Assert.AreEqual(0, fc.Reputation.Adders.Progress);
+
+        Assert.AreEqual("Immortal Flames", fc.Reputation.Flames.Name);
+        Assert.AreEqual("Neutral", fc.Reputation.Flames.Rank);
+        Assert.AreEqual(0, fc.Reputation.Flames.Progress);
+
+
+        //Estate
+        Assert.NotNull(fc.Estate);
+        Assert.IsTrue(fc.Estate.Exists);
+        Assert.AreEqual("Aura's Kitchen Fire", fc.Estate.Name);
+        Assert.AreEqual("Plot 18, 17 Ward, Empyreum (Medium)", fc.Estate.Plot);
+
+        //Focus
+        //todo: selector does not work
+        //Assert.AreEqual(ActiveTimes.Always, fc.ActiveState);
+        Assert.AreEqual("Open", fc.Recruitment);
+
+        Assert.IsNotNull(fc.Focus);
+        Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
+        Assert.IsFalse(fc.Focus.RolePlay.IsEnabled);
+        Assert.AreEqual("https://img.finalfantasyxiv.com/lds/h/9/2RIcg3Swu7asLE9w5hF11Gm1Sg.png",
+            fc.Focus.RolePlay.Icon?.AbsoluteUri);
+
+        Assert.AreEqual("Leveling", fc.Focus.Leveling.Name);
+        Assert.IsTrue(fc.Focus.Leveling.IsEnabled);
+        //todo:Needs PR in css selectors
+        //Assert.AreEqual("https://img.finalfantasyxiv.com/lds/h/n/5Y0D3iH7ngHlRpv9-KJKalt3_o.png",
+        //    fc.Focus.RolePlay.Icon?.AbsoluteUri);
+
+        Assert.AreEqual("Casual", fc.Focus.Casual.Name);
+        Assert.IsTrue(fc.Focus.Casual.IsEnabled);
+
+        Assert.AreEqual("Hardcore", fc.Focus.Hardcore.Name);
+        Assert.IsFalse(fc.Focus.Hardcore.IsEnabled);
+
+        Assert.AreEqual("Dungeons", fc.Focus.Dungeons.Name);
+        Assert.IsTrue(fc.Focus.Dungeons.IsEnabled);
+
+        Assert.AreEqual("Guildhests", fc.Focus.Guildhests.Name);
+        Assert.IsFalse(fc.Focus.Guildhests.IsEnabled);
+
+        Assert.AreEqual("Trials", fc.Focus.Trials.Name);
+        Assert.IsTrue(fc.Focus.Trials.IsEnabled);
+
+        Assert.AreEqual("Raids", fc.Focus.Raids.Name);
+        Assert.IsTrue(fc.Focus.Raids.IsEnabled);
+
+        Assert.AreEqual("PvP", fc.Focus.PvP.Name);
+        Assert.IsFalse(fc.Focus.PvP.IsEnabled);
+
+
+        //Members
         var members = await fc.GetMembers();
         Assert.NotNull(members);
 
