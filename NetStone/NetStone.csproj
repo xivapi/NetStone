@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
 
     <PackageId>NetStone</PackageId>
-    <PackageVersion>1.0.1</PackageVersion>
-    <FileVersion>1.0.1</FileVersion>
+    <PackageVersion>1.1.0</PackageVersion>
+    <FileVersion>1.1.0</FileVersion>
     <Description>Portable and modern Lodestone library.</Description>
     <Authors>goaaats</Authors>
     <PackageProjectUrl>https://github.com/xivapi/NetStone</PackageProjectUrl>
@@ -40,5 +40,5 @@
     <PackageReference Include="Karashiiro.HtmlAgilityPack.CssSelectors.NetCoreFork" Version="0.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
+  
 </Project>
