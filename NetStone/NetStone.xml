@@ -2894,6 +2894,11 @@
             Number of active members
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.ActiveState">
+            <summary>
+            Activity status
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany.Estate">
             <summary>
             Information about the estate

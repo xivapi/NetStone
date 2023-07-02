@@ -23,7 +23,8 @@ public class Tests
     [SetUp]
     public async Task Setup()
     {
-        var gameData = PacksGameDataProvider.Load(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
+        var gameData =
+            PacksGameDataProvider.Load(new DirectoryInfo("../../../../lib/lodestone-data-exports/pack"));
         this.lodestone = await LodestoneClient.GetClientAsync(gameData);
     }
 
@@ -112,7 +113,7 @@ public class Tests
 
         //Focus
         //todo: selector does not work
-        //Assert.AreEqual(ActiveTimes.Always, fc.ActiveState);
+        Assert.AreEqual("Always", fc.ActiveState);
         Assert.AreEqual("Open", fc.Recruitment);
 
         Assert.IsNotNull(fc.Focus);
@@ -123,9 +124,8 @@ public class Tests
 
         Assert.AreEqual("Leveling", fc.Focus.Leveling.Name);
         Assert.IsTrue(fc.Focus.Leveling.IsEnabled);
-        //todo:Needs PR in css selectors
-        //Assert.AreEqual("https://img.finalfantasyxiv.com/lds/h/n/5Y0D3iH7ngHlRpv9-KJKalt3_o.png",
-        //    fc.Focus.RolePlay.Icon?.AbsoluteUri);
+        Assert.AreEqual("https://img.finalfantasyxiv.com/lds/h/n/5Y0D3iH7ngHlRpv9-KJKalt3_o.png",
+            fc.Focus.Leveling.Icon?.AbsoluteUri);
 
         Assert.AreEqual("Casual", fc.Focus.Casual.Name);
         Assert.IsTrue(fc.Focus.Casual.IsEnabled);

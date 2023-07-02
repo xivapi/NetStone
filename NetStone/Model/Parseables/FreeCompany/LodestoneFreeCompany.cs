@@ -4,6 +4,7 @@ using HtmlAgilityPack;
 using NetStone.Definitions;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
+using NetStone.Search.FreeCompany;
 
 namespace NetStone.Model.Parseables.FreeCompany;
 
@@ -96,13 +97,12 @@ public class LodestoneFreeCompany : LodestoneParseable
     /// </summary>
     public int ActiveMemberCount => int.Parse(Parse(this.fcDefinition.ActiveMemberCount));
 
-    /*
     /// <summary>
     /// Activity status
     /// </summary>
-    todo: selector does not work
-    public string ActiveState => Parse(this.fcDefinition.Activestate);
-    */
+    //todo: selector does not work
+    public string ActiveState => Parse(this.fcDefinition.Activestate).Trim();
+
 
     /// <summary>
     /// Information about the estate
