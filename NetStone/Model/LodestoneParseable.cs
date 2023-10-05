@@ -203,14 +203,14 @@ public abstract class LodestoneParseable
     /// </summary>
     /// <param name="pack">Definition of the node.</param>
     /// <returns>Parsed ID.</returns>
-    protected string ParseHrefId(DefinitionsPack pack)
+    protected string? ParseHrefId(DefinitionsPack pack)
     {
         var url = ParseHref(pack);
 
-        if (url == null)
-            return "";
+        var link = url?.AbsoluteUri;
 
-        var link = url.AbsoluteUri;
+        if (link == null)
+            return null;
 
         // Trim last /
         link = link.Substring(0, link.Length - 1);

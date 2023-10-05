@@ -28,5 +28,6 @@ public class FreeCompanySocialGroup : SocialGroup
     /// Fetch the full details of this FC.
     /// </summary>
     /// <returns><see cref="LodestoneFreeCompany"/> object containing all details of the free company.</returns>
-    public async Task<LodestoneFreeCompany?> GetDetails() => await this.client.GetFreeCompany(this.Id);
+    public async Task<LodestoneFreeCompany?> GetDetails() =>
+        this.Id is null ? null : await this.client.GetFreeCompany(this.Id);
 }

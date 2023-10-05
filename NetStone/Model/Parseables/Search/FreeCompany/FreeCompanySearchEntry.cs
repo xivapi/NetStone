@@ -31,7 +31,7 @@ public class FreeCompanySearchEntry : LodestoneParseable
     /// <summary>
     /// Free company Id
     /// </summary>
-    public string Id => ParseHrefId(this.definition.Id);
+    public string? Id => ParseHrefId(this.definition.Id);
 
     /// <summary>
     /// Home world of the FC
@@ -95,7 +95,8 @@ public class FreeCompanySearchEntry : LodestoneParseable
     /// Retrieve Free Company profile 
     /// </summary>
     /// <returns>Full FC profile</returns>
-    public async Task<LodestoneFreeCompany?> GetFreeCompany() => await this.client.GetFreeCompany(this.Id);
+    public async Task<LodestoneFreeCompany?> GetFreeCompany() =>
+        this.Id is null ? null : await this.client.GetFreeCompany(this.Id);
 
     ///<inheritdoc />
     public override string ToString() => this.Name;

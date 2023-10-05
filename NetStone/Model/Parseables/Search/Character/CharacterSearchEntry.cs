@@ -29,13 +29,14 @@ public class CharacterSearchEntry : LodestoneParseable
     /// <summary>
     /// Lodestone Id
     /// </summary>
-    public string Id => ParseHrefId(this.definition.Id);
+    public string? Id => ParseHrefId(this.definition.Id);
 
     /// <summary>
     /// Fetch character profile
     /// </summary>
     /// <returns>Task of retrieving character</returns>
-    public async Task<LodestoneCharacter?> GetCharacter() => await this.client.GetCharacter(this.Id);
+    public async Task<LodestoneCharacter?> GetCharacter() =>
+        this.Id is null ? null : await this.client.GetCharacter(this.Id);
 
     ///<inheritdoc />
     public override string ToString() => this.Name;
