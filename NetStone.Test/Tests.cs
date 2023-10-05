@@ -86,7 +86,7 @@ public class Tests
         Assert.AreEqual("«Fury»", fc.Tag);
         Assert.AreEqual("I EAT BABIES FOR BREAKFAST - KAIVE", fc.Slogan);
         Assert.AreEqual(new DateTime(2019, 01, 14, 04, 22, 05), fc.Formed);
-        Assert.AreEqual(33, fc.ActiveMemberCount);
+        Assert.AreEqual(35, fc.ActiveMemberCount);
         Assert.AreEqual(30, fc.Rank);
 
         //Reputation
@@ -208,6 +208,8 @@ public class Tests
 
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
+
+        Assert.Null(chara.FreeCompany);
     }
 
     [Test]

@@ -20,7 +20,7 @@ public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
     /// <summary>
     /// Indicating whether this social group exists or not.
     /// </summary>
-    public bool Exists => this.Id != null;
+    public bool Exists => this.Id.Length > 0;
 
     /// <summary>
     /// Name of this social group.
