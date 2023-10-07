@@ -1,0 +1,103 @@
+name: Package and Publish (NuGet.org)
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '*' # don't loop
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{steps.s1.outputs.TAG_RESULT}}
+      version: ${{steps.s1.outputs.TAG_VERSION}}
+    steps:
+      - name: Determine Tag
+        id: s1
+        run: |
+          version=$(echo "${{github.event.head_commit.message}}" | perl -nle 'm/build:\s*([0-9]+.[0-9]+.[0-9]+)/; print $1');
+
+          if [ -z "$version" ];
+          then
+                  echo "No build version found";
+                  echo "TAG_RESULT=fail" >> $GITHUB_OUTPUT;
+          else
+                  export TAG_VERSION=$version;
+                  echo "TAG_VERSION=$TAG_VERSION" >> $GITHUB_OUTPUT;
+                  echo "TAG_RESULT=pass" >> $GITHUB_OUTPUT;
+          fi
+      - name: Create Tag
+        if: steps.s1.outputs.TAG_RESULT == 'pass'
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/v${{steps.s1.outputs.TAG_VERSION}}",
+              sha: context.sha
+            })
+  tag-lumina:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{steps.s1.outputs.TAG_RESULT}}
+      version: ${{steps.s1.outputs.TAG_VERSION}}
+    steps:
+      - name: Determine Tag
+        id: s1
+        run: |
+          version=$(echo "${{github.event.head_commit.message}}" | perl -nle 'm/build-lumina:\s*([0-9]+.[0-9]+.[0-9]+)/; print $1');
+
+          if [ -z "$version" ];
+          then
+                  echo "No build version found";
+                  echo "TAG_RESULT=fail" >> $GITHUB_OUTPUT;
+          else
+                  export TAG_VERSION=$version;
+                  echo "TAG_VERSION=$TAG_VERSION" >> $GITHUB_OUTPUT;
+                  echo "TAG_RESULT=pass" >> $GITHUB_OUTPUT;
+          fi
+      - name: Create Tag
+        if: steps.s1.outputs.TAG_RESULT == 'pass'
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/lumina-v${{steps.s1.outputs.TAG_VERSION}}",
+              sha: context.sha
+            })
+  publish:
+    runs-on: ubuntu-latest
+    needs: [tag, tag-lumina]
+    if: ${{needs.tag.outputs.result == 'pass' ||  needs.tag-lumina.outputs.result == 'pass'}}
+    env:
+      EXPECTED_VERSION: ${{needs.tag.outputs.version }}
+      EXPECTED_LUMINA_VERSION: ${{needs.tag-lumina.outputs.version }}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+    - name: Package
+      run: dotnet pack --configuration Release --no-build
+    - name: Push package NetStone
+      if: ${{needs.tag.outputs.result == 'pass'}}
+      run: dotnet nuget push "**/Release/NetStone.$EXPECTED_VERSION.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - name: Push package NetStone.GameData.Lumina
+      if: ${{needs.tag-lumina.outputs.result == 'pass'}}
+      run: dotnet nuget push "**/Release/NetStone.GameData.Lumina.$EXPECTED_LUMINA_VERSION.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+
