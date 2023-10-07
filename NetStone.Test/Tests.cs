@@ -208,7 +208,17 @@ public class Tests
 
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
-
+        Assert.NotNull(classJob.Warrior);
+        Assert.AreEqual(1, classJob.Warrior.Level);
+        Assert.Null(classJob.Alchemist);
+        Assert.Null(classJob.WhiteMage);
+        Assert.Null(await chara.GetMinions());
+        Assert.Null(await chara.GetMounts());
+        Assert.NotNull(chara.Gear);
+        Assert.Null(chara.Gear.Body);
+        Assert.NotNull(chara.Gear.Mainhand);
+        Assert.AreEqual(1, chara.ActiveClassJobLevel);
+        Assert.Null(chara.PvPTeam);
         Assert.Null(chara.FreeCompany);
     }
 
