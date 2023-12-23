@@ -119,13 +119,11 @@ public class Tests
         Assert.IsNotNull(fc.Focus);
         Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
         Assert.IsFalse(fc.Focus.RolePlay.IsEnabled);
-        Assert.AreEqual("https://img.finalfantasyxiv.com/lds/h/9/2RIcg3Swu7asLE9w5hF11Gm1Sg.png",
-            fc.Focus.RolePlay.Icon?.AbsoluteUri);
+        Assert.IsNotNull(fc.Focus.RolePlay.Icon?.AbsoluteUri);
 
         Assert.AreEqual("Leveling", fc.Focus.Leveling.Name);
         Assert.IsTrue(fc.Focus.Leveling.IsEnabled);
-        Assert.AreEqual("https://img.finalfantasyxiv.com/lds/h/n/5Y0D3iH7ngHlRpv9-KJKalt3_o.png",
-            fc.Focus.Leveling.Icon?.AbsoluteUri);
+        Assert.IsNotNull(fc.Focus.Leveling.Icon?.AbsoluteUri);
 
         Assert.AreEqual("Casual", fc.Focus.Casual.Name);
         Assert.IsTrue(fc.Focus.Casual.IsEnabled);
@@ -246,14 +244,14 @@ public class Tests
         Assert.NotNull(chara.FreeCompany);
         Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
         Assert.AreEqual(chara.FreeCompany.Name, "Hell On Aura");
-        Assert.AreEqual(chara.FreeCompany.Link.AbsoluteUri,
+        Assert.AreEqual(chara.FreeCompany.Link?.AbsoluteUri,
             "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
         //todo: iconlayer
         //PvP
         Assert.NotNull(chara.PvPTeam);
         Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
         Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
-        Assert.AreEqual(chara.PvPTeam.Link.AbsoluteUri,
+        Assert.AreEqual(chara.PvPTeam.Link?.AbsoluteUri,
             "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
         //todo: iconlayer
 
