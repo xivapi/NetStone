@@ -43,7 +43,10 @@ public class LodestoneCharacter : LodestoneParseable
 
     #region Properties
 
-    //public string ActiveClassJob => ParseInnerText(this.charDefinition.ActiveClassJob);
+    /// <summary>
+    /// Icon of current active ClassJob.
+    /// </summary>
+    public string ActiveClassJobIcon => ParseInnerText(this.charDefinition.ActiveClassJob);
 
     /// <summary>
     /// Level of the current active ClassJob.

@@ -2514,6 +2514,11 @@
             <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
             <param name="charId">The ID of the character.</param>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.ActiveClassJobIcon">
+            <summary>
+            Icon of current active ClassJob.
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.ActiveClassJobLevel">
             <summary>
             Level of the current active ClassJob.
