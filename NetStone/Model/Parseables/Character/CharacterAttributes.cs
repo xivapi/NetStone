@@ -93,17 +93,17 @@ public class CharacterAttributes : LodestoneParseable
     /// <summary>
     /// This characters' Spell Speed value.
     /// </summary>
-    public int SpellSpeed => int.Parse(Parse(this.definition.SpellSpeed));
+    public int? SpellSpeed => int.TryParse(Parse(this.definition.SpellSpeed), out var result) ? result : null;
 
     /// <summary>
     /// This characters' Tenacity value.
     /// </summary>
-    public int Tenacity => int.Parse(Parse(this.definition.Tenacity));
+    public int? Tenacity => int.TryParse(Parse(this.definition.Tenacity), out var result) ? result : null;
 
     /// <summary>
     /// This characters' Piety value.
     /// </summary>
-    public int Piety => int.Parse(Parse(this.definition.Piety));
+    public int? Piety => int.TryParse(Parse(this.definition.Piety), out var result) ? result : null;
 
     /// <summary>
     /// This characters' HP value.
