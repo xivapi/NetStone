@@ -1,0 +1,42 @@
+name: Manual Publish (NuGet.org)
+on:
+  workflow_dispatch:
+    inputs:
+      release-netstone:
+        type: boolean
+        required: true
+      version:
+        type: string
+      release-lumina:
+        type: boolean
+        required: true
+      lumina-version: 
+        type: string
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      EXPECTED_VERSION: ${{inputs.version }}
+      EXPECTED_LUMINA_VERSION: ${{inputs.lumina-version }}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+    - name: Package
+      run: dotnet pack --configuration Release --no-build
+    - name: Push package NetStone
+      if: ${{inputs.release-netstone}}
+      run: dotnet nuget push "**/Release/NetStone.$EXPECTED_VERSION.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - name: Push package NetStone.GameData.Lumina
+      if: ${{inputs.release-lumina}}
+      run: dotnet nuget push "**/Release/NetStone.GameData.Lumina.$EXPECTED_LUMINA_VERSION.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

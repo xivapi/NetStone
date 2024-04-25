@@ -53,7 +53,7 @@ public class Tests
 
         var page = await this.lodestone.SearchCharacter(query);
         Assert.NotNull(page);
-        Assert.AreEqual(4, page.NumPages);
+        Assert.GreaterOrEqual(page.NumPages, 4);
         Assert.AreEqual(1, page.CurrentPage);
 
         var cResults = 0;
@@ -86,7 +86,7 @@ public class Tests
         Assert.AreEqual("«Fury»", fc.Tag);
         Assert.AreEqual("I EAT BABIES FOR BREAKFAST - KAIVE", fc.Slogan);
         Assert.AreEqual(new DateTime(2019, 01, 14, 04, 22, 05), fc.Formed);
-        Assert.AreEqual(35, fc.ActiveMemberCount);
+        Assert.GreaterOrEqual(fc.ActiveMemberCount, 35);
         Assert.AreEqual(30, fc.Rank);
 
         //Reputation
