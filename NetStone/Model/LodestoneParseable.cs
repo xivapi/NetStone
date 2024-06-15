@@ -104,6 +104,21 @@ public abstract class LodestoneParseable
 
         return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : "";
     }
+    /// <summary>
+    /// Get the inner html of a node
+    /// </summary>
+    /// <param name="pack">Definition of node</param>
+    /// <param name="noAttribute">Indicates to not parse attributes</param>
+    /// <returns>Text inside node</returns>
+    protected string ParseInnerHtml(DefinitionsPack pack, bool noAttribute = false)
+    {
+        var node = QueryNode(pack);
+
+        // Handle default attribute parsing
+        var text = !string.IsNullOrEmpty(pack.Attribute) && !noAttribute ? ParseAttribute(pack) : node?.InnerHtml;
+
+        return !string.IsNullOrEmpty(text) ? HttpUtility.HtmlDecode(text) : "";
+    }
 
     /// <summary>
     /// Parse the InnerText via selector, then parse out regex groups.
@@ -112,7 +127,7 @@ public abstract class LodestoneParseable
     /// <returns>Matched Regex groups.</returns>
     protected GroupCollection ParseRegex(DefinitionsPack pack)
     {
-        var text = ParseInnerText(pack);
+        var text = ParseInnerHtml(pack);
 
         var regex = new Regex(pack.Regex ?? "");
         var match = regex.Match(text);
@@ -168,13 +183,7 @@ public abstract class LodestoneParseable
     {
         var node = QueryNode(pack);
 
-        if (node == null)
-            return null;
-
-        if (node.Attributes.All(x => x.Name != attribute))
-            return null;
-
-        return node.Attributes[attribute].Value;
+        return node?.Attributes.FirstOrDefault(x => x.Name == attribute)?.Value;
     }
 
     /// <summary>
