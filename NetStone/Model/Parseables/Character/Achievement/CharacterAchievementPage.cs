@@ -14,7 +14,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
 {
     private readonly LodestoneClient client;
 
-    private readonly PagedDefinition pageDefinition;
+    private readonly CharacterAchievementDefinition pageDefinition;
     private readonly CharacterAchievementEntryDefinition entryDefinition;
 
     private readonly string charId;
@@ -26,7 +26,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     /// <param name="rootNode">Root node of the achievement page</param>
     /// <param name="definition">Parse definition pack</param>
     /// <param name="charId">Id of the character</param>
-    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition definition,
+    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, CharacterAchievementDefinition definition,
         string charId) : base(rootNode)
     {
         this.client = client;
@@ -43,7 +43,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     {
         get
         {
-            var res = ParseRegex(this.entryDefinition.TotalAchievements);
+            var res = ParseRegex(this.pageDefinition.TotalAchievements);
             return int.Parse(res["TotalAchievements"].Value);
         }
     }
@@ -51,7 +51,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     /// <summary>
     /// Number of achievement points for this character
     /// </summary>
-    public int AchievementPoints => int.Parse(Parse(this.entryDefinition.AchievementPoints));
+    public int AchievementPoints => int.Parse(Parse(this.pageDefinition.AchievementPoints));
 
     /// <summary>
     /// Indicates if this hold any results

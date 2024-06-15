@@ -44,7 +44,7 @@ public abstract class DefinitionsContainer : IDisposable
     /// <summary>
     /// Definitions for a character's achievements
     /// </summary>
-    public PagedDefinition Achievement { get; set; }
+    public CharacterAchievementDefinition Achievement { get; set; }
 
     /// <summary>
     /// Definitions for a character's mounts

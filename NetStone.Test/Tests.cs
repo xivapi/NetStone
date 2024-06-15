@@ -361,6 +361,10 @@ public class Tests
 
         var achieve = await chara.GetAchievement();
         Assert.NotNull(achieve);
+        Assert.GreaterOrEqual(1015, achieve.TotalAchievements);
+        Assert.GreaterOrEqual(8435, achieve.AchievementPoints);
+        Assert.GreaterOrEqual(21, achieve.NumPages);
+        Assert.AreEqual(1,achieve.CurrentPage);
         foreach (var achievement in achieve.Achievements)
         {
             Assert.NotNull(achievement.Id);

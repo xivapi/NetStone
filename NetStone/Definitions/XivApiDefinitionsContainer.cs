@@ -42,7 +42,7 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
         this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
         this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json");
-        this.Achievement = await GetDefinition<PagedDefinition>("profile/achievements.json");
+        this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json");
         this.Mount = await GetDefinition<CharacterMountDefinition>("profile/mount.json");
         this.Minion = await GetDefinition<CharacterMinionDefinition>("profile/minion.json");
 
