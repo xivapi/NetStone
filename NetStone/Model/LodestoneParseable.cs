@@ -20,7 +20,7 @@ public abstract class LodestoneParseable
     protected readonly HtmlNode RootNode;
 
     /// <summary>
-    /// Constructs a instance of parseable data for given node
+    /// Constructs an instance of parseable data for given node
     /// </summary>
     /// <param name="rootNode"></param>
     protected LodestoneParseable(HtmlNode rootNode)

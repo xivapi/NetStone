@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using NetStone.GameData.Packs;
+using NetStone.Model.Parseables.Character;
 using NetStone.Model.Parseables.Character.Gear;
 using NetStone.Search.Character;
 using NetStone.Search.FreeCompany;
@@ -229,6 +230,9 @@ public class Tests
         Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
         Assert.AreEqual(chara.Server, "Leviathan");
         Assert.AreEqual(chara.Name, "Arcane Disgea");
+        Assert.AreEqual("Miqo'te",chara.Race);
+        Assert.AreEqual("Seeker of the Sun", chara.Tribe);
+        Assert.AreEqual(LodestoneCharacter.FemaleChar, chara.Gender);
         Assert.True(chara.Bio.StartsWith(
             "This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"));
         Assert.AreEqual(chara.GuardianDeityName, "Menphina, the Lover");

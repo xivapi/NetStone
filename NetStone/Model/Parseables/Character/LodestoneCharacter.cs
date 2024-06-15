@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
@@ -15,6 +16,16 @@ namespace NetStone.Model.Parseables.Character;
 /// </summary>
 public class LodestoneCharacter : LodestoneParseable
 {
+    /// <summary>
+    /// Unicode character used to represent female characters
+    /// </summary>
+    public const char FemaleChar = '\u2640';
+    
+    /// <summary>
+    /// Unicode character used to represent male characters
+    /// </summary>
+    public const char MaleChar = '\u2642';
+    
     private readonly LodestoneClient client;
 
     private readonly string charId;
@@ -109,11 +120,29 @@ public class LodestoneCharacter : LodestoneParseable
     /// </summary>
     public SocialGroup? PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
-    //TODO: parse
+    
+    private GroupCollection RaceClanGenderRegex => ParseRegex(this.charDefinition.RaceClanGender);
+
     /// <summary>
     /// String containing information on clan, race and gender
     /// </summary>
+    [Obsolete("Use Race, Tribe or Gender")]
     public string RaceClanGender => Parse(this.charDefinition.RaceClanGender);
+
+    /// <summary>
+    /// Race of the character
+    /// </summary>
+    public string Race => this.RaceClanGenderRegex["Race"].Value;
+    
+    /// <summary>
+    /// Tribe this chacracter belongs to
+    /// </summary>
+    public string Tribe => this.RaceClanGenderRegex["Tribe"].Value;
+    
+    /// <summary>
+    /// Character representing the characters gender <see cref="FemaleChar"/> and <see cref="MaleChar"/>
+    /// </summary>
+    public char Gender => this.RaceClanGenderRegex["Gender"].Value[0];
 
     /// <summary>
     /// The server/world of the character.

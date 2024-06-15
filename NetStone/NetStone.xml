@@ -124,14 +124,29 @@
             HTML attribute that holds information. Only set if data is not in the inner text
             </summary>
         </member>
+        <member name="T:NetStone.Definitions.Model.Character.CharacterAchievementDefinition">
+            <summary>
+            Models the definition of the achievement list
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementDefinition.TotalAchievements">
+            <summary>
+            Total number of achievements earned by this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementDefinition.AchievementPoints">
+            <summary>
+            Total achievement points earned by this character
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementDefinition.ActivityDescription">
+            <summary>
+            Full text displayed for this achievement
+            </summary>
+        </member>
         <member name="T:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition">
             <summary>
             Models the definition of one achievement entry for a character
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Root">
-            <summary>
-            Root node of entry
             </summary>
         </member>
         <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Name">
@@ -147,26 +162,6 @@
         <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.Time">
             <summary>
             Time when this achievement was earned
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.PageInfo">
-            <summary>
-            Info about pages
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.TotalAchievements">
-            <summary>
-            Total number of achievements earned by this character
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.AchievementPoints">
-            <summary>
-            Total achievement points earned by this character
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterAchievementEntryDefinition.ActivityDescription">
-            <summary>
-            Full text displayed for this achievement
             </summary>
         </member>
         <member name="T:NetStone.Definitions.Model.Character.CharacterAttributesDefinition">
@@ -1712,7 +1707,7 @@
         </member>
         <member name="M:NetStone.Model.LodestoneParseable.#ctor(HtmlAgilityPack.HtmlNode)">
             <summary>
-            Constructs a instance of parseable data for given node
+            Constructs an instance of parseable data for given node
             </summary>
             <param name="rootNode"></param>
         </member>
@@ -1757,6 +1752,14 @@
         <member name="M:NetStone.Model.LodestoneParseable.ParseInnerText(NetStone.Definitions.DefinitionsPack,System.Boolean)">
             <summary>
             Get the inner text of a node
+            </summary>
+            <param name="pack">Definition of node</param>
+            <param name="noAttribute">Indicates to not parse attributes</param>
+            <returns>Text inside node</returns>
+        </member>
+        <member name="M:NetStone.Model.LodestoneParseable.ParseInnerHtml(NetStone.Definitions.DefinitionsPack,System.Boolean)">
+            <summary>
+            Get the inner html of a node
             </summary>
             <param name="pack">Definition of node</param>
             <param name="noAttribute">Indicates to not parse attributes</param>
@@ -1874,7 +1877,7 @@
             Holds information about a characters unlocked achievements
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,System.String)">
+        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.CharacterAchievementDefinition,System.String)">
             <summary>
             Creates a new instance retrieving information about a characters unlocked achievements
             </summary>
@@ -2505,6 +2508,16 @@
             Container class holding information about a character and facilitating retrieval of further information.
             </summary>
         </member>
+        <member name="F:NetStone.Model.Parseables.Character.LodestoneCharacter.FemaleChar">
+            <summary>
+            Unicode character used to represent female characters
+            </summary>
+        </member>
+        <member name="F:NetStone.Model.Parseables.Character.LodestoneCharacter.MaleChar">
+            <summary>
+            Unicode character used to represent male characters
+            </summary>
+        </member>
         <member name="M:NetStone.Model.Parseables.Character.LodestoneCharacter.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
             <summary>
             Container class for a parseable character page.
@@ -2582,6 +2595,16 @@
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.RaceClanGender">
             <summary>
             String containing information on clan, race and gender
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Race">
+            <summary>
+            Race of the character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Gender">
+            <summary>
+            Character representing the characters gender <see cref="F:NetStone.Model.Parseables.Character.LodestoneCharacter.FemaleChar"/> and <see cref="F:NetStone.Model.Parseables.Character.LodestoneCharacter.MaleChar"/>
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Server">
