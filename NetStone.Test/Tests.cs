@@ -261,35 +261,44 @@ public class Tests
 
         //Gear
         var gear = chara.Gear;
-        Assert.AreEqual($"Classical War Scythe{GearEntry.HqChar}", gear.Mainhand?.ItemName);
+        Assert.AreEqual($"Diadochos Zaghnal{GearEntry.HqChar}", gear.Mainhand?.ItemName);
         Assert.IsTrue(gear.Mainhand.IsHq);
-        Assert.AreEqual("Classical War Scythe", gear.Mainhand.StrippedItemName);
-
+        Assert.AreEqual("Diadochos Zaghnal", gear.Mainhand.StrippedItemName);
+        
+        Assert.IsNotNull(gear.Mainhand?.ItemDatabaseLink);
+        Assert.AreEqual("Augmented Cryptlurker's War Scythe",gear.Mainhand?.GlamourName);
+        Assert.IsNotNull(gear.Mainhand?.GlamourDatabaseLink);
+        Assert.IsEmpty(gear.Mainhand.Stain);
+        
         Assert.IsNull(gear.Offhand);
 
-        Assert.AreEqual($"Lunar Envoy's Turban of Maiming", gear.Head?.ItemName);
-        Assert.IsFalse(gear.Head.IsHq);
-        Assert.AreEqual("Lunar Envoy's Turban of Maiming", gear.Head.StrippedItemName);
+        Assert.AreEqual($"Diadochos Headband of Maiming{GearEntry.HqChar}", gear.Head?.ItemName);
+        Assert.IsEmpty(gear.Head.GlamourName);
+        
+        Assert.AreEqual($"Diadochos Jacket of Maiming{GearEntry.HqChar}", gear.Body?.ItemName);
+        Assert.IsNotEmpty(gear.Body.Stain);
+        Assert.AreEqual("Lily Magnoria", gear.Body.CreatorName);
+        
 
-        Assert.AreEqual("Troian Lorica of Maiming", gear.Body?.ItemName);
+        Assert.AreEqual($"Diadochos Halfgloves of Maiming{GearEntry.HqChar}", gear.Hands?.ItemName);
 
-        Assert.AreEqual("Reaper's Armguards", gear.Hands?.ItemName);
+        Assert.AreEqual($"Diadochos Poleyns of Maiming{GearEntry.HqChar}", gear.Legs?.ItemName);
 
-        Assert.AreEqual("Moonward Hose of Maiming", gear.Legs?.ItemName);
+        Assert.AreEqual($"Diadochos Boots of Maiming{GearEntry.HqChar}", gear.Feet?.ItemName);
 
-        Assert.AreEqual("Lunar Envoy's Thighboots of Maiming", gear.Feet?.ItemName);
+        Assert.AreEqual($"Diadochos Earring of Slaying{GearEntry.HqChar}", gear.Earrings?.ItemName);
 
-        Assert.AreEqual($"The Last Earring of Slaying", gear.Earrings?.ItemName);
-        Assert.IsFalse(gear.Earrings.IsHq);
-        Assert.AreEqual("The Last Earring of Slaying", gear.Earrings.StrippedItemName);
-
-        Assert.AreEqual("Troian Choker of Slaying", gear.Necklace?.ItemName);
+        Assert.AreEqual($"Diadochos Choker of Slaying{GearEntry.HqChar}", gear.Necklace?.ItemName);
 
         Assert.AreEqual("The Last Bracelet of Slaying", gear.Bracelets?.ItemName);
+        Assert.IsFalse(gear.Bracelets?.IsHq);
+        Assert.AreEqual("The Last Bracelet of Slaying", gear.Bracelets?.StrippedItemName);
 
         Assert.AreEqual("Moonward Ring of Slaying", gear.Ring1?.ItemName);
 
-        Assert.AreEqual("The Last Ring of Slaying", gear.Ring2?.ItemName);
+        Assert.AreEqual($"Diadochos Ring of Slaying{GearEntry.HqChar}", gear.Ring2?.ItemName);
+        
+        Assert.AreEqual("Soul of the Reaper", gear.Soulcrystal?.ItemName);
 
         //Materia
         //Not dyed item
@@ -340,24 +349,24 @@ public class Tests
 
         //Attributes
         var attributes = chara.Attributes;
-        Assert.AreEqual(2385, attributes.Strength);
+        Assert.AreEqual(2957, attributes.Strength);
         Assert.AreEqual(393, attributes.Dexterity);
-        Assert.AreEqual(2399, attributes.Vitality);
+        Assert.AreEqual(3126, attributes.Vitality);
         Assert.AreEqual(311, attributes.Intelligence);
         Assert.AreEqual(155, attributes.Mind);
-        Assert.AreEqual(1315, attributes.CriticalHitRate);
-        Assert.AreEqual(1280, attributes.Determination);
-        Assert.AreEqual(1524, attributes.DirectHitRate);
-        Assert.AreEqual(3055, attributes.Defense);
-        Assert.AreEqual(2401, attributes.MagicDefense);
-        Assert.AreEqual(2385, attributes.AttackPower);
-        Assert.AreEqual(764, attributes.SkillSpeed);
+        Assert.AreEqual(1711, attributes.CriticalHitRate);
+        Assert.AreEqual(1114, attributes.Determination);
+        Assert.AreEqual(1465, attributes.DirectHitRate);
+        Assert.AreEqual(3403, attributes.Defense);
+        Assert.AreEqual(2675, attributes.MagicDefense);
+        Assert.AreEqual(2957, attributes.AttackPower);
+        Assert.AreEqual(740, attributes.SkillSpeed);
         Assert.AreEqual(311, attributes.AttackMagicPotency);
         Assert.AreEqual(155, attributes.HealingMagicPotency);
         Assert.AreEqual(400, attributes.SpellSpeed);
         Assert.AreEqual(400, attributes.Tenacity);
         Assert.AreEqual(390, attributes.Piety);
-        Assert.AreEqual(52268, attributes.Hp);
+        Assert.AreEqual(69934, attributes.Hp);
         Assert.AreEqual(10000, attributes.MpGpCp);
         Assert.AreEqual("MP", attributes.MpGpCpParameterName);
 
