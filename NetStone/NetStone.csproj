@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
 
     <PackageId>NetStone</PackageId>
-    <PackageVersion>1.1.2</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <FileVersion>1.1.2</FileVersion>
     <Description>Portable and modern Lodestone library.</Description>
     <Authors>goaaats</Authors>
