@@ -24,174 +24,173 @@ public class CharacterClassJob : LodestoneParseable
     /// <summary>
     /// Information about the Paladin class.
     /// </summary>
-    public ClassJobEntry? Paladin => new ClassJobEntry(this.RootNode, this.definition.Paladin).GetOptional();
+    public ClassJobEntry Paladin => new(this.RootNode, this.definition.Paladin);
 
     /// <summary>
     /// Information about the Warrior class.
     /// </summary>
-    public ClassJobEntry? Warrior => new ClassJobEntry(this.RootNode, this.definition.Warrior).GetOptional();
+    public ClassJobEntry Warrior => new(this.RootNode, this.definition.Warrior);
 
     /// <summary>
     /// Information about the Dark Knight class.
     /// </summary>
-    public ClassJobEntry? DarkKnight => new ClassJobEntry(this.RootNode, this.definition.DarkKnight).GetOptional();
+    public ClassJobEntry DarkKnight => new(this.RootNode, this.definition.DarkKnight);
 
     /// <summary>
     /// Information about the Gunbreaker class.
     /// </summary>
-    public ClassJobEntry? Gunbreaker => new ClassJobEntry(this.RootNode, this.definition.Gunbreaker).GetOptional();
+    public ClassJobEntry Gunbreaker => new(this.RootNode, this.definition.Gunbreaker);
 
     /// <summary>
     /// Information about the Monk class.
     /// </summary>
-    public ClassJobEntry? Monk => new ClassJobEntry(this.RootNode, this.definition.Monk).GetOptional();
+    public ClassJobEntry Monk => new(this.RootNode, this.definition.Monk);
 
     /// <summary>
     /// Information about the Dragoon class.
     /// </summary>
-    public ClassJobEntry? Dragoon => new ClassJobEntry(this.RootNode, this.definition.Dragoon).GetOptional();
+    public ClassJobEntry Dragoon => new(this.RootNode, this.definition.Dragoon);
 
     /// <summary>
     /// Information about the Ninja class.
     /// </summary>
-    public ClassJobEntry? Ninja => new ClassJobEntry(this.RootNode, this.definition.Ninja).GetOptional();
+    public ClassJobEntry Ninja => new(this.RootNode, this.definition.Ninja);
 
     /// <summary>
     /// Information about the Samurai class.
     /// </summary>
-    public ClassJobEntry? Samurai => new ClassJobEntry(this.RootNode, this.definition.Samurai).GetOptional();
+    public ClassJobEntry Samurai => new(this.RootNode, this.definition.Samurai);
 
     /// <summary>
     /// Information about the Reaper class.
     /// </summary>
-    public ClassJobEntry? Reaper => new ClassJobEntry(this.RootNode, this.definition.Reaper).GetOptional();
+    public ClassJobEntry Reaper => new(this.RootNode, this.definition.Reaper);
     
     /// <summary>
     /// Information about the Viper class.
     /// </summary>
-    public ClassJobEntry? Viper => new ClassJobEntry(this.RootNode, this.definition.Viper).GetOptional();
+    public ClassJobEntry Viper => new(this.RootNode, this.definition.Viper);
 
     /// <summary>
     /// Information about the WhiteMage class.
     /// </summary>
-    public ClassJobEntry? WhiteMage => new ClassJobEntry(this.RootNode, this.definition.Whitemage).GetOptional();
+    public ClassJobEntry WhiteMage => new(this.RootNode, this.definition.Whitemage);
 
     /// <summary>
     /// Information about the Scholar class.
     /// </summary>
-    public ClassJobEntry? Scholar => new ClassJobEntry(this.RootNode, this.definition.Scholar).GetOptional();
+    public ClassJobEntry Scholar => new(this.RootNode, this.definition.Scholar);
 
     /// <summary>
     /// Information about the Astrologian class.
     /// </summary>
-    public ClassJobEntry? Astrologian => new ClassJobEntry(this.RootNode, this.definition.Astrologian).GetOptional();
+    public ClassJobEntry Astrologian => new(this.RootNode, this.definition.Astrologian);
 
     /// <summary>
     /// Information about the Sage class.
     /// </summary>
-    public ClassJobEntry? Sage => new ClassJobEntry(this.RootNode, this.definition.Sage).GetOptional();
+    public ClassJobEntry Sage => new(this.RootNode, this.definition.Sage);
 
     /// <summary>
     /// Information about the Bard class.
     /// </summary>
-    public ClassJobEntry? Bard => new ClassJobEntry(this.RootNode, this.definition.Bard).GetOptional();
+    public ClassJobEntry Bard => new(this.RootNode, this.definition.Bard);
 
     /// <summary>
     /// Information about the Machinist class.
     /// </summary>
-    public ClassJobEntry? Machinist => new ClassJobEntry(this.RootNode, this.definition.Machinist).GetOptional();
+    public ClassJobEntry Machinist => new(this.RootNode, this.definition.Machinist);
 
     /// <summary>
     /// Information about the Dancer class.
     /// </summary>
-    public ClassJobEntry? Dancer => new ClassJobEntry(this.RootNode, this.definition.Dancer).GetOptional();
+    public ClassJobEntry Dancer => new(this.RootNode, this.definition.Dancer);
 
     /// <summary>
     /// Information about the BlackMage class.
     /// </summary>
-    public ClassJobEntry? BlackMage => new ClassJobEntry(this.RootNode, this.definition.Blackmage).GetOptional();
+    public ClassJobEntry BlackMage => new(this.RootNode, this.definition.Blackmage);
 
     /// <summary>
     /// Information about the Summoner class.
     /// </summary>
-    public ClassJobEntry? Summoner => new ClassJobEntry(this.RootNode, this.definition.Summoner).GetOptional();
+    public ClassJobEntry Summoner => new(this.RootNode, this.definition.Summoner);
 
     /// <summary>
     /// Information about the RedMage class.
     /// </summary>
-    public ClassJobEntry? RedMage => new ClassJobEntry(this.RootNode, this.definition.Redmage).GetOptional();
+    public ClassJobEntry RedMage => new(this.RootNode, this.definition.Redmage);
     
     /// <summary>
     /// Information about the Pictomancer class.
     /// </summary>
-    public ClassJobEntry? Pictomancer => new ClassJobEntry(this.RootNode, this.definition.Pictomancer).GetOptional();
+    public ClassJobEntry Pictomancer => new(this.RootNode, this.definition.Pictomancer);
 
     /// <summary>
     /// Information about the BlueMage class.
     /// </summary>
-    public ClassJobEntry? BlueMage => new ClassJobEntry(this.RootNode, this.definition.Bluemage).GetOptional();
+    public ClassJobEntry BlueMage => new(this.RootNode, this.definition.Bluemage);
 
     /// <summary>
     /// Information about the Carpenter class.
     /// </summary>
-    public ClassJobEntry? Carpenter => new ClassJobEntry(this.RootNode, this.definition.Carpenter).GetOptional();
+    public ClassJobEntry Carpenter => new(this.RootNode, this.definition.Carpenter);
 
     /// <summary>
     /// Information about the Blacksmith class.
     /// </summary>
-    public ClassJobEntry? Blacksmith => new ClassJobEntry(this.RootNode, this.definition.Blacksmith).GetOptional();
+    public ClassJobEntry Blacksmith => new(this.RootNode, this.definition.Blacksmith);
 
     /// <summary>
     /// Information about the Armorer class.
     /// </summary>
-    public ClassJobEntry? Armorer => new ClassJobEntry(this.RootNode, this.definition.Armorer).GetOptional();
+    public ClassJobEntry Armorer => new(this.RootNode, this.definition.Armorer);
 
     /// <summary>
     /// Information about the Goldsmith class.
     /// </summary>
-    public ClassJobEntry? Goldsmith => new ClassJobEntry(this.RootNode, this.definition.Goldsmith).GetOptional();
+    public ClassJobEntry Goldsmith => new(this.RootNode, this.definition.Goldsmith);
 
     /// <summary>
     /// Information about the Leatherworker class.
     /// </summary>
-    public ClassJobEntry? Leatherworker =>
-        new ClassJobEntry(this.RootNode, this.definition.Leatherworker).GetOptional();
+    public ClassJobEntry Leatherworker => new(this.RootNode, this.definition.Leatherworker);
 
     /// <summary>
     /// Information about the Weaver class.
     /// </summary>
-    public ClassJobEntry? Weaver => new ClassJobEntry(this.RootNode, this.definition.Weaver).GetOptional();
+    public ClassJobEntry Weaver => new(this.RootNode, this.definition.Weaver);
 
     /// <summary>
     /// Information about the Alchemist class.
     /// </summary>
-    public ClassJobEntry? Alchemist => new ClassJobEntry(this.RootNode, this.definition.Alchemist).GetOptional();
+    public ClassJobEntry Alchemist => new(this.RootNode, this.definition.Alchemist);
 
     /// <summary>
     /// Information about the Culinarian
     /// </summary>
-    public ClassJobEntry? Culinarian => new ClassJobEntry(this.RootNode, this.definition.Culinarian).GetOptional();
+    public ClassJobEntry Culinarian => new(this.RootNode, this.definition.Culinarian);
 
     /// <summary>
     /// Information about the Miner class.
     /// </summary>
-    public ClassJobEntry? Miner => new ClassJobEntry(this.RootNode, this.definition.Miner).GetOptional();
+    public ClassJobEntry Miner => new(this.RootNode, this.definition.Miner);
 
     /// <summary>
     /// Information about the Botanist class.
     /// </summary>
-    public ClassJobEntry? Botanist => new ClassJobEntry(this.RootNode, this.definition.Botanist).GetOptional();
+    public ClassJobEntry Botanist => new(this.RootNode, this.definition.Botanist);
 
     /// <summary>
     /// Information about the Fisher class.
     /// </summary>
-    public ClassJobEntry? Fisher => new ClassJobEntry(this.RootNode, this.definition.Fisher).GetOptional();
+    public ClassJobEntry Fisher => new(this.RootNode, this.definition.Fisher);
 
     /// <summary>
     /// This dictionary maps <see cref="StaticData.ClassJob"/> to the respective <see cref="ClassJobEntry"/>
     /// </summary>
-    public IReadOnlyDictionary<StaticData.ClassJob, ClassJobEntry?> ClassJobDict =>
-        new Dictionary<StaticData.ClassJob, ClassJobEntry?>
+    public IReadOnlyDictionary<StaticData.ClassJob, ClassJobEntry> ClassJobDict =>
+        new Dictionary<StaticData.ClassJob, ClassJobEntry>
         {
             { StaticData.ClassJob.Gladiator, this.Paladin },
             { StaticData.ClassJob.Paladin, this.Paladin },
