@@ -144,6 +144,12 @@ public class CharacterClassJobDefinition : IDefinition
     /// </summary>
     [JsonProperty("REAPER")]
     public ClassJobEntryDefinition Reaper { get; set; }
+    
+    /// <summary>
+    /// Viper
+    /// </summary>
+    [JsonProperty("VIPER")]
+    public ClassJobEntryDefinition Viper { get; set; }
 
     /// <summary>
     /// White Mage (includes Conjurer)
@@ -204,6 +210,12 @@ public class CharacterClassJobDefinition : IDefinition
     /// </summary>
     [JsonProperty("REDMAGE")]
     public ClassJobEntryDefinition Redmage { get; set; }
+    
+    /// <summary>
+    /// Pictomancer
+    /// </summary>
+    [JsonProperty("PICTOMANCER")]
+    public ClassJobEntryDefinition Pictomancer { get; set; }
 
     /// <summary>
     /// Blue Mage

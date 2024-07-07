@@ -209,4 +209,14 @@ public enum ClassJob
     /// Sage
     /// </summary>
     Sage = 40,
+    
+    /// <summary>
+    /// Viper
+    /// </summary>
+    Viper = 41,
+
+    /// <summary>
+    /// Pictomancer
+    /// </summary>
+    Pictomancer = 42
 }

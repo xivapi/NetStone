@@ -65,6 +65,11 @@ public class CharacterClassJob : LodestoneParseable
     /// Information about the Reaper class.
     /// </summary>
     public ClassJobEntry? Reaper => new ClassJobEntry(this.RootNode, this.definition.Reaper).GetOptional();
+    
+    /// <summary>
+    /// Information about the Viper class.
+    /// </summary>
+    public ClassJobEntry? Viper => new ClassJobEntry(this.RootNode, this.definition.Viper).GetOptional();
 
     /// <summary>
     /// Information about the WhiteMage class.
@@ -115,6 +120,11 @@ public class CharacterClassJob : LodestoneParseable
     /// Information about the RedMage class.
     /// </summary>
     public ClassJobEntry? RedMage => new ClassJobEntry(this.RootNode, this.definition.Redmage).GetOptional();
+    
+    /// <summary>
+    /// Information about the Pictomancer class.
+    /// </summary>
+    public ClassJobEntry? Pictomancer => new ClassJobEntry(this.RootNode, this.definition.Pictomancer).GetOptional();
 
     /// <summary>
     /// Information about the BlueMage class.
@@ -205,6 +215,8 @@ public class CharacterClassJob : LodestoneParseable
             { StaticData.ClassJob.Samurai, this.Samurai },
 
             { StaticData.ClassJob.Reaper, this.Reaper },
+            
+            { StaticData.ClassJob.Viper, this.Viper },
 
             { StaticData.ClassJob.Conjurer, this.WhiteMage },
             { StaticData.ClassJob.WhiteMage, this.WhiteMage },
@@ -228,6 +240,8 @@ public class CharacterClassJob : LodestoneParseable
             { StaticData.ClassJob.BlackMage, this.BlackMage },
 
             { StaticData.ClassJob.RedMage, this.RedMage },
+            
+            { StaticData.ClassJob.Pictomancer, this.Pictomancer },
 
             { StaticData.ClassJob.BlueMage, this.BlueMage },
 

@@ -389,6 +389,11 @@
             Reaper
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Viper">
+            <summary>
+            Viper
+            </summary>
+        </member>
         <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Whitemage">
             <summary>
             White Mage (includes Conjurer)
@@ -437,6 +442,11 @@
         <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Redmage">
             <summary>
             Red Mage
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Pictomancer">
+            <summary>
+            Pictomancer
             </summary>
         </member>
         <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Bluemage">
@@ -2084,6 +2094,11 @@
             Information about the Reaper class.
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Viper">
+            <summary>
+            Information about the Viper class.
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.WhiteMage">
             <summary>
             Information about the WhiteMage class.
@@ -2132,6 +2147,11 @@
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.RedMage">
             <summary>
             Information about the RedMage class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Pictomancer">
+            <summary>
+            Information about the Pictomancer class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.BlueMage">
@@ -3867,6 +3887,16 @@
         <member name="F:NetStone.StaticData.ClassJob.Sage">
             <summary>
             Sage
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Viper">
+            <summary>
+            Viper
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Pictomancer">
+            <summary>
+            Pictomancer
             </summary>
         </member>
         <member name="T:NetStone.StaticData.GrandCompany">
