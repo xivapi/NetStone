@@ -2622,6 +2622,11 @@
             Race of the character
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Tribe">
+            <summary>
+            Tribe this character belongs to
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.LodestoneCharacter.Gender">
             <summary>
             Character representing the characters gender <see cref="F:NetStone.Model.Parseables.Character.LodestoneCharacter.FemaleChar"/> and <see cref="F:NetStone.Model.Parseables.Character.LodestoneCharacter.MaleChar"/>

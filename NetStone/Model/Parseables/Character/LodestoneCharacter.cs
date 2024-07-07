@@ -135,7 +135,7 @@ public class LodestoneCharacter : LodestoneParseable
     public string Race => this.RaceClanGenderRegex["Race"].Value;
     
     /// <summary>
-    /// Tribe this chacracter belongs to
+    /// Tribe this character belongs to
     /// </summary>
     public string Tribe => this.RaceClanGenderRegex["Tribe"].Value;
     

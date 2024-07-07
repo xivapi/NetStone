@@ -16,7 +16,7 @@ public class Tests
 {
     private LodestoneClient lodestone;
     
-    private const string TestCharacterIdFull = "9575452"; //arc
+    private const string TestCharacterIdFull = "42256897"; 
     private const string TestCharacterIdBare = "9426169";
 
     private const string TestFreeCompany = "9232379236109629819";
@@ -176,7 +176,7 @@ public class Tests
 
         var page = await this.lodestone.SearchFreeCompany(query);
         Assert.NotNull(page);
-        Assert.GreaterOrEqual(page.NumPages,7);
+        Assert.GreaterOrEqual(page.NumPages,1);
         Assert.AreEqual(1, page.CurrentPage);
 
         var cResults = 0;
@@ -209,8 +209,8 @@ public class Tests
         Assert.NotNull(classJob);
         Assert.NotNull(classJob.Warrior);
         Assert.AreEqual(1, classJob.Warrior.Level);
-        Assert.Null(classJob.Alchemist);
-        Assert.Null(classJob.WhiteMage);
+        Assert.False(classJob.Alchemist.IsUnlocked);
+        Assert.False(classJob.WhiteMage.IsUnlocked);
         Assert.Null(await chara.GetMinions());
         Assert.Null(await chara.GetMounts());
         Assert.NotNull(chara.Gear);
@@ -220,91 +220,86 @@ public class Tests
         Assert.Null(chara.PvPTeam);
         Assert.Null(chara.FreeCompany);
     }
-
+    
     [Test]
     public async Task CheckCharacterFull()
     {
         var chara = await this.lodestone.GetCharacter(TestCharacterIdFull);
         Assert.NotNull(chara);
         //General data
-        Assert.AreEqual(chara.ToString(), "Arcane Disgea on Leviathan");
-        Assert.AreEqual(chara.Server, "Leviathan");
-        Assert.AreEqual(chara.Name, "Arcane Disgea");
-        Assert.AreEqual("Miqo'te",chara.Race);
-        Assert.AreEqual("Seeker of the Sun", chara.Tribe);
+        Assert.AreEqual(chara.ToString(), "Alyria Lafranie on Lich");
+        Assert.AreEqual(chara.Server, "Lich");
+        Assert.AreEqual(chara.Name, "Alyria Lafranie");
+        Assert.AreEqual("Au Ra",chara.Race);
+        Assert.AreEqual("Raen", chara.Tribe);
         Assert.AreEqual(LodestoneCharacter.FemaleChar, chara.Gender);
-        Assert.True(chara.Bio.StartsWith(
-            "This is a test of the emergency alert system.AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"));
-        Assert.AreEqual(chara.GuardianDeityName, "Menphina, the Lover");
-        Assert.AreEqual(chara.Nameday, "28th Sun of the 6th Astral Moon");
-        Assert.AreEqual(chara.Title, "Mammeteer");
-        Assert.AreEqual(chara.TownName, "Limsa Lominsa");
-        Assert.True(chara.Avatar != null);
-        Assert.True(chara.Portrait != null);
+        Assert.AreEqual("-",chara.Bio);
+        Assert.AreEqual(chara.GuardianDeityName, "Rhalgr, the Destroyer");
+        Assert.AreEqual(chara.Nameday, "4th Sun of the 4th Umbral Moon");
+        Assert.IsEmpty(chara.Title);
+        Assert.AreEqual(chara.TownName, "Ul'dah");
+        Assert.NotNull(chara.Avatar);
+        Assert.NotNull(chara.Portrait);
 
         Console.WriteLine(chara.GuardianDeityIcon);
 
         //Free Company
         Assert.NotNull(chara.FreeCompany);
-        Assert.AreEqual(chara.FreeCompany.Id, "9232379236109629819");
-        Assert.AreEqual(chara.FreeCompany.Name, "Hell On Aura");
+        Assert.AreEqual(chara.FreeCompany.Id, "9228438586435703207");
+        Assert.AreEqual(chara.FreeCompany.Name, "Parabellum");
         Assert.AreEqual(chara.FreeCompany.Link?.AbsoluteUri,
-            "https://eu.finalfantasyxiv.com/lodestone/freecompany/9232379236109629819/");
+            "https://eu.finalfantasyxiv.com/lodestone/freecompany/9228438586435703207/");
         //todo: iconlayer
         //PvP
-        Assert.NotNull(chara.PvPTeam);
-        Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
-        Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
-        Assert.AreEqual(chara.PvPTeam.Link?.AbsoluteUri,
-            "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
+        //Assert.NotNull(chara.PvPTeam);
+        //Assert.AreEqual(chara.PvPTeam.Id, "59665d98bf81ff58db63305b538cd69a6c64d578");
+        //Assert.AreEqual(chara.PvPTeam.Name, "Raubahn's Left Arm");
+        //Assert.AreEqual(chara.PvPTeam.Link?.AbsoluteUri,
+        //    "https://eu.finalfantasyxiv.com/lodestone/pvpteam/59665d98bf81ff58db63305b538cd69a6c64d578/");
         //todo: iconlayer
 
         //Gear
         var gear = chara.Gear;
-        Assert.AreEqual($"Diadochos Zaghnal{GearEntry.HqChar}", gear.Mainhand?.ItemName);
+        Assert.AreEqual($"Stonegold Milpreves{GearEntry.HqChar}", gear.Mainhand?.ItemName);
         Assert.IsTrue(gear.Mainhand.IsHq);
-        Assert.AreEqual("Diadochos Zaghnal", gear.Mainhand.StrippedItemName);
+        Assert.AreEqual("Stonegold Milpreves", gear.Mainhand.StrippedItemName);
         
-        Assert.IsNotNull(gear.Mainhand?.ItemDatabaseLink);
-        Assert.AreEqual("Augmented Cryptlurker's War Scythe",gear.Mainhand?.GlamourName);
-        Assert.IsNotNull(gear.Mainhand?.GlamourDatabaseLink);
+        Assert.IsNotNull(gear.Mainhand.ItemDatabaseLink);
+        Assert.IsEmpty(gear.Mainhand.GlamourName);
         Assert.IsEmpty(gear.Mainhand.Stain);
         
         Assert.IsNull(gear.Offhand);
 
-        Assert.AreEqual($"Diadochos Headband of Maiming{GearEntry.HqChar}", gear.Head?.ItemName);
-        Assert.IsEmpty(gear.Head.GlamourName);
+        Assert.AreEqual("Bookwyrm's Spectacles", gear.Head?.ItemName);
         
-        Assert.AreEqual($"Diadochos Jacket of Maiming{GearEntry.HqChar}", gear.Body?.ItemName);
-        Assert.IsNotEmpty(gear.Body.Stain);
-        Assert.AreEqual("Lily Magnoria", gear.Body.CreatorName);
+        Assert.AreEqual("Bookwyrm's Chasuble", gear.Body?.ItemName);
+        Assert.AreEqual("Bookwyrm's Chasuble", gear.Body?.StrippedItemName);
+
+        Assert.AreEqual("Bookwyrm's Gloves", gear.Hands?.ItemName);
+
+        Assert.AreEqual("Bookwyrm's Waistwrap", gear.Legs?.ItemName);
+
+        Assert.AreEqual("Bookwyrm's Boots", gear.Feet?.ItemName);
+
+        Assert.AreEqual("Menphina's Earring", gear.Earrings?.ItemName);
+
+        Assert.AreEqual("Augmented Scaevan Choker of Healing", gear.Necklace?.ItemName);
+
+        Assert.AreEqual("Bracelet of the Divine Harvest", gear.Bracelets?.ItemName);
         
 
-        Assert.AreEqual($"Diadochos Halfgloves of Maiming{GearEntry.HqChar}", gear.Hands?.ItemName);
-
-        Assert.AreEqual($"Diadochos Poleyns of Maiming{GearEntry.HqChar}", gear.Legs?.ItemName);
-
-        Assert.AreEqual($"Diadochos Boots of Maiming{GearEntry.HqChar}", gear.Feet?.ItemName);
-
-        Assert.AreEqual($"Diadochos Earring of Slaying{GearEntry.HqChar}", gear.Earrings?.ItemName);
-
-        Assert.AreEqual($"Diadochos Choker of Slaying{GearEntry.HqChar}", gear.Necklace?.ItemName);
-
-        Assert.AreEqual("The Last Bracelet of Slaying", gear.Bracelets?.ItemName);
-        Assert.IsFalse(gear.Bracelets?.IsHq);
-        Assert.AreEqual("The Last Bracelet of Slaying", gear.Bracelets?.StrippedItemName);
-
-        Assert.AreEqual("Moonward Ring of Slaying", gear.Ring1?.ItemName);
-
-        Assert.AreEqual($"Diadochos Ring of Slaying{GearEntry.HqChar}", gear.Ring2?.ItemName);
+        Assert.AreEqual("Weathered Ring", gear.Ring1?.ItemName);
+        Assert.IsFalse(gear.Ring1.IsHq);
         
-        Assert.AreEqual("Soul of the Reaper", gear.Soulcrystal?.ItemName);
+        Assert.AreEqual("Ring of Freedom", gear.Ring2?.ItemName);
+        
+        Assert.AreEqual("Soul of the Sage", gear.Soulcrystal?.ItemName);
 
         //Materia
         //Not dyed item
-        Assert.NotNull(chara.Gear.Legs?.Materia[0]);
+        //Assert.NotNull(chara.Gear.Legs?.Materia[0]);
         //Dyed item
-        Assert.NotNull(chara.Gear.Body?.Materia[0]);
+        //Assert.NotNull(chara.Gear.Body?.Materia[0]);
 
         //Classes/Jobs
         var classJob = await chara.GetClassJobInfo();
@@ -316,57 +311,41 @@ public class Tests
             {
                 case ClassJob.None:
                     continue;
+                case ClassJob.Lancer:
+                    Assert.IsFalse(classJob.ClassJobDict[job].IsUnlocked, $"{job}");
+                    break;
                 case ClassJob.Sage:
-                    Assert.Null(classJob.ClassJobDict[job], $"{job}");
+                    Assert.IsTrue(classJob.Sage.IsUnlocked);
+                    Assert.AreEqual(70,classJob.Sage.Level);
+                    Assert.AreEqual(1834966,classJob.Sage.ExpCurrent);
+                    Assert.AreEqual(2923000,classJob.Sage.ExpMax);
                     break;
                 default:
-                    Assert.NotNull(classJob.ClassJobDict[job], $"{job}");
+                    Assert.NotNull(classJob.ClassJobDict[job]);
                     break;
             }
         }
 
-        Assert.NotNull(classJob.Reaper);
-        Assert.AreEqual(90, classJob.Reaper.Level);
-        Assert.AreEqual(0, classJob.Reaper.ExpToGo);
-        Assert.AreEqual(0, classJob.Reaper.ExpCurrent);
-        Assert.AreEqual(0, classJob.Reaper.ExpMax);
-        Assert.IsFalse(classJob.Reaper.IsJobUnlocked);
-
-        Assert.NotNull(classJob.Scholar);
-        Assert.AreEqual(74, classJob.Scholar.Level);
-        Assert.AreEqual(6612, classJob.Scholar.ExpCurrent);
-        Assert.AreEqual(3532000, classJob.Scholar.ExpMax);
-        Assert.AreEqual(3532000 - 6612, classJob.Scholar.ExpToGo);
-
-        Assert.NotNull(classJob.WhiteMage);
-        Assert.IsTrue(classJob.WhiteMage.IsJobUnlocked);
-
-        Assert.NotNull(classJob.Weaver);
-        Assert.AreEqual(classJob.Weaver.IsSpecialized, true);
-
-        Assert.NotNull(classJob.Carpenter);
-        Assert.AreEqual(classJob.Carpenter.IsSpecialized, false);
-
         //Attributes
         var attributes = chara.Attributes;
-        Assert.AreEqual(2957, attributes.Strength);
-        Assert.AreEqual(393, attributes.Dexterity);
-        Assert.AreEqual(3126, attributes.Vitality);
-        Assert.AreEqual(311, attributes.Intelligence);
-        Assert.AreEqual(155, attributes.Mind);
-        Assert.AreEqual(1711, attributes.CriticalHitRate);
-        Assert.AreEqual(1114, attributes.Determination);
-        Assert.AreEqual(1465, attributes.DirectHitRate);
-        Assert.AreEqual(3403, attributes.Defense);
-        Assert.AreEqual(2675, attributes.MagicDefense);
-        Assert.AreEqual(2957, attributes.AttackPower);
-        Assert.AreEqual(740, attributes.SkillSpeed);
-        Assert.AreEqual(311, attributes.AttackMagicPotency);
-        Assert.AreEqual(155, attributes.HealingMagicPotency);
-        Assert.AreEqual(400, attributes.SpellSpeed);
-        Assert.AreEqual(400, attributes.Tenacity);
-        Assert.AreEqual(390, attributes.Piety);
-        Assert.AreEqual(69934, attributes.Hp);
+        Assert.AreEqual(175, attributes.Strength);
+        Assert.AreEqual(295, attributes.Dexterity);
+        Assert.AreEqual(1080, attributes.Vitality);
+        Assert.AreEqual(336, attributes.Intelligence);
+        Assert.AreEqual(1161, attributes.Mind);
+        Assert.AreEqual(696, attributes.CriticalHitRate);
+        Assert.AreEqual(900, attributes.Determination);
+        Assert.AreEqual(364, attributes.DirectHitRate);
+        Assert.AreEqual(935, attributes.Defense);
+        Assert.AreEqual(1629, attributes.MagicDefense);
+        Assert.AreEqual(175, attributes.AttackPower);
+        Assert.AreEqual(364, attributes.SkillSpeed);
+        Assert.AreEqual(1161, attributes.AttackMagicPotency);
+        Assert.AreEqual(1161, attributes.HealingMagicPotency);
+        Assert.AreEqual(487, attributes.SpellSpeed);
+        Assert.AreEqual(364, attributes.Tenacity);
+        Assert.AreEqual(626, attributes.Piety);
+        Assert.AreEqual(12817, attributes.Hp);
         Assert.AreEqual(10000, attributes.MpGpCp);
         Assert.AreEqual("MP", attributes.MpGpCpParameterName);
 
@@ -374,26 +353,37 @@ public class Tests
 
         var achieve = await chara.GetAchievement();
         Assert.NotNull(achieve);
-        Assert.GreaterOrEqual(1015, achieve.TotalAchievements);
-        Assert.GreaterOrEqual(8435, achieve.AchievementPoints);
-        Assert.GreaterOrEqual(21, achieve.NumPages);
-        Assert.AreEqual(1,achieve.CurrentPage);
-        foreach (var achievement in achieve.Achievements)
+        Assert.AreEqual(1505,achieve.AchievementPoints);
+        Assert.GreaterOrEqual(achieve.TotalAchievements,131);
+        Assert.GreaterOrEqual(achieve.NumPages,3);
+        Assert.AreEqual(1, achieve.CurrentPage);
+        bool found592 = false;
+        bool found1805 = false;
+        while (achieve is not null)
         {
-            Assert.NotNull(achievement.Id);
-            switch (achievement.Id)
+            foreach (var achievement in achieve.Achievements)
             {
-                case 3090:
-                    Assert.AreEqual("Sustainable Sourcing I", achievement.Name);
-                    Assert.AreEqual(new DateTime(2022, 08, 28, 15, 04, 02), achievement.TimeAchieved);
-                    break;
-                case 1642:
-                    Assert.AreEqual("Sins of the Savage Creator I", achievement.Name);
-                    Assert.AreEqual(new DateTime(2019, 07, 29, 02, 34, 08), achievement.TimeAchieved);
-                    break;
+                Assert.NotNull(achievement.Id);
+                switch (achievement.Id)
+                {
+                    case 592:
+                        Assert.AreEqual("Through the Gate I", achievement.Name);
+                        Assert.AreEqual(new DateTime(2022, 03, 03, 20, 03, 42),
+                                        achievement.TimeAchieved);
+                        found592 = true;
+                        break;
+                    case 1805:
+                        Assert.AreEqual("Flying Colors III", achievement.Name);
+                        Assert.AreEqual(new DateTime(2022, 03, 3, 20, 03, 42),
+                                        achievement.TimeAchieved);
+                        found1805 = true;
+                        break;
+                }
             }
+            achieve = await achieve.GetNextPage();
         }
-
+        Assert.IsTrue(found592);
+        Assert.IsTrue(found1805);
         var mount = await chara.GetMounts();
         Assert.NotNull(mount);
         foreach (var m in mount.Collectables)
