@@ -22,6 +22,16 @@ public class CharacterClassJob : LodestoneParseable
     }
 
     /// <summary>
+    /// Information about the Eureka class.
+    /// </summary>
+    public ClassJobEureka? Eureka => new ClassJobEureka(this.RootNode, this.definition.Eureka).GetOptional();
+
+    /// <summary>
+    /// Information about the Bozja class.
+    /// </summary>
+    public ClassJobBozja? Bozja => new ClassJobBozja(this.RootNode, this.definition.Bozja).GetOptional();
+
+    /// <summary>
     /// Information about the Paladin class.
     /// </summary>
     public ClassJobEntry Paladin => new(this.RootNode, this.definition.Paladin);
@@ -65,7 +75,7 @@ public class CharacterClassJob : LodestoneParseable
     /// Information about the Reaper class.
     /// </summary>
     public ClassJobEntry Reaper => new(this.RootNode, this.definition.Reaper);
-    
+
     /// <summary>
     /// Information about the Viper class.
     /// </summary>
@@ -214,7 +224,7 @@ public class CharacterClassJob : LodestoneParseable
             { StaticData.ClassJob.Samurai, this.Samurai },
 
             { StaticData.ClassJob.Reaper, this.Reaper },
-            
+
             { StaticData.ClassJob.Viper, this.Viper },
 
             { StaticData.ClassJob.Conjurer, this.WhiteMage },
@@ -239,7 +249,7 @@ public class CharacterClassJob : LodestoneParseable
             { StaticData.ClassJob.BlackMage, this.BlackMage },
 
             { StaticData.ClassJob.RedMage, this.RedMage },
-            
+
             { StaticData.ClassJob.Pictomancer, this.Pictomancer },
 
             { StaticData.ClassJob.BlueMage, this.BlueMage },
