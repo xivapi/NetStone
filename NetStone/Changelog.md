@@ -1,3 +1,8 @@
+## 1.2.1
+### New Features
+- Character
+  - Added Bozja (credit to twobe7)
+  - Added Eureka (credit to twobe7)
 ## 1.2.0
 ### Breaking Changes
 - ClassJobs are now non-nullable. Use IsUnlocked instead of a null check
