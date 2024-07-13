@@ -25,97 +25,72 @@ public class ClassJobBozja : LodestoneParseable, IOptionalParseable<ClassJobBozj
 	/// <summary>
 	/// The name of this class and job combo.
 	/// </summary>
-	public string Name => ParseTooltip(this.definition.NAME);
-
-	/// <summary>
-	/// Value indicating whether this class has its job unlocked.
-	/// </summary>
-	public bool IsJobUnlocked => this.Name.Contains("/");
+	public string Name => Parse(this.definition.NAME);
 
 	/// <summary>
 	/// The level this class or job is at.
 	/// </summary>
-	public int Level
-	{
-		get
-		{
-			var level = Parse(this.definition.LEVEL);
-			return level == "-" ? 0 : int.Parse(level);
-		}
-	}
+	public int Level => int.TryParse(Parse(this.definition.LEVEL), out var levelOut) ? levelOut : 0 ;
 
-	private string ExpString => ParseInnerText(this.definition.METTLE);
+	private string MettleString => ParseInnerText(this.definition.METTLE);
 
-	private long? expCurrentVal;
+	private int? mettleCurrentVal;
 
 	/// <summary>
 	/// The amount of current achieved EXP on this level.
 	/// </summary>
-	public long ExpCurrent
+	public int MettleCurrent
 	{
 		get
 		{
-			if (!this.expCurrentVal.HasValue)
-				ParseExp();
+			if (!this.mettleCurrentVal.HasValue)
+				ParseMettle();
 
-			return this.expCurrentVal!.Value;
+			return this.mettleCurrentVal!.Value;
 		}
 	}
 
-	private long? expMaxVal;
+	private int? mettleMaxVal;
 
 	/// <summary>
 	/// The amount of EXP to be reached to gain the next level.
 	/// </summary>
-	public long ExpMax
+	public int MettleMax
 	{
 		get
 		{
-			if (!this.expCurrentVal.HasValue)
-				ParseExp();
+			if (!this.mettleCurrentVal.HasValue)
+				ParseMettle();
 
-			return this.expMaxVal!.Value;
+			return this.mettleMaxVal!.Value;
 		}
 	}
 
 	/// <summary>
 	/// The outstanding amount of EXP to go to the next level.
 	/// </summary>
-	public long ExpToGo => this.ExpMax - this.ExpCurrent;
+	public int MettleToGo => this.MettleMax - this.MettleCurrent;
 
-	private void ParseExp()
+	private void ParseMettle()
 	{
 		if (!this.Exists)
 		{
-			this.expCurrentVal = 0;
-			this.expMaxVal = 0;
+			this.mettleCurrentVal = 0;
+			this.mettleMaxVal = 0;
 
 			return;
 		}
 
-		var expVals = this.ExpString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
+		var mettleVals = this.MettleString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
 
-		if (expVals[0] == "--")
-		{
-			this.expCurrentVal = 0;
-			this.expMaxVal = 0;
-
-			return;
-		}
-
-		this.expCurrentVal = long.Parse(Regex.Match(expVals[0], @"\d+").Value);
-		this.expMaxVal = long.Parse(Regex.Match(expVals[1], @"\d+").Value);
+		this.mettleCurrentVal = int.TryParse(Regex.Match(mettleVals[0], @"\d+").Value, out var mettleCur) ? mettleCur : 0;
+		this.mettleMaxVal = int.TryParse(Regex.Match(mettleVals[1], @"\d+").Value, out var mettleMax) ? mettleMax : 0;
 	}
 
 	/// <summary>
 	/// Value indicating if this class is unlocked.
 	/// </summary>
 	public bool Exists => this.Level != 0;
-
-	/// <summary>
-	/// Value indicating if this class is unlocked.
-	/// </summary>
-	public bool IsUnlocked => this.Exists;
 
 	/// <summary>
 	/// The string representation of this object.

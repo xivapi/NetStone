@@ -16,7 +16,9 @@ public class Tests
 {
     private LodestoneClient lodestone;
     
-    private const string TestCharacterIdFull = "24471319"; 
+    private const string TestCharacterIdFull = "24471319";
+    private const string TestCharacterIdEureka = "14556736";
+    private const string TestCharacterIdEureka2 = "6787158";
     private const string TestCharacterIdBare = "9426169";
 
     private const string TestFreeCompany = "9232379236109629819";
@@ -220,6 +222,29 @@ public class Tests
         Assert.Null(chara.PvPTeam);
         Assert.Null(chara.FreeCompany);
     }
+
+    [Test]
+    public async Task CheckCharacterEurekaBozja()
+    {
+        var chara = await this.lodestone.GetCharacter(TestCharacterIdEureka);
+        Assert.NotNull(chara);
+        var classJob = await chara.GetClassJobInfo();
+        Assert.NotNull(classJob);
+        
+        Assert.NotNull(classJob.Bozja);
+        Assert.IsTrue(classJob.Bozja.Exists);
+        Assert.AreEqual("Resistance Rank",classJob.Bozja.Name);
+        Assert.AreEqual(6,classJob.Bozja.Level);
+        Assert.AreEqual(13_443, classJob.Bozja.MettleCurrent);
+        Assert.AreEqual(18_000, classJob.Bozja.MettleMax);
+        
+        Assert.NotNull(classJob.Eureka);
+        Assert.IsTrue(classJob.Eureka.Exists);
+        Assert.AreEqual("Elemental Level",classJob.Eureka.Name);
+        Assert.AreEqual(1,classJob.Eureka.Level);
+        Assert.AreEqual(431, classJob.Eureka.ExpCurrent);
+        Assert.AreEqual(1_000, classJob.Eureka.ExpMax);
+    }
     
     [Test]
     public async Task CheckCharacterFull()
@@ -320,7 +345,15 @@ public class Tests
                     break;
             }
         }
+        Assert.NotNull(classJob.Bozja);
+        Assert.AreEqual(19, classJob.Bozja.Level);
+        Assert.AreEqual(4_441_657, classJob.Bozja?.MettleCurrent);
+        Assert.AreEqual(6_163_000, classJob.Bozja?.MettleMax);
+        Assert.AreEqual(1_721_343,classJob.Bozja.MettleToGo);
+        Assert.AreEqual("Resistance Rank", classJob.Bozja.Name);
 
+        Assert.Null(classJob.Eureka);
+        
         //Attributes
         var attributes = chara.Attributes;
         Assert.LessOrEqual(233, attributes.Strength);
@@ -397,6 +430,7 @@ public class Tests
         {
             Assert.NotNull(m.Name);
         }
+        
     }
 
     [Test]

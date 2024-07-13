@@ -2049,6 +2049,16 @@
             <param name="rootNode">Root html node of Lodestone page</param>
             <param name="definition">Definition to parse ClassJobs</param>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Eureka">
+            <summary>
+            Information about the Eureka class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Bozja">
+            <summary>
+            Information about the Bozja class.
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Paladin">
             <summary>
             Information about the Paladin class.
@@ -2219,6 +2229,54 @@
             This dictionary maps <see cref="T:NetStone.StaticData.ClassJob"/> to the respective <see cref="T:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry"/>
             </summary>
         </member>
+        <member name="T:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja">
+            <summary>
+            Entry for Bozja Field Operation of a character
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.ClassJobBozjaDefinition)">
+            <summary>
+            Constructs a new class entry
+            </summary>
+            <param name="rootNode">Root node of this entry</param>
+            <param name="definition">Parser definition</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.Name">
+            <summary>
+            The name of this class and job combo.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.Level">
+            <summary>
+            The level this class or job is at.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.MettleCurrent">
+            <summary>
+            The amount of current achieved EXP on this level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.MettleMax">
+            <summary>
+            The amount of EXP to be reached to gain the next level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.MettleToGo">
+            <summary>
+            The outstanding amount of EXP to go to the next level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.Exists">
+            <summary>
+            Value indicating if this class is unlocked.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobBozja.ToString">
+            <summary>
+            The string representation of this object.
+            </summary>
+            <returns>Name (Level)</returns>
+        </member>
         <member name="T:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry">
             <summary>
             Entry for one class/job of a character
@@ -2277,6 +2335,64 @@
             </summary>
         </member>
         <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobEntry.ToString">
+            <summary>
+            The string representation of this object.
+            </summary>
+            <returns>Name (Level)</returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka">
+            <summary>
+            Entry for Eureka Field Operation of a character
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.ClassJobEurekaDefinition)">
+            <summary>
+            Constructs a new class entry
+            </summary>
+            <param name="rootNode">Root node of this entry</param>
+            <param name="definition">Parser definition</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.Name">
+            <summary>
+            The name of this class and job combo.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.IsJobUnlocked">
+            <summary>
+            Value indicating whether this class has its job unlocked.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.Level">
+            <summary>
+            The level this class or job is at.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.ExpCurrent">
+            <summary>
+            The amount of current achieved EXP on this level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.ExpMax">
+            <summary>
+            The amount of EXP to be reached to gain the next level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.ExpToGo">
+            <summary>
+            The outstanding amount of EXP to go to the next level.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.Exists">
+            <summary>
+            Value indicating if this class is unlocked.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.IsUnlocked">
+            <summary>
+            Value indicating if this class is unlocked.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.ClassJob.ClassJobEureka.ToString">
             <summary>
             The string representation of this object.
             </summary>

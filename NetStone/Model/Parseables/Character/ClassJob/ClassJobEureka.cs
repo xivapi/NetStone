@@ -24,7 +24,7 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 	/// <summary>
 	/// The name of this class and job combo.
 	/// </summary>
-	public string Name => ParseTooltip(this.definition.Name);
+	public string Name => Parse(this.definition.Name);
 
 	/// <summary>
 	/// Value indicating whether this class has its job unlocked.
@@ -34,23 +34,16 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 	/// <summary>
 	/// The level this class or job is at.
 	/// </summary>
-	public int Level
-	{
-		get
-		{
-			var level = Parse(this.definition.Level);
-			return level == "-" ? 0 : int.Parse(level);
-		}
-	}
+	public int Level => int.TryParse(Parse(this.definition.Level), out var level)? level : 0;
 
 	private string ExpString => ParseInnerText(this.definition.Exp);
 
-	private long? expCurrentVal;
+	private int? expCurrentVal;
 
 	/// <summary>
 	/// The amount of current achieved EXP on this level.
 	/// </summary>
-	public long ExpCurrent
+	public int ExpCurrent
 	{
 		get
 		{
@@ -61,12 +54,12 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 		}
 	}
 
-	private long? expMaxVal;
+	private int? expMaxVal;
 
 	/// <summary>
 	/// The amount of EXP to be reached to gain the next level.
 	/// </summary>
-	public long ExpMax
+	public int ExpMax
 	{
 		get
 		{
@@ -80,7 +73,7 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 	/// <summary>
 	/// The outstanding amount of EXP to go to the next level.
 	/// </summary>
-	public long ExpToGo => this.ExpMax - this.ExpCurrent;
+	public int ExpToGo => this.ExpMax - this.ExpCurrent;
 
 	private void ParseExp()
 	{
@@ -94,16 +87,8 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 
 		var expVals = this.ExpString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
 
-		if (expVals[0] == "--")
-		{
-			this.expCurrentVal = 0;
-			this.expMaxVal = 0;
-
-			return;
-		}
-
-		this.expCurrentVal = long.Parse(expVals[0]);
-		this.expMaxVal = long.Parse(expVals[1]);
+		this.expCurrentVal = int.TryParse(expVals[0], out var expCur) ? expCur : 0;
+		this.expMaxVal = int.TryParse(expVals[1], out var expMax) ? expMax : 0;
 	}
 
 	/// <summary>
