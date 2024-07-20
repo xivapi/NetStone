@@ -18,6 +18,8 @@ public class Tests
     
     private const string TestCharacterIdFull = "24471319";
     private const string TestCharacterIdEureka = "14556736";
+    private const string TestLinkshell = "18577348462979918";
+    private const string TestCWLS = "097b99377634f9980eb0cf0b4ff6cf86807feb2c";
     private const string TestCharacterIdEureka2 = "6787158";
     private const string TestCharacterIdBare = "9426169";
 
@@ -449,5 +451,29 @@ public class Tests
 
         var minions = await this.lodestone.GetCharacterMinion("0");
         Assert.IsNull(minions);
+    }
+
+    [Test]
+    public async Task CheckCrossworldLinkShell()
+    {
+        var cwls = await this.lodestone.GetCrossworldLinkshell(TestCWLS);
+        //Assert.AreEqual("COR and Friends ", cwls?.Name);
+        Assert.AreEqual("Light", cwls.DataCenter);
+        Assert.AreEqual(2, cwls.NumPages);
+        while (cwls is not null)
+        {
+            foreach (var member in cwls.Members)
+            {
+                Console.WriteLine($"{member.Name} ({member.Rank}) {member.RankIcon}\n" +
+                                  $"Id: {member.Id}\n" +
+                                  $"Avatar: {member.Avatar}\n" +
+                                  $"Server: {member.Server}\n" +
+                                  $"LS Rank: {member.LinkshellRank}\n" +
+                                  $"LS Rank Icon: {member.LinkshellRankIcon}");
+                
+            }
+            cwls = await cwls.GetNextPage();
+        }
+        
     }
 }

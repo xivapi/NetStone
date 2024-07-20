@@ -90,6 +90,16 @@
             Definitions for Free company search
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShell">
+            <summary>
+            Definitions for cross world link shells
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShellMember">
+            <summary>
+            Definitions for cross world link shell memebrs
+            </summary>
+        </member>
         <member name="M:NetStone.Definitions.DefinitionsContainer.Reload">
             <summary>
             Loads the definitions from repo
@@ -878,9 +888,69 @@
             Homeworld
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition.Root">
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition">
             <summary>
-            Root node
+            Definitions for cross world link shell
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition.DataCenter">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberDefinition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Avatar">
+            <summary>
+            Avatar
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Rank">
+            <summary>
+            Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.RankIcon">
+            <summary>
+            Rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.LinkshellRank">
+            <summary>
+            Linkshell rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.LinkshellRankIcon">
+            <summary>
+            Linkshell rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Server">
+            <summary>
+            Server
             </summary>
         </member>
         <member name="T:NetStone.Definitions.Model.FreeCompany.EstateDefinition">
@@ -1079,11 +1149,6 @@
             Definition for one FC member
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Root">
-            <summary>
-            Root node of entry
-            </summary>
-        </member>
         <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Avatar">
             <summary>
             Avatar of member character
@@ -1207,11 +1272,6 @@
         <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Formed">
             <summary>
             Formation date
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition.Root">
-            <summary>
-            Root node
             </summary>
         </member>
         <member name="T:NetStone.Definitions.Model.IconLayersDefinition">
@@ -1384,32 +1444,32 @@
             Collection of Uris for which the definition packs are valid
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.PagedDefinition">
+        <member name="T:NetStone.Definitions.Model.PagedDefinition`1">
             <summary>
             Base definition for paged results
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.PagedDefinition.Root">
+        <member name="P:NetStone.Definitions.Model.PagedDefinition`1.Root">
             <summary>
             Root node
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.PagedDefinition.Entry">
+        <member name="P:NetStone.Definitions.Model.PagedDefinition`1.Entry">
             <summary>
             Definition for one entry
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.PagedDefinition.PageInfo">
+        <member name="P:NetStone.Definitions.Model.PagedDefinition`1.PageInfo">
             <summary>
             Info about pages
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.PagedDefinition.ListNextButton">
+        <member name="P:NetStone.Definitions.Model.PagedDefinition`1.ListNextButton">
             <summary>
             Button for next page
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.PagedDefinition.NoResultsFound">
+        <member name="P:NetStone.Definitions.Model.PagedDefinition`1.NoResultsFound">
             <summary>
             DEfinition for node for empty results
             </summary>
@@ -1625,6 +1685,14 @@
             <param name="page">The page of search results to fetch.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
         </member>
+        <member name="M:NetStone.LodestoneClient.GetCrossworldLinkshell(System.String,System.Int32)">
+            <summary>
+            Get's a cross world link shell by it's id.
+            </summary>
+            <param name="id">The ID of the cross world linkshell.</param>
+            <param name="page"></param>
+            <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
+        </member>
         <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String)">
             <summary>
             Get a character by its Lodestone ID.
@@ -1736,7 +1804,7 @@
             <param name="pack">Definition of the node.</param>
             <returns>All ChildNodes.</returns>
         </member>
-        <member name="M:NetStone.Model.LodestoneParseable.QueryContainer(NetStone.Definitions.Model.PagedDefinition)">
+        <member name="M:NetStone.Model.LodestoneParseable.QueryContainer``1(NetStone.Definitions.Model.PagedDefinition{``0})">
             <summary>
             Get a list of root nodes for entries of this paged list.
             Throws <see cref="T:System.ArgumentException"/> if definition does not contain a entry definition
@@ -1894,7 +1962,7 @@
             <param name="client">Lodestone client instance</param>
             <param name="rootNode">Root node of the achievement page</param>
             <param name="definition">Parse definition pack</param>
-            <param name="charId">Id of the character</param>
+            <param name="charId">ID of the character</param>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.TotalAchievements">
             <summary>
@@ -2808,6 +2876,96 @@
             </summary>
             <returns>"Name on World"</returns>
         </member>
+        <member name="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell">
+            <summary>
+            Container class holding information about a cross world linkshell and it's members.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
+            <summary>
+            Container class for a parseable corss world linkshell page.
+            </summary>
+            <param name="client">The <see cref="T:NetStone.LodestoneClient"/> to be used to fetch further information.</param>
+            <param name="rootNode">The root document node of the page.</param>
+            <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
+            <param name="id">The ID of the cross world linkshell.</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.DataCenter">
+            <summary>
+            Datacenter
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.Members">
+            <summary>
+            Unlocked achievements for character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.NumPages">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.GetNextPage">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry">
+            <summary>
+            Container class holding information about a cross-world linkshelll member.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition)">
+            <summary>
+            Create instance of member entry for a given node
+            </summary>
+            <param name="rootNode">Root html node of this entry</param>
+            <param name="definition">Css and regex definition</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Avatar">
+            <summary>
+            Avatar
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Rank">
+            <summary>
+            Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.RankIcon">
+            <summary>
+            Rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.LinkshellRank">
+            <summary>
+            Linkshell rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.LinkshellRankIcon">
+            <summary>
+            Linkshell rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Server">
+            <summary>
+            Server
+            </summary>
+        </member>
         <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate">
             <summary>
             Information about the Free CCompany's estate
@@ -3099,7 +3257,7 @@
             Information about a Free Company's members
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,System.String)">
+        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition},System.String)">
             <summary>
             Constructs member list
             </summary>
@@ -3225,7 +3383,7 @@
             Models character search results
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,NetStone.Search.Character.CharacterSearchQuery)">
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.Character.CharacterSearchEntryDefinition},NetStone.Search.Character.CharacterSearchQuery)">
             <summary>
             Constructs character search results
             </summary>
@@ -3330,7 +3488,7 @@
             Models Free Company search results
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition,NetStone.Search.FreeCompany.FreeCompanySearchQuery)">
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.FreeCompany.FreeCompanySearchEntryDefinition},NetStone.Search.FreeCompany.FreeCompanySearchQuery)">
             <summary>
             Constructs Free Company Search results
             </summary>

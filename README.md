@@ -12,7 +12,7 @@ NetStone is a portable and modern .NET FFXIV Lodestone API.
 - [ ] PvP Team Search
 - [ ] Linkshell
 - [ ] Linkshell Search
-- [ ] CWLS
+- [x] CWLS
 - [ ] CWLS Search
 
 Eorzea DB support is not planned.
