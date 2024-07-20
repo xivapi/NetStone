@@ -16,8 +16,7 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
     private readonly LodestoneClient client;
     private readonly FreeCompanySearchQuery currentQuery;
 
-    private readonly PagedDefinition pageDefinition;
-    private readonly FreeCompanySearchEntryDefinition entryDefinition;
+    private readonly PagedDefinition<FreeCompanySearchEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs Free Company Search results
@@ -26,14 +25,13 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public FreeCompanySearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition,
+    public FreeCompanySearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<FreeCompanySearchEntryDefinition> pageDefinition,
         FreeCompanySearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
 
         this.pageDefinition = pageDefinition;
-        this.entryDefinition = pageDefinition.Entry.ToObject<FreeCompanySearchEntryDefinition>();
     }
 
     /// <summary>
@@ -67,7 +65,7 @@ public class FreeCompanySearchPage : LodestoneParseable, IPaginatedResult<FreeCo
         this.parsedResults = new FreeCompanySearchEntry[container.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new FreeCompanySearchEntry(this.client, container[i], this.entryDefinition);
+            this.parsedResults[i] = new FreeCompanySearchEntry(this.client, container[i], this.pageDefinition.Entry);
         }
     }
 

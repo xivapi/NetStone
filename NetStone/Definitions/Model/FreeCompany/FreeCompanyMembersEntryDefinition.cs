@@ -8,12 +8,6 @@ namespace NetStone.Definitions.Model.FreeCompany;
 public class FreeCompanyMembersEntryDefinition : PagedEntryDefinition
 {
     /// <summary>
-    /// Root node of entry
-    /// </summary>
-    [JsonProperty("ROOT")]
-    public new DefinitionsPack Root { get; set; }
-
-    /// <summary>
     /// Avatar of member character
     /// </summary>
     [JsonProperty("AVATAR")]

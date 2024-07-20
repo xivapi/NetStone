@@ -80,12 +80,12 @@ public class LodestoneFreeCompany : LodestoneParseable
     /// <summary>
     /// Monthly ranking
     /// </summary>
-    public int? RankingMonthly => int.TryParse(Parse(fcDefinition.Ranking.Monthly), out var result) ? result : null;
+    public int? RankingMonthly => int.TryParse(Parse(this.fcDefinition.Ranking.Monthly), out var result) ? result : null;
 
     /// <summary>
     /// Weekly ranking
     /// </summary>
-    public int? RankingWeekly => int.TryParse(Parse(fcDefinition.Ranking.Weekly), out var result) ? result : null;
+    public int? RankingWeekly => int.TryParse(Parse(this.fcDefinition.Ranking.Weekly), out var result) ? result : null;
 
     /// <summary>
     /// Recruitment status

@@ -51,10 +51,10 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         this.FreeCompanyReputation =
             await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json");
 
-        this.FreeCompanyMembers = await GetDefinition<PagedDefinition>("freecompany/members.json");
+        this.FreeCompanyMembers = await GetDefinition<PagedDefinition<FreeCompanyMembersEntryDefinition>>("freecompany/members.json");
 
-        this.CharacterSearch = await GetDefinition<PagedDefinition>("search/character.json");
-        this.FreeCompanySearch = await GetDefinition<PagedDefinition>("search/freecompany.json");
+        this.CharacterSearch = await GetDefinition<PagedDefinition<CharacterSearchEntryDefinition>>("search/character.json");
+        this.FreeCompanySearch = await GetDefinition<PagedDefinition<FreeCompanySearchEntryDefinition>>("search/freecompany.json");
     }
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition

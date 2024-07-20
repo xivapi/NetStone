@@ -5,7 +5,7 @@ namespace NetStone.Definitions.Model.Character;
 /// <summary>
 /// Models the definition of the achievement list
 /// </summary>
-public class CharacterAchievementDefinition : PagedDefinition
+public class CharacterAchievementDefinition : PagedDefinition<CharacterAchievementEntryDefinition>
 {
     /// <summary>
     /// Total number of achievements earned by this character

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement;
@@ -15,7 +14,6 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     private readonly LodestoneClient client;
 
     private readonly CharacterAchievementDefinition pageDefinition;
-    private readonly CharacterAchievementEntryDefinition entryDefinition;
 
     private readonly string charId;
 
@@ -25,7 +23,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     /// <param name="client">Lodestone client instance</param>
     /// <param name="rootNode">Root node of the achievement page</param>
     /// <param name="definition">Parse definition pack</param>
-    /// <param name="charId">Id of the character</param>
+    /// <param name="charId">ID of the character</param>
     public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, CharacterAchievementDefinition definition,
         string charId) : base(rootNode)
     {
@@ -33,7 +31,6 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         this.charId = charId;
 
         this.pageDefinition = definition;
-        this.entryDefinition = definition.Entry.ToObject<CharacterAchievementEntryDefinition>();
     }
 
     /// <summary>
@@ -84,7 +81,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
         this.parsedResults = new CharacterAchievementEntry[nodes.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new CharacterAchievementEntry(nodes[i], this.entryDefinition);
+            this.parsedResults[i] = new CharacterAchievementEntry(nodes[i], this.pageDefinition.Entry);
         }
     }
 

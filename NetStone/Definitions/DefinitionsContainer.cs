@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
@@ -74,17 +72,17 @@ public abstract class DefinitionsContainer : IDisposable
     /// <summary>
     /// Definitions for Free Company member list
     /// </summary>
-    public PagedDefinition FreeCompanyMembers { get; set; }
+    public PagedDefinition<FreeCompanyMembersEntryDefinition> FreeCompanyMembers { get; set; }
 
     /// <summary>
     /// Definitions for character search
     /// </summary>
-    public PagedDefinition CharacterSearch { get; protected set; }
+    public PagedDefinition<CharacterSearchEntryDefinition> CharacterSearch { get; protected set; }
 
     /// <summary>
     /// Definitions for Free company search
     /// </summary>
-    public PagedDefinition FreeCompanySearch { get; protected set; }
+    public PagedDefinition<FreeCompanySearchEntryDefinition> FreeCompanySearch { get; protected set; }
 
     #endregion
 

@@ -15,8 +15,7 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
     private readonly LodestoneClient client;
     private readonly string id;
 
-    private readonly PagedDefinition pageDefinition;
-    private readonly FreeCompanyMembersEntryDefinition entryDefinition;
+    private readonly PagedDefinition<FreeCompanyMembersEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs member list
@@ -25,14 +24,13 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
     /// <param name="rootNode"></param>
     /// <param name="definition"></param>
     /// <param name="id"></param>
-    public FreeCompanyMembers(LodestoneClient client, HtmlNode rootNode, PagedDefinition definition, string id) :
+    public FreeCompanyMembers(LodestoneClient client, HtmlNode rootNode, PagedDefinition<FreeCompanyMembersEntryDefinition> definition, string id) :
         base(rootNode)
     {
         this.client = client;
         this.id = id;
 
         this.pageDefinition = definition;
-        this.entryDefinition = definition.Entry.ToObject<FreeCompanyMembersEntryDefinition>();
     }
 
     /// <summary>
@@ -66,7 +64,7 @@ public class FreeCompanyMembers : LodestoneParseable, IPaginatedResult<FreeCompa
         this.parsedResults = new FreeCompanyMembersEntry[nodes.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new FreeCompanyMembersEntry(nodes[i], this.entryDefinition);
+            this.parsedResults[i] = new FreeCompanyMembersEntry(nodes[i], this.pageDefinition.Entry);
         }
     }
 

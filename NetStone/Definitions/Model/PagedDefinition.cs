@@ -6,7 +6,7 @@ namespace NetStone.Definitions.Model;
 /// <summary>
 /// Base definition for paged results
 /// </summary>
-public class PagedDefinition : IDefinition
+public class PagedDefinition<TEntry> : IDefinition where TEntry : PagedEntryDefinition
 {
     /// <summary>
     /// Root node
@@ -17,9 +17,8 @@ public class PagedDefinition : IDefinition
     /// <summary>
     /// Definition for one entry
     /// </summary>
-    // TODO: this is a bit cheap, maybe think of something better
     [JsonProperty("ENTRY")]
-    public JObject Entry { get; set; }
+    public TEntry Entry { get; set; }
 
     /// <summary>
     /// Info about pages

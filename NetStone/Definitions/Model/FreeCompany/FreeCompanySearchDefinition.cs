@@ -66,10 +66,4 @@ public class FreeCompanySearchEntryDefinition : PagedEntryDefinition
     /// </summary>
     [JsonProperty("FORMED")]
     public DefinitionsPack Formed { get; set; }
-
-    /// <summary>
-    /// Root node
-    /// </summary>
-    [JsonProperty("ROOT")]
-    public new DefinitionsPack Root { get; set; }
 }

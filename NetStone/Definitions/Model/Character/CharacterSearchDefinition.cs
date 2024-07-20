@@ -48,10 +48,4 @@ public class CharacterSearchEntryDefinition : PagedEntryDefinition
     /// </summary>
     [JsonProperty("SERVER")]
     public DefinitionsPack Server { get; set; }
-
-    /// <summary>
-    /// Root node
-    /// </summary>
-    [JsonProperty("ROOT")]
-    public new DefinitionsPack Root { get; set; }
 }

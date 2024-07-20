@@ -53,9 +53,9 @@ public abstract class LodestoneParseable
     /// <param name="pagedDefinition">Parser definition</param>
     /// <returns>List of nodes</returns>
     /// <exception cref="ArgumentException"></exception>
-    protected HtmlNode[] QueryContainer(PagedDefinition pagedDefinition)
+    protected HtmlNode[] QueryContainer<TEntry>(PagedDefinition<TEntry> pagedDefinition) where TEntry : PagedEntryDefinition
     {
-        var entryDef = pagedDefinition.Entry.ToObject<PagedEntryDefinition>();
+        var entryDef = pagedDefinition.Entry;
 
         if (entryDef == null)
             throw new ArgumentException("Could not get entry definition");

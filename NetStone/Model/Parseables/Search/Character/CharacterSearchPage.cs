@@ -16,8 +16,7 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
     private readonly LodestoneClient client;
     private readonly CharacterSearchQuery currentQuery;
 
-    private readonly PagedDefinition pageDefinition;
-    private readonly CharacterSearchEntryDefinition entryDefinition;
+    private readonly PagedDefinition<CharacterSearchEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs character search results
@@ -26,14 +25,13 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition pageDefinition,
+    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<CharacterSearchEntryDefinition> pageDefinition,
         CharacterSearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
 
         this.pageDefinition = pageDefinition;
-        this.entryDefinition = pageDefinition.Entry.ToObject<CharacterSearchEntryDefinition>();
     }
 
     /// <summary>
@@ -67,7 +65,7 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
         this.parsedResults = new CharacterSearchEntry[container.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new CharacterSearchEntry(this.client, container[i], this.entryDefinition);
+            this.parsedResults[i] = new CharacterSearchEntry(this.client, container[i], this.pageDefinition.Entry);
         }
     }
 
