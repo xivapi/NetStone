@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
+using NetStone.Definitions.Model.CWLS;
 using NetStone.Definitions.Model.FreeCompany;
 using Newtonsoft.Json;
 
@@ -55,6 +56,9 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
 
         this.CharacterSearch = await GetDefinition<PagedDefinition<CharacterSearchEntryDefinition>>("search/character.json");
         this.FreeCompanySearch = await GetDefinition<PagedDefinition<FreeCompanySearchEntryDefinition>>("search/freecompany.json");
+        
+        this.CrossWorldLinkShell = await GetDefinition<CrossWorldLinkShellDefinition>("cwls/cwls.json");
+        this.CrossWorldLinkShellMember = await GetDefinition<CrossWorldLinkShellMemberDefinition>("cwls/members.json");
     }
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition

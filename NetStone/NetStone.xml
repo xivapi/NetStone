@@ -90,6 +90,16 @@
             Definitions for Free company search
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShell">
+            <summary>
+            Definitions for cross world link shells
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShellMember">
+            <summary>
+            Definitions for cross world link shell memebrs
+            </summary>
+        </member>
         <member name="M:NetStone.Definitions.DefinitionsContainer.Reload">
             <summary>
             Loads the definitions from repo
@@ -883,6 +893,71 @@
             Homeworld
             </summary>
         </member>
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition">
+            <summary>
+            Definitions for cross world link shell
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition.DataCenter">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberDefinition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Avatar">
+            <summary>
+            Avatar
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Rank">
+            <summary>
+            Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.RankIcon">
+            <summary>
+            Rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.LinkshellRank">
+            <summary>
+            Linkshell rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.LinkshellRankIcon">
+            <summary>
+            Linkshell rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Server">
+            <summary>
+            Server
+            </summary>
+        </member>
         <member name="T:NetStone.Definitions.Model.FreeCompany.EstateDefinition">
             <summary>
             Definitions for FC estate
@@ -1634,6 +1709,14 @@
             <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.GetCrossworldLinkshell(System.String,System.Int32)">
+            <summary>
+            Get's a cross world link shell by it's id.
+            </summary>
+            <param name="id">The ID of the cross world linkshell.</param>
+            <param name="page"></param>
+            <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String)">
             <summary>
@@ -2849,6 +2932,96 @@
             String representation of this character.
             </summary>
             <returns>"Name on World"</returns>
+        </member>
+        <member name="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell">
+            <summary>
+            Container class holding information about a cross world linkshell and it's members.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
+            <summary>
+            Container class for a parseable corss world linkshell page.
+            </summary>
+            <param name="client">The <see cref="T:NetStone.LodestoneClient"/> to be used to fetch further information.</param>
+            <param name="rootNode">The root document node of the page.</param>
+            <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
+            <param name="id">The ID of the cross world linkshell.</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.DataCenter">
+            <summary>
+            Datacenter
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.Members">
+            <summary>
+            Unlocked achievements for character
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.NumPages">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.GetNextPage">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry">
+            <summary>
+            Container class holding information about a cross-world linkshelll member.
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition)">
+            <summary>
+            Create instance of member entry for a given node
+            </summary>
+            <param name="rootNode">Root html node of this entry</param>
+            <param name="definition">Css and regex definition</param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Avatar">
+            <summary>
+            Avatar
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Rank">
+            <summary>
+            Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.RankIcon">
+            <summary>
+            Rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.LinkshellRank">
+            <summary>
+            Linkshell rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.LinkshellRankIcon">
+            <summary>
+            Linkshell rank Icon
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Server">
+            <summary>
+            Server
+            </summary>
         </member>
         <member name="T:NetStone.Model.Parseables.FreeCompany.FreeCompanyEstate">
             <summary>

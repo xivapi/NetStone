@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
+using NetStone.Definitions.Model.CWLS;
 using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Definitions;
@@ -83,6 +84,16 @@ public abstract class DefinitionsContainer : IDisposable
     /// Definitions for Free company search
     /// </summary>
     public PagedDefinition<FreeCompanySearchEntryDefinition> FreeCompanySearch { get; protected set; }
+    
+    /// <summary>
+    /// Definitions for cross world link shells
+    /// </summary>
+    public CrossWorldLinkShellDefinition CrossWorldLinkShell { get; protected set; }
+    
+    /// <summary>
+    /// Definitions for cross world link shell memebrs
+    /// </summary>
+    public CrossWorldLinkShellMemberDefinition CrossWorldLinkShellMember { get; protected set; }
 
     #endregion
 
