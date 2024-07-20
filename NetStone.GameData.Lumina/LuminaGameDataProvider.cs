@@ -16,11 +16,20 @@ public class LuminaGameDataProvider : IGameDataProvider
 {
     private readonly Cyalume lumina;
 
+    /// <summary>
+    /// Create an instance of LuminaGameDataProvider 
+    /// </summary>
+    /// <param name="gamePath">Path to game installation</param>
     public LuminaGameDataProvider(DirectoryInfo gamePath)
     {
-        lumina = new Cyalume(gamePath.FullName, new LuminaOptions{PanicOnSheetChecksumMismatch = false});
+        this.lumina = new Cyalume(gamePath.FullName, new LuminaOptions{PanicOnSheetChecksumMismatch = false});
     }
 
+    /// <summary>
+    /// Gets infromation of an item by it's name
+    /// </summary>
+    /// <param name="name">Name of the item to search</param>
+    /// <returns><see cref="NamedGameData"/> of the item with supplied name</returns>
     public NamedGameData? GetItem(string name)
     {
         var item = FindRow<Item>(name);
