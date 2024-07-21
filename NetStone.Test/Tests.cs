@@ -22,6 +22,7 @@ public class Tests
     private const string TestCharacterIdBare = "9426169";
 
     private const string TestFreeCompany = "9232379236109629819";
+    private const string TestFreeCompanyRecruiting = "9232660711086374997";
 
     [SetUp]
     public async Task Setup()
@@ -166,6 +167,93 @@ public class Tests
         } while (members != null);
     }
 
+    [Test]
+    public async Task CheckFreeCompanyRecruiting()
+    {
+        var fc = await this.lodestone.GetFreeCompany(TestFreeCompanyRecruiting);
+        Assert.NotNull(fc);
+        Assert.AreEqual("Immortal Flames", fc.GrandCompany);
+        Assert.AreEqual("Bedge Lords", fc.Name);
+        Assert.AreEqual("«BEDGE»", fc.Tag);
+        Assert.AreEqual("Friendly and active FC with 24/7 buffs, fun events and a cozy Large in Goblet. LF new Bedgers to join us! Check our Lodestone or come & chat for details! \u2665", fc.Slogan);
+        Assert.AreEqual(new DateTime(2022, 12, 04, 19, 47, 07), fc.Formed);
+        Assert.GreaterOrEqual(fc.ActiveMemberCount, 60);
+        Assert.AreEqual(30, fc.Rank);
+
+        //Reputation
+        Assert.NotNull(fc.Reputation);
+
+        
+        Assert.AreEqual("Maelstrom", fc.Reputation.Maelstrom.Name);
+        //Assert.AreEqual("Neutral", fc.Reputation.Maelstrom.Rank);
+        Assert.AreEqual(0, fc.Reputation.Maelstrom.Progress);
+
+        Assert.AreEqual("Order of the Twin Adder", fc.Reputation.Adders.Name);
+        Assert.AreEqual("Neutral", fc.Reputation.Adders.Rank);
+        Assert.AreEqual(0, fc.Reputation.Adders.Progress);
+
+        Assert.AreEqual("Immortal Flames", fc.Reputation.Flames.Name);
+        Assert.AreEqual("Allied", fc.Reputation.Flames.Rank);
+        Assert.AreEqual(100, fc.Reputation.Flames.Progress);
+
+
+        //Estate
+        Assert.NotNull(fc.Estate);
+        Assert.IsTrue(fc.Estate.Exists);
+        Assert.AreEqual("Bedge & Breakfast", fc.Estate.Name);
+        Assert.AreEqual("Plot 5, 11 Ward, The Goblet (Large)", fc.Estate.Plot);
+
+        //Focus
+        Assert.AreEqual("Always", fc.ActiveState);
+        Assert.AreEqual("Open", fc.Recruitment);
+
+        Assert.IsNotNull(fc.Focus);
+        Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
+        Assert.IsTrue(fc.Focus.RolePlay.IsEnabled);
+        Assert.IsNotNull(fc.Focus.RolePlay.Icon?.AbsoluteUri);
+
+        Assert.AreEqual("Leveling", fc.Focus.Leveling.Name);
+        Assert.IsTrue(fc.Focus.Leveling.IsEnabled);
+        Assert.IsNotNull(fc.Focus.Leveling.Icon?.AbsoluteUri);
+
+        Assert.AreEqual("Casual", fc.Focus.Casual.Name);
+        Assert.IsTrue(fc.Focus.Casual.IsEnabled);
+
+        Assert.AreEqual("Hardcore", fc.Focus.Hardcore.Name);
+        Assert.IsTrue(fc.Focus.Hardcore.IsEnabled);
+
+        Assert.AreEqual("Dungeons", fc.Focus.Dungeons.Name);
+        Assert.IsTrue(fc.Focus.Dungeons.IsEnabled);
+
+        Assert.AreEqual("Guildhests", fc.Focus.Guildhests.Name);
+        Assert.IsTrue(fc.Focus.Guildhests.IsEnabled);
+
+        Assert.AreEqual("Trials", fc.Focus.Trials.Name);
+        Assert.IsTrue(fc.Focus.Trials.IsEnabled);
+
+        Assert.AreEqual("Raids", fc.Focus.Raids.Name);
+        Assert.IsTrue(fc.Focus.Raids.IsEnabled);
+
+        Assert.AreEqual("PvP", fc.Focus.PvP.Name);
+        Assert.IsTrue(fc.Focus.PvP.IsEnabled);
+
+
+        //Members
+        var members = await fc.GetMembers();
+        Assert.NotNull(members);
+
+        do
+        {
+            foreach (var searchResult in members.Members)
+            {
+                Console.WriteLine(
+                    $"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
+            }
+
+            members = await members.GetNextPage();
+        } while (members != null);
+    }
+    
     [Test]
     public async Task TestFreeCompanySearch()
     {
