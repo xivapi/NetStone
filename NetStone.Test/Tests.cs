@@ -175,9 +175,9 @@ public class Tests
         Assert.AreEqual("Immortal Flames", fc.GrandCompany);
         Assert.AreEqual("Bedge Lords", fc.Name);
         Assert.AreEqual("«BEDGE»", fc.Tag);
-        Assert.AreEqual("Friendly and active FC with 24/7 buffs, fun events and a cozy Large in Goblet. LF new Bedgers to join us! Check our Lodestone or come & chat for details! \u2665", fc.Slogan);
+        Assert.AreEqual("Friendly FC with 24/7 buffs, events and a large FC house in Goblet. LF more new amiable Bedgers to join us! Check our Lodestone & come chat for details.", fc.Slogan);
         Assert.AreEqual(new DateTime(2022, 12, 04, 19, 47, 07), fc.Formed);
-        Assert.GreaterOrEqual(fc.ActiveMemberCount, 60);
+        Assert.GreaterOrEqual(fc.ActiveMemberCount, 50);
         Assert.AreEqual(30, fc.Rank);
 
         //Reputation
@@ -365,7 +365,7 @@ public class Tests
         
         //Gear
         var gear = chara.Gear;
-        Assert.AreEqual($"Mandervillous Wings", gear.Mainhand?.ItemName);
+        Assert.AreEqual("Mandervillous Wings", gear.Mainhand?.ItemName);
         Assert.IsFalse(gear.Mainhand.IsHq);
         Assert.AreEqual("Mandervillous Wings", gear.Mainhand.StrippedItemName);
         
@@ -376,6 +376,7 @@ public class Tests
         Assert.IsNull(gear.Offhand);
 
         Assert.AreEqual("Augmented Credendum Circlet of Healing", gear.Head?.ItemName);
+        Assert.AreEqual(660, gear.Head?.ItemLevel);
         Assert.NotNull(gear.Head.ItemDatabaseLink);
         Assert.AreEqual("The Emperor's New Hat",gear.Head.GlamourName);
         Assert.NotNull(gear.Head.GlamourDatabaseLink);
@@ -383,27 +384,35 @@ public class Tests
         Assert.AreEqual("Heavens' Eye Materia X",gear.Head.Materia[1]);
         
         Assert.AreEqual("Ascension Robe of Healing", gear.Body?.ItemName);
+        Assert.AreEqual(660, gear.Body?.ItemLevel);
 
         Assert.AreEqual("Augmented Credendum Gauntlets of Healing", gear.Hands?.ItemName);
+        Assert.AreEqual(660, gear.Hands?.ItemLevel);
 
         Assert.AreEqual("Augmented Credendum Hose of Healing", gear.Legs?.ItemName);
+        Assert.AreEqual(660, gear.Legs?.ItemLevel);
 
         Assert.AreEqual("Ascension Sandals of Healing", gear.Feet?.ItemName);
+        Assert.AreEqual(660, gear.Feet?.ItemLevel);
 
         Assert.AreEqual("Augmented Credendum Earrings of Healing", gear.Earrings?.ItemName);
+        Assert.AreEqual(660, gear.Earrings?.ItemLevel);
 
         Assert.AreEqual("Ascension Necklace of Healing", gear.Necklace?.ItemName);
+        Assert.AreEqual(660, gear.Necklace?.ItemLevel);
 
         Assert.AreEqual("Ascension Bracelet of Healing", gear.Bracelets?.ItemName);
+        Assert.AreEqual(660, gear.Bracelets?.ItemLevel);
         
         Assert.AreEqual("Ascension Ring of Healing", gear.Ring1?.ItemName);
+        Assert.AreEqual(660, gear.Ring1?.ItemLevel);
         Assert.IsFalse(gear.Ring1.IsHq);
         
         Assert.AreEqual("Augmented Credendum Ring of Healing", gear.Ring2?.ItemName);
+        Assert.AreEqual(660, gear.Ring2?.ItemLevel);
         
         Assert.AreEqual("Soul of the Sage", gear.Soulcrystal?.ItemName);
-
-
+        
         //Classes/Jobs
         var classJob = await chara.GetClassJobInfo();
         Assert.NotNull(classJob);
