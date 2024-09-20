@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model.Character;
 using NetStone.GameData;
@@ -84,6 +85,13 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// Name of this item's crafter.
     /// </summary>
     public string CreatorName => Parse(this.definition.CreatorName);
+    
+    /// <summary>
+    /// Item level of this item
+    /// </summary>
+    public int ItemLevel => int.TryParse(Parse(definition.ItemLevel).Split(' ').LastOrDefault(), out var itemLevel)
+        ? itemLevel
+        : 0;
 
     /// <summary>
     /// Indicating whether the item slot has an item equipped or not.

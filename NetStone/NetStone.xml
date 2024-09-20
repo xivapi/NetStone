@@ -753,6 +753,11 @@
             Name of creator/crafter of this item (if applicable)
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.Model.Character.GearEntryDefinition.ItemLevel">
+            <summary>
+            Item level of the item
+            </summary>
+        </member>
         <member name="T:NetStone.Definitions.Model.Character.SoulcrystalEntryDefinition">
             <summary>
             Definition for Soul Crystal slot
@@ -2601,6 +2606,11 @@
         <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.CreatorName">
             <summary>
             Name of this item's crafter.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.ItemLevel">
+            <summary>
+            Item level of this item
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.GearEntry.Exists">
