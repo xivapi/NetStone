@@ -72,6 +72,12 @@ public class GearEntryDefinition
     /// </summary>
     [JsonProperty("CREATOR_NAME")]
     public DefinitionsPack CreatorName { get; set; }
+    
+    /// <summary>
+    /// Item level of the item
+    /// </summary>
+    [JsonProperty("ITEM_LEVEL")]
+    public DefinitionsPack ItemLevel { get; set; }
 }
 
 /// <summary>
