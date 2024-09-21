@@ -2001,16 +2001,19 @@
             <summary>
             This characters' Attack Magic Potency value.
             </summary>
+            <remarks>This value is only set for disciples of war/magic.</remarks>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.HealingMagicPotency">
             <summary>
             This characters' Healing Magic Potency value.
             </summary>
+            <remarks>This value is only set for disciples of war/magic.</remarks>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.SpellSpeed">
             <summary>
             This characters' Spell Speed value.
             </summary>
+            <remarks>This value is only set for disciples of war/magic.</remarks>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Tenacity">
             <summary>
@@ -2021,6 +2024,30 @@
             <summary>
             This characters' Piety value.
             </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Craftmanship">
+            <summary>
+            This characters' Craftmanship value.
+            </summary>
+            <remarks>This value is only set for disciples of the hand.</remarks>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Control">
+            <summary>
+            This characters' Control value.
+            </summary>
+            <remarks>This value is only set for disciples of the hand.</remarks>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Gathering">
+            <summary>
+            This characters' Gathering value.
+            </summary>
+            <remarks>This value is only set for disciples of the land.</remarks>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Perception">
+            <summary>
+            This characters' Perception value.
+            </summary>
+            <remarks>This value is only set for disciples of the land.</remarks>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Hp">
             <summary>
