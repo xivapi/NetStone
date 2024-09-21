@@ -54,6 +54,20 @@ public class LodestoneClient : IDisposable
     }
 
     /// <summary>
+    /// Initializes and returns a new Lodestone client with custom definitions provided<br/>
+    /// To get a client with standard definitions use <see cref="GetClientAsync"/>
+    /// </summary>
+    /// <param name="definitions">A set of custom definitions </param>
+    /// <param name="gameData">Service providing game data for parsing</param>
+    /// <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
+    /// <returns></returns>
+    public static LodestoneClient GetCustomClient(DefinitionsContainer definitions,IGameDataProvider? gameData = null,
+                                                             string lodestoneBaseAddress = Constants.LodestoneBase)
+    {
+        return new LodestoneClient(definitions, gameData, lodestoneBaseAddress);
+    }
+    
+    /// <summary>
     /// Initializes and returns a new Lodestone client with current definitions loaded from xivapi/lodestone-css-selectors
     /// </summary>
     /// <param name="gameData">Service providing game data for parsing</param>

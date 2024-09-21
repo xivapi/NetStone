@@ -1567,6 +1567,16 @@
             Initialize a new Lodestone client with default options.
             </summary>
         </member>
+        <member name="M:NetStone.LodestoneClient.GetCustomClient(NetStone.Definitions.DefinitionsContainer,NetStone.GameData.IGameDataProvider,System.String)">
+            <summary>
+            Initializes and returns a new Lodestone client with custom definitions provided<br/>
+            To get a client with standard definitions use <see cref="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String)"/>
+            </summary>
+            <param name="definitions">A set of custom definitions </param>
+            <param name="gameData">Service providing game data for parsing</param>
+            <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
+            <returns></returns>
+        </member>
         <member name="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String)">
             <summary>
             Initializes and returns a new Lodestone client with current definitions loaded from xivapi/lodestone-css-selectors
