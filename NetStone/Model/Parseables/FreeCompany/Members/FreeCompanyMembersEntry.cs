@@ -38,6 +38,16 @@ public class FreeCompanyMembersEntry : LodestoneParseable
     public Uri? RankIcon => ParseImageSource(this.definition.RankIcon);
 
     /// <summary>
+    /// Rank with character's Free Company
+    /// </summary>
+    public string FreeCompanyRank => Parse(this.definition.FreeCompanyRank);
+
+    /// <summary>
+    /// Icon representing <see cref="FreeCompanyRank"/>
+    /// </summary>
+    public Uri? FreeCompanyRankIcon => ParseImageSource(this.definition.FreeCompanyRankIcon);
+
+    /// <summary>
     /// Home world
     /// </summary>
     public string Server => ParseRegex(this.definition.Server)["World"].Value;
