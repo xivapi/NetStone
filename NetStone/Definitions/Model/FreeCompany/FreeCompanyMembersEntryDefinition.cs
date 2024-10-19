@@ -38,6 +38,18 @@ public class FreeCompanyMembersEntryDefinition : PagedEntryDefinition
     public DefinitionsPack RankIcon { get; set; }
 
     /// <summary>
+    /// Free company rank
+    /// </summary>
+    [JsonProperty("FC_RANK")]
+    public DefinitionsPack FreeCompanyRank { get; set; }
+
+    /// <summary>
+    /// FC rank icon
+    /// </summary>
+    [JsonProperty("FC_RANK_ICON")]
+    public DefinitionsPack FreeCompanyRankIcon { get; set; }
+
+    /// <summary>
     /// Homeworld
     /// </summary>
     [JsonProperty("SERVER")]
