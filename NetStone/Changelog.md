@@ -1,3 +1,21 @@
+## 1.3.0
+### Breaking Changes
+- AttackMagicPotency in Character Attributes is now nullable
+- HealingMagicPotency in Character Attributes is now nullable
+### New Features
+- Character Attributes
+  - Added Craftsmanship
+  - Added Control
+  - Added Gathering
+  - Added Perception
+- Free Company Member
+  - Added Free Company Rank
+  - Added Free Company Rank Icon
+- Gear
+  - Added item level
+### Contributors
+- Tawmy
+- Corielljacob
 ## 1.2.1
 ### New Features
 - Character
