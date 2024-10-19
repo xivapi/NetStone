@@ -20,6 +20,7 @@ public class Tests
     private const string TestCharacterIdEureka = "14556736";
     private const string TestCharacterIdEureka2 = "6787158";
     private const string TestCharacterIdBare = "9426169";
+    private const string TestCharacterIdDoH = "42256897";
 
     private const string TestFreeCompany = "9232379236109629819";
     private const string TestFreeCompanyRecruiting = "9232660711086374997";
@@ -289,6 +290,17 @@ public class Tests
         } while (page != null);
     }
 
+    [Test]
+    public async Task CheckCharacterDoH()
+    {
+        var chara = await this.lodestone.GetCharacter(TestCharacterIdDoH);
+        Assert.NotNull(chara);
+        var attribs = chara.Attributes;
+        Assert.AreEqual(39, attribs.Craftsmanship);
+        Assert.AreEqual(7, attribs.Control);
+        Assert.AreEqual(180, attribs.MpGpCp);
+    }
+    
     [Test]
     public async Task CheckCharacterBare()
     {

@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using System;
+using HtmlAgilityPack;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character;
@@ -84,13 +85,13 @@ public class CharacterAttributes : LodestoneParseable
     /// This characters' Attack Magic Potency value.
     /// </summary>
     /// <remarks>This value is only set for disciples of war/magic.</remarks>
-    public int? AttackMagicPotency => MpGpCpParameterName == "MP" ? int.Parse(Parse(this.definition.AttackMagicPotency)) : null;
+    public int? AttackMagicPotency => IsDoWOrDoM() ? this.AttackMagicPotencyInternal : null;
 
     /// <summary>
     /// This characters' Healing Magic Potency value.
     /// </summary>
     /// <remarks>This value is only set for disciples of war/magic.</remarks>
-    public int? HealingMagicPotency => MpGpCpParameterName == "MP" ? int.Parse(Parse(this.definition.HealingMagicPotency)) : null;
+    public int? HealingMagicPotency => IsDoWOrDoM() ? this.HealingMagicPotencyInternal : null;
 
     /// <summary>
     /// This characters' Spell Speed value.
@@ -112,25 +113,25 @@ public class CharacterAttributes : LodestoneParseable
     /// This characters' Craftmanship value.
     /// </summary>
     /// <remarks>This value is only set for disciples of the hand.</remarks>
-    public int? Craftmanship => MpGpCpParameterName == "CP" ? AttackMagicPotencyValue : null;
+    public int? Craftsmanship => IsDoH() ? this.AttackMagicPotencyInternal : null;
     
     /// <summary>
     /// This characters' Control value.
     /// </summary>
     /// <remarks>This value is only set for disciples of the hand.</remarks>
-    public int? Control => MpGpCpParameterName == "CP" ? HealingMagicPotencyValue : null;
+    public int? Control => IsDoH() ? this.HealingMagicPotencyInternal : null;
 
     /// <summary>
     /// This characters' Gathering value.
     /// </summary>
     /// <remarks>This value is only set for disciples of the land.</remarks>
-    public int? Gathering => MpGpCpParameterName == "GP" ? AttackMagicPotencyValue : null;
+    public int? Gathering => IsDoL() ? this.AttackMagicPotencyInternal : null;
     
     /// <summary>
     /// This characters' Perception value.
     /// </summary>
     /// <remarks>This value is only set for disciples of the land.</remarks>
-    public int? Perception => MpGpCpParameterName == "GP" ? HealingMagicPotencyValue : null;
+    public int? Perception => IsDoL() ? this.HealingMagicPotencyInternal : null;
 
     /// <summary>
     /// This characters' HP value.
@@ -146,8 +147,12 @@ public class CharacterAttributes : LodestoneParseable
     /// Value indicating which of MP, GP, or CP is indicated by <see cref="MpGpCp"/>.
     /// </summary>
     public string MpGpCpParameterName => Parse(this.definition.MpGpCpParameterName);
+
+    internal bool IsDoL() => this.MpGpCpParameterName.Equals("GP", StringComparison.InvariantCultureIgnoreCase);
+    internal bool IsDoWOrDoM() => this.MpGpCpParameterName.Equals("MP", StringComparison.InvariantCultureIgnoreCase);
+    internal bool IsDoH() => this.MpGpCpParameterName.Equals("CP", StringComparison.InvariantCultureIgnoreCase);
     
-    private int AttackMagicPotencyValue => int.Parse(Parse(this.definition.AttackMagicPotency));
-    
-    private int HealingMagicPotencyValue => int.Parse(Parse(this.definition.HealingMagicPotency));
+    internal int AttackMagicPotencyInternal => int.TryParse(Parse(this.definition.AttackMagicPotency), out var val) ? val : 0;
+
+    internal int HealingMagicPotencyInternal => int.TryParse(Parse(this.definition.HealingMagicPotency), out var val) ? val : 0;
 }

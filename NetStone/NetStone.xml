@@ -2035,7 +2035,7 @@
             This characters' Piety value.
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Craftmanship">
+        <member name="P:NetStone.Model.Parseables.Character.CharacterAttributes.Craftsmanship">
             <summary>
             This characters' Craftmanship value.
             </summary>
