@@ -160,7 +160,7 @@ public class Tests
             foreach (var searchResult in members.Members)
             {
                 Console.WriteLine(
-                    $"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id}");
+                    $"{members.CurrentPage} - {searchResult.Name} - {searchResult.RankIcon} - {searchResult.Id} - {searchResult.FreeCompanyRankIcon} - {searchResult.FreeCompanyRank}");
             }
 
             members = await members.GetNextPage();

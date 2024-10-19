@@ -1104,6 +1104,16 @@
             GC rank icon
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.FreeCompanyRank">
+            <summary>
+            Free company rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.FreeCompanyRankIcon">
+            <summary>
+            FC rank icon
+            </summary>
+        </member>
         <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyMembersEntryDefinition.Server">
             <summary>
             Homeworld
@@ -3158,6 +3168,16 @@
         <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.RankIcon">
             <summary>
             Icon representing <see cref="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Rank"/>
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.FreeCompanyRank">
+            <summary>
+            Rank with character's Free Company
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.FreeCompanyRankIcon">
+            <summary>
+            Icon representing <see cref="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.FreeCompanyRank"/>
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry.Server">
