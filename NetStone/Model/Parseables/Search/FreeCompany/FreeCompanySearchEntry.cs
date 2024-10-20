@@ -59,9 +59,9 @@ public class FreeCompanySearchEntry : LodestoneParseable
     public ActiveTimes Active => Parse(this.definition.Active) switch
     {
         "Always" => ActiveTimes.Always,
-        "Weekends Only" => ActiveTimes.WeekendsOnly,
-        "Weekdays Only" => ActiveTimes.WeekdaysOnly,
-        "Not specified" => ActiveTimes.All,
+        "Weekends" => ActiveTimes.WeekendsOnly,
+        "Weekdays" => ActiveTimes.WeekdaysOnly,
+        "Not" => ActiveTimes.All, // 'Not Specified' is being split up by CSS selector
         _ => throw new ArgumentOutOfRangeException(),
     };
 
