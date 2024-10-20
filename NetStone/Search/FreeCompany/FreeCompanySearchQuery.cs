@@ -77,11 +77,7 @@ public class FreeCompanySearchQuery : ISearchQuery
             throw new ArgumentException(
                 "You cannot specify World and DataCenter at the same time in one search query.");
 
-        var query = new StringBuilder();
-
-        if (!string.IsNullOrEmpty(this.Name))
-            query.Append($"?q={this.Name}");
-
+        var query = new StringBuilder($"?q={this.Name}");
 
         if (this.IsCommunityFinderRecruiting)
             query.Append("&cf_public=1");
