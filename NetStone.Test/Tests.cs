@@ -260,9 +260,9 @@ public class Tests
     {
         var query = new FreeCompanySearchQuery
         {
-            Name = "Crystal",
+            Name = "new",
+            DataCenter = "Crystal",
             Housing = Housing.EstateBuilt,
-            GrandCompany = GrandCompany.ImmortalFlames,
         };
 
         var page = await this.lodestone.SearchFreeCompany(query);
@@ -280,7 +280,7 @@ public class Tests
             foreach (var searchResult in page.Results)
             {
                 Console.WriteLine(
-                    $"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.Id}");
+                    $"{page.CurrentPage}({cPages}) - {cResults} - {searchResult.Name} - {searchResult.ActiveMembers} - {searchResult.Id} - {searchResult.Server} - {searchResult.Formed} - {searchResult.Active} - {searchResult.RecruitmentOpen}");
                 cResults++;
             }
 

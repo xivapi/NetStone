@@ -17,7 +17,7 @@ public class FreeCompanySearchEntry : LodestoneParseable
 
     ///
     public FreeCompanySearchEntry(LodestoneClient client, HtmlNode rootNode,
-        FreeCompanySearchEntryDefinition definition) : base(rootNode)
+                                  FreeCompanySearchEntryDefinition definition) : base(rootNode)
     {
         this.client = client;
         this.definition = definition;
@@ -56,14 +56,20 @@ public class FreeCompanySearchEntry : LodestoneParseable
     /// <summary>
     /// Active status
     /// </summary>
-    public ActiveTimes Active => Parse(this.definition.Active) switch
+    public ActiveTimes Active => this.ActiveText switch
     {
-        "Always" => ActiveTimes.Always,
-        "Weekends Only" => ActiveTimes.WeekendsOnly,
-        "Weekdays Only" => ActiveTimes.WeekdaysOnly,
+        "Always"        => ActiveTimes.Always,
+        "Weekends"      => ActiveTimes.WeekendsOnly,
+        "Weekdays"      => ActiveTimes.WeekdaysOnly,
         "Not specified" => ActiveTimes.All,
-        _ => throw new ArgumentOutOfRangeException(),
+        { } s           => throw new ArgumentOutOfRangeException(s),
     };
+
+    /// <summary>
+    /// Full text of active times
+    /// </summary>
+    //ToDo: fix regex
+    public string ActiveText => ParseInnerText(this.definition.Active)[8..];
 
     /// <summary>
     /// Active member count
@@ -86,9 +92,9 @@ public class FreeCompanySearchEntry : LodestoneParseable
     public Housing EstateBuild => Parse(this.definition.EstateBuilt) switch
     {
         "No Estate or Plot" => Housing.NoEstateOrPlot,
-        "Estate Built" => Housing.EstateBuilt,
-        "Plot Only" => Housing.PlotOnly,
-        _ => throw new ArgumentOutOfRangeException(),
+        "Estate Built"      => Housing.EstateBuilt,
+        "Plot Only"         => Housing.PlotOnly,
+        _                   => throw new ArgumentOutOfRangeException(),
     };
 
     /// <summary>

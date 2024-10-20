@@ -3348,6 +3348,11 @@
             Active status
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.ActiveText">
+            <summary>
+            Full text of active times
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry.ActiveMembers">
             <summary>
             Active member count
