@@ -1,3 +1,10 @@
+## 1.3.1
+### Bugfixes
+- Free Company search
+  - Fixed queries with empty name
+  - Fixed Active Times
+### Contributors
+- Tawmy
 ## 1.3.0
 ### Breaking Changes
 - AttackMagicPotency in Character Attributes is now nullable
