@@ -100,6 +100,11 @@
             Definitions for cross world link shell members
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShellSearch">
+            <summary>
+            Definitions for cross world link shell searches
+            </summary>
+        </member>
         <member name="P:NetStone.Definitions.DefinitionsContainer.LinkShell">
             <summary>
             Definitions for link shells
@@ -968,6 +973,31 @@
             Server
             </summary>
         </member>
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition">
+            <summary>
+            Definition container for one Cross World Link Shell search result entry
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.Dc">
+            <summary>
+            Rank
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.ActiveMembers">
+            <summary>
+            Rank Icon
+            </summary>
+        </member>
         <member name="T:NetStone.Definitions.Model.FreeCompany.EstateDefinition">
             <summary>
             Definitions for FC estate
@@ -1787,6 +1817,14 @@
             <param name="id">The ID of the cross world linkshell.</param>
             <param name="page"></param>
             <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
+        </member>
+        <member name="M:NetStone.LodestoneClient.SearchCrossWorldLinkshell(NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery,System.Int32)">
+            <summary>
+            Search lodestone for a character with the specified query.
+            </summary>
+            <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
+            <param name="page">The page of search results to fetch.</param>
+            <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetLinkshell(System.String,System.Int32)">
             <summary>
@@ -3641,6 +3679,61 @@
         <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.GetNextPage">
             <inheritdoc />
         </member>
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition)">
+            
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.Name">
+            <summary>
+            Character name
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.Id">
+            <summary>
+            Lodestone Id
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.GetCharacter">
+            <summary>
+            Fetch character profile
+            </summary>
+            <returns>Task of retrieving character</returns>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage">
+            <summary>
+            Models cross world link shell search results
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition},NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery)">
+            <summary>
+            Constructs character search results
+            </summary>
+            <param name="client"></param>
+            <param name="rootNode"></param>
+            <param name="pageDefinition"></param>
+            <param name="currentQuery"></param>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.HasResults">
+            <summary>
+            Indicates if any results are present
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.Results">
+            <summary>
+            List all results
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.NumPages">
+            <inheritdoc />
+        </member>
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.GetNextPage">
+            <inheritdoc />
+        </member>
         <member name="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry">
             <summary>
             Models on entry of the free company search results
@@ -3886,6 +3979,69 @@
         <member name="F:NetStone.Search.Character.SortKind.LevelAsc">
             <summary>
             Sort by level ascending
+            </summary>
+        </member>
+        <member name="T:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery">
+            <summary>
+            Models a search for a cross world link shell
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.RecruitingOnly">
+            <summary>
+            Only search for actively recruiting 
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.DataCenter">
+            <summary>
+            Datacenter
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMembers">
+            <summary>
+            Active member count
+            </summary>
+        </member>
+        <member name="P:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.Sorting">
+            <summary>
+            Sort order
+            </summary>
+        </member>
+        <member name="M:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.BuildQueryString">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMemberChoice">
+            <summary>
+            Available choice for member count
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMemberChoice.All">
+            <summary>
+            All
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMemberChoice.OneToTen">
+            <summary>
+            1-10
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMemberChoice.ElevenToThirty">
+            <summary>
+            11-30
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMemberChoice.ThirtyOneToFifty">
+            <summary>
+            31-50
+            </summary>
+        </member>
+        <member name="F:NetStone.Search.CWLS.CrossWorldLinkShellSearchQuery.ActiveMemberChoice.OverFiftyOne">
+            <summary>
+            Over 51
             </summary>
         </member>
         <member name="T:NetStone.Search.FreeCompany.ActiveMembers">

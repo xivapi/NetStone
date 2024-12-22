@@ -97,6 +97,11 @@ public abstract class DefinitionsContainer : IDisposable
     public CrossWorldLinkShellMemberDefinition CrossWorldLinkShellMember { get; protected set; }
     
     /// <summary>
+    /// Definitions for cross world link shell searches
+    /// </summary>
+    public PagedDefinition<CrossWorldLinkShellSearchEntryDefinition> CrossWorldLinkShellSearch { get; protected set; }
+    
+    /// <summary>
     /// Definitions for link shells
     /// </summary>
     public LinkShellDefinition LinkShell { get; protected set; }

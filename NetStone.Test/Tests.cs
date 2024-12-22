@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using NetStone.GameData.Packs;
 using NetStone.Model.Parseables.Character;
 using NetStone.Search.Character;
+using NetStone.Search.CWLS;
 using NetStone.Search.FreeCompany;
 using NetStone.StaticData;
 using NUnit.Framework;
@@ -575,16 +576,44 @@ public class Tests
             foreach (var member in cwls.Members)
             {
                 Console.WriteLine($"{member.Name} ({member.Rank}) {member.RankIcon}\n" +
-                                  $"Id: {member.Id}\n" +
-                                  $"Avatar: {member.Avatar}\n" +
-                                  $"Server: {member.Server}\n" +
-                                  $"LS Rank: {member.LinkshellRank}\n" +
-                                  $"LS Rank Icon: {member.LinkshellRankIcon}");
-                
+                                  $"\tId: {member.Id}\n" +
+                                  $"\tAvatar: {member.Avatar}\n" +
+                                  $"\tServer: {member.Server}\n" +
+                                  $"\tLS Rank: {member.LinkshellRank}\n" +
+                                  $"\tLS Rank Icon: {member.LinkshellRankIcon}");
             }
             cwls = await cwls.GetNextPage();
         }
-        
+    }
+
+    [Test]
+    public async Task CheckCrossworldLinkShellSearch()
+    {
+        var emptyQuery = new CrossWorldLinkShellSearchQuery()
+        {
+            Name = "abcedfas",
+        };
+        var emptyResult = await this.lodestone.SearchCrossWorldLinkshell(emptyQuery);
+        Assert.IsNotNull(emptyResult);
+        Assert.False(emptyResult.HasResults);
+        var query = new CrossWorldLinkShellSearchQuery()
+        {
+            Name = "Hell",
+            ActiveMembers = CrossWorldLinkShellSearchQuery.ActiveMemberChoice.ElevenToThirty,
+            DataCenter = "Chaos",
+        };
+        var results = await this.lodestone.SearchCrossWorldLinkshell(query);
+        Assert.IsNotNull(results);
+        Assert.True(results.HasResults);
+        Assert.AreEqual(2, results.NumPages);
+        while (results is not null)
+        {
+            foreach (var result in results.Results)
+            {
+                Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
+            }
+            results = await results.GetNextPage();
+        }
     }
 
     [Test]

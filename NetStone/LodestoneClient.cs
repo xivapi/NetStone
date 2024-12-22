@@ -15,8 +15,10 @@ using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
 using NetStone.Model.Parseables.Linkshell;
 using NetStone.Model.Parseables.Search.Character;
+using NetStone.Model.Parseables.Search.CWLS;
 using NetStone.Model.Parseables.Search.FreeCompany;
 using NetStone.Search.Character;
+using NetStone.Search.CWLS;
 using NetStone.Search.FreeCompany;
 
 namespace NetStone;
@@ -162,6 +164,15 @@ public class LodestoneClient : IDisposable
         await GetParsed($"/lodestone/crossworld_linkshell/{id}?page={page}",
                         node => new LodestoneCrossWorldLinkShell(this, node, this.Definitions,id));
     
+    /// <summary>
+    /// Search lodestone for a character with the specified query.
+    /// </summary>
+    /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
+    /// <param name="page">The page of search results to fetch.</param>
+    /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
+    public async Task<CrossWorldLinkShellSearchPage?> SearchCrossWorldLinkshell(CrossWorldLinkShellSearchQuery query, int page = 1) =>
+        await GetParsed($"/lodestone/crossworld_linkshell/{query.BuildQueryString()}&page={page}",
+                        node => new CrossWorldLinkShellSearchPage(this, node, this.Definitions.CrossWorldLinkShellSearch, query));
     
     /// <summary>
     /// Gets a link shell by its id.
