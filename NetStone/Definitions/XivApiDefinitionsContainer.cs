@@ -5,6 +5,7 @@ using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
 using NetStone.Definitions.Model.CWLS;
 using NetStone.Definitions.Model.FreeCompany;
+using NetStone.Definitions.Model.Linkshell;
 using Newtonsoft.Json;
 
 namespace NetStone.Definitions;
@@ -59,6 +60,9 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         
         this.CrossWorldLinkShell = await GetDefinition<CrossWorldLinkShellDefinition>("cwls/cwls.json");
         this.CrossWorldLinkShellMember = await GetDefinition<CrossWorldLinkShellMemberDefinition>("cwls/members.json");
+        
+        this.LinkShell = await GetDefinition<LinkShellDefinition>("linkshell/ls.json");
+        this.LinkShellMember = await GetDefinition<LinkShellMemberDefinition>("linkshell/members.json");
     }
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition

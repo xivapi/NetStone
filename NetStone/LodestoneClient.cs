@@ -11,9 +11,9 @@ using NetStone.Model.Parseables.Character.Achievement;
 using NetStone.Model.Parseables.Character.ClassJob;
 using NetStone.Model.Parseables.Character.Collectable;
 using NetStone.Model.Parseables.CWLS;
-using NetStone.Model.Parseables.CWLS.Members;
 using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
+using NetStone.Model.Parseables.Linkshell;
 using NetStone.Model.Parseables.Search.Character;
 using NetStone.Model.Parseables.Search.FreeCompany;
 using NetStone.Search.Character;
@@ -148,8 +148,12 @@ public class LodestoneClient : IDisposable
     public async Task<CharacterSearchPage?> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/character/{query.BuildQueryString()}&page={page}",
             node => new CharacterSearchPage(this, node, this.Definitions.CharacterSearch, query));
+    
+    #endregion
+    
+    #region Linkshells
     /// <summary>
-    /// Get's a cross world link shell by it's id.
+    /// Gets a cross world link shell by its id.
     /// </summary>
     /// <param name="id">The ID of the cross world linkshell.</param>
     /// <param name="page"></param>
@@ -157,7 +161,18 @@ public class LodestoneClient : IDisposable
     public async Task<LodestoneCrossWorldLinkShell?> GetCrossworldLinkshell(string id, int page = 1) => 
         await GetParsed($"/lodestone/crossworld_linkshell/{id}?page={page}",
                         node => new LodestoneCrossWorldLinkShell(this, node, this.Definitions,id));
-
+    
+    
+    /// <summary>
+    /// Gets a link shell by its id.
+    /// </summary>
+    /// <param name="id">The ID of the linkshell.</param>
+    /// <param name="page"></param>
+    /// <returns><see cref="LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
+    public async Task<LodestoneLinkShell?> GetLinkshell(string id, int page = 1) =>
+        await GetParsed($"/lodestone/linkshell/{id}?page={page}",
+                        node => new LodestoneLinkShell(this, node, this.Definitions,id));
+    
     #endregion
 
     #region FreeCompany

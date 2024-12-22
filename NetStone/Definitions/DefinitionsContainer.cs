@@ -4,6 +4,7 @@ using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
 using NetStone.Definitions.Model.CWLS;
 using NetStone.Definitions.Model.FreeCompany;
+using NetStone.Definitions.Model.Linkshell;
 
 namespace NetStone.Definitions;
 
@@ -91,9 +92,19 @@ public abstract class DefinitionsContainer : IDisposable
     public CrossWorldLinkShellDefinition CrossWorldLinkShell { get; protected set; }
     
     /// <summary>
-    /// Definitions for cross world link shell memebrs
+    /// Definitions for cross world link shell members
     /// </summary>
     public CrossWorldLinkShellMemberDefinition CrossWorldLinkShellMember { get; protected set; }
+    
+    /// <summary>
+    /// Definitions for link shells
+    /// </summary>
+    public LinkShellDefinition LinkShell { get; protected set; }
+    
+    /// <summary>
+    /// Definitions for link shell members
+    /// </summary>
+    public LinkShellMemberDefinition LinkShellMember { get; protected set; }
 
     #endregion
 

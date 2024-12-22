@@ -586,4 +586,28 @@ public class Tests
         }
         
     }
+
+    [Test]
+    public async Task CheckLinkshell()
+    {
+        var ls = await this.lodestone.GetLinkshell(TestLinkshell);
+        Assert.IsNotNull(ls);
+        Assert.AreEqual("CORshell", ls.Name);
+        Assert.AreEqual(2, ls.NumPages);
+        while (ls is not null)
+        {
+            foreach (var member in ls.Members)
+            {
+                Console.WriteLine($"{member.Name} ({member.Rank}) {member.RankIcon}\n" +
+                                  $"Id: {member.Id}\n" +
+                                  $"Avatar: {member.Avatar}\n" +
+                                  $"Server: {member.Server}\n" +
+                                  $"LS Rank: {member.LinkshellRank}\n" +
+                                  $"LS Rank Icon: {member.LinkshellRankIcon}");
+                
+            }
+            ls = await ls.GetNextPage();
+        }
+        
+    }
 }
