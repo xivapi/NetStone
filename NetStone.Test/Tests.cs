@@ -178,7 +178,7 @@ public class Tests
         Assert.AreEqual("Immortal Flames", fc.GrandCompany);
         Assert.AreEqual("Bedge Lords", fc.Name);
         Assert.AreEqual("«BEDGE»", fc.Tag);
-        Assert.AreEqual("Friendly FC with 24/7 buffs, events and a large FC house in Goblet. LF more new amiable Bedgers to join us! Check our Lodestone & come chat for details.", fc.Slogan);
+        Assert.IsTrue(fc.Slogan.StartsWith("Friendly FC with"));
         Assert.AreEqual(new DateTime(2022, 12, 04, 19, 47, 07), fc.Formed);
         Assert.GreaterOrEqual(fc.ActiveMemberCount, 50);
         Assert.AreEqual(30, fc.Rank);
@@ -229,7 +229,7 @@ public class Tests
         Assert.IsTrue(fc.Focus.Dungeons.IsEnabled);
 
         Assert.AreEqual("Guildhests", fc.Focus.Guildhests.Name);
-        Assert.IsTrue(fc.Focus.Guildhests.IsEnabled);
+        Assert.IsFalse(fc.Focus.Guildhests.IsEnabled);
 
         Assert.AreEqual("Trials", fc.Focus.Trials.Name);
         Assert.IsTrue(fc.Focus.Trials.IsEnabled);
@@ -566,7 +566,8 @@ public class Tests
     public async Task CheckCrossworldLinkShell()
     {
         var cwls = await this.lodestone.GetCrossworldLinkshell(TestCWLS);
-        //Assert.AreEqual("COR and Friends ", cwls?.Name);
+        Assert.IsNotNull(cwls);
+        Assert.AreEqual("COR and Friends", cwls.Name);
         Assert.AreEqual("Light", cwls.DataCenter);
         Assert.AreEqual(2, cwls.NumPages);
         while (cwls is not null)

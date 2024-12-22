@@ -47,5 +47,6 @@ public class PagedEntryDefinition
     /// <summary>
     /// Root node of entry
     /// </summary>
+    [JsonProperty("ROOT")]
     public DefinitionsPack Root { get; set; }
 }

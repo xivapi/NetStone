@@ -4,7 +4,7 @@ using NetStone.Definitions.Model.CWLS;
 namespace NetStone.Model.Parseables.CWLS.Members;
 
 /// <summary>
-/// Container class holding information about a cross-world linkshelll member.
+/// Container class holding information about a cross-world linkshell member.
 /// </summary>
 public class CrossWorldLinkShellMemberEntry : LodestoneParseable
 {

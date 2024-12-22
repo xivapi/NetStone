@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
@@ -38,7 +37,7 @@ public class LodestoneCrossWorldLinkShell : LodestoneParseable, IPaginatedResult
     /// <summary>
     /// Name
     /// </summary>
-    public string Name => Parse(this.cwlsDefinition.Name);
+    public string Name => ParseDirectInnerText(this.cwlsDefinition.Name).Trim();
 
     /// <summary>
     /// Datacenter
