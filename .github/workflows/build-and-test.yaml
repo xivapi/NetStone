@@ -6,17 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Setup .NET Core SDK 6.0.x
-        uses: actions/setup-dotnet@v1.7.2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0.x'
-      - name: Setup .NET Core SDK 3.1.x
-        uses: actions/setup-dotnet@v1.7.2
-        with:
-          dotnet-version: '3.1.x'
+          dotnet-version: |
+            8.0.x
+            6.0.x
+            3.1.x
       - name: Install dependencies
         run: dotnet restore
       - name: Build
