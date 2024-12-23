@@ -1,20 +1,20 @@
 ﻿using HtmlAgilityPack;
-using NetStone.Definitions.Model.Linkshell;
+using NetStone.Definitions.Model.CWLS;
 
-namespace NetStone.Model.Parseables.Linkshell.Members;
+namespace NetStone.Model.Parseables.CWLS.Members;
 
 /// <summary>
-/// Container class holding information about a  linkshell member.
+/// Container class holding information about a cross-world linkshell member.
 /// </summary>
-public class LinkShellMemberEntry : LodestoneParseable
+public class CrossworldLinkshellMemberEntry : LodestoneParseable
 {
-    private readonly LinkShellMemberEntryDefinition definition;
+    private readonly CrossworldLinkshellMemberEntryDefinition definition;
     /// <summary>
     /// Create instance of member entry for a given node
     /// </summary>
     /// <param name="rootNode">Root html node of this entry</param>
     /// <param name="definition">Css and regex definition</param>
-    public LinkShellMemberEntry(HtmlNode rootNode, LinkShellMemberEntryDefinition definition) : base(rootNode)
+    public CrossworldLinkshellMemberEntry(HtmlNode rootNode, CrossworldLinkshellMemberEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

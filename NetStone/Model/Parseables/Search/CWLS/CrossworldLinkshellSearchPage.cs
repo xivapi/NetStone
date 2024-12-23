@@ -12,12 +12,12 @@ namespace NetStone.Model.Parseables.Search.CWLS;
 /// <summary>
 /// Models cross world link shell search results
 /// </summary>
-public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResult<CrossWorldLinkShellSearchPage>
+public class CrossworldLinkshellSearchPage : LodestoneParseable, IPaginatedResult<CrossworldLinkshellSearchPage>
 {
     private readonly LodestoneClient client;
-    private readonly CrossWorldLinkShellSearchQuery currentQuery;
+    private readonly CrossworldLinkshellSearchQuery currentQuery;
 
-    private readonly PagedDefinition<CrossWorldLinkShellSearchEntryDefinition> pageDefinition;
+    private readonly PagedDefinition<CrossworldLinkshellSearchEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs character search results
@@ -26,8 +26,8 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public CrossWorldLinkShellSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<CrossWorldLinkShellSearchEntryDefinition> pageDefinition,
-                                         CrossWorldLinkShellSearchQuery currentQuery) : base(rootNode)
+    public CrossworldLinkshellSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<CrossworldLinkshellSearchEntryDefinition> pageDefinition,
+                                         CrossworldLinkshellSearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
@@ -39,17 +39,17 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
-    private CrossWorldLinkShellSearchEntry[]? parsedResults;
+    private CrossworldLinkshellSearchEntry[]? parsedResults;
 
     /// <summary>
     /// List all results
     /// </summary>
-    public IEnumerable<CrossWorldLinkShellSearchEntry> Results
+    public IEnumerable<CrossworldLinkshellSearchEntry> Results
     {
         get
         {
             if (!this.HasResults)
-                return Array.Empty<CrossWorldLinkShellSearchEntry>();
+                return Array.Empty<CrossworldLinkshellSearchEntry>();
 
             if (this.parsedResults == null)
                 ParseSearchResults();
@@ -62,10 +62,10 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     {
         var container = QueryContainer(this.pageDefinition);
 
-        this.parsedResults = new CrossWorldLinkShellSearchEntry[container.Length];
+        this.parsedResults = new CrossworldLinkshellSearchEntry[container.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new CrossWorldLinkShellSearchEntry(this.client, container[i], this.pageDefinition.Entry);
+            this.parsedResults[i] = new CrossworldLinkshellSearchEntry(this.client, container[i], this.pageDefinition.Entry);
         }
     }
 
@@ -112,7 +112,7 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     }
 
     ///<inheritdoc />
-    public async Task<CrossWorldLinkShellSearchPage?> GetNextPage()
+    public async Task<CrossworldLinkshellSearchPage?> GetNextPage()
     {
         if (!this.HasResults)
             return null;
@@ -120,6 +120,6 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
         if (this.CurrentPage == this.NumPages)
             return null;
 
-        return await this.client.SearchCrossWorldLinkshell(this.currentQuery, this.CurrentPage + 1);
+        return await this.client.SearchCrossworldLinkshell(this.currentQuery, this.CurrentPage + 1);
     }
 }

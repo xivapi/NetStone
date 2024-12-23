@@ -1,20 +1,20 @@
 ﻿using System.Threading.Tasks;
 using HtmlAgilityPack;
-using NetStone.Definitions.Model.Linkshell;
-using NetStone.Model.Parseables.Linkshell;
+using NetStone.Definitions.Model.CWLS;
+using NetStone.Model.Parseables.CWLS;
 
-namespace NetStone.Model.Parseables.Search.Linkshell;
+namespace NetStone.Model.Parseables.Search.CWLS;
 
 /// <summary>
-/// Models one entry in the linkshell search results list
+/// Models one entry in the cwls search results list
 /// </summary>
-public class LinkShellSearchEntry : LodestoneParseable
+public class CrossworldLinkshellSearchEntry : LodestoneParseable
 {
     private readonly LodestoneClient client;
-    private readonly LinkShellSearchEntryDefinition definition;
+    private readonly CrossworldLinkshellSearchEntryDefinition definition;
 
     ///
-    public LinkShellSearchEntry(LodestoneClient client, HtmlNode rootNode, LinkShellSearchEntryDefinition definition) :
+    public CrossworldLinkshellSearchEntry(LodestoneClient client, HtmlNode rootNode, CrossworldLinkshellSearchEntryDefinition definition) :
         base(rootNode)
     {
         this.client = client;
@@ -32,9 +32,10 @@ public class LinkShellSearchEntry : LodestoneParseable
     public string? Id => ParseHrefId(this.definition.Id);
 
     /// <summary>
-    /// Homeworld / Server
+    /// Datacenter
     /// </summary>
-    public string HomeWorld => Parse(this.definition.Server);
+    public string DataCenter => Parse(this.definition.Dc);
+    
     
     /// <summary>
     /// Number of active members
@@ -42,11 +43,11 @@ public class LinkShellSearchEntry : LodestoneParseable
     public int ActiveMembers =>  int.TryParse(Parse(this.definition.ActiveMembers), out var parsed) ? parsed : -1;
 
     /// <summary>
-    /// Fetch character profile
+    /// Fetch cross world link shell
     /// </summary>
-    /// <returns>Task of retrieving character</returns>
-    public async Task<LodestoneLinkShell?> GetLinkshell() =>
-        this.Id is null ? null : await this.client.GetLinkshell(this.Id);
+    /// <returns>Task of retrieving cwls</returns>
+    public async Task<LodestoneCrossworldLinkshell?> GetCrossworldLinkshell() =>
+        this.Id is null ? null : await this.client.GetCrossworldLinkshell(this.Id);
 
     ///<inheritdoc />
     public override string ToString() => this.Name;

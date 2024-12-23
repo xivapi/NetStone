@@ -160,10 +160,10 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="id">The ID of the cross world linkshell.</param>
     /// <param name="page"></param>
-    /// <returns><see cref="LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
-    public async Task<LodestoneCrossWorldLinkShell?> GetCrossworldLinkshell(string id, int page = 1) => 
+    /// <returns><see cref="LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
+    public async Task<LodestoneCrossworldLinkshell?> GetCrossworldLinkshell(string id, int page = 1) => 
         await GetParsed($"/lodestone/crossworld_linkshell/{id}?page={page}",
-                        node => new LodestoneCrossWorldLinkShell(this, node, this.Definitions,id));
+                        node => new LodestoneCrossworldLinkshell(this, node, this.Definitions,id));
     
     /// <summary>
     /// Search lodestone for a character with the specified query.
@@ -171,29 +171,29 @@ public class LodestoneClient : IDisposable
     /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
     /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
-    public async Task<CrossWorldLinkShellSearchPage?> SearchCrossWorldLinkshell(CrossWorldLinkShellSearchQuery query, int page = 1) =>
+    public async Task<CrossworldLinkshellSearchPage?> SearchCrossworldLinkshell(CrossworldLinkshellSearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/crossworld_linkshell/{query.BuildQueryString()}&page={page}",
-                        node => new CrossWorldLinkShellSearchPage(this, node, this.Definitions.CrossWorldLinkShellSearch, query));
+                        node => new CrossworldLinkshellSearchPage(this, node, this.Definitions.CrossworldLinkshellSearch, query));
     
     /// <summary>
     /// Gets a link shell by its id.
     /// </summary>
     /// <param name="id">The ID of the linkshell.</param>
     /// <param name="page"></param>
-    /// <returns><see cref="LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
-    public async Task<LodestoneLinkShell?> GetLinkshell(string id, int page = 1) =>
+    /// <returns><see cref="LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
+    public async Task<LodestoneLinkshell?> GetLinkshell(string id, int page = 1) =>
         await GetParsed($"/lodestone/linkshell/{id}?page={page}",
-                        node => new LodestoneLinkShell(this, node, this.Definitions,id));
+                        node => new LodestoneLinkshell(this, node, this.Definitions,id));
     
     /// <summary>
     /// Search lodestone for a linkshell with the specified query.
     /// </summary>
-    /// <param name="query"><see cref="LinkShellSearchQuery"/> object detailing search parameters</param>
+    /// <param name="query"><see cref="LinkshellSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
-    /// <returns><see cref="LinkShellSearchPage"/> containing search results.</returns>
-    public async Task<LinkShellSearchPage?> SearchLinkshell(LinkShellSearchQuery query, int page = 1) =>
+    /// <returns><see cref="LinkshellSearchPage"/> containing search results.</returns>
+    public async Task<LinkshellSearchPage?> SearchLinkshell(LinkshellSearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/linkshell/{query.BuildQueryString()}&page={page}",
-                        node => new LinkShellSearchPage(this, node, this.Definitions.LinkShellSearch, query));
+                        node => new LinkshellSearchPage(this, node, this.Definitions.LinkshellSearch, query));
     
     #endregion
 

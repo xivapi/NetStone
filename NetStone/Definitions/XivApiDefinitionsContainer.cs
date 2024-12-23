@@ -58,13 +58,13 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         this.CharacterSearch = await GetDefinition<PagedDefinition<CharacterSearchEntryDefinition>>("search/character.json");
         this.FreeCompanySearch = await GetDefinition<PagedDefinition<FreeCompanySearchEntryDefinition>>("search/freecompany.json");
         
-        this.CrossWorldLinkShell = await GetDefinition<CrossWorldLinkShellDefinition>("cwls/cwls.json");
-        this.CrossWorldLinkShellMember = await GetDefinition<CrossWorldLinkShellMemberDefinition>("cwls/members.json");
-        this.CrossWorldLinkShellSearch = await GetDefinition<PagedDefinition<CrossWorldLinkShellSearchEntryDefinition>>("search/cwls.json");
+        this.CrossworldLinkshell = await GetDefinition<CrossworldLinkshellDefinition>("cwls/cwls.json");
+        this.CrossworldLinkshellMember = await GetDefinition<PagedDefinition<CrossworldLinkshellMemberEntryDefinition>>("cwls/members.json");
+        this.CrossworldLinkshellSearch = await GetDefinition<PagedDefinition<CrossworldLinkshellSearchEntryDefinition>>("search/cwls.json");
         
-        this.LinkShell = await GetDefinition<LinkShellDefinition>("linkshell/ls.json");
-        this.LinkShellMember = await GetDefinition<LinkShellMemberDefinition>("linkshell/members.json");
-        this.LinkShellSearch = await GetDefinition<PagedDefinition<LinkShellSearchEntryDefinition>>("search/linkshell.json");
+        this.Linkshell = await GetDefinition<LinkshellDefinition>("linkshell/ls.json");
+        this.LinkshellMember = await GetDefinition<LinkshellMemberDefinition>("linkshell/members.json");
+        this.LinkshellSearch = await GetDefinition<PagedDefinition<LinkshellSearchEntryDefinition>>("search/linkshell.json");
     }
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition

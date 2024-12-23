@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model.Linkshell;
-
+namespace NetStone.Definitions.Model.CWLS;
 /// <summary>
-/// Definition container for one Link-Shell search result entry
+/// Definition container for one Cross World Link Shell search result entry
 /// </summary>
-public class LinkShellSearchEntryDefinition : PagedEntryDefinition
+public class CrossworldLinkshellSearchEntryDefinition : PagedEntryDefinition
 {
     /// <summary>
     /// ID
@@ -20,7 +19,7 @@ public class LinkShellSearchEntryDefinition : PagedEntryDefinition
     /// <summary>
     /// Rank
     /// </summary>
-    [JsonProperty("SERVER")] public DefinitionsPack Server { get; set; }
+    [JsonProperty("DC")] public DefinitionsPack Dc { get; set; }
     
     /// <summary>
     /// Rank Icon

@@ -589,21 +589,21 @@ public class Tests
     [Test]
     public async Task CheckCrossworldLinkShellSearch()
     {
-        var emptyQuery = new CrossWorldLinkShellSearchQuery()
+        var emptyQuery = new CrossworldLinkshellSearchQuery()
         {
             Name = "abcedfas",
         };
-        var emptyResult = await this.lodestone.SearchCrossWorldLinkshell(emptyQuery);
+        var emptyResult = await this.lodestone.SearchCrossworldLinkshell(emptyQuery);
         Assert.IsNotNull(emptyResult);
         Assert.False(emptyResult.HasResults);
-        var query = new CrossWorldLinkShellSearchQuery()
+        var query = new CrossworldLinkshellSearchQuery()
         {
             Name = "Hell",
             ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
             DataCenter = "Chaos",
         };
         bool first = true;
-        var results = await this.lodestone.SearchCrossWorldLinkshell(query);
+        var results = await this.lodestone.SearchCrossworldLinkshell(query);
         Assert.IsNotNull(results);
         Assert.True(results.HasResults);
         Assert.AreEqual(2, results.NumPages);
@@ -614,7 +614,7 @@ public class Tests
                 if (first)
                 {
                     first = false;
-                    var shell = await result.GetCrossWorldLinkShell();
+                    var shell = await result.GetCrossworldLinkshell();
                     Assert.IsNotNull(shell);
                     Assert.AreEqual(result.Name, shell.Name);
                 }
@@ -651,14 +651,14 @@ public class Tests
     [Test]
     public async Task CheckLinkShellSearch()
     {
-        var emptyQuery = new LinkShellSearchQuery()
+        var emptyQuery = new LinkshellSearchQuery()
         {
             Name = "abcedfas",
         };
         var emptyResult = await this.lodestone.SearchLinkshell(emptyQuery);
         Assert.IsNotNull(emptyResult);
         Assert.False(emptyResult.HasResults);
-        var query = new LinkShellSearchQuery()
+        var query = new LinkshellSearchQuery()
         {
             Name = "Hell",
             ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
@@ -684,7 +684,7 @@ public class Tests
             }
             results = await results.GetNextPage();
         }
-        query = new LinkShellSearchQuery()
+        query = new LinkshellSearchQuery()
         {
             Name = "Hell",
             ActiveMembers = LinkshellSizeCategory.ElevenToThirty,

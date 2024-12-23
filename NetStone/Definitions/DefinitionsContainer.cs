@@ -89,32 +89,32 @@ public abstract class DefinitionsContainer : IDisposable
     /// <summary>
     /// Definitions for cross world link shells
     /// </summary>
-    public CrossWorldLinkShellDefinition CrossWorldLinkShell { get; protected set; }
+    public CrossworldLinkshellDefinition CrossworldLinkshell { get; protected set; }
     
     /// <summary>
     /// Definitions for cross world link shell members
     /// </summary>
-    public CrossWorldLinkShellMemberDefinition CrossWorldLinkShellMember { get; protected set; }
+    public PagedDefinition<CrossworldLinkshellMemberEntryDefinition> CrossworldLinkshellMember { get; protected set; }
     
     /// <summary>
     /// Definitions for cross world link shell searches
     /// </summary>
-    public PagedDefinition<CrossWorldLinkShellSearchEntryDefinition> CrossWorldLinkShellSearch { get; protected set; }
+    public PagedDefinition<CrossworldLinkshellSearchEntryDefinition> CrossworldLinkshellSearch { get; protected set; }
     
     /// <summary>
     /// Definitions for link shells
     /// </summary>
-    public LinkShellDefinition LinkShell { get; protected set; }
+    public LinkshellDefinition Linkshell { get; protected set; }
     
     /// <summary>
     /// Definitions for link shell members
     /// </summary>
-    public LinkShellMemberDefinition LinkShellMember { get; protected set; }
+    public LinkshellMemberDefinition LinkshellMember { get; protected set; }
     
     /// <summary>
     /// Definitions for link-shell searches
     /// </summary>
-    public PagedDefinition<LinkShellSearchEntryDefinition> LinkShellSearch { get; protected set; }
+    public PagedDefinition<LinkshellSearchEntryDefinition> LinkshellSearch { get; protected set; }
 
     #endregion
 

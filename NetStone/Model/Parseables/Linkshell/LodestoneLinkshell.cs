@@ -10,14 +10,14 @@ namespace NetStone.Model.Parseables.Linkshell;
 /// <summary>
 /// Container class holding information about a linkshell and it's members.
 /// </summary>
-public class LodestoneLinkShell : LodestoneParseable, IPaginatedResult<LodestoneLinkShell>
+public class LodestoneLinkshell : LodestoneParseable, IPaginatedResult<LodestoneLinkshell>
 {
     private readonly LodestoneClient client;
 
     private readonly string lsId;
 
-    private readonly LinkShellDefinition lsDefinition;
-    private readonly LinkShellMemberDefinition pageDefinition;
+    private readonly LinkshellDefinition lsDefinition;
+    private readonly LinkshellMemberDefinition pageDefinition;
     
     /// <summary>
     /// Container class for a parseable linkshell page.
@@ -26,12 +26,12 @@ public class LodestoneLinkShell : LodestoneParseable, IPaginatedResult<Lodestone
     /// <param name="rootNode">The root document node of the page.</param>
     /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
     /// <param name="id">The ID of the cross world linkshell.</param>
-    public LodestoneLinkShell(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string id) : base(rootNode)
+    public LodestoneLinkshell(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string id) : base(rootNode)
     {
         this.client = client;
         this.lsId = id;
-        this.lsDefinition = container.LinkShell;
-        this.pageDefinition = container.LinkShellMember;
+        this.lsDefinition = container.Linkshell;
+        this.pageDefinition = container.LinkshellMember;
     }
 
     /// <summary>
@@ -40,12 +40,12 @@ public class LodestoneLinkShell : LodestoneParseable, IPaginatedResult<Lodestone
     public string Name => Parse(this.lsDefinition.Name);
     
     
-    private LinkShellMemberEntry[]? parsedResults;
+    private LinkshellMemberEntry[]? parsedResults;
     
     /// <summary>
     /// List of members
     /// </summary>
-    public IEnumerable<LinkShellMemberEntry> Members
+    public IEnumerable<LinkshellMemberEntry> Members
     {
         get
         {
@@ -60,10 +60,10 @@ public class LodestoneLinkShell : LodestoneParseable, IPaginatedResult<Lodestone
     {
         var nodes = QueryContainer(this.pageDefinition);
 
-        this.parsedResults = new LinkShellMemberEntry[nodes.Length];
+        this.parsedResults = new LinkshellMemberEntry[nodes.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new LinkShellMemberEntry(nodes[i], this.pageDefinition.Entry);
+            this.parsedResults[i] = new LinkshellMemberEntry(nodes[i], this.pageDefinition.Entry);
         }
     }
 
@@ -103,7 +103,7 @@ public class LodestoneLinkShell : LodestoneParseable, IPaginatedResult<Lodestone
     }
     
     /// <inheritdoc />
-    public async Task<LodestoneLinkShell?> GetNextPage()
+    public async Task<LodestoneLinkshell?> GetNextPage()
     {
         if (this.CurrentPage == this.NumPages)
             return null;

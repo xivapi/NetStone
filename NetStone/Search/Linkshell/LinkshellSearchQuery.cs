@@ -6,7 +6,7 @@ namespace NetStone.Search.Linkshell;
 /// <summary>
 /// Models a search for a link shell
 /// </summary>
-public class LinkShellSearchQuery : BaseLinkShellSearchQuery
+public class LinkshellSearchQuery : BaseLinkshellSearchQuery
 {
     
     /// <summary>
@@ -48,7 +48,7 @@ public class LinkShellSearchQuery : BaseLinkShellSearchQuery
 /// <summary>
 /// Models a search for a cross world link shell
 /// </summary>
-public class CrossWorldLinkShellSearchQuery : BaseLinkShellSearchQuery
+public class CrossworldLinkshellSearchQuery : BaseLinkshellSearchQuery
 {
     
     /// <summary>
@@ -84,7 +84,7 @@ public class CrossWorldLinkShellSearchQuery : BaseLinkShellSearchQuery
 /// <summary>
 /// Models a search for a cross world link shell
 /// </summary>
-public abstract class BaseLinkShellSearchQuery : ISearchQuery
+public abstract class BaseLinkshellSearchQuery : ISearchQuery
 {
     /// <summary>
     /// Only search for actively recruiting 

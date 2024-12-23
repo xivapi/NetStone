@@ -5,7 +5,7 @@ namespace NetStone.Definitions.Model.Linkshell;
 /// <summary>
 /// Definitions for link shell
 /// </summary>
-public class LinkShellDefinition : IDefinition
+public class LinkshellDefinition : IDefinition
 {
     /// <summary>
     /// Name

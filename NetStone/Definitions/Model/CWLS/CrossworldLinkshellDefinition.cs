@@ -5,7 +5,7 @@ namespace NetStone.Definitions.Model.CWLS;
 /// <summary>
 /// Definitions for cross world link shell
 /// </summary>
-public class CrossWorldLinkShellDefinition : IDefinition
+public class CrossworldLinkshellDefinition : IDefinition
 {
     /// <summary>
     /// Name

@@ -90,32 +90,32 @@
             Definitions for Free company search
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShell">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossworldLinkshell">
             <summary>
             Definitions for cross world link shells
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShellMember">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossworldLinkshellMember">
             <summary>
             Definitions for cross world link shell members
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossWorldLinkShellSearch">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.CrossworldLinkshellSearch">
             <summary>
             Definitions for cross world link shell searches
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.LinkShell">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.Linkshell">
             <summary>
             Definitions for link shells
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.LinkShellMember">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.LinkshellMember">
             <summary>
             Definitions for link shell members
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.LinkShellSearch">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.LinkshellSearch">
             <summary>
             Definitions for link-shell searches
             </summary>
@@ -913,92 +913,87 @@
             Homeworld
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition">
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossworldLinkshellDefinition">
             <summary>
             Definitions for cross world link shell
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition.Name">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellDefinition.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellDefinition.DataCenter">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellDefinition.DataCenter">
             <summary>
             Name
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberDefinition">
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition">
             <summary>
             
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Avatar">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.Avatar">
             <summary>
             Avatar
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Id">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.Id">
             <summary>
             ID
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Name">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Rank">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.Rank">
             <summary>
             Rank
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.RankIcon">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.RankIcon">
             <summary>
             Rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.LinkshellRank">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.LinkshellRank">
             <summary>
             Linkshell rank
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.LinkshellRankIcon">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.LinkshellRankIcon">
             <summary>
             Linkshell rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition.Server">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition.Server">
             <summary>
             Server
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition">
+        <member name="T:NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition">
             <summary>
             Definition container for one Cross World Link Shell search result entry
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.Id">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition.Id">
             <summary>
             ID
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.Name">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.Dc">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition.Dc">
             <summary>
             Rank
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition.ActiveMembers">
+        <member name="P:NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition.ActiveMembers">
             <summary>
             Rank Icon
             </summary>
@@ -1359,87 +1354,87 @@
             Interface for all node definitions
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.Linkshell.LinkShellDefinition">
+        <member name="T:NetStone.Definitions.Model.Linkshell.LinkshellDefinition">
             <summary>
             Definitions for link shell
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellDefinition.Name">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellDefinition.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.Linkshell.LinkShellMemberDefinition">
+        <member name="T:NetStone.Definitions.Model.Linkshell.LinkshellMemberDefinition">
             <summary>
             Definition for the list of linkshell members
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition">
+        <member name="T:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition">
             <summary>
             Definition for one entry of the linkshell memebr list 
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.Avatar">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.Avatar">
             <summary>
             Avatar
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.Id">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.Id">
             <summary>
             ID
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.Name">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.Rank">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.Rank">
             <summary>
             Rank
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.RankIcon">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.RankIcon">
             <summary>
             Rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.LinkshellRank">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.LinkshellRank">
             <summary>
             Linkshell rank
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.LinkshellRankIcon">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.LinkshellRankIcon">
             <summary>
             Linkshell rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition.Server">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition.Server">
             <summary>
             Server
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition">
+        <member name="T:NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition">
             <summary>
             Definition container for one Link-Shell search result entry
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition.Id">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition.Id">
             <summary>
             ID
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition.Name">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition.Server">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition.Server">
             <summary>
             Rank
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition.ActiveMembers">
+        <member name="P:NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition.ActiveMembers">
             <summary>
             Rank Icon
             </summary>
@@ -1846,9 +1841,9 @@
             </summary>
             <param name="id">The ID of the cross world linkshell.</param>
             <param name="page"></param>
-            <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchCrossWorldLinkshell(NetStone.Search.Linkshell.CrossWorldLinkShellSearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchCrossworldLinkshell(NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery,System.Int32)">
             <summary>
             Search lodestone for a character with the specified query.
             </summary>
@@ -1862,15 +1857,15 @@
             </summary>
             <param name="id">The ID of the linkshell.</param>
             <param name="page"></param>
-            <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell"/> class containing information about the cross world link shell</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchLinkshell(NetStone.Search.Linkshell.LinkShellSearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchLinkshell(NetStone.Search.Linkshell.LinkshellSearchQuery,System.Int32)">
             <summary>
             Search lodestone for a linkshell with the specified query.
             </summary>
-            <param name="query"><see cref="T:NetStone.Search.Linkshell.LinkShellSearchQuery"/> object detailing search parameters</param>
+            <param name="query"><see cref="T:NetStone.Search.Linkshell.LinkshellSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
-            <returns><see cref="T:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage"/> containing search results.</returns>
+            <returns><see cref="T:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage"/> containing search results.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String)">
             <summary>
@@ -3087,12 +3082,12 @@
             </summary>
             <returns>"Name on World"</returns>
         </member>
-        <member name="T:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell">
+        <member name="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell">
             <summary>
             Container class holding information about a cross world linkshell and it's members.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
             <summary>
             Container class for a parseable corss world linkshell page.
             </summary>
@@ -3101,78 +3096,78 @@
             <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
             <param name="id">The ID of the cross world linkshell.</param>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.Name">
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.DataCenter">
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.DataCenter">
             <summary>
             Datacenter
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.Members">
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.Members">
             <summary>
             Unlocked achievements for character
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.CurrentPage">
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.CurrentPage">
             <inheritdoc />
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.NumPages">
+        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.NumPages">
             <inheritdoc/>
         </member>
-        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossWorldLinkShell.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.GetNextPage">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry">
+        <member name="T:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry">
             <summary>
             Container class holding information about a cross-world linkshell member.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossWorldLinkShellMemberEntryDefinition)">
+        <member name="M:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossworldLinkshellMemberEntryDefinition)">
             <summary>
             Create instance of member entry for a given node
             </summary>
             <param name="rootNode">Root html node of this entry</param>
             <param name="definition">Css and regex definition</param>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Avatar">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.Avatar">
             <summary>
             Avatar
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Id">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.Id">
             <summary>
             ID
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Name">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Rank">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.Rank">
             <summary>
             Rank
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.RankIcon">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.RankIcon">
             <summary>
             Rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.LinkshellRank">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.LinkshellRank">
             <summary>
             Linkshell rank
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.LinkshellRankIcon">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.LinkshellRankIcon">
             <summary>
             Linkshell rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossWorldLinkShellMemberEntry.Server">
+        <member name="P:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry.Server">
             <summary>
             Server
             </summary>
@@ -3572,12 +3567,12 @@
             Link to the top layer image of the icon.
             </summary>
         </member>
-        <member name="T:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell">
+        <member name="T:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell">
             <summary>
             Container class holding information about a linkshell and it's members.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
+        <member name="M:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.DefinitionsContainer,System.String)">
             <summary>
             Container class for a parseable linkshell page.
             </summary>
@@ -3586,73 +3581,73 @@
             <param name="container">The <see cref="T:NetStone.Definitions.DefinitionsContainer"/> holding definitions to be used to access data.</param>
             <param name="id">The ID of the cross world linkshell.</param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell.Name">
+        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell.Members">
+        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.Members">
             <summary>
             List of members
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell.CurrentPage">
+        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.CurrentPage">
             <inheritdoc />
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell.NumPages">
+        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.NumPages">
             <inheritdoc/>
         </member>
-        <member name="M:NetStone.Model.Parseables.Linkshell.LodestoneLinkShell.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.GetNextPage">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry">
+        <member name="T:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry">
             <summary>
             Container class holding information about a  linkshell member.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Linkshell.LinkShellMemberEntryDefinition)">
+        <member name="M:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition)">
             <summary>
             Create instance of member entry for a given node
             </summary>
             <param name="rootNode">Root html node of this entry</param>
             <param name="definition">Css and regex definition</param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.Avatar">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.Avatar">
             <summary>
             Avatar
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.Id">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.Id">
             <summary>
             ID
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.Name">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.Rank">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.Rank">
             <summary>
             Rank
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.RankIcon">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.RankIcon">
             <summary>
             Rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.LinkshellRank">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.LinkshellRank">
             <summary>
             Linkshell rank
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.LinkshellRankIcon">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.LinkshellRankIcon">
             <summary>
             Linkshell rank Icon
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkShellMemberEntry.Server">
+        <member name="P:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry.Server">
             <summary>
             Server
             </summary>
@@ -3717,49 +3712,49 @@
         <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.GetNextPage">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry">
+        <member name="T:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry">
             <summary>
             Models one entry in the cwls search results list
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition)">
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition)">
             
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.Name">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.Name">
             <summary>
             Character name
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.Id">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.Id">
             <summary>
             Lodestone Id
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.DataCenter">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.DataCenter">
             <summary>
             Datacenter
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.ActiveMembers">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.ActiveMembers">
             <summary>
             Number of active members
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.GetCrossWorldLinkShell">
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.GetCrossworldLinkshell">
             <summary>
             Fetch cross world link shell
             </summary>
             <returns>Task of retrieving cwls</returns>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchEntry.ToString">
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry.ToString">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage">
+        <member name="T:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage">
             <summary>
             Models cross world link shell search results
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.CWLS.CrossWorldLinkShellSearchEntryDefinition},NetStone.Search.Linkshell.CrossWorldLinkShellSearchQuery)">
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.CWLS.CrossworldLinkshellSearchEntryDefinition},NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery)">
             <summary>
             Constructs character search results
             </summary>
@@ -3768,23 +3763,23 @@
             <param name="pageDefinition"></param>
             <param name="currentQuery"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.HasResults">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.HasResults">
             <summary>
             Indicates if any results are present
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.Results">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.Results">
             <summary>
             List all results
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.CurrentPage">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.CurrentPage">
             <inheritdoc />
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.NumPages">
+        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.NumPages">
             <inheritdoc />
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossWorldLinkShellSearchPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.GetNextPage">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry">
@@ -3897,49 +3892,49 @@
         <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.GetNextPage">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry">
+        <member name="T:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry">
             <summary>
             Models one entry in the linkshell search results list
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition)">
+        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition)">
             
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.Name">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.Name">
             <summary>
             Character name
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.Id">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.Id">
             <summary>
             Lodestone Id
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.HomeWorld">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.HomeWorld">
             <summary>
             Homeworld / Server
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.ActiveMembers">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.ActiveMembers">
             <summary>
             Number of active members
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.GetLinkshell">
+        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.GetLinkshell">
             <summary>
             Fetch character profile
             </summary>
             <returns>Task of retrieving character</returns>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchEntry.ToString">
+        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry.ToString">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage">
+        <member name="T:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage">
             <summary>
             Models link shell search results
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.Linkshell.LinkShellSearchEntryDefinition},NetStone.Search.Linkshell.LinkShellSearchQuery)">
+        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.#ctor(NetStone.LodestoneClient,HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{NetStone.Definitions.Model.Linkshell.LinkshellSearchEntryDefinition},NetStone.Search.Linkshell.LinkshellSearchQuery)">
             <summary>
             Constructs character search results
             </summary>
@@ -3948,23 +3943,23 @@
             <param name="pageDefinition"></param>
             <param name="currentQuery"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage.HasResults">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.HasResults">
             <summary>
             Indicates if any results are present
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage.Results">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.Results">
             <summary>
             List all results
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage.CurrentPage">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.CurrentPage">
             <inheritdoc />
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage.NumPages">
+        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.NumPages">
             <inheritdoc />
         </member>
-        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkShellSearchPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.GetNextPage">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.SocialGroup">
@@ -4409,64 +4404,64 @@
             </summary>
             <returns>Search parameters to append to the request uri</returns>
         </member>
-        <member name="T:NetStone.Search.Linkshell.LinkShellSearchQuery">
+        <member name="T:NetStone.Search.Linkshell.LinkshellSearchQuery">
             <summary>
             Models a search for a link shell
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.LinkShellSearchQuery.DataCenter">
+        <member name="P:NetStone.Search.Linkshell.LinkshellSearchQuery.DataCenter">
             <summary>
             Datacenter
-            <remarks>This is ignored if <see cref="P:NetStone.Search.Linkshell.LinkShellSearchQuery.HomeWorld"/> is set</remarks>
+            <remarks>This is ignored if <see cref="P:NetStone.Search.Linkshell.LinkshellSearchQuery.HomeWorld"/> is set</remarks>
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.LinkShellSearchQuery.HomeWorld">
+        <member name="P:NetStone.Search.Linkshell.LinkshellSearchQuery.HomeWorld">
             <summary>
             Home-world
             </summary>
         </member>
-        <member name="M:NetStone.Search.Linkshell.LinkShellSearchQuery.BuildQueryString">
+        <member name="M:NetStone.Search.Linkshell.LinkshellSearchQuery.BuildQueryString">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Search.Linkshell.CrossWorldLinkShellSearchQuery">
+        <member name="T:NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery">
             <summary>
             Models a search for a cross world link shell
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.CrossWorldLinkShellSearchQuery.DataCenter">
+        <member name="P:NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery.DataCenter">
             <summary>
             Datacenter 
             </summary>
         </member>
-        <member name="M:NetStone.Search.Linkshell.CrossWorldLinkShellSearchQuery.BuildQueryString">
+        <member name="M:NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery.BuildQueryString">
             <inheritdoc />
         </member>
-        <member name="T:NetStone.Search.Linkshell.BaseLinkShellSearchQuery">
+        <member name="T:NetStone.Search.Linkshell.BaseLinkshellSearchQuery">
             <summary>
             Models a search for a cross world link shell
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.BaseLinkShellSearchQuery.RecruitingOnly">
+        <member name="P:NetStone.Search.Linkshell.BaseLinkshellSearchQuery.RecruitingOnly">
             <summary>
             Only search for actively recruiting 
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.BaseLinkShellSearchQuery.Name">
+        <member name="P:NetStone.Search.Linkshell.BaseLinkshellSearchQuery.Name">
             <summary>
             Name
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.BaseLinkShellSearchQuery.ActiveMembers">
+        <member name="P:NetStone.Search.Linkshell.BaseLinkshellSearchQuery.ActiveMembers">
             <summary>
             Active member count
             </summary>
         </member>
-        <member name="P:NetStone.Search.Linkshell.BaseLinkShellSearchQuery.Sorting">
+        <member name="P:NetStone.Search.Linkshell.BaseLinkshellSearchQuery.Sorting">
             <summary>
             Sort order
             </summary>
         </member>
-        <member name="M:NetStone.Search.Linkshell.BaseLinkShellSearchQuery.BuildQueryString">
+        <member name="M:NetStone.Search.Linkshell.BaseLinkshellSearchQuery.BuildQueryString">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Search.Linkshell.LinkshellSizeCategory">

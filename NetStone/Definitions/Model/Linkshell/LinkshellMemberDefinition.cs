@@ -1,18 +1,19 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetStone.Definitions.Model.CWLS;
+namespace NetStone.Definitions.Model.Linkshell;
+
 /// <summary>
-/// 
+/// Definition for the list of linkshell members
 /// </summary>
-public class CrossWorldLinkShellMemberDefinition : PagedDefinition<CrossWorldLinkShellMemberEntryDefinition>
+public class LinkshellMemberDefinition : PagedDefinition<LinkshellMemberEntryDefinition>
 {
     
 }
 
 /// <summary>
-/// 
+/// Definition for one entry of the linkshell memebr list 
 /// </summary>
-public class CrossWorldLinkShellMemberEntryDefinition : PagedEntryDefinition
+public class LinkshellMemberEntryDefinition : PagedEntryDefinition
 {
     /// <summary>
     /// Avatar

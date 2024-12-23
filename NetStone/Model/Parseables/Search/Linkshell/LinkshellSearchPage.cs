@@ -11,12 +11,12 @@ namespace NetStone.Model.Parseables.Search.Linkshell;
 /// <summary>
 /// Models link shell search results
 /// </summary>
-public class LinkShellSearchPage : LodestoneParseable,IPaginatedResult<LinkShellSearchPage>
+public class LinkshellSearchPage : LodestoneParseable,IPaginatedResult<LinkshellSearchPage>
 {
     private readonly LodestoneClient client;
-    private readonly LinkShellSearchQuery currentQuery;
+    private readonly LinkshellSearchQuery currentQuery;
 
-    private readonly PagedDefinition<LinkShellSearchEntryDefinition> pageDefinition;
+    private readonly PagedDefinition<LinkshellSearchEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs character search results
@@ -25,8 +25,8 @@ public class LinkShellSearchPage : LodestoneParseable,IPaginatedResult<LinkShell
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public LinkShellSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<LinkShellSearchEntryDefinition> pageDefinition,
-                               LinkShellSearchQuery currentQuery) : base(rootNode)
+    public LinkshellSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<LinkshellSearchEntryDefinition> pageDefinition,
+                               LinkshellSearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
@@ -38,17 +38,17 @@ public class LinkShellSearchPage : LodestoneParseable,IPaginatedResult<LinkShell
     /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
-    private LinkShellSearchEntry[]? parsedResults;
+    private LinkshellSearchEntry[]? parsedResults;
 
     /// <summary>
     /// List all results
     /// </summary>
-    public IEnumerable<LinkShellSearchEntry> Results
+    public IEnumerable<LinkshellSearchEntry> Results
     {
         get
         {
             if (!this.HasResults)
-                return Array.Empty<LinkShellSearchEntry>();
+                return Array.Empty<LinkshellSearchEntry>();
 
             if (this.parsedResults == null)
                 ParseSearchResults();
@@ -61,10 +61,10 @@ public class LinkShellSearchPage : LodestoneParseable,IPaginatedResult<LinkShell
     {
         var container = QueryContainer(this.pageDefinition);
 
-        this.parsedResults = new LinkShellSearchEntry[container.Length];
+        this.parsedResults = new LinkshellSearchEntry[container.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new LinkShellSearchEntry(this.client, container[i], this.pageDefinition.Entry);
+            this.parsedResults[i] = new LinkshellSearchEntry(this.client, container[i], this.pageDefinition.Entry);
         }
     }
 
@@ -111,7 +111,7 @@ public class LinkShellSearchPage : LodestoneParseable,IPaginatedResult<LinkShell
     }
 
     ///<inheritdoc />
-    public async Task<LinkShellSearchPage?> GetNextPage()
+    public async Task<LinkshellSearchPage?> GetNextPage()
     {
         if (!this.HasResults)
             return null;
