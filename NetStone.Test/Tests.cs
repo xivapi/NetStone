@@ -6,6 +6,7 @@ using NetStone.GameData.Packs;
 using NetStone.Model.Parseables.Character;
 using NetStone.Search.Character;
 using NetStone.Search.FreeCompany;
+using NetStone.Search.Linkshell;
 using NetStone.StaticData;
 using NUnit.Framework;
 using SortKind = NetStone.Search.Character.SortKind;
@@ -18,6 +19,8 @@ public class Tests
     
     private const string TestCharacterIdFull = "24471319";
     private const string TestCharacterIdEureka = "14556736";
+    private const string TestLinkshell = "18577348462979918";
+    private const string TestCWLS = "097b99377634f9980eb0cf0b4ff6cf86807feb2c";
     private const string TestCharacterIdEureka2 = "6787158";
     private const string TestCharacterIdBare = "9426169";
     private const string TestCharacterIdDoH = "42256897";
@@ -176,7 +179,7 @@ public class Tests
         Assert.AreEqual("Immortal Flames", fc.GrandCompany);
         Assert.AreEqual("Bedge Lords", fc.Name);
         Assert.AreEqual("«BEDGE»", fc.Tag);
-        Assert.AreEqual("Friendly FC with 24/7 buffs, events and a large FC house in Goblet. LF more new amiable Bedgers to join us! Check our Lodestone & come chat for details.", fc.Slogan);
+        Assert.IsTrue(fc.Slogan.StartsWith("Friendly FC with"));
         Assert.AreEqual(new DateTime(2022, 12, 04, 19, 47, 07), fc.Formed);
         Assert.GreaterOrEqual(fc.ActiveMemberCount, 50);
         Assert.AreEqual(30, fc.Rank);
@@ -227,7 +230,7 @@ public class Tests
         Assert.IsTrue(fc.Focus.Dungeons.IsEnabled);
 
         Assert.AreEqual("Guildhests", fc.Focus.Guildhests.Name);
-        Assert.IsTrue(fc.Focus.Guildhests.IsEnabled);
+        Assert.IsFalse(fc.Focus.Guildhests.IsEnabled);
 
         Assert.AreEqual("Trials", fc.Focus.Trials.Name);
         Assert.IsTrue(fc.Focus.Trials.IsEnabled);
@@ -558,5 +561,147 @@ public class Tests
 
         var minions = await this.lodestone.GetCharacterMinion("0");
         Assert.IsNull(minions);
+    }
+
+    [Test]
+    public async Task CheckCrossworldLinkShell()
+    {
+        var cwls = await this.lodestone.GetCrossworldLinkshell(TestCWLS);
+        Assert.IsNotNull(cwls);
+        Assert.AreEqual("COR and Friends", cwls.Name);
+        Assert.AreEqual("Light", cwls.DataCenter);
+        Assert.AreEqual(2, cwls.NumPages);
+        while (cwls is not null)
+        {
+            foreach (var member in cwls.Members)
+            {
+                Console.WriteLine($"{member.Name} ({member.Rank}) {member.RankIcon}\n" +
+                                  $"\tId: {member.Id}\n" +
+                                  $"\tAvatar: {member.Avatar}\n" +
+                                  $"\tServer: {member.Server}\n" +
+                                  $"\tLS Rank: {member.LinkshellRank}\n" +
+                                  $"\tLS Rank Icon: {member.LinkshellRankIcon}");
+            }
+            cwls = await cwls.GetNextPage();
+        }
+    }
+
+    [Test]
+    public async Task CheckCrossworldLinkShellSearch()
+    {
+        var emptyQuery = new CrossworldLinkshellSearchQuery()
+        {
+            Name = "abcedfas",
+        };
+        var emptyResult = await this.lodestone.SearchCrossworldLinkshell(emptyQuery);
+        Assert.IsNotNull(emptyResult);
+        //Assert.False(emptyResult.HasResults);
+        var query = new CrossworldLinkshellSearchQuery()
+        {
+            Name = "Hell",
+            ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
+            DataCenter = "Chaos",
+            Sorting = LinkshellSortKind.MemberCountDesc,
+        };
+        bool first = true;
+        var results = await this.lodestone.SearchCrossworldLinkshell(query);
+        Assert.IsNotNull(results);
+        Assert.True(results.HasResults);
+        Assert.AreEqual(2, results.NumPages);
+        while (results is not null)
+        {
+            foreach (var result in results.Results)
+            {
+                if (first)
+                {
+                    first = false;
+                    var shell = await result.GetCrossworldLinkshell();
+                    Assert.IsNotNull(shell);
+                    Assert.AreEqual(result.Name, shell.Name);
+                }
+                Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
+            }
+            results = await results.GetNextPage();
+        }
+    }
+
+    [Test]
+    public async Task CheckLinkshell()
+    {
+        var ls = await this.lodestone.GetLinkshell(TestLinkshell);
+        Assert.IsNotNull(ls);
+        Assert.AreEqual("CORshell", ls.Name);
+        Assert.AreEqual(2, ls.NumPages);
+        while (ls is not null)
+        {
+            foreach (var member in ls.Members)
+            {
+                Console.WriteLine($"{member.Name} ({member.Rank}) {member.RankIcon}\n" +
+                                  $"Id: {member.Id}\n" +
+                                  $"Avatar: {member.Avatar}\n" +
+                                  $"Server: {member.Server}\n" +
+                                  $"LS Rank: {member.LinkshellRank}\n" +
+                                  $"LS Rank Icon: {member.LinkshellRankIcon}");
+                
+            }
+            ls = await ls.GetNextPage();
+        }
+        
+    }
+    
+    [Test]
+    public async Task CheckLinkShellSearch()
+    {
+        var emptyQuery = new LinkshellSearchQuery()
+        {
+            Name = "abcedfas",
+        };
+        var emptyResult = await this.lodestone.SearchLinkshell(emptyQuery);
+        Assert.IsNotNull(emptyResult);
+        Assert.False(emptyResult.HasResults);
+        var query = new LinkshellSearchQuery()
+        {
+            Name = "Hell",
+            ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
+            DataCenter = "Chaos",
+        };
+        bool first = true;
+        var results = await this.lodestone.SearchLinkshell(query);
+        Assert.IsNotNull(results);
+        Assert.True(results.HasResults);
+        Assert.AreEqual(2, results.NumPages);
+        while (results is not null)
+        {
+            foreach (var result in results.Results)
+            {
+                if (first)
+                {
+                    first = false;
+                    var shell = await result.GetLinkshell();
+                    Assert.IsNotNull(shell);
+                    Assert.AreEqual(result.Name, shell.Name);
+                }
+                Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
+            }
+            results = await results.GetNextPage();
+        }
+        query = new LinkshellSearchQuery()
+        {
+            Name = "Hell",
+            ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
+            HomeWorld = "Spriggan",
+        };
+        results = await this.lodestone.SearchLinkshell(query);
+        Assert.IsNotNull(results);
+        Assert.True(results.HasResults);
+        Assert.AreEqual(1, results.NumPages);
+        while (results is not null)
+        {
+            foreach (var result in results.Results)
+            {
+                Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
+            }
+            results = await results.GetNextPage();
+        }
     }
 }

@@ -40,13 +40,13 @@ public class ApplicableUris
     /// <summary>
     /// Uri that holds information about Cross World Link Shells
     /// </summary>
-    [JsonProperty("linkshell/crossworld/cwls.json")]
+    [JsonProperty("cwls/cwls.json")]
     public string? LinkshellCrossworldCwlsJson { get; set; }
 
     /// <summary>
     /// Uri that holds information about Cross World Link Shell members
     /// </summary>
-    [JsonProperty("linkshell/crossworld/members.json")]
+    [JsonProperty("cwls/members.json")]
     public string? LinkshellCrossworldMembersJson { get; set; }
 
 

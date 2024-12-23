@@ -25,8 +25,11 @@ public class CharacterAchievementEntry : LodestoneParseable
     /// <summary>
     /// The Name of this achievement
     /// </summary>
+#if NETSTANDARD2_1
     public string Name => ParseRegex(this.definition.Name).First(r => r.Name.Equals("Name")).Value;
-
+#else
+    public string Name => ParseRegex(this.definition.Name).Values.First(r => r.Name.Equals("Name")).Value;
+#endif
     /// <summary>
     /// ID of this achievement
     /// </summary>

@@ -36,7 +36,7 @@ public class PagedDefinition<TEntry> : IDefinition where TEntry : PagedEntryDefi
     /// DEfinition for node for empty results
     /// </summary>
     [JsonProperty("NO_RESULTS_FOUND")]
-    public DefinitionsPack NoResultsFound { get; set; }
+    public DefinitionsPack? NoResultsFound { get; set; }
 }
 
 /// <summary>
@@ -47,5 +47,6 @@ public class PagedEntryDefinition
     /// <summary>
     /// Root node of entry
     /// </summary>
+    [JsonProperty("ROOT")]
     public DefinitionsPack Root { get; set; }
 }

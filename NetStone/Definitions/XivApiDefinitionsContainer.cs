@@ -3,7 +3,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
+using NetStone.Definitions.Model.CWLS;
 using NetStone.Definitions.Model.FreeCompany;
+using NetStone.Definitions.Model.Linkshell;
 using Newtonsoft.Json;
 
 namespace NetStone.Definitions;
@@ -55,6 +57,14 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
 
         this.CharacterSearch = await GetDefinition<PagedDefinition<CharacterSearchEntryDefinition>>("search/character.json");
         this.FreeCompanySearch = await GetDefinition<PagedDefinition<FreeCompanySearchEntryDefinition>>("search/freecompany.json");
+        
+        this.CrossworldLinkshell = await GetDefinition<CrossworldLinkshellDefinition>("cwls/cwls.json");
+        this.CrossworldLinkshellMember = await GetDefinition<PagedDefinition<CrossworldLinkshellMemberEntryDefinition>>("cwls/members.json");
+        this.CrossworldLinkshellSearch = await GetDefinition<PagedDefinition<CrossworldLinkshellSearchEntryDefinition>>("search/cwls.json");
+        
+        this.Linkshell = await GetDefinition<LinkshellDefinition>("linkshell/ls.json");
+        this.LinkshellMember = await GetDefinition<PagedDefinition<LinkshellMemberEntryDefinition>>("linkshell/members.json");
+        this.LinkshellSearch = await GetDefinition<PagedDefinition<LinkshellSearchEntryDefinition>>("search/linkshell.json");
     }
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition
