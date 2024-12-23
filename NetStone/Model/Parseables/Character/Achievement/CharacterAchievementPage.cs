@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model.Character;
 
@@ -9,13 +7,9 @@ namespace NetStone.Model.Parseables.Character.Achievement;
 /// <summary>
 /// Holds information about a characters unlocked achievements
 /// </summary>
-public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<CharacterAchievementPage>
+public class CharacterAchievementPage : PaginatedIdResult<CharacterAchievementPage, CharacterAchievementEntry, CharacterAchievementEntryDefinition>
 {
-    private readonly LodestoneClient client;
-
-    private readonly CharacterAchievementDefinition pageDefinition;
-
-    private readonly string charId;
+    private readonly CharacterAchievementDefinition definition;
 
     /// <summary>
     /// Creates a new instance retrieving information about a characters unlocked achievements
@@ -24,13 +18,11 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     /// <param name="rootNode">Root node of the achievement page</param>
     /// <param name="definition">Parse definition pack</param>
     /// <param name="charId">ID of the character</param>
-    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, CharacterAchievementDefinition definition,
-        string charId) : base(rootNode)
+    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, 
+                                    CharacterAchievementDefinition definition,string charId) 
+        : base(rootNode, definition, client.GetCharacterAchievement, charId)
     {
-        this.client = client;
-        this.charId = charId;
-
-        this.pageDefinition = definition;
+        this.definition = definition;
     }
 
     /// <summary>
@@ -40,7 +32,7 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     {
         get
         {
-            var res = ParseRegex(this.pageDefinition.TotalAchievements);
+            var res = ParseRegex(this.definition.TotalAchievements);
             return int.Parse(res["TotalAchievements"].Value);
         }
     }
@@ -48,94 +40,23 @@ public class CharacterAchievementPage : LodestoneParseable, IPaginatedResult<Cha
     /// <summary>
     /// Number of achievement points for this character
     /// </summary>
-    public int AchievementPoints => int.Parse(Parse(this.pageDefinition.AchievementPoints));
-
-    /// <summary>
-    /// Indicates if this hold any results
-    /// </summary>
-    public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
-
-    private CharacterAchievementEntry[]? parsedResults;
+    public int AchievementPoints => int.Parse(Parse(this.definition.AchievementPoints));
 
     /// <summary>
     /// Unlocked achievements for character
     /// </summary>
-    public IEnumerable<CharacterAchievementEntry> Achievements
-    {
-        get
-        {
-            if (!this.HasResults)
-                return Array.Empty<CharacterAchievementEntry>();
-
-            if (this.parsedResults == null)
-                ParseSearchResults();
-
-            return this.parsedResults!;
-        }
-    }
-
-    private void ParseSearchResults()
-    {
-        var nodes = QueryContainer(this.pageDefinition);
-
-        this.parsedResults = new CharacterAchievementEntry[nodes.Length];
-        for (var i = 0; i < this.parsedResults.Length; i++)
-        {
-            this.parsedResults[i] = new CharacterAchievementEntry(nodes[i], this.pageDefinition.Entry);
-        }
-    }
-
-    private int? currentPageVal;
+    public IEnumerable<CharacterAchievementEntry> Achievements => this.Results;
 
     ///<inheritdoc />
-    public int CurrentPage
+    protected override CharacterAchievementEntry[] ParseResults()
     {
-        get
+        var nodes = QueryContainer(this.definition);
+
+        var parsedResults = new CharacterAchievementEntry[nodes.Length];
+        for (var i = 0; i < parsedResults.Length; i++)
         {
-            if (!this.HasResults)
-                return 0;
-
-            if (!this.currentPageVal.HasValue)
-                ParsePagesCount();
-
-            return this.currentPageVal!.Value;
+            parsedResults[i] = new CharacterAchievementEntry(nodes[i], this.definition.Entry);
         }
-    }
-
-    private int? numPagesVal;
-
-    /// <inheritdoc/>
-    public int NumPages
-    {
-        get
-        {
-            if (!this.HasResults)
-                return 0;
-
-            if (!this.numPagesVal.HasValue)
-                ParsePagesCount();
-
-            return this.numPagesVal!.Value;
-        }
-    }
-
-    private void ParsePagesCount()
-    {
-        var results = ParseRegex(this.pageDefinition.PageInfo);
-
-        this.currentPageVal = int.Parse(results["CurrentPage"].Value);
-        this.numPagesVal = int.Parse(results["NumPages"].Value);
-    }
-
-    /// <inheritdoc />
-    public async Task<CharacterAchievementPage?> GetNextPage()
-    {
-        if (!this.HasResults)
-            return null;
-
-        if (this.CurrentPage == this.NumPages)
-            return null;
-
-        return await this.client.GetCharacterAchievement(this.charId, this.CurrentPage + 1);
+        return parsedResults;
     }
 }

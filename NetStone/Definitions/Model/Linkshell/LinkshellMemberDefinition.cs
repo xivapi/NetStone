@@ -3,14 +3,6 @@
 namespace NetStone.Definitions.Model.Linkshell;
 
 /// <summary>
-/// Definition for the list of linkshell members
-/// </summary>
-public class LinkshellMemberDefinition : PagedDefinition<LinkshellMemberEntryDefinition>
-{
-    
-}
-
-/// <summary>
 /// Definition for one entry of the linkshell memebr list 
 /// </summary>
 public class LinkshellMemberEntryDefinition : PagedEntryDefinition

@@ -1364,11 +1364,6 @@
             Name
             </summary>
         </member>
-        <member name="T:NetStone.Definitions.Model.Linkshell.LinkshellMemberDefinition">
-            <summary>
-            Definition for the list of linkshell members
-            </summary>
-        </member>
         <member name="T:NetStone.Definitions.Model.Linkshell.LinkshellMemberEntryDefinition">
             <summary>
             Definition for one entry of the linkshell memebr list 
@@ -1947,6 +1942,65 @@
             </summary>
             <returns>Task of retrieving next page</returns>
         </member>
+        <member name="T:NetStone.Model.PaginatedIdResult`3">
+            <summary>
+            Container class holding paginated information
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.PaginatedIdResult`3.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{System.String,System.Int32,System.Threading.Tasks.Task{`0}},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.PaginatedSearchResult`4">
+            <summary>
+            Container class holding paginated information
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.PaginatedSearchResult`4.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{`3,System.Int32,System.Threading.Tasks.Task{`0}},`3)">
+            <inheritdoc />
+        </member>
+        <member name="T:NetStone.Model.PaginatedResult`4">
+            <summary>
+            Container class holding paginated information
+            </summary>
+        </member>
+        <member name="F:NetStone.Model.PaginatedResult`4.PageDefinition">
+            <summary>
+            Definition for the paginated type
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.PaginatedResult`4.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{`3,System.Int32,System.Threading.Tasks.Task{`0}},`3)">
+            <summary>
+            
+            </summary>
+            <param name="rootNode">The root document node of the page</param>
+            <param name="pageDefinition">CSS definitions for the paginated type</param>
+            <param name="nextPageFunc">Function to retrieve a page of this type</param>
+            <param name="request">The input used to request further pages.</param>
+        </member>
+        <member name="P:NetStone.Model.PaginatedResult`4.HasResults">
+            <summary>
+            If there is any data
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.PaginatedResult`4.Results">
+            <summary>
+            List of members
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.PaginatedResult`4.ParseResults">
+            <summary>
+            Creates the array of all entries on this page>
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.PaginatedResult`4.CurrentPage">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.PaginatedResult`4.NumPages">
+            <inheritdoc/>
+        </member>
+        <member name="M:NetStone.Model.PaginatedResult`4.GetNextPage">
+            <inheritdoc />
+        </member>
         <member name="T:NetStone.Model.LodestoneParseable">
             <summary>
             Main superclass for parsed lodestone nodes.
@@ -2148,23 +2202,12 @@
             Number of achievement points for this character
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.HasResults">
-            <summary>
-            Indicates if this hold any results
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.Achievements">
             <summary>
             Unlocked achievements for character
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.NumPages">
-            <inheritdoc/>
-        </member>
-        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Character.CharacterAttributes">
@@ -3108,16 +3151,10 @@
         </member>
         <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.Members">
             <summary>
-            Unlocked achievements for character
+            Members
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.NumPages">
-            <inheritdoc/>
-        </member>
-        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.CWLS.Members.CrossworldLinkshellMemberEntry">
@@ -3472,23 +3509,12 @@
             <param name="definition"></param>
             <param name="id"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.HasResults">
-            <summary>
-            IF there is data
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.Members">
             <summary>
             Lists all members
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.NumPages">
-            <inheritdoc />
-        </member>
-        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembersEntry">
@@ -3591,13 +3617,7 @@
             List of members
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.NumPages">
-            <inheritdoc/>
-        </member>
-        <member name="M:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Linkshell.LodestoneLinkshell.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Linkshell.Members.LinkshellMemberEntry">
@@ -3693,23 +3713,12 @@
             <param name="pageDefinition"></param>
             <param name="currentQuery"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.HasResults">
-            <summary>
-            Indicates if any results are present
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.Results">
             <summary>
             List all results
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.NumPages">
-            <inheritdoc />
-        </member>
-        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Search.Character.CharacterSearchPage.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchEntry">
@@ -3763,23 +3772,12 @@
             <param name="pageDefinition"></param>
             <param name="currentQuery"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.HasResults">
-            <summary>
-            Indicates if any results are present
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.Results">
             <summary>
             List all results
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.NumPages">
-            <inheritdoc />
-        </member>
-        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Search.CWLS.CrossworldLinkshellSearchPage.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchEntry">
@@ -3873,23 +3871,12 @@
             <param name="pageDefinition"></param>
             <param name="currentQuery"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.HasResults">
-            <summary>
-            Indicates if any results are present
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.Results">
             <summary>
             Lists all search results
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.NumPages">
-            <inheritdoc />
-        </member>
-        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchEntry">
@@ -3943,23 +3930,12 @@
             <param name="pageDefinition"></param>
             <param name="currentQuery"></param>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.HasResults">
-            <summary>
-            Indicates if any results are present
-            </summary>
-        </member>
         <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.Results">
             <summary>
             List all results
             </summary>
         </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.CurrentPage">
-            <inheritdoc />
-        </member>
-        <member name="P:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.NumPages">
-            <inheritdoc />
-        </member>
-        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.GetNextPage">
+        <member name="M:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage.ParseResults">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.SocialGroup">

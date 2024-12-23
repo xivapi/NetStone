@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using HtmlAgilityPack;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
@@ -11,12 +9,10 @@ namespace NetStone.Model.Parseables.Search.Character;
 /// <summary>
 /// Models character search results
 /// </summary>
-public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<CharacterSearchPage>
+public class CharacterSearchPage : PaginatedSearchResult<CharacterSearchPage, CharacterSearchEntry,
+    CharacterSearchEntryDefinition, CharacterSearchQuery>
 {
     private readonly LodestoneClient client;
-    private readonly CharacterSearchQuery currentQuery;
-
-    private readonly PagedDefinition<CharacterSearchEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs character search results
@@ -25,101 +21,30 @@ public class CharacterSearchPage : LodestoneParseable, IPaginatedResult<Characte
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<CharacterSearchEntryDefinition> pageDefinition,
-        CharacterSearchQuery currentQuery) : base(rootNode)
+    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, 
+                               PagedDefinition<CharacterSearchEntryDefinition> pageDefinition,
+                               CharacterSearchQuery currentQuery) 
+        : base(rootNode, pageDefinition, client.SearchCharacter, currentQuery)
     {
         this.client = client;
-        this.currentQuery = currentQuery;
-
-        this.pageDefinition = pageDefinition;
     }
-
-    /// <summary>
-    /// Indicates if any results are present
-    /// </summary>
-    public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
-
-    private CharacterSearchEntry[]? parsedResults;
 
     /// <summary>
     /// List all results
     /// </summary>
-    public IEnumerable<CharacterSearchEntry> Results
-    {
-        get
-        {
-            if (!this.HasResults)
-                return Array.Empty<CharacterSearchEntry>();
-
-            if (this.parsedResults == null)
-                ParseSearchResults();
-
-            return this.parsedResults!;
-        }
-    }
-
-    private void ParseSearchResults()
-    {
-        var container = QueryContainer(this.pageDefinition);
-
-        this.parsedResults = new CharacterSearchEntry[container.Length];
-        for (var i = 0; i < this.parsedResults.Length; i++)
-        {
-            this.parsedResults[i] = new CharacterSearchEntry(this.client, container[i], this.pageDefinition.Entry);
-        }
-    }
-
-    private int? currentPageVal;
+    public new IEnumerable<CharacterSearchEntry> Results => base.Results;
 
     ///<inheritdoc />
-    public int CurrentPage
+    protected override CharacterSearchEntry[] ParseResults() 
     {
-        get
+        var container = QueryContainer(this.PageDefinition);
+
+        var parsedResults = new CharacterSearchEntry[container.Length];
+        for (var i = 0; i < parsedResults.Length; i++)
         {
-            if (!this.HasResults)
-                return 0;
-
-            if (!this.currentPageVal.HasValue)
-                ParsePagesCount();
-
-            return this.currentPageVal!.Value;
+            parsedResults[i] = new CharacterSearchEntry(this.client, container[i], this.PageDefinition.Entry);
         }
-    }
 
-    private int? numPagesVal;
-
-    ///<inheritdoc />
-    public int NumPages
-    {
-        get
-        {
-            if (!this.HasResults)
-                return 0;
-
-            if (!this.numPagesVal.HasValue)
-                ParsePagesCount();
-
-            return this.numPagesVal!.Value;
-        }
-    }
-
-    private void ParsePagesCount()
-    {
-        var results = ParseRegex(this.pageDefinition.PageInfo);
-
-        this.currentPageVal = int.Parse(results["CurrentPage"].Value);
-        this.numPagesVal = int.Parse(results["NumPages"].Value);
-    }
-
-    ///<inheritdoc />
-    public async Task<CharacterSearchPage?> GetNextPage()
-    {
-        if (!this.HasResults)
-            return null;
-
-        if (this.CurrentPage == this.NumPages)
-            return null;
-
-        return await this.client.SearchCharacter(this.currentQuery, this.CurrentPage + 1);
+        return parsedResults;
     }
 }

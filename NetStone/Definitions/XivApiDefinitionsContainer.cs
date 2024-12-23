@@ -63,7 +63,7 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         this.CrossworldLinkshellSearch = await GetDefinition<PagedDefinition<CrossworldLinkshellSearchEntryDefinition>>("search/cwls.json");
         
         this.Linkshell = await GetDefinition<LinkshellDefinition>("linkshell/ls.json");
-        this.LinkshellMember = await GetDefinition<LinkshellMemberDefinition>("linkshell/members.json");
+        this.LinkshellMember = await GetDefinition<PagedDefinition<LinkshellMemberEntryDefinition>>("linkshell/members.json");
         this.LinkshellSearch = await GetDefinition<PagedDefinition<LinkshellSearchEntryDefinition>>("search/linkshell.json");
     }
 

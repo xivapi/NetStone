@@ -109,7 +109,7 @@ public abstract class DefinitionsContainer : IDisposable
     /// <summary>
     /// Definitions for link shell members
     /// </summary>
-    public LinkshellMemberDefinition LinkshellMember { get; protected set; }
+    public PagedDefinition<LinkshellMemberEntryDefinition> LinkshellMember { get; protected set; }
     
     /// <summary>
     /// Definitions for link-shell searches

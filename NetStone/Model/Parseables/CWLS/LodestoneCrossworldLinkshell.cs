@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NetStone.Definitions;
-using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.CWLS;
 using NetStone.Model.Parseables.CWLS.Members;
 
@@ -11,14 +9,10 @@ namespace NetStone.Model.Parseables.CWLS;
 /// <summary>
 /// Container class holding information about a cross world linkshell and it's members.
 /// </summary>
-public class LodestoneCrossworldLinkshell : LodestoneParseable, IPaginatedResult<LodestoneCrossworldLinkshell>
+public class LodestoneCrossworldLinkshell : PaginatedIdResult<LodestoneCrossworldLinkshell,CrossworldLinkshellMemberEntry, CrossworldLinkshellMemberEntryDefinition>
 {
-    private readonly LodestoneClient client;
 
-    private readonly string cwlsId;
-
-    private readonly CrossworldLinkshellDefinition cwlsDefinition;
-    private readonly PagedDefinition<CrossworldLinkshellMemberEntryDefinition> pageDefinition;
+    private readonly CrossworldLinkshellDefinition definition;
     
     /// <summary>
     /// Container class for a parseable corss world linkshell page.
@@ -27,93 +21,37 @@ public class LodestoneCrossworldLinkshell : LodestoneParseable, IPaginatedResult
     /// <param name="rootNode">The root document node of the page.</param>
     /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
     /// <param name="id">The ID of the cross world linkshell.</param>
-    public LodestoneCrossworldLinkshell(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string id) : base(rootNode)
+    public LodestoneCrossworldLinkshell(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string id) 
+        : base(rootNode,container.CrossworldLinkshellMember,client.GetCrossworldLinkshell,id)
     {
-        this.client = client;
-        this.cwlsId = id;
-        this.cwlsDefinition = container.CrossworldLinkshell;
-        this.pageDefinition = container.CrossworldLinkshellMember;
+        this.definition = container.CrossworldLinkshell;
     }
 
     /// <summary>
     /// Name
     /// </summary>
-    public string Name => ParseDirectInnerText(this.cwlsDefinition.Name).Trim();
-
+    public string Name => ParseDirectInnerText(this.definition.Name).Trim();
+    
     /// <summary>
     /// Datacenter
     /// </summary>
-    public string DataCenter => Parse(this.cwlsDefinition.DataCenter);
-    
-    
-    private CrossworldLinkshellMemberEntry[]? parsedResults;
-    
+    public string DataCenter => Parse(this.definition.DataCenter);
+
     /// <summary>
-    /// Unlocked achievements for character
+    /// Members
     /// </summary>
-    public IEnumerable<CrossworldLinkshellMemberEntry> Members
-    {
-        get
-        {
-            if (this.parsedResults == null)
-                ParseSearchResults();
-
-            return this.parsedResults!;
-        }
-    }
-
-    private void ParseSearchResults()
-    {
-        var nodes = QueryContainer(this.pageDefinition);
-
-        this.parsedResults = new CrossworldLinkshellMemberEntry[nodes.Length];
-        for (var i = 0; i < this.parsedResults.Length; i++)
-        {
-            this.parsedResults[i] = new CrossworldLinkshellMemberEntry(nodes[i], this.pageDefinition.Entry);
-        }
-    }
-
-    private int? currentPageVal;
-
-    ///<inheritdoc />
-    public int CurrentPage
-    {
-        get
-        {
-            if (!this.currentPageVal.HasValue)
-                ParsePagesCount();
-
-            return this.currentPageVal!.Value;
-        }
-    }
-
-    private int? numPagesVal;
-
-    /// <inheritdoc/>
-    public int NumPages
-    {
-        get
-        {
-            if (!this.numPagesVal.HasValue)
-                ParsePagesCount();
-
-            return this.numPagesVal!.Value;
-        }
-    }
-    private void ParsePagesCount()
-    {
-        var results = ParseRegex(this.pageDefinition.PageInfo);
-
-        this.currentPageVal = int.Parse(results["CurrentPage"].Value);
-        this.numPagesVal = int.Parse(results["NumPages"].Value);
-    }
+    public IEnumerable<CrossworldLinkshellMemberEntry> Members => this.Results;
     
-    /// <inheritdoc />
-    public async Task<LodestoneCrossworldLinkshell?> GetNextPage()
+    ///<inheritdoc />
+    protected override CrossworldLinkshellMemberEntry[] ParseResults()
     {
-        if (this.CurrentPage == this.NumPages)
-            return null;
+        var nodes = QueryContainer(this.PageDefinition);
 
-        return await this.client.GetCrossworldLinkshell(this.cwlsId, this.CurrentPage + 1);
+        var parsedResults = new CrossworldLinkshellMemberEntry[nodes.Length];
+        for (var i = 0; i < parsedResults.Length; i++)
+        {
+            parsedResults[i] = new CrossworldLinkshellMemberEntry(nodes[i], this.PageDefinition.Entry);
+        }
+        return parsedResults;
     }
 }
