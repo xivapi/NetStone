@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using NetStone.Definitions;
 using NetStone.Definitions.Model;
-using NetStone.Definitions.Model.CWLS;
+using NetStone.Definitions.Model.Linkshell;
 using NetStone.Search.Linkshell;
 
-namespace NetStone.Model.Parseables.Search.CWLS;
+namespace NetStone.Model.Parseables.Search.Linkshell;
 
 /// <summary>
-/// Models cross world link shell search results
+/// Models link shell search results
 /// </summary>
-public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResult<CrossWorldLinkShellSearchPage>
+public class LinkShellSearchPage : LodestoneParseable,IPaginatedResult<LinkShellSearchPage>
 {
     private readonly LodestoneClient client;
-    private readonly CrossWorldLinkShellSearchQuery currentQuery;
+    private readonly LinkShellSearchQuery currentQuery;
 
-    private readonly PagedDefinition<CrossWorldLinkShellSearchEntryDefinition> pageDefinition;
+    private readonly PagedDefinition<LinkShellSearchEntryDefinition> pageDefinition;
 
     /// <summary>
     /// Constructs character search results
@@ -26,8 +25,8 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public CrossWorldLinkShellSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<CrossWorldLinkShellSearchEntryDefinition> pageDefinition,
-                                         CrossWorldLinkShellSearchQuery currentQuery) : base(rootNode)
+    public LinkShellSearchPage(LodestoneClient client, HtmlNode rootNode, PagedDefinition<LinkShellSearchEntryDefinition> pageDefinition,
+                               LinkShellSearchQuery currentQuery) : base(rootNode)
     {
         this.client = client;
         this.currentQuery = currentQuery;
@@ -39,17 +38,17 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     /// </summary>
     public bool HasResults => !HasNode(this.pageDefinition.NoResultsFound);
 
-    private CrossWorldLinkShellSearchEntry[]? parsedResults;
+    private LinkShellSearchEntry[]? parsedResults;
 
     /// <summary>
     /// List all results
     /// </summary>
-    public IEnumerable<CrossWorldLinkShellSearchEntry> Results
+    public IEnumerable<LinkShellSearchEntry> Results
     {
         get
         {
             if (!this.HasResults)
-                return Array.Empty<CrossWorldLinkShellSearchEntry>();
+                return Array.Empty<LinkShellSearchEntry>();
 
             if (this.parsedResults == null)
                 ParseSearchResults();
@@ -62,10 +61,10 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     {
         var container = QueryContainer(this.pageDefinition);
 
-        this.parsedResults = new CrossWorldLinkShellSearchEntry[container.Length];
+        this.parsedResults = new LinkShellSearchEntry[container.Length];
         for (var i = 0; i < this.parsedResults.Length; i++)
         {
-            this.parsedResults[i] = new CrossWorldLinkShellSearchEntry(this.client, container[i], this.pageDefinition.Entry);
+            this.parsedResults[i] = new LinkShellSearchEntry(this.client, container[i], this.pageDefinition.Entry);
         }
     }
 
@@ -112,7 +111,7 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
     }
 
     ///<inheritdoc />
-    public async Task<CrossWorldLinkShellSearchPage?> GetNextPage()
+    public async Task<LinkShellSearchPage?> GetNextPage()
     {
         if (!this.HasResults)
             return null;
@@ -120,6 +119,6 @@ public class CrossWorldLinkShellSearchPage : LodestoneParseable, IPaginatedResul
         if (this.CurrentPage == this.NumPages)
             return null;
 
-        return await this.client.SearchCrossWorldLinkshell(this.currentQuery, this.CurrentPage + 1);
+        return await this.client.SearchLinkshell(this.currentQuery, this.CurrentPage + 1);
     }
 }

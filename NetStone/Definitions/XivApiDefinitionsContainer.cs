@@ -64,6 +64,7 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         
         this.LinkShell = await GetDefinition<LinkShellDefinition>("linkshell/ls.json");
         this.LinkShellMember = await GetDefinition<LinkShellMemberDefinition>("linkshell/members.json");
+        this.LinkShellSearch = await GetDefinition<PagedDefinition<LinkShellSearchEntryDefinition>>("search/linkshell.json");
     }
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition

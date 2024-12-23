@@ -11,7 +11,7 @@ NetStone is a portable and modern .NET FFXIV Lodestone API.
 - [ ] PvP Teams
 - [ ] PvP Team Search
 - [x] Linkshell
-- [ ] Linkshell Search
+- [x] Linkshell Search
 - [x] CWLS
 - [x] CWLS Search
 

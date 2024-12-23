@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using NetStone.GameData.Packs;
 using NetStone.Model.Parseables.Character;
 using NetStone.Search.Character;
-using NetStone.Search.CWLS;
 using NetStone.Search.FreeCompany;
+using NetStone.Search.Linkshell;
 using NetStone.StaticData;
 using NUnit.Framework;
 using SortKind = NetStone.Search.Character.SortKind;
@@ -599,9 +599,10 @@ public class Tests
         var query = new CrossWorldLinkShellSearchQuery()
         {
             Name = "Hell",
-            ActiveMembers = CrossWorldLinkShellSearchQuery.ActiveMemberChoice.ElevenToThirty,
+            ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
             DataCenter = "Chaos",
         };
+        bool first = true;
         var results = await this.lodestone.SearchCrossWorldLinkshell(query);
         Assert.IsNotNull(results);
         Assert.True(results.HasResults);
@@ -610,6 +611,13 @@ public class Tests
         {
             foreach (var result in results.Results)
             {
+                if (first)
+                {
+                    first = false;
+                    var shell = await result.GetCrossWorldLinkShell();
+                    Assert.IsNotNull(shell);
+                    Assert.AreEqual(result.Name, shell.Name);
+                }
                 Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
             }
             results = await results.GetNextPage();
@@ -638,5 +646,61 @@ public class Tests
             ls = await ls.GetNextPage();
         }
         
+    }
+    
+    [Test]
+    public async Task CheckLinkShellSearch()
+    {
+        var emptyQuery = new LinkShellSearchQuery()
+        {
+            Name = "abcedfas",
+        };
+        var emptyResult = await this.lodestone.SearchLinkshell(emptyQuery);
+        Assert.IsNotNull(emptyResult);
+        Assert.False(emptyResult.HasResults);
+        var query = new LinkShellSearchQuery()
+        {
+            Name = "Hell",
+            ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
+            DataCenter = "Chaos",
+        };
+        bool first = true;
+        var results = await this.lodestone.SearchLinkshell(query);
+        Assert.IsNotNull(results);
+        Assert.True(results.HasResults);
+        Assert.AreEqual(2, results.NumPages);
+        while (results is not null)
+        {
+            foreach (var result in results.Results)
+            {
+                if (first)
+                {
+                    first = false;
+                    var shell = await result.GetLinkshell();
+                    Assert.IsNotNull(shell);
+                    Assert.AreEqual(result.Name, shell.Name);
+                }
+                Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
+            }
+            results = await results.GetNextPage();
+        }
+        query = new LinkShellSearchQuery()
+        {
+            Name = "Hell",
+            ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
+            HomeWorld = "Spriggan",
+        };
+        results = await this.lodestone.SearchLinkshell(query);
+        Assert.IsNotNull(results);
+        Assert.True(results.HasResults);
+        Assert.AreEqual(1, results.NumPages);
+        while (results is not null)
+        {
+            foreach (var result in results.Results)
+            {
+                Console.WriteLine($"{result.Name} ({result.Id}): {result.ActiveMembers}\n");
+            }
+            results = await results.GetNextPage();
+        }
     }
 }

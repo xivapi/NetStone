@@ -17,9 +17,10 @@ using NetStone.Model.Parseables.Linkshell;
 using NetStone.Model.Parseables.Search.Character;
 using NetStone.Model.Parseables.Search.CWLS;
 using NetStone.Model.Parseables.Search.FreeCompany;
+using NetStone.Model.Parseables.Search.Linkshell;
 using NetStone.Search.Character;
-using NetStone.Search.CWLS;
 using NetStone.Search.FreeCompany;
+using NetStone.Search.Linkshell;
 
 namespace NetStone;
 
@@ -183,6 +184,16 @@ public class LodestoneClient : IDisposable
     public async Task<LodestoneLinkShell?> GetLinkshell(string id, int page = 1) =>
         await GetParsed($"/lodestone/linkshell/{id}?page={page}",
                         node => new LodestoneLinkShell(this, node, this.Definitions,id));
+    
+    /// <summary>
+    /// Search lodestone for a linkshell with the specified query.
+    /// </summary>
+    /// <param name="query"><see cref="LinkShellSearchQuery"/> object detailing search parameters</param>
+    /// <param name="page">The page of search results to fetch.</param>
+    /// <returns><see cref="LinkShellSearchPage"/> containing search results.</returns>
+    public async Task<LinkShellSearchPage?> SearchLinkshell(LinkShellSearchQuery query, int page = 1) =>
+        await GetParsed($"/lodestone/linkshell/{query.BuildQueryString()}&page={page}",
+                        node => new LinkShellSearchPage(this, node, this.Definitions.LinkShellSearch, query));
     
     #endregion
 
