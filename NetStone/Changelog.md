@@ -1,3 +1,12 @@
+## 1.4.0
+### License
+- Switched to MIT license
+### New Features
+- Added
+  - LinkShells
+  - Linkshell search
+  - CWLS
+  - CWLS search
 ## 1.3.1
 ### Bugfixes
 - Free Company search
