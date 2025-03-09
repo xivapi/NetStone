@@ -254,16 +254,7 @@ public class LodestoneClient : IDisposable
                 throw new ArgumentOutOfRangeException(nameof(agent), agent, null);
         }
 
-        HttpResponseMessage? response;
-        try
-        {
-            response = await this.client.SendAsync(request);
-        }
-        catch (Exception ex) when (ex is HttpRequestException or InvalidOperationException)
-        {
-            return null;
-        }
-
+        var response = await this.client.SendAsync(request);
 
         if (response.StatusCode == HttpStatusCode.NotFound)
             return null;
