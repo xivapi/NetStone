@@ -8,15 +8,15 @@ public enum Recruitment
     /// <summary>
     /// Dot not filter by recruitment status
     /// </summary>
-    All,
+    All = 99,
 
     /// <summary>
     /// Filter for groups actively recruiting
     /// </summary>
-    Open,
+    Open = 1,
 
     /// <summary>
     /// Filter for groups not actively recruiting
     /// </summary>
-    Closed,
+    Closed = 0
 }
