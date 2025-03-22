@@ -41,18 +41,23 @@ If you need to fetch data for a specific character often it is best practice to 
 Note that the search can have 0 results and that a character is null if the request failed.
 #### Example code
 ```C#
-//Get Lodestone Id if not known
-var searchResponse = await lodestoneClient.SearchCharacter(new CharacterSearchQuery()
+try
 {
-    CharacterName = "Name Surname",
-    World = "Lich"
-});
-var lodestoneCharacter = 
-	searchResponse?.Results
-	.FirstOrDefault(entry => entry.Name == "Name Surname");
-string lodestoneId = lodestoneCharacter.Id;
-
-//If Lodestone id is known
-var lodestoneCharacter = await lodestoneClient.GetCharacter(lodestoneId);
-
+    //Get Lodestone Id if not known
+    var searchResponse = await lodestoneClient.SearchCharacter(new CharacterSearchQuery()
+    {
+        CharacterName = "Name Surname",
+        World = "Lich"
+    });
+    var lodestoneCharacter = 
+        searchResponse?.Results
+        .FirstOrDefault(entry => entry.Name == "Name Surname");
+    string lodestoneId = lodestoneCharacter.Id;
+    
+    //If Lodestone id is known
+    var lodestoneCharacter = await lodestoneClient.GetCharacter(lodestoneId);
+} catch(HttpRequestException e) {
+    //Handle potential errors in web request
+    ...
+}
 ```

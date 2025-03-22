@@ -1,3 +1,10 @@
+## 1.4.1
+### Behavioral changes
+ - Exceptions from http requests are not caught and ignored anymore
+### Fixes
+ - Fixed FC search parameter for recruiting 
+### Contributors
+- Tawmy
 ## 1.4.0
 ### License
 - Switched to MIT license

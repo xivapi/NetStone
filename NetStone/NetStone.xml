@@ -1787,6 +1787,7 @@
             Get a character by its Lodestone ID.
             </summary>
             <param name="id">The ID of the character.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.LodestoneCharacter"/> class containing information about the character.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCharacterClassJob(System.String)">
@@ -1795,6 +1796,7 @@
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetClassJobInfo"/>.
             </summary>
             <param name="id">The ID of the character.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCharacterAchievement(System.String,System.Int32)">
@@ -1804,6 +1806,7 @@
             </summary>
             <param name="id">The ID of the character.</param>
             <param name="page">The number of the page that should be fetched.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCharacterMount(System.String)">
@@ -1812,6 +1815,7 @@
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMounts"/>.
             </summary>
             <param name="id">The ID of the character.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' mounts.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCharacterMinion(System.String)">
@@ -1820,6 +1824,7 @@
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMinions"/>.
             </summary>
             <param name="id">The ID of the character.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' minions.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.SearchCharacter(NetStone.Search.Character.CharacterSearchQuery,System.Int32)">
@@ -1828,6 +1833,7 @@
             </summary>
             <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetCrossworldLinkshell(System.String,System.Int32)">
@@ -1836,6 +1842,7 @@
             </summary>
             <param name="id">The ID of the cross world linkshell.</param>
             <param name="page"></param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.SearchCrossworldLinkshell(NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery,System.Int32)">
@@ -1844,6 +1851,7 @@
             </summary>
             <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetLinkshell(System.String,System.Int32)">
@@ -1852,6 +1860,7 @@
             </summary>
             <param name="id">The ID of the linkshell.</param>
             <param name="page"></param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.SearchLinkshell(NetStone.Search.Linkshell.LinkshellSearchQuery,System.Int32)">
@@ -1860,6 +1869,7 @@
             </summary>
             <param name="query"><see cref="T:NetStone.Search.Linkshell.LinkshellSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage"/> containing search results.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String)">
@@ -1867,6 +1877,7 @@
             Get a character by its Lodestone ID.
             </summary>
             <param name="id">The ID of the character.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany"/> class containing information about the character.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetFreeCompanyMembers(System.String,System.Int32)">
@@ -1875,6 +1886,7 @@
             </summary>
             <param name="id">The ID of the free company.</param>
             <param name="page">The page of members to fetch.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers"/> class containing information about FC members.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.SearchFreeCompany(NetStone.Search.FreeCompany.FreeCompanySearchQuery,System.Int32)">
@@ -1883,6 +1895,7 @@
             </summary>
             <param name="query"><see cref="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage"/> object detailing search parameters.</param>
             <param name="page">The page of search results to fetch.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage"/> containing search results.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.GetParsed``1(System.String,System.Func{HtmlAgilityPack.HtmlNode,``0},NetStone.UserAgent)">
@@ -1893,6 +1906,7 @@
             <param name="url">The URL to fetch.</param>
             <param name="createParseable">Func creating the LodestoneParseable.</param>
             <param name="agent">The user agent to use for the request.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns>The instantiated LodestoneParseable in case of success.</returns>
         </member>
         <member name="M:NetStone.LodestoneClient.Dispose">

@@ -95,6 +95,7 @@ public class LodestoneClient : IDisposable
     /// Get a character by its Lodestone ID.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCharacter"/> class containing information about the character.</returns>
     public async Task<LodestoneCharacter?> GetCharacter(string id) => await GetParsed($"/lodestone/character/{id}/",
         node => new LodestoneCharacter(this, node, this.Definitions, id));
@@ -104,6 +105,7 @@ public class LodestoneClient : IDisposable
     /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetClassJobInfo()"/>.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
     public async Task<CharacterClassJob?> GetCharacterClassJob(string id) => await GetParsed(
         $"/lodestone/character/{id}/class_job/", node => new CharacterClassJob(node, this.Definitions.ClassJob));
@@ -114,6 +116,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="id">The ID of the character.</param>
     /// <param name="page">The number of the page that should be fetched.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
     public async Task<CharacterAchievementPage?> GetCharacterAchievement(string id, int page = 1) =>
         await GetParsed(
@@ -125,6 +128,7 @@ public class LodestoneClient : IDisposable
     /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMounts()"/>.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' mounts.</returns>
     public async Task<CharacterCollectable?> GetCharacterMount(string id) => await GetParsed(
         $"/lodestone/character/{id}/mount/",
@@ -136,6 +140,7 @@ public class LodestoneClient : IDisposable
     /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMinions()"/>.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' minions.</returns>
     public async Task<CharacterCollectable?> GetCharacterMinion(string id) => await GetParsed(
         $"/lodestone/character/{id}/minion/",
@@ -147,6 +152,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
     public async Task<CharacterSearchPage?> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/character/{query.BuildQueryString()}&page={page}",
@@ -160,6 +166,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="id">The ID of the cross world linkshell.</param>
     /// <param name="page"></param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
     public async Task<LodestoneCrossworldLinkshell?> GetCrossworldLinkshell(string id, int page = 1) => 
         await GetParsed($"/lodestone/crossworld_linkshell/{id}?page={page}",
@@ -170,6 +177,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
     public async Task<CrossworldLinkshellSearchPage?> SearchCrossworldLinkshell(CrossworldLinkshellSearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/crossworld_linkshell/{query.BuildQueryString()}&page={page}",
@@ -180,6 +188,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="id">The ID of the linkshell.</param>
     /// <param name="page"></param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
     public async Task<LodestoneLinkshell?> GetLinkshell(string id, int page = 1) =>
         await GetParsed($"/lodestone/linkshell/{id}?page={page}",
@@ -190,6 +199,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="query"><see cref="LinkshellSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LinkshellSearchPage"/> containing search results.</returns>
     public async Task<LinkshellSearchPage?> SearchLinkshell(LinkshellSearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/linkshell/{query.BuildQueryString()}&page={page}",
@@ -203,6 +213,7 @@ public class LodestoneClient : IDisposable
     /// Get a character by its Lodestone ID.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneFreeCompany"/> class containing information about the character.</returns>
     public async Task<LodestoneFreeCompany?> GetFreeCompany(string id) => await GetParsed(
         $"/lodestone/freecompany/{id}/", node => new LodestoneFreeCompany(this, node, this.Definitions, id));
@@ -212,6 +223,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="id">The ID of the free company.</param>
     /// <param name="page">The page of members to fetch.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="FreeCompanyMembers"/> class containing information about FC members.</returns>
     public async Task<FreeCompanyMembers?> GetFreeCompanyMembers(string id, int page = 1) => await GetParsed(
         $"/lodestone/freecompany/{id}/member/?page={page}",
@@ -222,6 +234,7 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="query"><see cref="FreeCompanySearchPage"/> object detailing search parameters.</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="FreeCompanySearchPage"/> containing search results.</returns>
     public async Task<FreeCompanySearchPage?> SearchFreeCompany(FreeCompanySearchQuery query, int page = 1) =>
         await GetParsed($"/lodestone/freecompany/{query.BuildQueryString()}&page={page}",
@@ -236,6 +249,7 @@ public class LodestoneClient : IDisposable
     /// <param name="url">The URL to fetch.</param>
     /// <param name="createParseable">Func creating the LodestoneParseable.</param>
     /// <param name="agent">The user agent to use for the request.</param>
+    /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns>The instantiated LodestoneParseable in case of success.</returns>
     private async Task<T?> GetParsed<T>(string url, Func<HtmlNode, T?> createParseable,
         UserAgent agent = UserAgent.Desktop) where T : LodestoneParseable
