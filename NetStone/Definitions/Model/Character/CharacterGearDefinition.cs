@@ -128,12 +128,6 @@ public class CharacterGearDefinition : IDefinition
     public GearEntryDefinition Hands { get; set; }
 
     /// <summary>
-    /// Waist
-    /// </summary>
-    [JsonProperty("WAIST")]
-    public GearEntryDefinition Waist { get; set; }
-
-    /// <summary>
     /// Legs
     /// </summary>
     [JsonProperty("LEGS")]

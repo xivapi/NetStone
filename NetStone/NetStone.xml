@@ -828,11 +828,6 @@
             Hand piece
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Waist">
-            <summary>
-            Waist
-            </summary>
-        </member>
         <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Legs">
             <summary>
             Legs
@@ -2819,11 +2814,6 @@
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Hands">
             <summary>
             Information about the characters' gloves. Null if none equipped.
-            </summary>
-        </member>
-        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Waist">
-            <summary>
-            Information about the characters' waist gear. Null if none equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Legs">
