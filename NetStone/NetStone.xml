@@ -788,6 +788,26 @@
             Item level of the item
             </summary>
         </member>
+        <member name="T:NetStone.Definitions.Model.Character.FacewearEntryDefinition">
+            <summary>
+            Definition for Facewear slot
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.FacewearEntryDefinition.Name">
+            <summary>
+            Name of the facewear
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.FacewearEntryDefinition.UnlockedBy">
+            <summary>
+            Name of the item this facewear is unlocked by
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.FacewearEntryDefinition.DbLink">
+            <summary>
+            Link to Eorzea Database for facewear
+            </summary>
+        </member>
         <member name="T:NetStone.Definitions.Model.Character.SoulcrystalEntryDefinition">
             <summary>
             Definition for Soul Crystal slot
@@ -841,6 +861,11 @@
         <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Feet">
             <summary>
             Feet
+            </summary>
+        </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Facewear">
+            <summary>
+            Facewear
             </summary>
         </member>
         <member name="P:NetStone.Definitions.Model.Character.CharacterGearDefinition.Earrings">
@@ -2836,6 +2861,11 @@
             Information about the characters' shoes. Null if none equipped.
             </summary>
         </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Facewear">
+            <summary>
+            Information about the characters' facewear. Null if none equipped.
+            </summary>
+        </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Earrings">
             <summary>
             Information about the characters' earrings. Null if none equipped.
@@ -2865,6 +2895,35 @@
             <summary>
             Information about the characters' soul crystal. Null if none equipped.
             </summary>
+        </member>
+        <member name="T:NetStone.Model.Parseables.Character.Gear.FacewearEntry">
+            <summary>
+            Represents data about a character's facewear
+            </summary>
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.FacewearEntry.#ctor(HtmlAgilityPack.HtmlNode,NetStone.Definitions.Model.Character.FacewearEntryDefinition)">
+            <inheritdoc />
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.FacewearEntry.ItemName">
+            <summary>
+            Name of the facewear
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.FacewearEntry.UnlockedBy">
+            <summary>
+            Name of the item this facewear is unlocked by
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.FacewearEntry.DbLink">
+            <summary>
+            Link to this facewear's Eorzea DB page.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.Gear.FacewearEntry.Exists">
+            <inheritdoc />
+        </member>
+        <member name="M:NetStone.Model.Parseables.Character.Gear.FacewearEntry.ToString">
+            <inheritdoc />
         </member>
         <member name="T:NetStone.Model.Parseables.Character.Gear.GearEntry">
             <summary>

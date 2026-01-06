@@ -81,6 +81,30 @@ public class GearEntryDefinition
 }
 
 /// <summary>
+/// Definition for Facewear slot
+/// </summary>
+public class FacewearEntryDefinition
+{
+    /// <summary>
+    /// Name of the facewear
+    /// </summary>
+    [JsonProperty("NAME")]
+    public DefinitionsPack Name { get; set; }
+    
+    /// <summary>
+    /// Name of the item this facewear is unlocked by
+    /// </summary>
+    [JsonProperty("UNLOCKED_BY")]
+    public DefinitionsPack UnlockedBy { get; set; }
+    
+    /// <summary>
+    /// Link to Eorzea Database for facewear
+    /// </summary>
+    [JsonProperty("DB_LINK")]
+    public DefinitionsPack DbLink { get; set; }
+}
+
+/// <summary>
 /// Definition for Soul Crystal slot
 /// </summary>
 public class SoulcrystalEntryDefinition
@@ -144,6 +168,12 @@ public class CharacterGearDefinition : IDefinition
     /// </summary>
     [JsonProperty("FEET")]
     public GearEntryDefinition Feet { get; set; }
+    
+    /// <summary>
+    /// Facewear
+    /// </summary>
+    [JsonProperty("FACEWEAR")]
+    public FacewearEntryDefinition Facewear { get; set; }
 
     /// <summary>
     /// Earrings
