@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Model.Parseables.FreeCompany;
@@ -11,7 +11,7 @@ public class FreeCompanyFocus : LodestoneParseable, IOptionalParseable<FreeCompa
     private readonly FreeCompanyFocusDefinition definition;
 
     ///<inheritdoc />
-    public FreeCompanyFocus(HtmlNode rootNode, FreeCompanyFocusDefinition definition) : base(rootNode)
+    public FreeCompanyFocus(IElement rootNode, FreeCompanyFocusDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

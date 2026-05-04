@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
 using NetStone.Search.Character;
@@ -21,7 +21,7 @@ public class CharacterSearchPage : PaginatedSearchResult<CharacterSearchPage, Ch
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public CharacterSearchPage(LodestoneClient client, HtmlNode rootNode, 
+    public CharacterSearchPage(LodestoneClient client, IElement rootNode, 
                                PagedDefinition<CharacterSearchEntryDefinition> pageDefinition,
                                CharacterSearchQuery currentQuery) 
         : base(rootNode, pageDefinition, client.SearchCharacter, currentQuery)

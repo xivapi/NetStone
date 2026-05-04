@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Search.FreeCompany;
@@ -16,7 +16,7 @@ public class FreeCompanySearchEntry : LodestoneParseable
     private readonly FreeCompanySearchEntryDefinition definition;
 
     ///
-    public FreeCompanySearchEntry(LodestoneClient client, HtmlNode rootNode,
+    public FreeCompanySearchEntry(LodestoneClient client, IElement rootNode,
                                   FreeCompanySearchEntryDefinition definition) : base(rootNode)
     {
         this.client = client;

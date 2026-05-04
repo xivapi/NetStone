@@ -1,5 +1,5 @@
 ﻿using System;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables;
@@ -12,7 +12,7 @@ public class SocialGroup : LodestoneParseable, IOptionalParseable<SocialGroup>
     private readonly ICharacterSocialGroupDefinition definition;
 
     ///<inheritdoc />
-    public SocialGroup(HtmlNode rootNode, ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode)
+    public SocialGroup(IElement rootNode, ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode)
     {
         this.definition = socialGroupDefinition;
     }

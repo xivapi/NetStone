@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Model.Parseables.FreeCompany;
@@ -15,7 +15,7 @@ public class FreeCompanyReputationEntry : LodestoneParseable
     /// </summary>
     /// <param name="rootNode"></param>
     /// <param name="definition"></param>
-    public FreeCompanyReputationEntry(HtmlNode rootNode, FreeCompanyReputationEntryDefinition definition) :
+    public FreeCompanyReputationEntry(IElement rootNode, FreeCompanyReputationEntryDefinition definition) :
         base(rootNode)
     {
         this.definition = definition;

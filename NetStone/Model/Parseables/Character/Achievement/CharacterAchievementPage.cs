@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement;
@@ -18,7 +18,7 @@ public class CharacterAchievementPage : PaginatedIdResult<CharacterAchievementPa
     /// <param name="rootNode">Root node of the achievement page</param>
     /// <param name="definition">Parse definition pack</param>
     /// <param name="charId">ID of the character</param>
-    public CharacterAchievementPage(LodestoneClient client, HtmlNode rootNode, 
+    public CharacterAchievementPage(LodestoneClient client, IElement rootNode, 
                                     CharacterAchievementDefinition definition,string charId) 
         : base(rootNode, definition, client.GetCharacterAchievement, charId)
     {

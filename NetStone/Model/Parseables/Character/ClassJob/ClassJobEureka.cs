@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.ClassJob;
@@ -16,7 +16,7 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 	/// </summary>
 	/// <param name="rootNode">Root node of this entry</param>
 	/// <param name="definition">Parser definition</param>
-	public ClassJobEureka(HtmlNode rootNode, ClassJobEurekaDefinition definition) : base(rootNode)
+	public ClassJobEureka(IElement rootNode, ClassJobEurekaDefinition definition) : base(rootNode)
 	{
 		this.definition = definition;
 	}

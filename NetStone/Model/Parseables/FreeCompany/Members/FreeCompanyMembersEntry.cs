@@ -1,5 +1,5 @@
 ﻿using System;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Model.Parseables.FreeCompany.Members;
@@ -12,7 +12,7 @@ public class FreeCompanyMembersEntry : LodestoneParseable
     private readonly FreeCompanyMembersEntryDefinition definition;
 
     ///
-    public FreeCompanyMembersEntry(HtmlNode rootNode, FreeCompanyMembersEntryDefinition definition) : base(rootNode)
+    public FreeCompanyMembersEntry(IElement rootNode, FreeCompanyMembersEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

@@ -1,5 +1,5 @@
 ﻿using System;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 
 namespace NetStone.Model.Parseables;
@@ -12,7 +12,7 @@ public class IconLayers : LodestoneParseable
     private readonly IconLayersDefinition definition;
 
     ///<inheritdoc />
-    public IconLayers(HtmlNode rootNode, IconLayersDefinition definition) : base(rootNode)
+    public IconLayers(IElement rootNode, IconLayersDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

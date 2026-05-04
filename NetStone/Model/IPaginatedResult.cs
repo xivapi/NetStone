@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 using NetStone.Search;
 
@@ -39,7 +39,7 @@ public abstract class PaginatedIdResult<TPage, TEntry, TEntryDef>
                                                        where TEntryDef : PagedEntryDefinition
 {
     ///<inheritdoc />
-    protected PaginatedIdResult(HtmlNode rootNode, PagedDefinition<TEntryDef> pageDefinition, 
+    protected PaginatedIdResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition, 
                                 Func<string, int, Task<TPage?>> nextPageFunc, string id) 
         : base(rootNode, pageDefinition, nextPageFunc, id)
     {
@@ -55,7 +55,7 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
                                                        where TQuery : ISearchQuery
 {
     ///<inheritdoc />
-    protected PaginatedSearchResult(HtmlNode rootNode, PagedDefinition<TEntryDef> pageDefinition, 
+    protected PaginatedSearchResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition, 
                                     Func<TQuery, int, Task<TPage?>> nextPageFunc, 
                                     TQuery query) 
         : base(rootNode, pageDefinition, nextPageFunc, query)
@@ -85,7 +85,7 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
     /// <param name="pageDefinition">CSS definitions for the paginated type</param>
     /// <param name="nextPageFunc">Function to retrieve a page of this type</param>
     /// <param name="request">The input used to request further pages.</param>
-    protected PaginatedResult(HtmlNode rootNode, PagedDefinition<TEntryDef> pageDefinition,Func<TRequest, int, Task<TPage?>> nextPageFunc, TRequest request) : base(rootNode)
+    protected PaginatedResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition,Func<TRequest, int, Task<TPage?>> nextPageFunc, TRequest request) : base(rootNode)
     {
         this.PageDefinition = pageDefinition;
         this.request = request;

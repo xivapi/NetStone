@@ -1,5 +1,5 @@
 ﻿using System;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character;
@@ -16,7 +16,7 @@ public class CharacterAttributes : LodestoneParseable
     /// </summary>
     /// <param name="rootNode">Root HTML node of the character profile page on Lodestone</param>
     /// <param name="definition">Definitions on how to parse attributes from the HTML</param>
-    public CharacterAttributes(HtmlNode rootNode, CharacterAttributesDefinition definition) : base(rootNode)
+    public CharacterAttributes(IElement rootNode, CharacterAttributesDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }
