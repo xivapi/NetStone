@@ -31,7 +31,6 @@ public class LodestoneCharacter : LodestoneParseable
     private readonly string charId;
 
     private readonly CharacterDefinition charDefinition;
-    private readonly CharacterGearDefinition gearDefinition;
     private readonly CharacterAttributesDefinition attributesDefinition;
 
     /// <summary>
@@ -48,8 +47,8 @@ public class LodestoneCharacter : LodestoneParseable
         this.charId = charId;
 
         this.charDefinition = container.Character;
-        this.gearDefinition = container.Gear;
         this.attributesDefinition = container.Attributes;
+        this.Gear = new CharacterGear(this.client, this.RootNode, container.Gear);  
     }
 
     #region Properties
@@ -167,7 +166,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// The character gear information.
     /// </summary>
-    public CharacterGear Gear => new(this.client, this.RootNode, this.gearDefinition);
+    public CharacterGear Gear;
 
     /// <summary>
     /// The character attribute information.

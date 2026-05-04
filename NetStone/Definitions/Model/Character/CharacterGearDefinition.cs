@@ -5,7 +5,7 @@ namespace NetStone.Definitions.Model.Character;
 /// <summary>
 /// Definitions for a slot of gear in character profile
 /// </summary>
-public class GearEntryDefinition
+public class GearEntryDefinition : IDefinition
 {
     /// <summary>
     /// Name of the item
@@ -83,13 +83,36 @@ public class GearEntryDefinition
 /// <summary>
 /// Definition for Soul Crystal slot
 /// </summary>
-public class SoulcrystalEntryDefinition
+public class SoulcrystalEntryDefinition : IDefinition
 {
     /// <summary>
     /// Name of the item
     /// </summary>
     [JsonProperty("NAME")]
     public DefinitionsPack Name { get; set; }
+    
+    /// <summary>
+    /// List of classes that can use this item
+    /// </summary>
+    [JsonProperty("CLASS_LIST")]
+    public DefinitionsPack ClassList { get; set; }
+    
+    /// <summary>
+    /// Item level
+    /// </summary>
+    [JsonProperty("ITEM_LEVEL")]
+    public DefinitionsPack ItemLevel { get; set; }
+}
+/// <summary>
+/// Definition for gear data link
+/// </summary>
+public class GearDataLinkDefinition
+{
+    /// <summary>
+    /// Data link definition
+    /// </summary>
+    [JsonProperty("DATA_Link")]
+    public DefinitionsPack DataLink { get; set; }
 }
 
 /// <summary>
@@ -101,83 +124,83 @@ public class CharacterGearDefinition : IDefinition
     /// Main hand weapon
     /// </summary>
     [JsonProperty("MAINHAND")]
-    public GearEntryDefinition Mainhand { get; set; }
+    public GearDataLinkDefinition Mainhand { get; set; }
 
     /// <summary>
     /// Off hand weapon
     /// </summary>
     [JsonProperty("OFFHAND")]
-    public GearEntryDefinition Offhand { get; set; }
+    public GearDataLinkDefinition Offhand { get; set; }
 
     /// <summary>
     /// Head piece
     /// </summary>
     [JsonProperty("HEAD")]
-    public GearEntryDefinition Head { get; set; }
+    public GearDataLinkDefinition Head { get; set; }
 
     /// <summary>
     /// Chest piece
     /// </summary>
     [JsonProperty("BODY")]
-    public GearEntryDefinition Body { get; set; }
+    public GearDataLinkDefinition Body { get; set; }
 
     /// <summary>
     /// Hand piece
     /// </summary>
     [JsonProperty("HANDS")]
-    public GearEntryDefinition Hands { get; set; }
+    public GearDataLinkDefinition Hands { get; set; }
 
     /// <summary>
     /// Waist
     /// </summary>
     [JsonProperty("WAIST")]
-    public GearEntryDefinition Waist { get; set; }
+    public GearDataLinkDefinition Waist { get; set; }
 
     /// <summary>
     /// Legs
     /// </summary>
     [JsonProperty("LEGS")]
-    public GearEntryDefinition Legs { get; set; }
+    public GearDataLinkDefinition Legs { get; set; }
 
     /// <summary>
     /// Feet
     /// </summary>
     [JsonProperty("FEET")]
-    public GearEntryDefinition Feet { get; set; }
+    public GearDataLinkDefinition Feet { get; set; }
 
     /// <summary>
     /// Earrings
     /// </summary>
     [JsonProperty("EARRINGS")]
-    public GearEntryDefinition Earrings { get; set; }
+    public GearDataLinkDefinition Earrings { get; set; }
 
     /// <summary>
     /// Necklace
     /// </summary>
     [JsonProperty("NECKLACE")]
-    public GearEntryDefinition Necklace { get; set; }
+    public GearDataLinkDefinition Necklace { get; set; }
 
     /// <summary>
     /// Braccelets
     /// </summary>
     [JsonProperty("BRACELETS")]
-    public GearEntryDefinition Bracelets { get; set; }
+    public GearDataLinkDefinition Bracelets { get; set; }
 
     /// <summary>
     /// Right ring
     /// </summary>
     [JsonProperty("RING1")]
-    public GearEntryDefinition Ring1 { get; set; }
+    public GearDataLinkDefinition Ring1 { get; set; }
 
     /// <summary>
     /// Left ring
     /// </summary>
     [JsonProperty("RING2")]
-    public GearEntryDefinition Ring2 { get; set; }
+    public GearDataLinkDefinition Ring2 { get; set; }
 
     /// <summary>
     /// Soul Crystal
     /// </summary>
     [JsonProperty("SOULCRYSTAL")]
-    public SoulcrystalEntryDefinition Soulcrystal { get; set; }
+    public GearDataLinkDefinition Soulcrystal { get; set; }
 }

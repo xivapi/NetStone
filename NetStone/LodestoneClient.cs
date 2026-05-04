@@ -11,6 +11,7 @@ using NetStone.Model.Parseables.Character;
 using NetStone.Model.Parseables.Character.Achievement;
 using NetStone.Model.Parseables.Character.ClassJob;
 using NetStone.Model.Parseables.Character.Collectable;
+using NetStone.Model.Parseables.Character.Gear;
 using NetStone.Model.Parseables.CWLS;
 using NetStone.Model.Parseables.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
@@ -98,8 +99,73 @@ public class LodestoneClient : IDisposable
     /// <param name="id">The ID of the character.</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCharacter"/> class containing information about the character.</returns>
-    public async Task<LodestoneCharacter?> GetCharacter(string id) => await GetParsed($"/lodestone/character/{id}/",
-        node => new LodestoneCharacter(this, node, this.Definitions, id));
+    public async Task<LodestoneCharacter?> GetCharacter(string id)
+    {
+        var character = await GetParsed($"/lodestone/character/{id}/",
+                                        node => new LodestoneCharacter(
+                                            this, node, this.Definitions, id));
+        if (character == null)
+            return null;
+
+        character.Gear.Mainhand = character.Gear.MainHandLink != null
+            ? await GetParsed(character.Gear.MainHandLink,
+                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+            : null;
+        character.Gear.Offhand = character.Gear.OffHandLink != null
+            ? await GetParsed(character.Gear.OffHandLink,
+                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+            : null;
+        character.Gear.Head = character.Gear.HeadLink != null
+            ? await GetParsed(character.Gear.HeadLink,
+                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+            : null;
+        character.Gear.Body = character.Gear.BodyLink != null
+            ? await GetParsed(character.Gear.BodyLink,
+                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+            : null;
+            character.Gear.Hands = character.Gear.HandsLink != null
+                ? await GetParsed(character.Gear.HandsLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Waist = character.Gear.WaistLink != null
+                ? await GetParsed(character.Gear.WaistLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Legs = character.Gear.LegsLink != null
+                ? await GetParsed(character.Gear.LegsLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Feet = character.Gear.FeetLink != null
+                ? await GetParsed(character.Gear.FeetLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Earrings = character.Gear.EarringsLink != null
+                ? await GetParsed(character.Gear.EarringsLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Necklace = character.Gear.NecklaceLink != null
+                ? await GetParsed(character.Gear.NecklaceLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Bracelets = character.Gear.BraceletsLink != null
+                ? await GetParsed(character.Gear.BraceletsLink,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Ring1 = character.Gear.Ring1Link != null
+                ? await GetParsed(character.Gear.Ring1Link,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Ring2 = character.Gear.Ring2Link != null
+                ? await GetParsed(character.Gear.Ring2Link,
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                : null;
+            character.Gear.Soulcrystal = character.Gear.SoulcrystalLink != null
+                ? await GetParsed(character.Gear.SoulcrystalLink,
+                                  node => new SoulcrystalEntry(node, this.Definitions.SoulCrystalEntry))
+                : null;
+        
+            return character;
+    }
 
     /// <summary>
     /// Get a characters' class/job information by its Lodestone ID.

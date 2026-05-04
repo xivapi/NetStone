@@ -35,6 +35,16 @@ public abstract class DefinitionsContainer : IDisposable
     /// Gear definitions for character
     /// </summary>
     public CharacterGearDefinition Gear { get; protected set; }
+    
+    /// <summary>
+    /// Definition for character gear entry (single slot)
+    /// </summary>
+    public GearEntryDefinition GearEntry { get; set; }
+    
+    /// <summary>
+    /// Definition for character soul crystal entry
+    /// </summary>
+    public SoulcrystalEntryDefinition SoulCrystalEntry { get; set; }
 
     /// <summary>
     /// Definitions for a character's attribute

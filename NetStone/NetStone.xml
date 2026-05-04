@@ -45,7 +45,7 @@
             Definition for character gear entry (single slot)
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.DefinitionsContainer.SoulCrystalEntryDefinition">
+        <member name="P:NetStone.Definitions.DefinitionsContainer.SoulCrystalEntry">
             <summary>
             Definition for character soul crystal entry
             </summary>

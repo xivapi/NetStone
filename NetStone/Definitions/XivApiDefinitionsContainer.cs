@@ -15,7 +15,7 @@ namespace NetStone.Definitions;
 /// </summary>
 public class XivApiDefinitionsContainer : DefinitionsContainer
 {
-    private const string DefinitionRepoBase = "https://raw.githubusercontent.com/xivapi/lodestone-css-selectors/main/";
+    private const string DefinitionRepoBase = "https://raw.githubusercontent.com/Koenari/lodestone-css-selectors/main/";
 
     private readonly HttpClient client;
 
@@ -43,6 +43,8 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         this.Character = await GetDefinition<CharacterDefinition>("profile/character.json");
         this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
         this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
+        this.GearEntry = await GetDefinition<GearEntryDefinition>("profile/gearentry.json");
+        this.SoulCrystalEntry = await GetDefinition<SoulcrystalEntryDefinition>("profile/soulcrystal.json");
         this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json");
         this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json");
         this.Mount = await GetDefinition<CharacterMountDefinition>("profile/mount.json");
@@ -66,6 +68,8 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
         this.LinkshellMember = await GetDefinition<PagedDefinition<LinkshellMemberEntryDefinition>>("linkshell/members.json");
         this.LinkshellSearch = await GetDefinition<PagedDefinition<LinkshellSearchEntryDefinition>>("search/linkshell.json");
     }
+
+    
 
     private async Task<T> GetDefinition<T>(string path) where T : IDefinition
     {

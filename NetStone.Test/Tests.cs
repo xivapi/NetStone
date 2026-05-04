@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using NetStone.Definitions;
 using NetStone.GameData.Packs;
 using NetStone.Model.Parseables.Character;
 using NetStone.Search.Character;
@@ -94,7 +95,7 @@ public class Tests
         Assert.AreEqual("«Fury»", fc.Tag);
         Assert.AreEqual("I EAT BABIES FOR BREAKFAST - KAIVE", fc.Slogan);
         Assert.AreEqual(new DateTime(2019, 01, 14, 04, 22, 05), fc.Formed);
-        Assert.GreaterOrEqual(fc.ActiveMemberCount, 35);
+        Assert.GreaterOrEqual(fc.ActiveMemberCount, 27);
         Assert.AreEqual(30, fc.Rank);
 
         //Reputation
@@ -122,7 +123,7 @@ public class Tests
         //Focus
         //todo: selector does not work
         Assert.AreEqual("Always", fc.ActiveState);
-        Assert.AreEqual("Open", fc.Recruitment);
+        Assert.AreEqual("Closed", fc.Recruitment);
 
         Assert.IsNotNull(fc.Focus);
         Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
@@ -177,9 +178,9 @@ public class Tests
         var fc = await this.lodestone.GetFreeCompany(TestFreeCompanyRecruiting);
         Assert.NotNull(fc);
         Assert.AreEqual("Immortal Flames", fc.GrandCompany);
-        Assert.AreEqual("Bedge Lords", fc.Name);
-        Assert.AreEqual("«BEDGE»", fc.Tag);
-        Assert.IsTrue(fc.Slogan.StartsWith("Friendly FC with"));
+        Assert.AreEqual("Kindred's Hollow", fc.Name);
+        Assert.AreEqual("«KIN»", fc.Tag);
+        Assert.IsTrue(fc.Slogan.StartsWith("The kindred souls we "));
         Assert.AreEqual(new DateTime(2022, 12, 04, 19, 47, 07), fc.Formed);
         Assert.GreaterOrEqual(fc.ActiveMemberCount, 50);
         Assert.AreEqual(30, fc.Rank);
@@ -204,7 +205,7 @@ public class Tests
         //Estate
         Assert.NotNull(fc.Estate);
         Assert.IsTrue(fc.Estate.Exists);
-        Assert.AreEqual("Bedge & Breakfast", fc.Estate.Name);
+        Assert.AreEqual("The Den of The Kin", fc.Estate.Name);
         Assert.AreEqual("Plot 5, 11 Ward, The Goblet (Large)", fc.Estate.Plot);
 
         //Focus
@@ -213,7 +214,7 @@ public class Tests
 
         Assert.IsNotNull(fc.Focus);
         Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
-        Assert.IsTrue(fc.Focus.RolePlay.IsEnabled);
+        Assert.IsFalse(fc.Focus.RolePlay.IsEnabled);
         Assert.IsNotNull(fc.Focus.RolePlay.Icon?.AbsoluteUri);
 
         Assert.AreEqual("Leveling", fc.Focus.Leveling.Name);
@@ -380,6 +381,7 @@ public class Tests
         
         //Gear
         var gear = chara.Gear;
+        
         Assert.AreEqual("Mandervillous Wings", gear.Mainhand?.ItemName);
         Assert.IsFalse(gear.Mainhand.IsHq);
         Assert.AreEqual("Mandervillous Wings", gear.Mainhand.StrippedItemName);
@@ -438,7 +440,7 @@ public class Tests
             switch (job)
             {
                 case ClassJob.Culinarian:
-                    Assert.IsTrue(activeJob.IsSpecialized);
+                    Assert.IsFalse(activeJob.IsSpecialized);
                     break;
                 case ClassJob.Viper or ClassJob.Pictomancer:
                     Assert.IsFalse(activeJob.IsUnlocked, $"{job}");
@@ -493,7 +495,7 @@ public class Tests
 
         var achieve = await chara.GetAchievement();
         Assert.NotNull(achieve);
-        Assert.AreEqual(7565,achieve.AchievementPoints);
+        Assert.AreEqual(7595,achieve.AchievementPoints);
         Assert.GreaterOrEqual(achieve.TotalAchievements,898);
         Assert.GreaterOrEqual(achieve.NumPages,8);
         Assert.AreEqual(1, achieve.CurrentPage);

@@ -26,71 +26,99 @@ public class CharacterGear : LodestoneParseable
     /// <summary>
     /// Information about the characters' weapon. Null if none equipped.
     /// </summary>
-    public GearEntry? Mainhand => new GearEntry(this.client, this.RootNode, this.definition.Mainhand).GetOptional();
+    public GearEntry? Mainhand { get; internal set; }
+
+    internal string? MainHandLink => ParseAttribute(this.definition.Mainhand.DataLink);
 
     /// <summary>
     /// Information about the characters' shield/offhand. Null if none equipped.
     /// </summary>
-    public GearEntry? Offhand => new GearEntry(this.client, this.RootNode, this.definition.Offhand).GetOptional();
+    public GearEntry? Offhand { get; internal set; }
+    
+    internal string? OffHandLink => ParseAttribute(this.definition.Offhand.DataLink);
 
     /// <summary>
     /// Information about the characters' headgear. Null if none equipped.
     /// </summary>
-    public GearEntry? Head => new GearEntry(this.client, this.RootNode, this.definition.Head).GetOptional();
+    public GearEntry? Head { get; internal set; }
+    
+    internal string? HeadLink => ParseAttribute(this.definition.Head.DataLink);
+
 
     /// <summary>
     /// Information about the characters' body gear. Null if none equipped.
     /// </summary>
-    public GearEntry? Body => new GearEntry(this.client, this.RootNode, this.definition.Body).GetOptional();
+    public GearEntry? Body { get; internal set; }
 
+    internal string? BodyLink => ParseAttribute(this.definition.Body.DataLink);
+    
     /// <summary>
     /// Information about the characters' gloves. Null if none equipped.
     /// </summary>
-    public GearEntry? Hands => new GearEntry(this.client, this.RootNode, this.definition.Hands).GetOptional();
+    public GearEntry? Hands { get; internal set; }
 
+    internal string? HandsLink => ParseAttribute(this.definition.Hands.DataLink);
+    
     /// <summary>
     /// Information about the characters' waist gear. Null if none equipped.
     /// </summary>
-    public GearEntry? Waist => new GearEntry(this.client, this.RootNode, this.definition.Waist).GetOptional();
+    public GearEntry? Waist { get; internal set; }
 
+    internal string? WaistLink => ParseAttribute(this.definition.Waist.DataLink);
+    
     /// <summary>
     /// Information about the characters' pants. Null if none equipped.
     /// </summary>
-    public GearEntry? Legs => new GearEntry(this.client, this.RootNode, this.definition.Legs).GetOptional();
+    public GearEntry? Legs { get; internal set; }
+    
+    internal string? LegsLink => ParseAttribute(this.definition.Legs.DataLink);
 
     /// <summary>
     /// Information about the characters' shoes. Null if none equipped.
     /// </summary>
-    public GearEntry? Feet => new GearEntry(this.client, this.RootNode, this.definition.Feet).GetOptional();
+    public GearEntry? Feet { get; internal set; }
 
+    internal string? FeetLink => ParseAttribute(this.definition.Feet.DataLink);
+    
     /// <summary>
     /// Information about the characters' earrings. Null if none equipped.
     /// </summary>
-    public GearEntry? Earrings => new GearEntry(this.client, this.RootNode, this.definition.Earrings).GetOptional();
+    public GearEntry? Earrings { get; internal set; }
+    
+    internal string? EarringsLink => ParseAttribute(this.definition.Earrings.DataLink);
 
     /// <summary>
     /// Information about the characters' necklace. Null if none equipped.
     /// </summary>
-    public GearEntry? Necklace => new GearEntry(this.client, this.RootNode, this.definition.Necklace).GetOptional();
+    public GearEntry? Necklace { get; internal set; }
+    
+    internal string? NecklaceLink => ParseAttribute(this.definition.Necklace.DataLink);
 
     /// <summary>
     /// Information about the characters' bracelets. Null if none equipped.
     /// </summary>
-    public GearEntry? Bracelets => new GearEntry(this.client, this.RootNode, this.definition.Bracelets).GetOptional();
+    public GearEntry? Bracelets { get; internal set; }
+    
+    internal string? BraceletsLink => ParseAttribute(this.definition.Bracelets.DataLink);
 
     /// <summary>
     /// Information about the characters' first ring. Null if none equipped.
     /// </summary>
-    public GearEntry? Ring1 => new GearEntry(this.client, this.RootNode, this.definition.Ring1).GetOptional();
+    public GearEntry? Ring1 { get; internal set; }
+    
+    internal string? Ring1Link => ParseAttribute(this.definition.Ring1.DataLink);
 
     /// <summary>
     /// Information about the characters' second ring. Null if none equipped.
     /// </summary>
-    public GearEntry? Ring2 => new GearEntry(this.client, this.RootNode, this.definition.Ring2).GetOptional();
+    public GearEntry? Ring2 { get; internal set; }
+    
+    internal string? Ring2Link => ParseAttribute(this.definition.Ring2.DataLink);
 
     /// <summary>
     /// Information about the characters' soul crystal. Null if none equipped.
     /// </summary>
-    public SoulcrystalEntry? Soulcrystal =>
-        new SoulcrystalEntry(this.RootNode, this.definition.Soulcrystal).GetOptional();
+    public SoulcrystalEntry? Soulcrystal { get; internal set; }
+    
+    internal string? SoulcrystalLink => ParseAttribute(this.definition.Soulcrystal.DataLink);
 }
