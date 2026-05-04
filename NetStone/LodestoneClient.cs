@@ -127,10 +127,12 @@ public class LodestoneClient : IDisposable
                 ? await GetParsed(character.Gear.HandsLink,
                                   node => new GearEntry(this, node, this.Definitions.GearEntry))
                 : null;
+#pragma warning disable CS0618 // Type or member is obsolete
             character.Gear.Waist = character.Gear.WaistLink != null
                 ? await GetParsed(character.Gear.WaistLink,
                                   node => new GearEntry(this, node, this.Definitions.GearEntry))
                 : null;
+#pragma warning restore CS0618 // Type or member is obsolete
             character.Gear.Legs = character.Gear.LegsLink != null
                 ? await GetParsed(character.Gear.LegsLink,
                                   node => new GearEntry(this, node, this.Definitions.GearEntry))

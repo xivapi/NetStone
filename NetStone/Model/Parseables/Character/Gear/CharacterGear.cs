@@ -1,4 +1,5 @@
-﻿using AngleSharp.Dom;
+﻿using System;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Gear;
@@ -62,8 +63,9 @@ public class CharacterGear : LodestoneParseable
     /// <summary>
     /// Information about the characters' waist gear. Null if none equipped.
     /// </summary>
+    [Obsolete("Not part of the game any longer. Will be removed in a future release.")]
     public GearEntry? Waist { get; internal set; }
-
+    [Obsolete("Not part of the game any longer. Will be removed in a future release.")]
     internal string? WaistLink => ParseAttribute(this.definition.Waist.DataLink);
     
     /// <summary>
