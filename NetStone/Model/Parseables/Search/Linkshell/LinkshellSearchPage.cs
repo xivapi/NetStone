@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Linkshell;
 using NetStone.Search.Linkshell;
@@ -21,7 +21,7 @@ public class LinkshellSearchPage : PaginatedSearchResult<LinkshellSearchPage, Li
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public LinkshellSearchPage(LodestoneClient client, HtmlNode rootNode, 
+    public LinkshellSearchPage(LodestoneClient client, IElement rootNode, 
                                PagedDefinition<LinkshellSearchEntryDefinition> pageDefinition,
                                LinkshellSearchQuery currentQuery) 
         : base(rootNode, pageDefinition, client.SearchLinkshell, currentQuery)

@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.FreeCompany;
 
 namespace NetStone.Model.Parseables.FreeCompany;
@@ -11,7 +11,7 @@ public class FreeCompanyEstate : LodestoneParseable, IOptionalParseable<FreeComp
     private readonly EstateDefinition definition;
 
     ///<inheritdoc />
-    public FreeCompanyEstate(HtmlNode rootNode, EstateDefinition definition) : base(rootNode)
+    public FreeCompanyEstate(IElement rootNode, EstateDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

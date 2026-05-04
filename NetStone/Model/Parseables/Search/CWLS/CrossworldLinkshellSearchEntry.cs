@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.CWLS;
 using NetStone.Model.Parseables.CWLS;
 
@@ -14,7 +14,7 @@ public class CrossworldLinkshellSearchEntry : LodestoneParseable
     private readonly CrossworldLinkshellSearchEntryDefinition definition;
 
     ///
-    public CrossworldLinkshellSearchEntry(LodestoneClient client, HtmlNode rootNode, CrossworldLinkshellSearchEntryDefinition definition) :
+    public CrossworldLinkshellSearchEntry(LodestoneClient client, IElement rootNode, CrossworldLinkshellSearchEntryDefinition definition) :
         base(rootNode)
     {
         this.client = client;

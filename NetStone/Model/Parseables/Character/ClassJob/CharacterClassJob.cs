@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.ClassJob;
@@ -16,7 +16,7 @@ public class CharacterClassJob : LodestoneParseable
     /// </summary>
     /// <param name="rootNode">Root html node of Lodestone page</param>
     /// <param name="definition">Definition to parse ClassJobs</param>
-    public CharacterClassJob(HtmlNode rootNode, CharacterClassJobDefinition definition) : base(rootNode)
+    public CharacterClassJob(IElement rootNode, CharacterClassJobDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

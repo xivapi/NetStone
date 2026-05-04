@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Linkshell;
 using NetStone.Model.Parseables.Linkshell;
 
@@ -14,7 +14,7 @@ public class LinkshellSearchEntry : LodestoneParseable
     private readonly LinkshellSearchEntryDefinition definition;
 
     ///
-    public LinkshellSearchEntry(LodestoneClient client, HtmlNode rootNode, LinkshellSearchEntryDefinition definition) :
+    public LinkshellSearchEntry(LodestoneClient client, IElement rootNode, LinkshellSearchEntryDefinition definition) :
         base(rootNode)
     {
         this.client = client;

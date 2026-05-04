@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Model.Parseables.FreeCompany.Members;
-using NetStone.Search.FreeCompany;
 
 namespace NetStone.Model.Parseables.FreeCompany;
 
@@ -26,7 +25,7 @@ public class LodestoneFreeCompany : LodestoneParseable
     /// <param name="rootNode">Root node of FC page</param>
     /// <param name="definitions">Parser definitions</param>
     /// <param name="id">Id of FC</param>
-    public LodestoneFreeCompany(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer definitions, string id)
+    public LodestoneFreeCompany(LodestoneClient client, IElement rootNode, DefinitionsContainer definitions, string id)
         : base(rootNode)
     {
         this.client = client;

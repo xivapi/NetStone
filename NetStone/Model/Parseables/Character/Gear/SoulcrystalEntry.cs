@@ -1,7 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
-using NetStone.Search.FreeCompany;
-using System;
 
 namespace NetStone.Model.Parseables.Character.Gear;
 
@@ -13,7 +11,7 @@ public class SoulcrystalEntry : LodestoneParseable, IOptionalParseable<Soulcryst
     private readonly SoulcrystalEntryDefinition definition;
 
     ///<inheritdoc />
-    public SoulcrystalEntry(HtmlNode rootNode, SoulcrystalEntryDefinition definition) : base(rootNode)
+    public SoulcrystalEntry(IElement rootNode, SoulcrystalEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

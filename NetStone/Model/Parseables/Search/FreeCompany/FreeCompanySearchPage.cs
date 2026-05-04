@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.Search.FreeCompany;
@@ -21,7 +21,7 @@ public class FreeCompanySearchPage : PaginatedSearchResult<FreeCompanySearchPage
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public FreeCompanySearchPage(LodestoneClient client, HtmlNode rootNode, 
+    public FreeCompanySearchPage(LodestoneClient client, IElement rootNode, 
                                  PagedDefinition<FreeCompanySearchEntryDefinition> pageDefinition,
                                  FreeCompanySearchQuery currentQuery) 
         : base(rootNode, pageDefinition, client.SearchFreeCompany, currentQuery)

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.CWLS;
 using NetStone.Search.Linkshell;
@@ -21,7 +21,7 @@ public class CrossworldLinkshellSearchPage
     /// <param name="rootNode"></param>
     /// <param name="pageDefinition"></param>
     /// <param name="currentQuery"></param>
-    public CrossworldLinkshellSearchPage(LodestoneClient client, HtmlNode rootNode, 
+    public CrossworldLinkshellSearchPage(LodestoneClient client, IElement rootNode, 
                                          PagedDefinition<CrossworldLinkshellSearchEntryDefinition> pageDefinition,
                                          CrossworldLinkshellSearchQuery currentQuery) 
         : base(rootNode, pageDefinition, client.SearchCrossworldLinkshell, currentQuery)

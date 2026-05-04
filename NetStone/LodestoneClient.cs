@@ -2,7 +2,8 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp;
+using AngleSharp.Dom;
 using NetStone.Definitions;
 using NetStone.GameData;
 using NetStone.Model;
@@ -251,9 +252,11 @@ public class LodestoneClient : IDisposable
     /// <param name="agent">The user agent to use for the request.</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns>The instantiated LodestoneParseable in case of success.</returns>
-    private async Task<T?> GetParsed<T>(string url, Func<HtmlNode, T?> createParseable,
+    private async Task<T?> GetParsed<T>(string url, Func<IElement, T?> createParseable,
         UserAgent agent = UserAgent.Desktop) where T : LodestoneParseable
     {
+        var config = Configuration.Default.WithDefaultLoader();
+        var context = BrowsingContext.New(config);
         var request = new HttpRequestMessage(HttpMethod.Get, url);
 
         switch (agent)
@@ -273,10 +276,9 @@ public class LodestoneClient : IDisposable
         if (response.StatusCode == HttpStatusCode.NotFound)
             return null;
 
-        var doc = new HtmlDocument();
-        doc.LoadHtml(await response.Content.ReadAsStringAsync());
-
-        return createParseable.Invoke(doc.DocumentNode);
+        var doc = await context.OpenAsync(async void (req) => req.Content(await response.Content.ReadAsStringAsync()));
+        
+        return createParseable.Invoke(doc.Body!);
     }
 
     /// <inheritdoc />

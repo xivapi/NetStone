@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.FreeCompany;
 
@@ -18,7 +18,7 @@ public class FreeCompanySocialGroup : SocialGroup
     /// <param name="client"></param>
     /// <param name="rootNode"></param>
     /// <param name="socialGroupDefinition"></param>
-    public FreeCompanySocialGroup(LodestoneClient client, HtmlNode rootNode,
+    public FreeCompanySocialGroup(LodestoneClient client, IElement rootNode,
         ICharacterSocialGroupDefinition socialGroupDefinition) : base(rootNode, socialGroupDefinition)
     {
         this.client = client;

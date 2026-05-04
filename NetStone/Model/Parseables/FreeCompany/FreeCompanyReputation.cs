@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.FreeCompany;
 using NetStone.StaticData;
 
@@ -19,7 +18,7 @@ public class FreeCompanyReputation : LodestoneParseable
     /// </summary>
     /// <param name="rootNode"></param>
     /// <param name="definition"></param>
-    public FreeCompanyReputation(HtmlNode rootNode, FreeCompanyReputationDefinition definition) : base(rootNode)
+    public FreeCompanyReputation(IElement rootNode, FreeCompanyReputationDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

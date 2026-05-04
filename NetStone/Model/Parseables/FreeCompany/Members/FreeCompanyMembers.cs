@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.FreeCompany;
 
@@ -17,7 +17,7 @@ public class FreeCompanyMembers : PaginatedIdResult<FreeCompanyMembers, FreeComp
     /// <param name="rootNode"></param>
     /// <param name="definition"></param>
     /// <param name="id"></param>
-    public FreeCompanyMembers(LodestoneClient client, HtmlNode rootNode, PagedDefinition<FreeCompanyMembersEntryDefinition> definition, string id) :
+    public FreeCompanyMembers(LodestoneClient client, IElement rootNode, PagedDefinition<FreeCompanyMembersEntryDefinition> definition, string id) :
         base(rootNode, definition, client.GetFreeCompanyMembers, id)
     {
     }

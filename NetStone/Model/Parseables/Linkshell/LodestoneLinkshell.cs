@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions;
 using NetStone.Definitions.Model.Linkshell;
 using NetStone.Model.Parseables.Linkshell.Members;
@@ -20,7 +20,7 @@ public class LodestoneLinkshell : PaginatedIdResult<LodestoneLinkshell,Linkshell
     /// <param name="rootNode">The root document node of the page.</param>
     /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
     /// <param name="id">The ID of the cross world linkshell.</param>
-    public LodestoneLinkshell(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string id) : base(rootNode,container.LinkshellMember, client.GetLinkshell,id)
+    public LodestoneLinkshell(LodestoneClient client, IElement rootNode, DefinitionsContainer container, string id) : base(rootNode,container.LinkshellMember, client.GetLinkshell,id)
     {
         this.lsDefinition = container.Linkshell;
     }

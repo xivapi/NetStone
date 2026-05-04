@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.ClassJob;
@@ -17,7 +17,7 @@ public class ClassJobBozja : LodestoneParseable, IOptionalParseable<ClassJobBozj
 	/// </summary>
 	/// <param name="rootNode">Root node of this entry</param>
 	/// <param name="definition">Parser definition</param>
-	public ClassJobBozja(HtmlNode rootNode, ClassJobBozjaDefinition definition) : base(rootNode)
+	public ClassJobBozja(IElement rootNode, ClassJobBozjaDefinition definition) : base(rootNode)
 	{
 		this.definition = definition;
 	}

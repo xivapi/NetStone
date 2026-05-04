@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.Linkshell;
 
 namespace NetStone.Model.Parseables.Linkshell.Members;
@@ -14,7 +14,7 @@ public class LinkshellMemberEntry : LodestoneParseable
     /// </summary>
     /// <param name="rootNode">Root html node of this entry</param>
     /// <param name="definition">Css and regex definition</param>
-    public LinkshellMemberEntry(HtmlNode rootNode, LinkshellMemberEntryDefinition definition) : base(rootNode)
+    public LinkshellMemberEntry(IElement rootNode, LinkshellMemberEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

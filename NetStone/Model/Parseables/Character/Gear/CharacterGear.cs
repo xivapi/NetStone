@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Gear;
@@ -17,7 +17,7 @@ public class CharacterGear : LodestoneParseable
     /// <param name="client"></param>
     /// <param name="rootNode"></param>
     /// <param name="definition"></param>
-    public CharacterGear(LodestoneClient client, HtmlNode rootNode, CharacterGearDefinition definition) : base(rootNode)
+    public CharacterGear(LodestoneClient client, IElement rootNode, CharacterGearDefinition definition) : base(rootNode)
     {
         this.client = client;
         this.definition = definition;

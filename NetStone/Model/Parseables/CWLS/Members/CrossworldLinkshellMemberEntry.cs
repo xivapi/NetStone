@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Dom;
 using NetStone.Definitions.Model.CWLS;
 
 namespace NetStone.Model.Parseables.CWLS.Members;
@@ -14,7 +14,7 @@ public class CrossworldLinkshellMemberEntry : LodestoneParseable
     /// </summary>
     /// <param name="rootNode">Root html node of this entry</param>
     /// <param name="definition">Css and regex definition</param>
-    public CrossworldLinkshellMemberEntry(HtmlNode rootNode, CrossworldLinkshellMemberEntryDefinition definition) : base(rootNode)
+    public CrossworldLinkshellMemberEntry(IElement rootNode, CrossworldLinkshellMemberEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }

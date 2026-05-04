@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 using NetStone.GameData;
 
@@ -27,7 +27,7 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// <param name="client">Lodestone client</param>
     /// <param name="rootNode">Entry node</param>
     /// <param name="definition">Parser definition</param>
-    public GearEntry(LodestoneClient client, HtmlNode rootNode, GearEntryDefinition definition) : base(rootNode)
+    public GearEntry(LodestoneClient client, IElement rootNode, GearEntryDefinition definition) : base(rootNode)
     {
         this.client = client;
         this.definition = definition;

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.Character;
 
@@ -14,7 +14,7 @@ public class CharacterSearchEntry : LodestoneParseable
     private readonly CharacterSearchEntryDefinition definition;
 
     ///
-    public CharacterSearchEntry(LodestoneClient client, HtmlNode rootNode, CharacterSearchEntryDefinition definition) :
+    public CharacterSearchEntry(LodestoneClient client, IElement rootNode, CharacterSearchEntryDefinition definition) :
         base(rootNode)
     {
         this.client = client;

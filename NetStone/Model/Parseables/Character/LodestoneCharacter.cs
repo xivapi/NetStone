@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions;
 using NetStone.Definitions.Model.Character;
 using NetStone.Model.Parseables.Character.Achievement;
@@ -41,7 +41,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <param name="rootNode">The root document node of the page.</param>
     /// <param name="container">The <see cref="DefinitionsContainer"/> holding definitions to be used to access data.</param>
     /// <param name="charId">The ID of the character.</param>
-    public LodestoneCharacter(LodestoneClient client, HtmlNode rootNode, DefinitionsContainer container, string charId)
+    public LodestoneCharacter(LodestoneClient client, IElement rootNode, DefinitionsContainer container, string charId)
         : base(rootNode)
     {
         this.client = client;

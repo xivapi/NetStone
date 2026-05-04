@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using HtmlAgilityPack;
+using AngleSharp.Dom;
 using NetStone.Definitions.Model.Character;
 
 namespace NetStone.Model.Parseables.Character.Achievement;
@@ -17,7 +17,7 @@ public class CharacterAchievementEntry : LodestoneParseable
     /// </summary>
     /// <param name="rootNode">Root html node of this entry</param>
     /// <param name="definition">Css and regex definition</param>
-    public CharacterAchievementEntry(HtmlNode rootNode, CharacterAchievementEntryDefinition definition) : base(rootNode)
+    public CharacterAchievementEntry(IElement rootNode, CharacterAchievementEntryDefinition definition) : base(rootNode)
     {
         this.definition = definition;
     }
