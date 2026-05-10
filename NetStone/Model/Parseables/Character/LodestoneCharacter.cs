@@ -48,7 +48,7 @@ public class LodestoneCharacter : LodestoneParseable
 
         this.charDefinition = container.Character;
         this.attributesDefinition = container.Attributes;
-        this.Gear = new CharacterGear(this.client, this.RootNode, container.Gear);  
+        this.Gear = new CharacterGear(this.RootNode, container.Gear);  
     }
 
     #region Properties
@@ -120,7 +120,7 @@ public class LodestoneCharacter : LodestoneParseable
     public SocialGroup? PvPTeam => new SocialGroup(this.RootNode, this.charDefinition.PvPTeam).GetOptional();
 
     
-    private GroupCollection RaceClanGenderRegex => ParseRegex(this.charDefinition.RaceClanGender);
+    private GroupCollection _raceClanGenderRegex => ParseRegex(this.charDefinition.RaceClanGender);
 
     /// <summary>
     /// String containing information on clan, race and gender
@@ -131,17 +131,17 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// Race of the character
     /// </summary>
-    public string Race => this.RaceClanGenderRegex["Race"].Value;
+    public string Race => this._raceClanGenderRegex["Race"].Value;
     
     /// <summary>
     /// Tribe this character belongs to
     /// </summary>
-    public string Tribe => this.RaceClanGenderRegex["Tribe"].Value;
+    public string Tribe => this._raceClanGenderRegex["Tribe"].Value;
     
     /// <summary>
     /// Character representing the characters gender <see cref="FemaleChar"/> and <see cref="MaleChar"/>
     /// </summary>
-    public char Gender => this.RaceClanGenderRegex["Gender"].Value[0];
+    public char Gender => this._raceClanGenderRegex["Gender"].Value[0];
 
     /// <summary>
     /// The server/world of the character.
@@ -166,7 +166,7 @@ public class LodestoneCharacter : LodestoneParseable
     /// <summary>
     /// The character gear information.
     /// </summary>
-    public CharacterGear Gear;
+    public readonly CharacterGear Gear;
 
     /// <summary>
     /// The character attribute information.

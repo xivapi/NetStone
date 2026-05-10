@@ -12,19 +12,19 @@ public class FreeCompanyFocusEntryDefinition : IDefinition
     /// Name of type
     /// </summary>
     [JsonProperty("NAME")]
-    public DefinitionsPack NAME { get; set; }
+    public DefinitionsPack Name { get; set; }
 
     /// <summary>
     /// Icon for type
     /// </summary>
     [JsonProperty("ICON")]
-    public DefinitionsPack ICON { get; set; }
+    public DefinitionsPack Icon { get; set; }
 
     /// <summary>
     /// Status (if company focuses on this)
     /// </summary>
     [JsonProperty("STATUS")]
-    public DefinitionsPack STATUS { get; set; }
+    public DefinitionsPack Status { get; set; }
 }
 
 /// <summary>
@@ -36,7 +36,7 @@ public class FreeCompanyFocusDefinition : IDefinition
     /// No focus specified
     /// </summary>
     [JsonProperty("NOT_SPECIFIED")]
-    public DefinitionsPack NOTSPECIFIED { get; set; }
+    public DefinitionsPack NotSpecified { get; set; }
 
     /// <summary>
     /// Role play

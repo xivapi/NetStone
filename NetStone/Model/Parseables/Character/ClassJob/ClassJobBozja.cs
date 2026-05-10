@@ -25,14 +25,14 @@ public class ClassJobBozja : LodestoneParseable, IOptionalParseable<ClassJobBozj
 	/// <summary>
 	/// The name of this class and job combo.
 	/// </summary>
-	public string Name => Parse(this.definition.NAME);
+	public string Name => Parse(this.definition.Name);
 
 	/// <summary>
 	/// The level this class or job is at.
 	/// </summary>
-	public int Level => int.TryParse(Parse(this.definition.LEVEL), out var levelOut) ? levelOut : 0 ;
+	public int Level => int.TryParse(Parse(this.definition.Level), out var levelOut) ? levelOut : 0 ;
 
-	private string MettleString => ParseInnerText(this.definition.METTLE);
+	private string _mettleString => ParseInnerText(this.definition.Mettle);
 
 	private int? mettleCurrentVal;
 
@@ -81,7 +81,7 @@ public class ClassJobBozja : LodestoneParseable, IOptionalParseable<ClassJobBozj
 			return;
 		}
 
-		var mettleVals = this.MettleString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
+		var mettleVals = this._mettleString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
 
 		this.mettleCurrentVal = int.TryParse(Regex.Match(mettleVals[0], @"\d+").Value, out var mettleCur) ? mettleCur : 0;
 		this.mettleMaxVal = int.TryParse(Regex.Match(mettleVals[1], @"\d+").Value, out var mettleMax) ? mettleMax : 0;

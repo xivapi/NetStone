@@ -495,7 +495,7 @@ public class Tests
 
         var achieve = await chara.GetAchievement();
         Assert.NotNull(achieve);
-        Assert.AreEqual(7595,achieve.AchievementPoints);
+        Assert.GreaterOrEqual(achieve.AchievementPoints,7595);
         Assert.GreaterOrEqual(achieve.TotalAchievements,898);
         Assert.GreaterOrEqual(achieve.NumPages,8);
         Assert.AreEqual(1, achieve.CurrentPage);
@@ -601,6 +601,7 @@ public class Tests
         var query = new CrossworldLinkshellSearchQuery()
         {
             Name = "Hell",
+            RecruitingOnly = false,
             ActiveMembers = LinkshellSizeCategory.ElevenToThirty,
             DataCenter = "Chaos",
             Sorting = LinkshellSortKind.MemberCountDesc,

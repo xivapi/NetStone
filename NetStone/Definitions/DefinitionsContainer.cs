@@ -39,52 +39,52 @@ public abstract class DefinitionsContainer : IDisposable
     /// <summary>
     /// Definition for character gear entry (single slot)
     /// </summary>
-    public GearEntryDefinition GearEntry { get; set; }
+    public GearEntryDefinition GearEntry { get; protected set; }
     
     /// <summary>
     /// Definition for character soul crystal entry
     /// </summary>
-    public SoulcrystalEntryDefinition SoulCrystalEntry { get; set; }
+    public SoulcrystalEntryDefinition SoulCrystalEntry { get; protected set; }
 
     /// <summary>
     /// Definitions for a character's attribute
     /// </summary>
-    public CharacterAttributesDefinition Attributes { get; set; }
+    public CharacterAttributesDefinition Attributes { get; protected set; }
 
     /// <summary>
     /// Definitions for a character's achievements
     /// </summary>
-    public CharacterAchievementDefinition Achievement { get; set; }
+    public CharacterAchievementDefinition Achievement { get; protected set; }
 
     /// <summary>
     /// Definitions for a character's mounts
     /// </summary>
-    public CharacterCollectableDefinition Mount { get; set; }
+    public CharacterCollectableDefinition Mount { get; protected set; }
 
     /// <summary>
     /// Definitions for a character's minions
     /// </summary>
-    public CharacterCollectableDefinition Minion { get; set; }
+    public CharacterCollectableDefinition Minion { get; protected set; }
 
     /// <summary>
     /// Definitions for Free Company
     /// </summary>
-    public FreeCompanyDefinition FreeCompany { get; set; }
+    public FreeCompanyDefinition FreeCompany { get; protected set; }
 
     /// <summary>
     /// Definitions for Free Company focus
     /// </summary>
-    public FreeCompanyFocusDefinition FreeCompanyFocus { get; set; }
+    public FreeCompanyFocusDefinition FreeCompanyFocus { get; protected set; }
 
     /// <summary>
     /// Definitions for Free Company reputation
     /// </summary>
-    public FreeCompanyReputationDefinition FreeCompanyReputation { get; set; }
+    public FreeCompanyReputationDefinition FreeCompanyReputation { get; protected set; }
 
     /// <summary>
     /// Definitions for Free Company member list
     /// </summary>
-    public PagedDefinition<FreeCompanyMembersEntryDefinition> FreeCompanyMembers { get; set; }
+    public PagedDefinition<FreeCompanyMembersEntryDefinition> FreeCompanyMembers { get; protected set; }
 
     /// <summary>
     /// Definitions for character search

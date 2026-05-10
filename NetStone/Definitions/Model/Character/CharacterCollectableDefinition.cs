@@ -5,6 +5,7 @@ namespace NetStone.Definitions.Model.Character;
 /// <summary>
 /// General class for a category of collectables
 /// </summary>
+// ReSharper disable once InconsistentNaming
 public interface CharacterCollectableDefinition : IDefinition
 {
     /// <summary>

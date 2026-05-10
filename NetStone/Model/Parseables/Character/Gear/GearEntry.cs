@@ -89,7 +89,7 @@ public class GearEntry : LodestoneParseable, IOptionalParseable<GearEntry>
     /// <summary>
     /// Item level of this item
     /// </summary>
-    public int ItemLevel => int.TryParse(Parse(definition.ItemLevel).Split(' ').LastOrDefault(), out var itemLevel)
+    public int ItemLevel => int.TryParse(Parse(this.definition.ItemLevel).Split(' ').LastOrDefault(), out var itemLevel)
         ? itemLevel
         : 0;
 

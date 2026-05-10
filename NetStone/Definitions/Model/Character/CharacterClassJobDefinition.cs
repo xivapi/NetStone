@@ -11,19 +11,19 @@ public class ClassJobBozjaDefinition
     /// Level
     /// </summary>
     [JsonProperty("LEVEL")]
-    public DefinitionsPack LEVEL { get; set; }
+    public DefinitionsPack Level { get; set; }
 
     /// <summary>
     /// Mettle
     /// </summary>
     [JsonProperty("METTLE")]
-    public DefinitionsPack METTLE { get; set; }
+    public DefinitionsPack Mettle { get; set; }
 
     /// <summary>
     /// Name
     /// </summary>
     [JsonProperty("NAME")]
-    public DefinitionsPack NAME { get; set; }
+    public DefinitionsPack Name { get; set; }
 }
 
 /// <summary>

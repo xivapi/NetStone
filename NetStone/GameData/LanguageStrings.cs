@@ -1,8 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace NetStone.GameData;
 
 /// <summary>
 /// Container for localized strings
 /// </summary>
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public struct LanguageStrings
 {
     /// <summary>

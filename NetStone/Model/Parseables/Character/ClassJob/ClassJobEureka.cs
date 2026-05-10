@@ -36,7 +36,7 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 	/// </summary>
 	public int Level => int.TryParse(Parse(this.definition.Level), out var level)? level : 0;
 
-	private string ExpString => ParseInnerText(this.definition.Exp);
+	private string _expString => ParseInnerText(this.definition.Exp);
 
 	private int? expCurrentVal;
 
@@ -85,7 +85,7 @@ public class ClassJobEureka : LodestoneParseable, IOptionalParseable<ClassJobEur
 			return;
 		}
 
-		var expVals = this.ExpString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
+		var expVals = this._expString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
 
 		this.expCurrentVal = int.TryParse(expVals[0], out var expCur) ? expCur : 0;
 		this.expMaxVal = int.TryParse(expVals[1], out var expMax) ? expMax : 0;

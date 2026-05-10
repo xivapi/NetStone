@@ -1,8 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace NetStone.GameData;
 
 /// <summary>
 /// Game data with localized name
 /// </summary>
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
 public struct NamedGameData
 {
     /// <summary>

@@ -43,7 +43,7 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
         }
     }
 
-    private string ExpString => ParseInnerText(this.definition.Exp);
+    private string _expString => ParseInnerText(this.definition.Exp);
 
     private long? expCurrentVal;
 
@@ -92,7 +92,7 @@ public class ClassJobEntry : LodestoneParseable, IOptionalParseable<ClassJobEntr
             return;
         }
 
-        var expVals = this.ExpString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
+        var expVals = this._expString.Split(" / ").Select(x => x.Replace(",", string.Empty)).ToArray();
 
         if (expVals[0] == "--")
         {

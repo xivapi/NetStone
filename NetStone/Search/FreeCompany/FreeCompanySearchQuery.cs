@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using NetStone.StaticData;
 
@@ -7,6 +8,8 @@ namespace NetStone.Search.FreeCompany;
 /// <summary>
 /// Models a search query for Free companies
 /// </summary>
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class FreeCompanySearchQuery : ISearchQuery
 {
     /// <summary>

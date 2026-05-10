@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using NetStone.StaticData;
 
@@ -7,6 +8,8 @@ namespace NetStone.Search.Character;
 /// <summary>
 /// Models a search for characters
 /// </summary>
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+[SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
 public class CharacterSearchQuery : ISearchQuery
 {
     /// <summary>

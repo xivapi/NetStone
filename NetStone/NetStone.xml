@@ -314,17 +314,17 @@
             Definitions for Bozja jobs
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.LEVEL">
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.Level">
             <summary>
             Level
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.METTLE">
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.Mettle">
             <summary>
             Mettle
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.NAME">
+        <member name="P:NetStone.Definitions.Model.Character.ClassJobBozjaDefinition.Name">
             <summary>
             Name
             </summary>
@@ -1149,17 +1149,17 @@
             us
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.NAME">
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.Name">
             <summary>
             Name of type
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.ICON">
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.Icon">
             <summary>
             Icon for type
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.STATUS">
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusEntryDefinition.Status">
             <summary>
             Status (if company focuses on this)
             </summary>
@@ -1169,7 +1169,7 @@
             Definition container for all FC focus types
             </summary>
         </member>
-        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.NOTSPECIFIED">
+        <member name="P:NetStone.Definitions.Model.FreeCompany.FreeCompanyFocusDefinition.NotSpecified">
             <summary>
             No focus specified
             </summary>
@@ -2818,82 +2818,81 @@
             Container class holding information about a character's equipped gear.
             </summary>
         </member>
-        <member name="M:NetStone.Model.Parseables.Character.Gear.CharacterGear.#ctor(NetStone.LodestoneClient,AngleSharp.Dom.IElement,NetStone.Definitions.Model.Character.CharacterGearDefinition)">
+        <member name="M:NetStone.Model.Parseables.Character.Gear.CharacterGear.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.Character.CharacterGearDefinition)">
             <summary>
             Constructs parser for character gear
             </summary>
-            <param name="client"></param>
             <param name="rootNode"></param>
             <param name="definition"></param>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Mainhand">
             <summary>
-            Information about the characters' weapon. Null if none equipped.
+            Information about the characters' weapon. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Offhand">
             <summary>
-            Information about the characters' shield/offhand. Null if none equipped.
+            Information about the characters' shield/offhand. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Head">
             <summary>
-            Information about the characters' headgear. Null if none equipped.
+            Information about the characters' headgear. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Body">
             <summary>
-            Information about the characters' body gear. Null if none equipped.
+            Information about the characters' body gear. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Hands">
             <summary>
-            Information about the characters' gloves. Null if none equipped.
+            Information about the characters' gloves. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Waist">
             <summary>
-            Information about the characters' waist gear. Null if none equipped.
+            Information about the characters' waist gear. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Legs">
             <summary>
-            Information about the characters' pants. Null if none equipped.
+            Information about the characters' pants. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Feet">
             <summary>
-            Information about the characters' shoes. Null if none equipped.
+            Information about the characters' shoes. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Earrings">
             <summary>
-            Information about the characters' earrings. Null if none equipped.
+            Information about the characters' earrings. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Necklace">
             <summary>
-            Information about the characters' necklace. Null if none equipped.
+            Information about the characters' necklace. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Bracelets">
             <summary>
-            Information about the characters' bracelets. Null if none equipped.
+            Information about the characters' bracelets. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Ring1">
             <summary>
-            Information about the characters' first ring. Null if none equipped.
+            Information about the characters' first ring. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Ring2">
             <summary>
-            Information about the characters' second ring. Null if none equipped.
+            Information about the characters' second ring. Null if none is equipped.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.Gear.CharacterGear.Soulcrystal">
             <summary>
-            Information about the characters' soul crystal. Null if none equipped.
+            Information about the characters' soul crystal. Null if none is equipped.
             </summary>
         </member>
         <member name="T:NetStone.Model.Parseables.Character.Gear.GearEntry">
