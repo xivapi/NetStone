@@ -1,3 +1,6 @@
+## 1.4.2
+### Fixes
+ - Fixed character gear for the new website structure
 ## 1.4.1
 ### Behavioral changes
  - Exceptions from http requests are not caught and ignored anymore
