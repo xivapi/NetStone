@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using NetStone.Definitions.Model;
@@ -26,8 +27,9 @@ public interface IPaginatedResult<T> where T : LodestoneParseable
     /// <summary>
     /// Gets the next page of results
     /// </summary>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <returns>Task of retrieving next page</returns>
-    Task<T?> GetNextPage();
+    Task<T?> GetNextPage(CancellationToken cancellationToken = default);
 }
 
 /// <summary>
@@ -40,7 +42,7 @@ public abstract class PaginatedIdResult<TPage, TEntry, TEntryDef>
 {
     ///<inheritdoc />
     protected PaginatedIdResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition, 
-                                Func<string, int, Task<TPage?>> nextPageFunc, string id) 
+                                Func<string, int, CancellationToken, Task<TPage?>> nextPageFunc, string id) 
         : base(rootNode, pageDefinition, nextPageFunc, id)
     {
     }
@@ -56,7 +58,7 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
 {
     ///<inheritdoc />
     protected PaginatedSearchResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition, 
-                                    Func<TQuery, int, Task<TPage?>> nextPageFunc, 
+                                    Func<TQuery, int, CancellationToken, Task<TPage?>> nextPageFunc, 
                                     TQuery query) 
         : base(rootNode, pageDefinition, nextPageFunc, query)
     {
@@ -76,7 +78,7 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
 
     private readonly TRequest request;
     
-    private readonly Func<TRequest, int, Task<TPage?>> nextPageFunc;
+    private readonly Func<TRequest, int, CancellationToken, Task<TPage?>> nextPageFunc;
 
     /// <summary>
     /// 
@@ -85,7 +87,7 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
     /// <param name="pageDefinition">CSS definitions for the paginated type</param>
     /// <param name="nextPageFunc">Function to retrieve a page of this type</param>
     /// <param name="request">The input used to request further pages.</param>
-    protected PaginatedResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition,Func<TRequest, int, Task<TPage?>> nextPageFunc, TRequest request) : base(rootNode)
+    protected PaginatedResult(IElement rootNode, PagedDefinition<TEntryDef> pageDefinition,Func<TRequest, int, CancellationToken, Task<TPage?>> nextPageFunc, TRequest request) : base(rootNode)
     {
         this.PageDefinition = pageDefinition;
         this.request = request;
@@ -157,7 +159,7 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
     }
     
     /// <inheritdoc />
-    public async Task<TPage?> GetNextPage()
+    public async Task<TPage?> GetNextPage(CancellationToken cancellationToken = default)
     {
         if (!this.HasResults)
             return null;
@@ -165,6 +167,6 @@ public abstract class PaginatedSearchResult<TPage, TEntry, TEntryDef, TQuery>
         if (this.CurrentPage == this.NumPages)
             return null;
 
-        return await this.nextPageFunc(this.request, this.CurrentPage + 1);
+        return await this.nextPageFunc(this.request, this.CurrentPage + 1, cancellationToken);
     }
 }

@@ -130,10 +130,11 @@
             Definitions for link-shell searches
             </summary>
         </member>
-        <member name="M:NetStone.Definitions.DefinitionsContainer.Reload">
+        <member name="M:NetStone.Definitions.DefinitionsContainer.Reload(System.Threading.CancellationToken)">
             <summary>
             Loads the definitions from repo
             </summary>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <returns>Reload task</returns>
         </member>
         <member name="M:NetStone.Definitions.DefinitionsContainer.Dispose">
@@ -1659,10 +1660,11 @@
             Constructs this class without populating definitions
             </summary>
         </member>
-        <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Reload">
+        <member name="M:NetStone.Definitions.XivApiDefinitionsContainer.Reload(System.Threading.CancellationToken)">
             <summary>
             Fetches current CSS selector definitions from xivapi/lodestone-css-selectors github repository.
             </summary>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"></exception>
             <exception cref="T:System.FormatException"></exception>
             <returns>Task for this operation</returns>
@@ -1795,140 +1797,154 @@
         <member name="M:NetStone.LodestoneClient.GetCustomClient(NetStone.Definitions.DefinitionsContainer,NetStone.GameData.IGameDataProvider,System.String)">
             <summary>
             Initializes and returns a new Lodestone client with custom definitions provided<br/>
-            To get a client with standard definitions use <see cref="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String)"/>
+            To get a client with standard definitions use <see cref="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String,System.Threading.CancellationToken)"/>
             </summary>
             <param name="definitions">A set of custom definitions </param>
             <param name="gameData">Service providing game data for parsing</param>
             <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
             <returns></returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String)">
+        <member name="M:NetStone.LodestoneClient.GetClientAsync(NetStone.GameData.IGameDataProvider,System.String,System.Threading.CancellationToken)">
             <summary>
             Initializes and returns a new Lodestone client with current definitions loaded from xivapi/lodestone-css-selectors
             </summary>
             <param name="gameData">Service providing game data for parsing</param>
             <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"></exception>
             <exception cref="T:System.FormatException"></exception>
             <returns></returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacter(System.String)">
+        <member name="M:NetStone.LodestoneClient.GetCharacter(System.String,System.Threading.CancellationToken)">
             <summary>
             Get a character by its Lodestone ID.
             </summary>
             <param name="id">The ID of the character.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.LodestoneCharacter"/> class containing information about the character.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterClassJob(System.String)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterClassJob(System.String,System.Threading.CancellationToken)">
             <summary>
             Get a characters' class/job information by its Lodestone ID.
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetClassJobInfo"/>.
             </summary>
             <param name="id">The ID of the character.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterAchievement(System.String,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterAchievement(System.String,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Get a characters' unlocked achievement information by its Lodestone ID.
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetAchievement"/>.
             </summary>
             <param name="id">The ID of the character.</param>
             <param name="page">The number of the page that should be fetched.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Achievement.CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterMount(System.String)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterMount(System.String,System.Threading.CancellationToken)">
             <summary>
             Get a characters' unlocked mount information by its Lodestone ID.
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMounts"/>.
             </summary>
             <param name="id">The ID of the character.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' mounts.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCharacterMinion(System.String)">
+        <member name="M:NetStone.LodestoneClient.GetCharacterMinion(System.String,System.Threading.CancellationToken)">
             <summary>
             Get a characters' unlocked minion information by its Lodestone ID.
             You can also get this from the character directly by calling <see cref="M:NetStone.Model.Parseables.Character.LodestoneCharacter.GetMinions"/>.
             </summary>
             <param name="id">The ID of the character.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Character.Collectable.CharacterCollectable"/> class containing information about the characters' minions.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchCharacter(NetStone.Search.Character.CharacterSearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchCharacter(NetStone.Search.Character.CharacterSearchQuery,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Search lodestone for a character with the specified query.
             </summary>
             <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetCrossworldLinkshell(System.String,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.GetCrossworldLinkshell(System.String,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Gets a cross world link shell by its id.
             </summary>
             <param name="id">The ID of the cross world linkshell.</param>
             <param name="page"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchCrossworldLinkshell(NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchCrossworldLinkshell(NetStone.Search.Linkshell.CrossworldLinkshellSearchQuery,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Search lodestone for a character with the specified query.
             </summary>
             <param name="query"><see cref="T:NetStone.Search.Character.CharacterSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Character.CharacterSearchPage"/> containing search results.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetLinkshell(System.String,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.GetLinkshell(System.String,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Gets a link shell by its id.
             </summary>
             <param name="id">The ID of the linkshell.</param>
             <param name="page"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.CWLS.LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchLinkshell(NetStone.Search.Linkshell.LinkshellSearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchLinkshell(NetStone.Search.Linkshell.LinkshellSearchQuery,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Search lodestone for a linkshell with the specified query.
             </summary>
             <param name="query"><see cref="T:NetStone.Search.Linkshell.LinkshellSearchQuery"/> object detailing search parameters</param>
             <param name="page">The page of search results to fetch.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.Linkshell.LinkshellSearchPage"/> containing search results.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String)">
+        <member name="M:NetStone.LodestoneClient.GetFreeCompany(System.String,System.Threading.CancellationToken)">
             <summary>
             Get a character by its Lodestone ID.
             </summary>
             <param name="id">The ID of the character.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.LodestoneFreeCompany"/> class containing information about the character.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetFreeCompanyMembers(System.String,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.GetFreeCompanyMembers(System.String,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Get the members of a Free Company
             </summary>
             <param name="id">The ID of the free company.</param>
             <param name="page">The page of members to fetch.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.FreeCompany.Members.FreeCompanyMembers"/> class containing information about FC members.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.SearchFreeCompany(NetStone.Search.FreeCompany.FreeCompanySearchQuery,System.Int32)">
+        <member name="M:NetStone.LodestoneClient.SearchFreeCompany(NetStone.Search.FreeCompany.FreeCompanySearchQuery,System.Int32,System.Threading.CancellationToken)">
             <summary>
             Search lodestone for a free company with the specified query.
             </summary>
             <param name="query"><see cref="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage"/> object detailing search parameters.</param>
             <param name="page">The page of search results to fetch.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns><see cref="T:NetStone.Model.Parseables.Search.FreeCompany.FreeCompanySearchPage"/> containing search results.</returns>
         </member>
-        <member name="M:NetStone.LodestoneClient.GetParsed``1(System.String,System.Func{AngleSharp.Dom.IElement,``0},NetStone.UserAgent)">
+        <member name="M:NetStone.LodestoneClient.GetParsed``1(System.String,System.Func{AngleSharp.Dom.IElement,``0},NetStone.UserAgent,System.Threading.CancellationToken)">
             <summary>
             Get the instantiated LodestoneParseable if the request succeeded, or null in case of StatusCode.NotFound.
             </summary>
@@ -1936,6 +1952,7 @@
             <param name="url">The URL to fetch.</param>
             <param name="createParseable">Func creating the LodestoneParseable.</param>
             <param name="agent">The user agent to use for the request.</param>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <exception cref="T:System.Net.Http.HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
             <returns>The instantiated LodestoneParseable in case of success.</returns>
         </member>
@@ -1980,10 +1997,11 @@
             Total number of pages
             </summary>
         </member>
-        <member name="M:NetStone.Model.IPaginatedResult`1.GetNextPage">
+        <member name="M:NetStone.Model.IPaginatedResult`1.GetNextPage(System.Threading.CancellationToken)">
             <summary>
             Gets the next page of results
             </summary>
+            <param name="cancellationToken">The cancellation token to cancel operation</param>
             <returns>Task of retrieving next page</returns>
         </member>
         <member name="T:NetStone.Model.PaginatedIdResult`3">
@@ -1991,7 +2009,7 @@
             Container class holding paginated information
             </summary>
         </member>
-        <member name="M:NetStone.Model.PaginatedIdResult`3.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{System.String,System.Int32,System.Threading.Tasks.Task{`0}},System.String)">
+        <member name="M:NetStone.Model.PaginatedIdResult`3.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{System.String,System.Int32,System.Threading.CancellationToken,System.Threading.Tasks.Task{`0}},System.String)">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.PaginatedSearchResult`4">
@@ -1999,7 +2017,7 @@
             Container class holding paginated information
             </summary>
         </member>
-        <member name="M:NetStone.Model.PaginatedSearchResult`4.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{`3,System.Int32,System.Threading.Tasks.Task{`0}},`3)">
+        <member name="M:NetStone.Model.PaginatedSearchResult`4.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{`3,System.Int32,System.Threading.CancellationToken,System.Threading.Tasks.Task{`0}},`3)">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.PaginatedResult`4">
@@ -2012,7 +2030,7 @@
             Definition for the paginated type
             </summary>
         </member>
-        <member name="M:NetStone.Model.PaginatedResult`4.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{`3,System.Int32,System.Threading.Tasks.Task{`0}},`3)">
+        <member name="M:NetStone.Model.PaginatedResult`4.#ctor(AngleSharp.Dom.IElement,NetStone.Definitions.Model.PagedDefinition{`2},System.Func{`3,System.Int32,System.Threading.CancellationToken,System.Threading.Tasks.Task{`0}},`3)">
             <summary>
             
             </summary>
@@ -2042,7 +2060,7 @@
         <member name="P:NetStone.Model.PaginatedResult`4.NumPages">
             <inheritdoc/>
         </member>
-        <member name="M:NetStone.Model.PaginatedResult`4.GetNextPage">
+        <member name="M:NetStone.Model.PaginatedResult`4.GetNextPage(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
         <member name="T:NetStone.Model.LodestoneParseable">

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -210,7 +210,7 @@ public class Tests
 
         //Focus
         Assert.AreEqual("Always", fc.ActiveState);
-        Assert.AreEqual("Open", fc.Recruitment);
+        Assert.AreEqual("Closed", fc.Recruitment);
 
         Assert.IsNotNull(fc.Focus);
         Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
