@@ -75,7 +75,9 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
 
     private async Task<T> GetDefinition<T>(string path, CancellationToken cancellationToken) where T : IDefinition
     {
-        var json = await this.client.GetStringAsync(path);
+        var response = await this.client.GetAsync(path, cancellationToken);
+        response.EnsureSuccessStatusCode();
+        var json = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<T>(json);
         return result == null ? throw new FormatException($"Could not parse definitions in {path}.") : result;
     }
