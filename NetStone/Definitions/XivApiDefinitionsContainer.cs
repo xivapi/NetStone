@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
@@ -33,47 +34,50 @@ public class XivApiDefinitionsContainer : DefinitionsContainer
     /// <summary>
     /// Fetches current CSS selector definitions from xivapi/lodestone-css-selectors github repository.
     /// </summary>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"></exception>
     /// <exception cref="FormatException"></exception>
     /// <returns>Task for this operation</returns>
-    public override async Task Reload()
+    public override async Task Reload(CancellationToken cancellationToken = default)
     {
-        this.Meta = await GetDefinition<MetaDefinition>("meta.json");
+        this.Meta = await GetDefinition<MetaDefinition>("meta.json", cancellationToken);
 
-        this.Character = await GetDefinition<CharacterDefinition>("profile/character.json");
-        this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json");
-        this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json");
-        this.GearEntry = await GetDefinition<GearEntryDefinition>("profile/gearentry.json");
-        this.SoulCrystalEntry = await GetDefinition<SoulcrystalEntryDefinition>("profile/soulcrystal.json");
-        this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json");
-        this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json");
-        this.Mount = await GetDefinition<CharacterMountDefinition>("profile/mount.json");
-        this.Minion = await GetDefinition<CharacterMinionDefinition>("profile/minion.json");
+        this.Character = await GetDefinition<CharacterDefinition>("profile/character.json", cancellationToken);
+        this.ClassJob = await GetDefinition<CharacterClassJobDefinition>("profile/classjob.json", cancellationToken);
+        this.Gear = await GetDefinition<CharacterGearDefinition>("profile/gearset.json", cancellationToken);
+        this.GearEntry = await GetDefinition<GearEntryDefinition>("profile/gearentry.json", cancellationToken);
+        this.SoulCrystalEntry = await GetDefinition<SoulcrystalEntryDefinition>("profile/soulcrystal.json", cancellationToken);
+        this.Attributes = await GetDefinition<CharacterAttributesDefinition>("profile/attributes.json", cancellationToken);
+        this.Achievement = await GetDefinition<CharacterAchievementDefinition>("profile/achievements.json", cancellationToken);
+        this.Mount = await GetDefinition<CharacterMountDefinition>("profile/mount.json", cancellationToken);
+        this.Minion = await GetDefinition<CharacterMinionDefinition>("profile/minion.json", cancellationToken);
 
-        this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json");
-        this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json");
+        this.FreeCompany = await GetDefinition<FreeCompanyDefinition>("freecompany/freecompany.json", cancellationToken);
+        this.FreeCompanyFocus = await GetDefinition<FreeCompanyFocusDefinition>("freecompany/focus.json", cancellationToken);
         this.FreeCompanyReputation =
-            await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json");
+            await GetDefinition<FreeCompanyReputationDefinition>("freecompany/reputation.json", cancellationToken);
 
-        this.FreeCompanyMembers = await GetDefinition<PagedDefinition<FreeCompanyMembersEntryDefinition>>("freecompany/members.json");
+        this.FreeCompanyMembers = await GetDefinition<PagedDefinition<FreeCompanyMembersEntryDefinition>>("freecompany/members.json", cancellationToken);
 
-        this.CharacterSearch = await GetDefinition<PagedDefinition<CharacterSearchEntryDefinition>>("search/character.json");
-        this.FreeCompanySearch = await GetDefinition<PagedDefinition<FreeCompanySearchEntryDefinition>>("search/freecompany.json");
+        this.CharacterSearch = await GetDefinition<PagedDefinition<CharacterSearchEntryDefinition>>("search/character.json", cancellationToken);
+        this.FreeCompanySearch = await GetDefinition<PagedDefinition<FreeCompanySearchEntryDefinition>>("search/freecompany.json", cancellationToken);
         
-        this.CrossworldLinkshell = await GetDefinition<CrossworldLinkshellDefinition>("cwls/cwls.json");
-        this.CrossworldLinkshellMember = await GetDefinition<PagedDefinition<CrossworldLinkshellMemberEntryDefinition>>("cwls/members.json");
-        this.CrossworldLinkshellSearch = await GetDefinition<PagedDefinition<CrossworldLinkshellSearchEntryDefinition>>("search/cwls.json");
+        this.CrossworldLinkshell = await GetDefinition<CrossworldLinkshellDefinition>("cwls/cwls.json", cancellationToken);
+        this.CrossworldLinkshellMember = await GetDefinition<PagedDefinition<CrossworldLinkshellMemberEntryDefinition>>("cwls/members.json", cancellationToken);
+        this.CrossworldLinkshellSearch = await GetDefinition<PagedDefinition<CrossworldLinkshellSearchEntryDefinition>>("search/cwls.json", cancellationToken);
         
-        this.Linkshell = await GetDefinition<LinkshellDefinition>("linkshell/ls.json");
-        this.LinkshellMember = await GetDefinition<PagedDefinition<LinkshellMemberEntryDefinition>>("linkshell/members.json");
-        this.LinkshellSearch = await GetDefinition<PagedDefinition<LinkshellSearchEntryDefinition>>("search/linkshell.json");
+        this.Linkshell = await GetDefinition<LinkshellDefinition>("linkshell/ls.json", cancellationToken);
+        this.LinkshellMember = await GetDefinition<PagedDefinition<LinkshellMemberEntryDefinition>>("linkshell/members.json", cancellationToken);
+        this.LinkshellSearch = await GetDefinition<PagedDefinition<LinkshellSearchEntryDefinition>>("search/linkshell.json", cancellationToken);
     }
 
     
 
-    private async Task<T> GetDefinition<T>(string path) where T : IDefinition
+    private async Task<T> GetDefinition<T>(string path, CancellationToken cancellationToken) where T : IDefinition
     {
-        var json = await this.client.GetStringAsync(path);
+        var response = await this.client.GetAsync(path, cancellationToken);
+        response.EnsureSuccessStatusCode();
+        var json = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<T>(json);
         return result == null ? throw new FormatException($"Could not parse definitions in {path}.") : result;
     }
