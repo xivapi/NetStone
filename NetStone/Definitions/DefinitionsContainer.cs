@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using NetStone.Definitions.Model;
 using NetStone.Definitions.Model.Character;
@@ -131,8 +132,9 @@ public abstract class DefinitionsContainer : IDisposable
     /// <summary>
     /// Loads the definitions from repo
     /// </summary>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <returns>Reload task</returns>
-    public abstract Task Reload();
+    public abstract Task Reload(CancellationToken cancellationToken = default);
 
     /// <inheritdoc />
     public abstract void Dispose();

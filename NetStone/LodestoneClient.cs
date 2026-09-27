@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
@@ -79,14 +80,23 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="gameData">Service providing game data for parsing</param>
     /// <param name="lodestoneBaseAddress">Base address for Lodestone access (defaults to EU Lodestone)</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"></exception>
     /// <exception cref="FormatException"></exception>
     /// <returns></returns>
     public static async Task<LodestoneClient> GetClientAsync(IGameDataProvider? gameData = null,
-        string lodestoneBaseAddress = Constants.LodestoneBase)
+        string lodestoneBaseAddress = Constants.LodestoneBase, CancellationToken cancellationToken = default)
     {
         var definitions = new XivApiDefinitionsContainer();
-        await definitions.Reload();
+        try
+        {
+            await definitions.Reload(cancellationToken);
+        }
+        catch
+        {
+            definitions.Dispose();
+            throw;
+        }
 
         return new LodestoneClient(definitions, gameData, lodestoneBaseAddress);
     }
@@ -97,73 +107,89 @@ public class LodestoneClient : IDisposable
     /// Get a character by its Lodestone ID.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCharacter"/> class containing information about the character.</returns>
-    public async Task<LodestoneCharacter?> GetCharacter(string id)
+    public async Task<LodestoneCharacter?> GetCharacter(string id, CancellationToken cancellationToken = default)
     {
         var character = await GetParsed($"/lodestone/character/{id}/",
                                         node => new LodestoneCharacter(
-                                            this, node, this.Definitions, id));
+                                            this, node, this.Definitions, id),
+                                        cancellationToken: cancellationToken);
         if (character == null)
             return null;
 
         character.Gear.Mainhand = character.Gear.MainHandLink != null
             ? await GetParsed(character.Gear.MainHandLink,
-                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+                              node => new GearEntry(this, node, this.Definitions.GearEntry),
+                              cancellationToken: cancellationToken)
             : null;
         character.Gear.Offhand = character.Gear.OffHandLink != null
             ? await GetParsed(character.Gear.OffHandLink,
-                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+                              node => new GearEntry(this, node, this.Definitions.GearEntry),
+                              cancellationToken: cancellationToken)
             : null;
         character.Gear.Head = character.Gear.HeadLink != null
             ? await GetParsed(character.Gear.HeadLink,
-                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+                              node => new GearEntry(this, node, this.Definitions.GearEntry),
+                              cancellationToken: cancellationToken)
             : null;
         character.Gear.Body = character.Gear.BodyLink != null
             ? await GetParsed(character.Gear.BodyLink,
-                              node => new GearEntry(this, node, this.Definitions.GearEntry))
+                              node => new GearEntry(this, node, this.Definitions.GearEntry),
+                              cancellationToken: cancellationToken)
             : null;
             character.Gear.Hands = character.Gear.HandsLink != null
                 ? await GetParsed(character.Gear.HandsLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
 #pragma warning disable CS0618 // Type or member is obsolete
             character.Gear.Waist = character.Gear.WaistLink != null
                 ? await GetParsed(character.Gear.WaistLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
 #pragma warning restore CS0618 // Type or member is obsolete
             character.Gear.Legs = character.Gear.LegsLink != null
                 ? await GetParsed(character.Gear.LegsLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Feet = character.Gear.FeetLink != null
                 ? await GetParsed(character.Gear.FeetLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Earrings = character.Gear.EarringsLink != null
                 ? await GetParsed(character.Gear.EarringsLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Necklace = character.Gear.NecklaceLink != null
                 ? await GetParsed(character.Gear.NecklaceLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Bracelets = character.Gear.BraceletsLink != null
                 ? await GetParsed(character.Gear.BraceletsLink,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Ring1 = character.Gear.Ring1Link != null
                 ? await GetParsed(character.Gear.Ring1Link,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Ring2 = character.Gear.Ring2Link != null
                 ? await GetParsed(character.Gear.Ring2Link,
-                                  node => new GearEntry(this, node, this.Definitions.GearEntry))
+                                  node => new GearEntry(this, node, this.Definitions.GearEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
             character.Gear.Soulcrystal = character.Gear.SoulcrystalLink != null
                 ? await GetParsed(character.Gear.SoulcrystalLink,
-                                  node => new SoulcrystalEntry(node, this.Definitions.SoulCrystalEntry))
+                                  node => new SoulcrystalEntry(node, this.Definitions.SoulCrystalEntry),
+                                  cancellationToken: cancellationToken)
                 : null;
         
             return character;
@@ -174,10 +200,14 @@ public class LodestoneClient : IDisposable
     /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetClassJobInfo()"/>.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterClassJob"/> class containing information about the characters' classes and jobs.</returns>
-    public async Task<CharacterClassJob?> GetCharacterClassJob(string id) => await GetParsed(
-        $"/lodestone/character/{id}/class_job/", node => new CharacterClassJob(node, this.Definitions.ClassJob));
+    public async Task<CharacterClassJob?> GetCharacterClassJob(string id, CancellationToken cancellationToken = default) =>
+        await GetParsed(
+            $"/lodestone/character/{id}/class_job/",
+            node => new CharacterClassJob(node, this.Definitions.ClassJob),
+            cancellationToken: cancellationToken);
 
     /// <summary>
     /// Get a characters' unlocked achievement information by its Lodestone ID.
@@ -185,95 +215,110 @@ public class LodestoneClient : IDisposable
     /// </summary>
     /// <param name="id">The ID of the character.</param>
     /// <param name="page">The number of the page that should be fetched.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterAchievementPage"/> class containing information about the characters' achievements.</returns>
-    public async Task<CharacterAchievementPage?> GetCharacterAchievement(string id, int page = 1) =>
+    public async Task<CharacterAchievementPage?> GetCharacterAchievement(string id, int page = 1, CancellationToken cancellationToken = default) =>
         await GetParsed(
             $"/lodestone/character/{id}/achievement/?page={page}",
-            node => new CharacterAchievementPage(this, node, this.Definitions.Achievement, id));
+            node => new CharacterAchievementPage(this, node, this.Definitions.Achievement, id),
+            cancellationToken: cancellationToken);
 
     /// <summary>
     /// Get a characters' unlocked mount information by its Lodestone ID.
     /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMounts()"/>.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' mounts.</returns>
-    public async Task<CharacterCollectable?> GetCharacterMount(string id) => await GetParsed(
+    public async Task<CharacterCollectable?> GetCharacterMount(string id, CancellationToken cancellationToken = default) => await GetParsed(
         $"/lodestone/character/{id}/mount/",
         node => new CharacterCollectable(node, this.Definitions.Mount),
-        UserAgent.Mobile);
+        UserAgent.Mobile, cancellationToken);
 
     /// <summary>
     /// Get a characters' unlocked minion information by its Lodestone ID.
     /// You can also get this from the character directly by calling <see cref="LodestoneCharacter.GetMinions()"/>.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterCollectable"/> class containing information about the characters' minions.</returns>
-    public async Task<CharacterCollectable?> GetCharacterMinion(string id) => await GetParsed(
+    public async Task<CharacterCollectable?> GetCharacterMinion(string id, CancellationToken cancellationToken = default) => await GetParsed(
         $"/lodestone/character/{id}/minion/",
         node => new CharacterCollectable(node, this.Definitions.Minion),
-        UserAgent.Mobile);
+        UserAgent.Mobile,
+        cancellationToken);
 
     /// <summary>
     /// Search lodestone for a character with the specified query.
     /// </summary>
     /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
-    public async Task<CharacterSearchPage?> SearchCharacter(CharacterSearchQuery query, int page = 1) =>
+    public async Task<CharacterSearchPage?> SearchCharacter(CharacterSearchQuery query, int page = 1, CancellationToken cancellationToken = default) =>
         await GetParsed($"/lodestone/character/{query.BuildQueryString()}&page={page}",
-            node => new CharacterSearchPage(this, node, this.Definitions.CharacterSearch, query));
-    
+            node => new CharacterSearchPage(this, node, this.Definitions.CharacterSearch, query),
+            cancellationToken: cancellationToken);
+
     #endregion
-    
+
     #region Linkshells
     /// <summary>
     /// Gets a cross world link shell by its id.
     /// </summary>
     /// <param name="id">The ID of the cross world linkshell.</param>
     /// <param name="page"></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
-    public async Task<LodestoneCrossworldLinkshell?> GetCrossworldLinkshell(string id, int page = 1) => 
+    public async Task<LodestoneCrossworldLinkshell?> GetCrossworldLinkshell(string id, int page = 1, CancellationToken cancellationToken = default) => 
         await GetParsed($"/lodestone/crossworld_linkshell/{id}?page={page}",
-                        node => new LodestoneCrossworldLinkshell(this, node, this.Definitions,id));
-    
+                        node => new LodestoneCrossworldLinkshell(this, node, this.Definitions,id),
+                        cancellationToken: cancellationToken);
+
     /// <summary>
     /// Search lodestone for a character with the specified query.
     /// </summary>
     /// <param name="query"><see cref="CharacterSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="CharacterSearchPage"/> containing search results.</returns>
-    public async Task<CrossworldLinkshellSearchPage?> SearchCrossworldLinkshell(CrossworldLinkshellSearchQuery query, int page = 1) =>
+    public async Task<CrossworldLinkshellSearchPage?> SearchCrossworldLinkshell(CrossworldLinkshellSearchQuery query, int page = 1, CancellationToken cancellationToken = default) =>
         await GetParsed($"/lodestone/crossworld_linkshell/{query.BuildQueryString()}&page={page}",
-                        node => new CrossworldLinkshellSearchPage(this, node, this.Definitions.CrossworldLinkshellSearch, query));
-    
+                        node => new CrossworldLinkshellSearchPage(this, node, this.Definitions.CrossworldLinkshellSearch, query),
+                        cancellationToken: cancellationToken);
+
     /// <summary>
     /// Gets a link shell by its id.
     /// </summary>
     /// <param name="id">The ID of the linkshell.</param>
     /// <param name="page"></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneCrossworldLinkshell"/> class containing information about the cross world link shell</returns>
-    public async Task<LodestoneLinkshell?> GetLinkshell(string id, int page = 1) =>
+    public async Task<LodestoneLinkshell?> GetLinkshell(string id, int page = 1, CancellationToken cancellationToken = default) =>
         await GetParsed($"/lodestone/linkshell/{id}?page={page}",
-                        node => new LodestoneLinkshell(this, node, this.Definitions,id));
-    
+                        node => new LodestoneLinkshell(this, node, this.Definitions,id),
+                        cancellationToken: cancellationToken);
+
     /// <summary>
     /// Search lodestone for a linkshell with the specified query.
     /// </summary>
     /// <param name="query"><see cref="LinkshellSearchQuery"/> object detailing search parameters</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LinkshellSearchPage"/> containing search results.</returns>
-    public async Task<LinkshellSearchPage?> SearchLinkshell(LinkshellSearchQuery query, int page = 1) =>
+    public async Task<LinkshellSearchPage?> SearchLinkshell(LinkshellSearchQuery query, int page = 1, CancellationToken cancellationToken = default) =>
         await GetParsed($"/lodestone/linkshell/{query.BuildQueryString()}&page={page}",
-                        node => new LinkshellSearchPage(this, node, this.Definitions.LinkshellSearch, query));
-    
+                        node => new LinkshellSearchPage(this, node, this.Definitions.LinkshellSearch, query),
+                        cancellationToken: cancellationToken);
+
     #endregion
 
     #region FreeCompany
@@ -282,32 +327,39 @@ public class LodestoneClient : IDisposable
     /// Get a character by its Lodestone ID.
     /// </summary>
     /// <param name="id">The ID of the character.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="LodestoneFreeCompany"/> class containing information about the character.</returns>
-    public async Task<LodestoneFreeCompany?> GetFreeCompany(string id) => await GetParsed(
-        $"/lodestone/freecompany/{id}/", node => new LodestoneFreeCompany(this, node, this.Definitions, id));
+    public async Task<LodestoneFreeCompany?> GetFreeCompany(string id, CancellationToken cancellationToken = default) => await GetParsed(
+        $"/lodestone/freecompany/{id}/",
+        node => new LodestoneFreeCompany(this, node, this.Definitions, id),
+        cancellationToken: cancellationToken);
 
     /// <summary>
     /// Get the members of a Free Company
     /// </summary>
     /// <param name="id">The ID of the free company.</param>
     /// <param name="page">The page of members to fetch.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="FreeCompanyMembers"/> class containing information about FC members.</returns>
-    public async Task<FreeCompanyMembers?> GetFreeCompanyMembers(string id, int page = 1) => await GetParsed(
+    public async Task<FreeCompanyMembers?> GetFreeCompanyMembers(string id, int page = 1, CancellationToken cancellationToken = default) => await GetParsed(
         $"/lodestone/freecompany/{id}/member/?page={page}",
-        node => new FreeCompanyMembers(this, node, this.Definitions.FreeCompanyMembers, id));
+        node => new FreeCompanyMembers(this, node, this.Definitions.FreeCompanyMembers, id),
+        cancellationToken: cancellationToken);
 
     /// <summary>
     /// Search lodestone for a free company with the specified query.
     /// </summary>
     /// <param name="query"><see cref="FreeCompanySearchPage"/> object detailing search parameters.</param>
     /// <param name="page">The page of search results to fetch.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns><see cref="FreeCompanySearchPage"/> containing search results.</returns>
-    public async Task<FreeCompanySearchPage?> SearchFreeCompany(FreeCompanySearchQuery query, int page = 1) =>
+    public async Task<FreeCompanySearchPage?> SearchFreeCompany(FreeCompanySearchQuery query, int page = 1, CancellationToken cancellationToken = default) =>
         await GetParsed($"/lodestone/freecompany/{query.BuildQueryString()}&page={page}",
-            node => new FreeCompanySearchPage(this, node, this.Definitions.FreeCompanySearch, query));
+            node => new FreeCompanySearchPage(this, node, this.Definitions.FreeCompanySearch, query),
+            cancellationToken: cancellationToken);
 
     #endregion
 
@@ -318,10 +370,11 @@ public class LodestoneClient : IDisposable
     /// <param name="url">The URL to fetch.</param>
     /// <param name="createParseable">Func creating the LodestoneParseable.</param>
     /// <param name="agent">The user agent to use for the request.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation</param>
     /// <exception cref="HttpRequestException"> The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.</exception>
     /// <returns>The instantiated LodestoneParseable in case of success.</returns>
     private async Task<T?> GetParsed<T>(string url, Func<IElement, T?> createParseable,
-        UserAgent agent = UserAgent.Desktop) where T : LodestoneParseable
+        UserAgent agent = UserAgent.Desktop, CancellationToken cancellationToken = default) where T : LodestoneParseable
     {
         var config = Configuration.Default.WithDefaultLoader();
         var context = BrowsingContext.New(config);
@@ -339,7 +392,7 @@ public class LodestoneClient : IDisposable
                 throw new ArgumentOutOfRangeException(nameof(agent), agent, null);
         }
 
-        var response = await this.client.SendAsync(request);
+        var response = await this.client.SendAsync(request, cancellationToken);
 
         if (response.StatusCode == HttpStatusCode.NotFound)
             return null;
