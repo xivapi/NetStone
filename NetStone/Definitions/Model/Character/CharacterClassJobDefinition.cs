@@ -152,6 +152,12 @@ public class CharacterClassJobDefinition : IDefinition
     public ClassJobEntryDefinition Viper { get; set; }
 
     /// <summary>
+    /// Beastmaster
+    /// </summary>
+    [JsonProperty("BEASTMASTER")]
+    public ClassJobEntryDefinition Beastmaster { get; set; }
+
+    /// <summary>
     /// White Mage (includes Conjurer)
     /// </summary>
     [JsonProperty("WHITEMAGE")]

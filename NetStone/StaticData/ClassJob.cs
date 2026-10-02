@@ -218,5 +218,10 @@ public enum ClassJob
     /// <summary>
     /// Pictomancer
     /// </summary>
-    Pictomancer = 42
+    Pictomancer = 42,
+
+    /// <summary>
+    /// Beastmaster
+    /// </summary>
+    Beastmaster = 43
 }
