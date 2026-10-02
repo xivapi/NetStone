@@ -82,6 +82,11 @@ public class CharacterClassJob : LodestoneParseable
     public ClassJobEntry Viper => new(this.RootNode, this.definition.Viper);
 
     /// <summary>
+    /// Information about the Beastmaster class.
+    /// </summary>
+    public ClassJobEntry Beastmaster => new(this.RootNode, this.definition.Beastmaster);
+
+    /// <summary>
     /// Information about the WhiteMage class.
     /// </summary>
     public ClassJobEntry WhiteMage => new(this.RootNode, this.definition.Whitemage);
@@ -226,6 +231,8 @@ public class CharacterClassJob : LodestoneParseable
             { StaticData.ClassJob.Reaper, this.Reaper },
 
             { StaticData.ClassJob.Viper, this.Viper },
+
+            { StaticData.ClassJob.Beastmaster, this.Beastmaster },
 
             { StaticData.ClassJob.Conjurer, this.WhiteMage },
             { StaticData.ClassJob.WhiteMage, this.WhiteMage },
