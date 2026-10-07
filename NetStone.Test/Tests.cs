@@ -210,7 +210,7 @@ public class Tests
 
         //Focus
         Assert.AreEqual("Always", fc.ActiveState);
-        Assert.AreEqual("Closed", fc.Recruitment);
+        Assert.AreEqual("Open", fc.Recruitment);
 
         Assert.IsNotNull(fc.Focus);
         Assert.AreEqual("Role-playing", fc.Focus.RolePlay.Name);
