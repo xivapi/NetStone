@@ -435,6 +435,11 @@
             Viper
             </summary>
         </member>
+        <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Beastmaster">
+            <summary>
+            Beastmaster
+            </summary>
+        </member>
         <member name="P:NetStone.Definitions.Model.Character.CharacterClassJobDefinition.Whitemage">
             <summary>
             White Mage (includes Conjurer)
@@ -2481,6 +2486,11 @@
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Viper">
             <summary>
             Information about the Viper class.
+            </summary>
+        </member>
+        <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.Beastmaster">
+            <summary>
+            Information about the Beastmaster class.
             </summary>
         </member>
         <member name="P:NetStone.Model.Parseables.Character.ClassJob.CharacterClassJob.WhiteMage">
@@ -4784,6 +4794,11 @@
         <member name="F:NetStone.StaticData.ClassJob.Pictomancer">
             <summary>
             Pictomancer
+            </summary>
+        </member>
+        <member name="F:NetStone.StaticData.ClassJob.Beastmaster">
+            <summary>
+            Beastmaster
             </summary>
         </member>
         <member name="T:NetStone.StaticData.GrandCompany">
